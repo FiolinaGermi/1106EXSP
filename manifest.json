@@ -38,6 +38,11 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/测试"
     },
     {
+      "path": "db/levels.db",
+      "md5": "ad113ad9e538071e9476a293ad588f42",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/levels.db"
+    },
+    {
       "path": "db/weapon.db",
       "md5": "f32f927e79a06ca7ea91c705ec9efe9c",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/weapon.db"
