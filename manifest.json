@@ -1,11 +1,16 @@
 {
-  "version": "2026.05.09.1042",
+  "version": "2026.05.09.1044",
   "base": "Gamedata",
   "files": [
     {
       "path": "测试",
       "md5": "2debfdcf79f03e4a65a667d21ef9de14",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/测试"
+    },
+    {
+      "path": "maps/compaign/测试",
+      "md5": "2debfdcf79f03e4a65a667d21ef9de14",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/测试"
     }
   ]
 }
