@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.09.1050",
+  "version": "2026.05.09.1051",
   "base": "Gamedata",
   "files": [
     {
@@ -11,6 +11,11 @@
       "path": "sounds/测试",
       "md5": "d8e8fca2dc0f896fd7cb4cb0031ba249",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/测试"
+    },
+    {
+      "path": "sounds/speech/测试",
+      "md5": "d8e8fca2dc0f896fd7cb4cb0031ba249",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/测试"
     },
     {
       "path": "ui/测试",
