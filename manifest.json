@@ -1,5 +1,11 @@
 {
-  "version": "2026.05.09.0630",
+  "version": "2026.05.09.0640",
   "base": "Gamedata",
-  "files": []
+  "files": [
+    {
+      "path": "maps/compaign/基础框架.lgc",
+      "md5": "92871509fc7357ccab71a9891b964492",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/基础框架.lgc"
+    }
+  ]
 }
