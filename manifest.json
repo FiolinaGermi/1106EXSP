@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.09.1102",
+  "version": "2026.05.09.1138",
   "base": "Gamedata",
   "files": [
     {
@@ -38,9 +38,29 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/测试"
     },
     {
+      "path": "db/weapon.db",
+      "md5": "f32f927e79a06ca7ea91c705ec9efe9c",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/weapon.db"
+    },
+    {
       "path": "db/测试",
       "md5": "d8e8fca2dc0f896fd7cb4cb0031ba249",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/测试"
+    },
+    {
+      "path": "db/ObjectsExtended.db",
+      "md5": "6136fb67ed1de10252723dd41c913371",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/ObjectsExtended.db"
+    },
+    {
+      "path": "db/input.db",
+      "md5": "148ce953865132be6d0da541dc561254",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/input.db"
+    },
+    {
+      "path": "db/strings.db",
+      "md5": "4909c6f35bb0f17f847b4a80f3566356",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/strings.db"
     }
   ]
 }
