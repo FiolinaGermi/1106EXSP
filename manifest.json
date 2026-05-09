@@ -1,5 +1,11 @@
 {
   "version": "2026.05.09.1042",
   "base": "Gamedata",
-  "files": []
+  "files": [
+    {
+      "path": "测试",
+      "md5": "2debfdcf79f03e4a65a667d21ef9de14",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/测试"
+    }
+  ]
 }
