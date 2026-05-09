@@ -1,12 +1,7 @@
 {
-  "version": "2026.05.09.0648",
+  "version": "2026.05.09.0702",
   "base": "Gamedata",
   "files": [
-    {
-      "path": "maps/compaign/基础框架.lgc",
-      "md5": "92871509fc7357ccab71a9891b964492",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/基础框架.lgc"
-    },
     {
       "path": "maps/compaign/Level_03.map",
       "md5": "ad996266aa47c945c42842f40a3790c6",
