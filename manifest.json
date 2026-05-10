@@ -3,36 +3,6 @@
   "base": "Gamedata",
   "files": [
     {
-      "path": "text/测试",
-      "md5": "d8e8fca2dc0f896fd7cb4cb0031ba249",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/测试"
-    },
-    {
-      "path": "text/mission.txt",
-      "md5": "04b5d87967e5cc7a9e1c232d6bb39687",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/mission.txt"
-    },
-    {
-      "path": "text/dialogs.txt",
-      "md5": "a331d06909f9597274044c47871b8144",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/dialogs.txt"
-    },
-    {
-      "path": "text/Skils.txt",
-      "md5": "159e7628faf64b10f4f9990ce68360ea",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/Skils.txt"
-    },
-    {
-      "path": "text/Heroes.txt",
-      "md5": "26b2d6f9ee18a52b0dda8ca3410ff67f",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/Heroes.txt"
-    },
-    {
-      "path": "text/Weapon.txt",
-      "md5": "c5d26a7396ff07f1ff0cb4999faf6482",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/Weapon.txt"
-    },
-    {
       "path": "sounds/测试",
       "md5": "d8e8fca2dc0f896fd7cb4cb0031ba249",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/测试"
