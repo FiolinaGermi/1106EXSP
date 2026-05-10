@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.10.1259",
+  "version": "2026.05.10.1301",
   "base": "Gamedata",
   "files": [
     {
@@ -41,6 +41,11 @@
       "path": "db/weapon.db",
       "md5": "f32f927e79a06ca7ea91c705ec9efe9c",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/weapon.db"
+    },
+    {
+      "path": "db/ObjectsExtended.db",
+      "md5": "4661ac9fc7d69e6a9d1bbcc49ca0c122",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/ObjectsExtended.db"
     },
     {
       "path": "db/input.db",
