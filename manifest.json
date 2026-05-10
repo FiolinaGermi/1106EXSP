@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.10.0741",
+  "version": "2026.05.10.0742",
   "base": "Gamedata",
   "files": [
     {
@@ -296,46 +296,6 @@
       "path": "ui/dialogs/391_15.tga",
       "md5": "3e42d26ff52aa74289e92a68508edf7b",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/391_15.tga"
-    },
-    {
-      "path": "maps/compaign/level_05.lgd",
-      "md5": "68e3d2bdf013011d4a76ed14c28834ed",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/level_05.lgd"
-    },
-    {
-      "path": "maps/compaign/测试",
-      "md5": "2debfdcf79f03e4a65a667d21ef9de14",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/测试"
-    },
-    {
-      "path": "maps/compaign/level_02.lgd",
-      "md5": "a730e367b5eee115534cab45b72711f0",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/level_02.lgd"
-    },
-    {
-      "path": "maps/compaign/level_01.lgd",
-      "md5": "c8926043457c3f2a1ed3c1cf236954fb",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/level_01.lgd"
-    },
-    {
-      "path": "maps/compaign/tlks.lgc",
-      "md5": "532b82034dbbc70455606b55b35bdf89",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/tlks.lgc"
-    },
-    {
-      "path": "maps/compaign/level_06.lgd",
-      "md5": "a34043b992ee6b952335f6eee93a61da",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/level_06.lgd"
-    },
-    {
-      "path": "maps/compaign/level_03.lgd",
-      "md5": "1a6511ede2887dfb9ab81fa9e8106fb2",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/level_03.lgd"
-    },
-    {
-      "path": "maps/compaign/level_04.lgd",
-      "md5": "d81e3eb885f89cf83e44e28bd03974ec",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/level_04.lgd"
     },
     {
       "path": "db/levels.db",
