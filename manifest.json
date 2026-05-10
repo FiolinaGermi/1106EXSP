@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.10.1334",
+  "version": "2026.05.10.1336",
   "base": "Gamedata",
   "files": [
     {
@@ -136,6 +136,21 @@
       "path": "ui/as2/测试",
       "md5": "d8e8fca2dc0f896fd7cb4cb0031ba249",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/as2/测试"
+    },
+    {
+      "path": "ui/as2/914.bmp",
+      "md5": "29f9f5d8f21f8f0712e85c5c39e91f33",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/as2/914.bmp"
+    },
+    {
+      "path": "ui/as2/730.TGA",
+      "md5": "b52b6f5fa8d6092497669f5291dd9d56",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/as2/730.TGA"
+    },
+    {
+      "path": "ui/as2/2206.tga",
+      "md5": "f2b1ad8ac71e79356e0fae9eae836620",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/as2/2206.tga"
     },
     {
       "path": "ui/dialogs/测试",
