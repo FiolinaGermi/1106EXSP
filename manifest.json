@@ -393,9 +393,84 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/测试"
     },
     {
+      "path": "ui/inventory/ammo/1618_0001.tga",
+      "md5": "2edf744489b1a52b2c5e3cce29b4e22a",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/ammo/1618_0001.tga"
+    },
+    {
+      "path": "ui/inventory/ammo/1619_0001.tga",
+      "md5": "a8108a61d1f3c8f2a0cb5d6a6896361f",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/ammo/1619_0001.tga"
+    },
+    {
       "path": "ui/inventory/ammo/测试",
       "md5": "d8e8fca2dc0f896fd7cb4cb0031ba249",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/ammo/测试"
+    },
+    {
+      "path": "ui/inventory/ammo/1619_0002.tga",
+      "md5": "b158401d4def4851f5e9bb0fdf1fd189",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/ammo/1619_0002.tga"
+    },
+    {
+      "path": "ui/inventory/ammo/1618_0003.tga",
+      "md5": "20b28e2d75e1afed7ce28da4f58fd1fc",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/ammo/1618_0003.tga"
+    },
+    {
+      "path": "ui/inventory/ammo/1618_0005.tga",
+      "md5": "44a7515dea8f86c44f055cd9bdb0bac6",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/ammo/1618_0005.tga"
+    },
+    {
+      "path": "ui/inventory/ammo/1618_0002.tga",
+      "md5": "59cbfd63212888ed8ab2baf4fdfa62e6",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/ammo/1618_0002.tga"
+    },
+    {
+      "path": "ui/inventory/ammo/1618_0004.tga",
+      "md5": "d0931925d35c02f38181d6a05f0023e2",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/ammo/1618_0004.tga"
+    },
+    {
+      "path": "ui/inventory/ammo/1619_0005.tga",
+      "md5": "8521789236e8dd2e4041339079d28e58",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/ammo/1619_0005.tga"
+    },
+    {
+      "path": "ui/inventory/ammo/1619_0000.tga",
+      "md5": "1492dad5bd0463e7aeb95badd542f750",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/ammo/1619_0000.tga"
+    },
+    {
+      "path": "ui/inventory/ammo/1618_0007.tga",
+      "md5": "d6eeb7f49c93a2ea8189a49f44bb5d59",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/ammo/1618_0007.tga"
+    },
+    {
+      "path": "ui/inventory/ammo/1619_0006.tga",
+      "md5": "686b056a8b919aeced500bdec3d3582c",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/ammo/1619_0006.tga"
+    },
+    {
+      "path": "ui/inventory/ammo/1619_0003.tga",
+      "md5": "439de81892a6e48bd0edfa02363bd44a",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/ammo/1619_0003.tga"
+    },
+    {
+      "path": "ui/inventory/ammo/1619_0004.tga",
+      "md5": "4377270af4bcd201da39b2577ae75f5a",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/ammo/1619_0004.tga"
+    },
+    {
+      "path": "ui/inventory/ammo/1618_0000.tga",
+      "md5": "9d83573585af5d14f8bb943fd10f36a6",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/ammo/1618_0000.tga"
+    },
+    {
+      "path": "ui/inventory/ammo/1619_0007.tga",
+      "md5": "428d15217f9708791ce7d4c95112b27f",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/ammo/1619_0007.tga"
     },
     {
       "path": "maps/compaign/level_05.lgd",
