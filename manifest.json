@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.10.0742",
+  "version": "2026.05.10.0743",
   "base": "Gamedata",
   "files": [
     {
@@ -296,6 +296,11 @@
       "path": "ui/dialogs/391_15.tga",
       "md5": "3e42d26ff52aa74289e92a68508edf7b",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/391_15.tga"
+    },
+    {
+      "path": "maps/compaign/测试",
+      "md5": "410d6a485bcf5d2d2d223f2ada9b9c52",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/测试"
     },
     {
       "path": "db/levels.db",
