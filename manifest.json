@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.10.1330",
+  "version": "2026.05.10.1331",
   "base": "Gamedata",
   "files": [
     {
@@ -33,6 +33,11 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/ambient/测试"
     },
     {
+      "path": "sounds/music/ambient/wind.ogg",
+      "md5": "12a34c53d45b89e04ccb919e64834e64",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/ambient/wind.ogg"
+    },
+    {
       "path": "sounds/music/ambient/amb06.ogg",
       "md5": "4e99f9519c14e8f974fdc36660019261",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/ambient/amb06.ogg"
@@ -43,9 +48,24 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/ambient/amb_night.ogg"
     },
     {
+      "path": "sounds/music/ambient/entering_new.ogg",
+      "md5": "c05caeeb3bef9e3d4705d270c153a29a",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/ambient/entering_new.ogg"
+    },
+    {
+      "path": "sounds/music/ambient/entering.ogg",
+      "md5": "566f7e531add49a92905c000d0451373",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/ambient/entering.ogg"
+    },
+    {
       "path": "sounds/music/ambient/amb02.ogg",
       "md5": "a18dbaa0371c348d74d3877f018765d3",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/ambient/amb02.ogg"
+    },
+    {
+      "path": "sounds/music/ambient/rain.ogg",
+      "md5": "825c6e17e3178b055f5069f341f6acfc",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/ambient/rain.ogg"
     },
     {
       "path": "sounds/music/ambient/amb01.ogg",
