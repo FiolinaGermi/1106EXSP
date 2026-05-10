@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.10.1339",
+  "version": "2026.05.10.1340",
   "base": "Gamedata",
   "files": [
     {
@@ -471,6 +471,11 @@
       "path": "ui/inventory/ammo/1619_0007.tga",
       "md5": "428d15217f9708791ce7d4c95112b27f",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/ammo/1619_0007.tga"
+    },
+    {
+      "path": "ui/inventory/armor/ct",
+      "md5": "dfdc3f4262cb34359789d5aed14f99cd",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/ct"
     },
     {
       "path": "maps/compaign/level_05.lgd",
