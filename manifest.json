@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.10.1340",
+  "version": "2026.05.10.1341",
   "base": "Gamedata",
   "files": [
     {
@@ -476,6 +476,156 @@
       "path": "ui/inventory/armor/ct",
       "md5": "dfdc3f4262cb34359789d5aed14f99cd",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/ct"
+    },
+    {
+      "path": "ui/inventory/armor/1625_0014.tga",
+      "md5": "4dc5bedbde63b83ed89c396778822427",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1625_0014.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1625_0010.tga",
+      "md5": "96b0574734a55e42119437f31ea5c959",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1625_0010.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1624_0008.tga",
+      "md5": "92f76a691a6a08853ff597472333510a",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1624_0008.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1625_0012.tga",
+      "md5": "11b5a78040f98bc620a1ebebff11a642",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1625_0012.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1624_0001.tga",
+      "md5": "74705adac864bab2500ca3fa557d8718",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1624_0001.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1624_0000.tga",
+      "md5": "5db8d9491c1243616cdf2c0bdfd53866",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1624_0000.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1625_0000.tga",
+      "md5": "610200dbd929647c06433af7de86e314",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1625_0000.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1625_0002.tga",
+      "md5": "f226143e80f89aab6cab4cead587ebb6",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1625_0002.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1624_0004.tga",
+      "md5": "b59c984fa9708171179def1e64f8bf59",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1624_0004.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1624_0005.tga",
+      "md5": "a1b62491e9867c5c75971c26f0929b11",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1624_0005.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1625_0013.tga",
+      "md5": "aa4fbe640970b069b62701daa20d856a",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1625_0013.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1625_0001.tga",
+      "md5": "a1a0a0b60eab6f5a500742b527eea64d",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1625_0001.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1625_0005.tga",
+      "md5": "0884dfa3735df510713cf867b3027e7c",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1625_0005.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1625_0006.tga",
+      "md5": "70ed6aa2b479ffb34fd080b5703fa5dc",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1625_0006.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1625_0007.tga",
+      "md5": "cc1e6292a183fffcadbb5da704d3287c",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1625_0007.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1624_0006.tga",
+      "md5": "ec0442c16de61b4f253ad3a045adfd50",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1624_0006.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1624_0002.tga",
+      "md5": "6640a2a7b19cb576f842f29666f95565",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1624_0002.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1624_0013.tga",
+      "md5": "c79543df920ba5edc47e2c123a8c06b2",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1624_0013.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1624_0010.tga",
+      "md5": "4b5361a56fd8edb3a38a45a0e160cf9e",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1624_0010.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1624_0012.tga",
+      "md5": "fa391a0e5342a84183e1c50a86744988",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1624_0012.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1624_0007.tga",
+      "md5": "ace29795f06ee3ca33e08abbba753c93",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1624_0007.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1625_0004.tga",
+      "md5": "68630f48df24300c4b058ee5d78c710e",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1625_0004.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1624_0009.tga",
+      "md5": "8bd8dfc833ee1810020c29f9e408b28f",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1624_0009.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1625_0009.tga",
+      "md5": "563809d7b6c1198a5d84f6345df4f56e",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1625_0009.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1624_0003.tga",
+      "md5": "c00a7e1a720ed6c17f15dd597205336a",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1624_0003.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1624_0014.tga",
+      "md5": "aee080fecc7388ffabfa9d7984d7274e",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1624_0014.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1624_0011.tga",
+      "md5": "d637bd3673e958e61b0ed54c2296822e",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1624_0011.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1625_0011.tga",
+      "md5": "a881ab7b309f3ecd93038d48de0dde2e",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1625_0011.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1625_0003.tga",
+      "md5": "bf102522754c1ab103212b943350c312",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1625_0003.tga"
+    },
+    {
+      "path": "ui/inventory/armor/1625_0008.tga",
+      "md5": "c681f8d6f7706471c01e70b167103dcc",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/armor/1625_0008.tga"
     },
     {
       "path": "maps/compaign/level_05.lgd",
