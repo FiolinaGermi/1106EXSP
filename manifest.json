@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.10.1337",
+  "version": "2026.05.10.1338",
   "base": "Gamedata",
   "files": [
     {
@@ -386,6 +386,11 @@
       "path": "ui/dialogs/391_15.tga",
       "md5": "3e42d26ff52aa74289e92a68508edf7b",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/391_15.tga"
+    },
+    {
+      "path": "ui/inventory/测试",
+      "md5": "d8e8fca2dc0f896fd7cb4cb0031ba249",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/测试"
     },
     {
       "path": "maps/compaign/level_05.lgd",
