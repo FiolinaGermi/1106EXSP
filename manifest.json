@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.10.1328",
+  "version": "2026.05.10.1329",
   "base": "Gamedata",
   "files": [
     {
@@ -46,6 +46,11 @@
       "path": "sounds/music/ambient/amb03.ogg",
       "md5": "bba340dd7b2b209fe57d5179b46eb6d4",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/ambient/amb03.ogg"
+    },
+    {
+      "path": "sounds/music/ambient/amb04.ogg",
+      "md5": "df9b28f0d4d3a4f88f1f8a316bf0b5ba",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/ambient/amb04.ogg"
     },
     {
       "path": "ui/as2/测试",
