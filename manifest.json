@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.10.1304",
+  "version": "2026.05.10.1328",
   "base": "Gamedata",
   "files": [
     {
@@ -26,6 +26,26 @@
       "path": "sounds/music/ambient/测试",
       "md5": "d8e8fca2dc0f896fd7cb4cb0031ba249",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/ambient/测试"
+    },
+    {
+      "path": "sounds/music/ambient/amb_night.ogg",
+      "md5": "5362d6b2152ac28e61978014ec9d6ce1",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/ambient/amb_night.ogg"
+    },
+    {
+      "path": "sounds/music/ambient/amb02.ogg",
+      "md5": "a18dbaa0371c348d74d3877f018765d3",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/ambient/amb02.ogg"
+    },
+    {
+      "path": "sounds/music/ambient/amb01.ogg",
+      "md5": "b22cee806cff62e2e20ae62d8a65c35f",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/ambient/amb01.ogg"
+    },
+    {
+      "path": "sounds/music/ambient/amb03.ogg",
+      "md5": "bba340dd7b2b209fe57d5179b46eb6d4",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/ambient/amb03.ogg"
     },
     {
       "path": "ui/as2/测试",
