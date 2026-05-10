@@ -1,7 +1,12 @@
 {
-  "version": "2026.05.10.0743",
+  "version": "2026.05.10.0744",
   "base": "Gamedata",
   "files": [
+    {
+      "path": "text/测试",
+      "md5": "d8e8fca2dc0f896fd7cb4cb0031ba249",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/测试"
+    },
     {
       "path": "sounds/测试",
       "md5": "d8e8fca2dc0f896fd7cb4cb0031ba249",
