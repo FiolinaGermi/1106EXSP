@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.10.1341",
+  "version": "2026.05.10.1342",
   "base": "Gamedata",
   "files": [
     {
@@ -391,6 +391,11 @@
       "path": "ui/inventory/测试",
       "md5": "d8e8fca2dc0f896fd7cb4cb0031ba249",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/测试"
+    },
+    {
+      "path": "ui/inventory/characters/ct",
+      "md5": "dfdc3f4262cb34359789d5aed14f99cd",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/characters/ct"
     },
     {
       "path": "ui/inventory/ammo/1618_0001.tga",
