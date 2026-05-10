@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.09.1144",
+  "version": "2026.05.10.0740",
   "base": "Gamedata",
   "files": [
     {
@@ -346,11 +346,6 @@
       "path": "maps/compaign/Level_03.map",
       "md5": "ad996266aa47c945c42842f40a3790c6",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_03.map"
-    },
-    {
-      "path": "maps/compaign/Level_01.map",
-      "md5": "8403e6407a5af263e3efa411f35012e0",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_01.map"
     },
     {
       "path": "maps/compaign/level_03.lgd",
