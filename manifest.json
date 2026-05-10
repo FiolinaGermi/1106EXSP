@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.10.1331",
+  "version": "2026.05.10.1332",
   "base": "Gamedata",
   "files": [
     {
@@ -21,6 +21,11 @@
       "path": "sounds/music/测试",
       "md5": "d8e8fca2dc0f896fd7cb4cb0031ba249",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/测试"
+    },
+    {
+      "path": "sounds/music/combat/测试",
+      "md5": "d8e8fca2dc0f896fd7cb4cb0031ba249",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat/测试"
     },
     {
       "path": "sounds/music/ambient/amb05.ogg",
