@@ -1,56 +1,5 @@
 {
-  "version": "2026.05.19.0818",
+  "version": "2026.05.19.0819",
   "base": "Gamedata",
-  "files": [
-    {
-      "path": "db/weapon.db",
-      "md5": "4fff4bde218db2c74bb617c57374c415",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/weapon.db"
-    },
-    {
-      "path": "db/levels.db",
-      "md5": "7b7d15e709cbe6b53d557538b79d96e6",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/levels.db"
-    },
-    {
-      "path": "sounds/speech/lpld6-29.ogg",
-      "md5": "49cbf31fde464d77f9a81b94f5e60294",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/lpld6-29.ogg"
-    },
-    {
-      "path": "text/dialogs.txt",
-      "md5": "a72a1ab7ed5d9aa60d194e069269f376",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/dialogs.txt"
-    },
-    {
-      "path": "maps/compaign/Level_05.map",
-      "md5": "c67c43ba6684c9c9764445726bbbbfa3",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_05.map"
-    },
-    {
-      "path": "maps/compaign/Level_06.map",
-      "md5": "69d76f4f716dd538466744a48026ce56",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_06.map"
-    },
-    {
-      "path": "maps/compaign/Level_04.map",
-      "md5": "71248c0ddcb7f8e75b6920ced55dee72",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_04.map"
-    },
-    {
-      "path": "maps/compaign/Level_02.map",
-      "md5": "800e0aa147a6ada9ae473fa28b60fb8f",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_02.map"
-    },
-    {
-      "path": "maps/compaign/Level_03.map",
-      "md5": "783e69665c7a4017a0fb2b6690032e34",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_03.map"
-    },
-    {
-      "path": "maps/compaign/Level_01.map",
-      "md5": "591249849cd634d3e9b7cdb698d9ff79",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_01.map"
-    }
-  ]
+  "files": []
 }
