@@ -1,5 +1,11 @@
 {
-  "version": "2026.05.19.0814",
+  "version": "2026.05.19.0815",
   "base": "Gamedata",
-  "files": []
+  "files": [
+    {
+      "path": "db/1",
+      "md5": "b026324c6904b2a9cb4b88d6d61c81d1",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/1"
+    }
+  ]
 }
