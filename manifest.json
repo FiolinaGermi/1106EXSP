@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.19.0816",
+  "version": "2026.05.19.0817",
   "base": "Gamedata",
   "files": [
     {
@@ -11,6 +11,16 @@
       "path": "db/levels.db",
       "md5": "7b7d15e709cbe6b53d557538b79d96e6",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/levels.db"
+    },
+    {
+      "path": "sounds/speech/1",
+      "md5": "b026324c6904b2a9cb4b88d6d61c81d1",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/1"
+    },
+    {
+      "path": "sounds/speech/lpld6-29.ogg",
+      "md5": "49cbf31fde464d77f9a81b94f5e60294",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/lpld6-29.ogg"
     },
     {
       "path": "maps/compaign/Level_05.map",
