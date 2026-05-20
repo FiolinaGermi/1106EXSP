@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.20.0744",
+  "version": "2026.05.20.0745",
   "base": "Gamedata",
   "files": [
     {
@@ -11,6 +11,11 @@
       "path": "db/levels.db",
       "md5": "7b7d15e709cbe6b53d557538b79d96e6",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/levels.db"
+    },
+    {
+      "path": "db/npdata.txt",
+      "md5": "d41d8cd98f00b204e9800998ecf8427e",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/npdata.txt"
     },
     {
       "path": "sounds/speech/lpld6-29.ogg",
