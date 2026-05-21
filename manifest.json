@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.20.1456",
+  "version": "2026.05.21.0924",
   "base": "Gamedata",
   "files": [
     {
@@ -16,6 +16,16 @@
       "path": "db/npdata.txt",
       "md5": "d41d8cd98f00b204e9800998ecf8427e",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/npdata.txt"
+    },
+    {
+      "path": "db/plugins/1",
+      "md5": "b026324c6904b2a9cb4b88d6d61c81d1",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/plugins/1"
+    },
+    {
+      "path": "db/plugins/uid_reset.cp313-win_amd64.pyd",
+      "md5": "bea9bcd19350ac30b67caf1bcf829a21",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/plugins/uid_reset.cp313-win_amd64.pyd"
     },
     {
       "path": "sounds/speech/lpld6-29.ogg",
