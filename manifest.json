@@ -56,6 +56,11 @@
       "path": "maps/compaign/Level_03.map",
       "md5": "506b9bf51f2e06b34c61b89eb6189ef0",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_03.map"
+    },
+    {
+      "path": "maps/compaign/Level_01.map",
+      "md5": "0b6573cc3c01140289208219effa0e3a",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_01.map"
     }
   ]
 }
