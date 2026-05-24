@@ -499,19 +499,22 @@ Quest=1_1_47
 LevelNum=1
 TimeLine=59
 NextQuests=1048
-Comment=ÍÀÉÒÈ ÌÅÑÒÎĞÀÑÏÎËÎÆÅÍÈÅ
+Comment=Ñ°ÕÒ±ÜÄÑËùÔ¿³×
 Coment2=1_1_47Coment2
 ;************
 Quest=1_1_48
 LevelNum=1
 TimeLine=60
 NextQuests=1049
+Accomplished=1
+Comment=Íù±ÜÄÑËù
 Coment2=1_1_48Coment2
 ;************
 Quest=1_1_49
 LevelNum=1
 TimeLine=61
 NextQuests=1050
+Comment=Ç°Íù±ÜÄÑËù
 Coment2=1_1_49Coment2
 ;************
 Quest=1_1_50
@@ -1199,6 +1202,7 @@ Coment2=1_2_43Coment2
 Quest=1_2_45
 LevelNum=1
 TimeLine=48
+NextQuests=2057
 ChangeStateItem=QS_BEGUN CSI_TAKE carkey
 Comment=ÆÆ°Ü·¿ÎİµÄÔ¿³×
 Coment2=1_2_45Coment2
@@ -1216,3 +1220,54 @@ LevelNum=1
 TimeLine=52
 Accomplished=1
 Coment2=1_2_54Coment2
+;************
+Quest=1_2_55
+LevelNum=1
+TimeLine=59
+NextQuests=2056
+ChangeStateItem=QS_BEGUN CSI_TAKE key
+Comment=±ÜÄÑËù´óÃÅµÄÔ¿³×
+Coment2=1_2_55Coment2
+;************
+Quest=1_2_56
+LevelNum=1
+TimeLine=60
+RemItem=Obj_carkey
+Comment=¶ªÆú±ÜÄÑËùÔ¿³×
+Coment2=1_2_56Coment2
+;************
+Quest=1_2_57
+LevelNum=1
+TimeLine=49
+RemItem=Obj_carkey
+Comment=¶ªÆú·¿ÎİÔ¿³×
+Coment2=1_2_57Coment2
+;************
+Quest=1_2_58
+LevelNum=1
+TimeLine=61
+AddItemMAIN=ShotGun_craft2_v2 Ammo_granate Ammo_granate Ammo_granate Ammo_granate
+LineQuests=1 2059
+Comment=»ñµÃ¸ß±¬ö±µ¯Ç¹
+Coment2=1_2_58Coment2
+;************
+Quest=1_2_59
+LevelNum=1
+TimeLine=59
+AddItemMAIN=sm_glock18
+Comment=»ñµÃÈ«×Ô¶¯¸ñÂå¿ËÊÖÇ¹
+Coment2=1_2_59Coment2
+;************
+Quest=1_2_60
+LevelNum=1
+TimeLine=60
+NextQuests=2061
+Accomplished=1
+Comment=Ñ°ÕÒÉñÃØÅ®º¢
+Coment2=1_2_60Coment2
+;************
+Quest=1_2_61
+LevelNum=1
+TimeLine=61
+Comment=Ñ°ÕÒÊ«»³ÑÅÍê³É
+Coment2=1_2_61Coment2
