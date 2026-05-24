@@ -33,11 +33,6 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/dialogs.txt"
     },
     {
-      "path": "men/1",
-      "md5": "5025fd54f9d28b364c738adf5b47f7df",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/men/1"
-    },
-    {
       "path": "men/createnewplayer.men",
       "md5": "1325b112e0a773ec01f0500e734e163e",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/men/createnewplayer.men"
