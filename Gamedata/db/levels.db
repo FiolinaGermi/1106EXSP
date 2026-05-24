@@ -839,6 +839,7 @@ TimeLine=43
 AddMoneyMAIN=2000
 AddExperienceMAIN=5000
 RemItem=Obj_personalkey
+NextQuests=2043
 ChangeStateItem=QS_BEGUN CSI_TAKE perkey_andry
 Comment=地下隐藏点钥匙卡
 Coment2=1_2_19Coment2
@@ -1262,7 +1263,7 @@ Quest=1_2_60
 LevelNum=1
 TimeLine=60
 NextQuests=2061
-Accomplished=1
+UnactualNext=1
 Comment=寻找神秘女孩
 Coment2=1_2_60Coment2
 ;************
