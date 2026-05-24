@@ -1213,13 +1213,13 @@ LevelNum=1
 TimeLine=51
 NextQuests=2054
 UnactualNext=1
-Comment=寻找『自由者』SP120 J5
 Coment2=1_2_53Coment2
 ;************
 Quest=1_2_54
 LevelNum=1
 TimeLine=52
 Accomplished=1
+UnactualNext=1
 Coment2=1_2_54Coment2
 ;************
 Quest=1_2_55
@@ -1264,11 +1264,11 @@ LevelNum=1
 TimeLine=60
 NextQuests=2061
 UnactualNext=1
-Comment=寻找神秘女孩
 Coment2=1_2_60Coment2
 ;************
 Quest=1_2_61
 LevelNum=1
 TimeLine=61
+Accomplished=1
 Comment=寻找诗怀雅完成
 Coment2=1_2_61Coment2
