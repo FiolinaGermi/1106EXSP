@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.24.1606",
+  "version": "2026.05.24.1607",
   "base": "Gamedata",
   "files": [
     {
@@ -31,6 +31,11 @@
       "path": "text/dialogs.txt",
       "md5": "a72a1ab7ed5d9aa60d194e069269f376",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/dialogs.txt"
+    },
+    {
+      "path": "men/1",
+      "md5": "5025fd54f9d28b364c738adf5b47f7df",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/men/1"
     },
     {
       "path": "maps/compaign/Level_07.lgd",
