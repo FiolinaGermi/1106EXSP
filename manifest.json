@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.24.1608",
+  "version": "2026.05.24.1609",
   "base": "Gamedata",
   "files": [
     {
@@ -36,6 +36,36 @@
       "path": "ui/dialogs/1",
       "md5": "b026324c6904b2a9cb4b88d6d61c81d1",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/1"
+    },
+    {
+      "path": "ui/dialogs/392_15.tga",
+      "md5": "038abe561feb6b3b0f249f84697215f3",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/392_15.tga"
+    },
+    {
+      "path": "ui/dialogs/391_14.tga",
+      "md5": "aa1cbf3a0b123fdc3682f6d677a7f760",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/391_14.tga"
+    },
+    {
+      "path": "ui/dialogs/392_14.tga",
+      "md5": "304deaa2afed09e2f4a5095e78ef242e",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/392_14.tga"
+    },
+    {
+      "path": "ui/dialogs/391_15.tga",
+      "md5": "ccf2cbaf89ab9ca6947dcda35fbc9f93",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/391_15.tga"
+    },
+    {
+      "path": "ui/dialogs/392_13.tga",
+      "md5": "d020330480d278ab112d7a4d54f4465b",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/392_13.tga"
+    },
+    {
+      "path": "ui/dialogs/391_13.tga",
+      "md5": "ad66cf4d13ae61c2334c117224f011cd",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/391_13.tga"
     },
     {
       "path": "men/createnewplayer.men",
