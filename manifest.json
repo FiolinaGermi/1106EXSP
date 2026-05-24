@@ -38,6 +38,11 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/men/1"
     },
     {
+      "path": "men/createnewplayer.men",
+      "md5": "1325b112e0a773ec01f0500e734e163e",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/men/createnewplayer.men"
+    },
+    {
       "path": "maps/compaign/Level_07.lgd",
       "md5": "9d28446b4374d0b17111ca63e629528d",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_07.lgd"
