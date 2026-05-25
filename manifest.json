@@ -1,21 +1,16 @@
 {
-  "version": "2026.05.24.1713",
+  "version": "2026.05.25.0909",
   "base": "Gamedata",
   "files": [
     {
       "path": "db/weapon.db",
-      "md5": "4fff4bde218db2c74bb617c57374c415",
+      "md5": "48b57477a69f73c530c12a7090158fec",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/weapon.db"
     },
     {
       "path": "db/levels.db",
-      "md5": "bf158972357e2a6514fc4be53986d77c",
+      "md5": "103b3bab68f21bc5ba9b48add6c30560",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/levels.db"
-    },
-    {
-      "path": "db/npdata.txt",
-      "md5": "d41d8cd98f00b204e9800998ecf8427e",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/npdata.txt"
     },
     {
       "path": "db/plugins/uid_reset.cp313-win_amd64.pyd",
@@ -599,12 +594,12 @@
     },
     {
       "path": "maps/compaign/Level_05.map",
-      "md5": "eca3724c3d3fc41bb1b6200eb8a10f52",
+      "md5": "c3a4410418be95921218d32d3a5d6546",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_05.map"
     },
     {
       "path": "maps/compaign/Level_06.map",
-      "md5": "cdbb4624654bbb621c41fc5d96093f00",
+      "md5": "3f1edede2946e16932485cb8c7931200",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_06.map"
     },
     {
@@ -619,7 +614,7 @@
     },
     {
       "path": "maps/compaign/Level_07.map",
-      "md5": "10a510f8dff5eb9e19040ccf5dfc6d82",
+      "md5": "e1607680e17fe39dabd0a0a7a4e73ae8",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_07.map"
     },
     {
