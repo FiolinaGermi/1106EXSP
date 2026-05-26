@@ -1,10 +1,10 @@
 {
-  "version": "2026.05.26.0727",
+  "version": "2026.05.26.0729",
   "base": "Gamedata",
   "files": [
     {
       "path": "db/weapon.db",
-      "md5": "294f0e20430a35bbd095b4aa0c9e21f0",
+      "md5": "edc0723f268e7d63e3de5a7425d0a789",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/weapon.db"
     },
     {
