@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.26.0857",
+  "version": "2026.05.26.1607",
   "base": "Gamedata",
   "files": [
     {
@@ -544,7 +544,7 @@
     },
     {
       "path": "text/dialogs.txt",
-      "md5": "053336291fba8d67c90d18cf178d011b",
+      "md5": "b7f2a57e358e3f441d2255abefda4ff6",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/dialogs.txt"
     },
     {
