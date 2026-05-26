@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.26.1632",
+  "version": "2026.05.26.1734",
   "base": "Gamedata",
   "files": [
     {
@@ -541,6 +541,11 @@
       "path": "sounds/speech/lpld7-51.ogg",
       "md5": "e83595fdc17a0856936cb72b7cfb4802",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/lpld7-51.ogg"
+    },
+    {
+      "path": "text/mission.txt",
+      "md5": "54a1d5064f4a5ccbe8b8b55c80fc28fe",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/mission.txt"
     },
     {
       "path": "text/dialogs.txt",
