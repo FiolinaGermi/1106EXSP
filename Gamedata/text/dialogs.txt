@@ -4158,7 +4158,7 @@ A启动的吗？
 
 <7_29>
 <Font=10>
-<Icon=391.13>
+<Icon=391,13>
 <Speech=Gamedata\sounds\Speech\shy7-1.ogg>
 诗怀雅：哎呀，我去，你怎么发现我的？
 
