@@ -1,0 +1,55 @@
+#include "gamedata\scripts\common\common.lgc"
+#include "gamedata\scripts\common\common_compaign.lgc"
+#include "gamedata\maps\compaign\tlks.lgc"
+
+
+main()
+{
+SetVidData(4087,VID_SPEED,200);
+SetVidData(4088,VID_SPEED,200);
+
+
+SetVidData(1155,VID_SPEED,280);
+SetVidData(1155,VID_RELOAD_TIME,75);
+SetVidData(1155,VID_BATTLERANGE,580);
+SetVidData(1155,VID_DETECTRANGE,580);
+SetVidData(1155,VID_AIM_RADIUS,20);
+SetVidData(1402,VID_DAMAGE_MIN,50);
+SetVidData(1402,VID_DAMAGE_MAX,60);
+SetVidData(1402,VID_DEATHRANGE,40);
+
+SetVidData(1182,VID_SPEED,200);
+SetVidData(1182,VID_RELOAD_TIME,50);
+SetVidData(1182,VID_BATTLERANGE,640);
+SetVidData(1182,VID_DETECTRANGE,640);
+SetVidData(1182,VID_AIM_RADIUS,20);
+SetVidData(1404,VID_DAMAGE_MIN,350);
+SetVidData(1404,VID_DAMAGE_MAX,500);
+SetVidData(1404,VID_DEATHRANGE,40);
+  iff(1)
+  {
+    SetMapTypeEx( MAP_TYPE_LEVEL, "Level_01" );
+	//SetScrollBoxEx( 0 );
+    InitGame();
+  // 初始化传送系统 想在哪关使用就加这一天
+    
+  // 例如：输入K Z L (就是卡住了)
+    
+  //玩家会自我伤害15点，然后传送到鼠标距离-10单位的距离
+    
+  //InitTeleportSystem();    
+}
+  if( GameTact() )
+    return;
+
+  QuestsTact();
+  CompaignGameTact();
+  // 更新传送系统
+  UpdateTeleportSystem();
+ 
+  //iff( SizeTo(Flagman(0),2301,362) < 70 )
+  //{                               
+    //Win();
+  //}
+}
+
