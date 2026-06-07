@@ -1,5 +1,5 @@
 {
-  "version": "2026.06.07.1546",
+  "version": "2026.06.07.1547",
   "base": "Gamedata",
   "files": [
     {
@@ -39,12 +39,17 @@
     },
     {
       "path": "text/dialogs.txt",
-      "md5": "54460461173694ff56544c64d9eb003b",
+      "md5": "db06aae7dfb720bb0930cf4e29f02523",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/dialogs.txt"
     },
     {
+      "path": "text/Weapon.txt",
+      "md5": "e808b047060ae85995617673aa5934c9",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/Weapon.txt"
+    },
+    {
       "path": "text/mission.txt",
-      "md5": "54a1d5064f4a5ccbe8b8b55c80fc28fe",
+      "md5": "d3fcc5b399f58a6a9980ca723fefc0b2",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/mission.txt"
     },
     {
