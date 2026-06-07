@@ -1,5 +1,5 @@
 {
-  "version": "2026.06.07.1538",
+  "version": "2026.06.07.1539",
   "base": "Gamedata",
   "files": [
     {
@@ -136,11 +136,6 @@
       "path": "sounds/music/combat/action25.ogg",
       "md5": "a640e55e806c937a41ff454b8217ff5f",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat/action25.ogg"
-    },
-    {
-      "path": "sounds/music/combat/1",
-      "md5": "b026324c6904b2a9cb4b88d6d61c81d1",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat/1"
     },
     {
       "path": "sounds/music/combat/action26.ogg",
