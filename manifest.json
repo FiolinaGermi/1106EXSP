@@ -1,5 +1,5 @@
 {
-  "version": "2026.06.07.1638",
+  "version": "2026.06.07.1639",
   "base": "Gamedata",
   "files": [
     {
@@ -74,7 +74,7 @@
     },
     {
       "path": "text/mission.txt",
-      "md5": "d3fcc5b399f58a6a9980ca723fefc0b2",
+      "md5": "fe6984ee36a52341f1f59e8af20ce66f",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/mission.txt"
     },
     {
