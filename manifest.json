@@ -118,6 +118,11 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_04.map"
     },
     {
+      "path": "scripts/const/const.lgc",
+      "md5": "c07b5dbfce75336a1f8195b2fad9bfec",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/scripts/const/const.lgc"
+    },
+    {
       "path": "scripts/const/1",
       "md5": "166d77ac1b46a1ec38aa35ab7e628ab5",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/scripts/const/1"
