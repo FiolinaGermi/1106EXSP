@@ -522,12 +522,14 @@ Quest=1_1_50
 LevelNum=1
 TimeLine=62
 NextQuests=1051
+Comment=¼ÌĞøÇ°ÍùÕòÖĞĞÄ
 Coment2=1_1_50Coment2
 ;************
 Quest=1_1_51
 LevelNum=1
 TimeLine=63
 NextQuests=1052
+Comment=<Font=17>ÆÆ¿ªÓĞ¡°ÁÑºÛ¡±µÄÃÅ
 Coment2=1_1_51Coment2
 ;************
 Quest=1_1_52
@@ -535,13 +537,14 @@ LevelNum=1
 TimeLine=64
 AddExperienceMAIN=5000
 NextQuests=1053
-Comment=ÍÀÉÒÈ ËÈÔÒ
+Comment=<Font=17>Ç°ÍùÉ½¹È
 Coment2=1_1_52Coment2
 ;************
 Quest=1_1_53
 LevelNum=1
 TimeLine=65
 NextQuests=1054
+Comment=À¹½ØÒìĞÎµÄ½ø¹¥²¿¶Ó
 Coment2=1_1_53Coment2
 ;************
 Quest=1_1_54
@@ -549,8 +552,8 @@ LevelNum=1
 TimeLine=66
 AddExperienceMAIN=10000
 NextQuests=1055
-ChangeStateItem=QS_BEGUN CSI_DEATH m1
-Comment=Ğîáîòû óáèòû, èùåì ëèôò
+Accomplished=1
+Comment=À¹½ØÒìĞÎµÄ½ø¹¥²¿¶Ó
 Coment2=1_1_54Coment2
 ;************
 Quest=1_1_55
@@ -1229,7 +1232,6 @@ Quest=1_2_58
 LevelNum=1
 TimeLine=61
 AddItemMAIN=ShotGun_craft2_v2 Ammo_granate Ammo_granate Ammo_granate Ammo_granate
-LineQuests=1 2059
 Comment=»ñµÃ¸ß±¬ö±µ¯Ç¹
 Coment2=1_2_58Coment2
 ;************
@@ -1262,3 +1264,39 @@ RemItem=Obj_personalkey
 NextQuests=2062
 Comment=¶ªÆúµØÏÂÇøÓòµÄÔ¿³×¿¨
 Coment2=1_2_64Coment2
+;************
+Quest=1_3_19
+LevelNum=1
+TimeLine=59
+ChangeStateItem=QS_BEGUN CSI_TAKE ammo
+Comment=Ê°È¡µ¯Ò©
+Coment2=1_3_19Coment2
+;************
+Quest=1_2_65
+LevelNum=1
+TimeLine=62
+ChangeStateItem=QS_BEGUN CSI_DEATH m1
+Comment=»÷É±¾«Ó¢Ğ¡¶ÓµÄ»ÆÂÌÀë×ÓÅÚÁú
+Coment2=1_2_65Coment2
+;************
+Quest=1_2_66
+LevelNum=1
+TimeLine=63
+AddItemMAIN=Obj_personalkey
+NextQuests=2068
+Comment=ÌúÃÅÈ¨ÏŞ¿¨
+Coment2=1_2_66Coment2
+;************
+Quest=1_2_68
+LevelNum=1
+TimeLine=65
+RemItem=Obj_personalkey
+Comment=¶ªÆúÔ¿³×¿¨
+Coment2=1_2_68Coment2
+;************
+Quest=1_2_69
+LevelNum=1
+TimeLine=66
+RemItem=ShotGun_SVD5 ShotGun_craft_v6
+Comment=É¾³ıÎäÆ÷
+Coment2=1_2_69Coment2
