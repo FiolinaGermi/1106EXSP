@@ -98,9 +98,19 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_07.lgd"
     },
     {
+      "path": "maps/compaign/Level_09.map",
+      "md5": "ba1a9fed110c70d4ec0824926f6b6faa",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_09.map"
+    },
+    {
       "path": "maps/compaign/Level_02.map",
       "md5": "8d2b6011e3851a86cec6c8dc721dc011",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_02.map"
+    },
+    {
+      "path": "maps/compaign/level_09.lgd",
+      "md5": "a34043b992ee6b952335f6eee93a61da",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/level_09.lgd"
     },
     {
       "path": "maps/compaign/level_02.lgd",
@@ -109,7 +119,7 @@
     },
     {
       "path": "maps/compaign/level_08.lgd",
-      "md5": "a34043b992ee6b952335f6eee93a61da",
+      "md5": "27a4d715ba5d10c425348afa7d7c46a0",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/level_08.lgd"
     },
     {
@@ -119,7 +129,7 @@
     },
     {
       "path": "maps/compaign/Level_08.map",
-      "md5": "44a905193c3c7546d9d57b82d168d8eb",
+      "md5": "d767abe07f27449bc8b63fb20a17ddf1",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_08.map"
     },
     {
