@@ -1,5 +1,5 @@
 {
-  "version": "2026.06.07.1539",
+  "version": "2026.06.07.1540",
   "base": "Gamedata",
   "files": [
     {
@@ -126,6 +126,11 @@
       "path": "sounds/music/Sen no Kiseki/1",
       "md5": "b026324c6904b2a9cb4b88d6d61c81d1",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/Sen no Kiseki/1"
+    },
+    {
+      "path": "sounds/music/Sen no Kiseki/Atrocious Raid.ogg",
+      "md5": "d2d343329eeceb44b17975bc9ce44e4b",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/Sen no Kiseki/Atrocious Raid.ogg"
     },
     {
       "path": "sounds/music/combat/action24.ogg",
