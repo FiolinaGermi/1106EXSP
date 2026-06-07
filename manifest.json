@@ -1,5 +1,5 @@
 {
-  "version": "2026.06.07.1548",
+  "version": "2026.06.07.1638",
   "base": "Gamedata",
   "files": [
     {
@@ -84,7 +84,7 @@
     },
     {
       "path": "db/levels.db",
-      "md5": "103b3bab68f21bc5ba9b48add6c30560",
+      "md5": "6a6a1cfe89bfe8e33a1c01a7c78eec90",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/levels.db"
     },
     {
