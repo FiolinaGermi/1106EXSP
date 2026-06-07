@@ -1,188 +1,132 @@
-//
-#ifndef CreateSprite
-	#include "Gamedata\scripts\core\export.lgc"
-#endif
+#include "gamedata\scripts\common\common.lgc"
+#include "gamedata\scripts\common\common_compaign.lgc"
+#include "gamedata\maps\compaign\tlks.lgc"
 
-#ifndef COMMON_DEFS_H
-	#include "Gamedata\scripts\common\common_defs.lgc"
-#endif
+#define FAILURE_COUNTER           720 // время
+#define MISSION_FAILURE_COUNTER_Y 160  // высота на которо?рисется счетчи?времен?
 
-#define FOR_PUBLISHERS true
-#define NO_NAG         3    // количество на?скрино?
-#define NAG_DELAY      4100 // время на просмотр одно?картинки,  ?ms
+static int EndQuest = 0;
+static int FailureMissionStartTime = 0;
+static int FailureMissionCounter = 0;
+static int FailureMissionPrevCounterSec = 0;
 
-
-int    StartPicture = 0;// время начала показа картинки
-int    NoPicture    = 0;// номе?показываемой картинки
-int    Picture      = 0;// ссылка на саму показываемую ?данный момент картинку
-string NextMap      = "";
-int    MaxPicture;// количество на?скрино?
-int    MenuLoadFlag = 0;// 1 если меню уж?загружен?
-int    KeyPressed = 0;// была нажата какая либо кнопка
-
-
-//------------------------------------------------------------------------------------------
 main()
 {
-	iff( 1 )
-	{
-		//SetMapTypeEx( MAP_TYPE_UNKNOWN, "" );
-		if( FOR_PUBLISHERS )
-			SetCursor( CURSOR_OFF );
-		else
-			SetCursor( CURSOR_NORMAL );
-		StartPicture = GetTime();
-		//Effect(EFF_FADE_OUT,0);
-        MaxPicture = NO_NAG;//GetVidData(2208, VID_NO_DIR);
-	}
+SetVidData(2042,VID_MAXHP,132000);
+SetVidData(2042,VID_RELOAD_TIME,15);
+SetVidData(2043,VID_BATTLERANGE,850);
+SetVidData(2043,VID_DETECTRANGE,850);
+SetVidData(2043,VID_AIM_RADIUS,20);
+SetVidData(2041,VID_DAMAGE_MIN,85);
+SetVidData(2041,VID_DAMAGE_MAX,85);
+SetVidData(2041,VID_DEATHRANGE,40);
 
-	//
-    if ( GetEffectState(EFF_FADE) > 45 )
-    {
-    	//уходим ?nag-скрина
-		if( NextMap=="exit" )
-		{
-			int ToMainMenu = GetGlobValI("GoToMainMenuAfterSlide", 0 );
-			SetGlobValI("GoToMainMenuAfterSlide", 0 );
-			if( ToMainMenu )
-			{
-				MenuRelease();//zmnew 2005Apr28 - wit said do this to delete "loading" sprite
-				Load( "Gamedata\\maps\\mainmenu.map" );
-			}
-			else
-				Load( "Gamedata\\maps\\mainmenu.map" );
-		}
+SetVidData(1155,VID_RELOAD_TIME,75);
+SetVidData(1155,VID_BATTLERANGE,580);
+SetVidData(1155,VID_DETECTRANGE,580);
+SetVidData(1155,VID_AIM_RADIUS,20);
+SetVidData(1402,VID_DAMAGE_MIN,120);
+SetVidData(1402,VID_DAMAGE_MAX,120);
+SetVidData(1402,VID_DEATHRANGE,40);
+
+SetVidData(1161,VID_RELOAD_TIME,50);
+SetVidData(1161,VID_BATTLERANGE,640);
+SetVidData(1161,VID_DETECTRANGE,640);
+SetVidData(1161,VID_AIM_RADIUS,20);
+SetVidData(1404,VID_DAMAGE_MIN,160);
+SetVidData(1404,VID_DAMAGE_MAX,160);
+SetVidData(1404,VID_DEATHRANGE,40);
+
+SetVidData(2088,VID_BATTLERANGE,580);
+SetVidData(2090,VID_BATTLERANGE,580);
+SetVidData(2092,VID_BATTLERANGE,640);
+
+SetVidData(2380,VID_BATTLERANGE,480);
+SetVidData(2380,VID_AIM_RADIUS,10);
+
+SetVidData(2390,VID_BATTLERANGE,640);
+SetVidData(2390,VID_AIM_RADIUS,10);
+
+SetVidData(2404,VID_BATTLERANGE,480);
+SetVidData(2404,VID_AIM_RADIUS,10);
+
+SetVidData(2416,VID_BATTLERANGE,480);
+SetVidData(2416,VID_AIM_RADIUS,10);
+
+SetVidData(2430,VID_BATTLERANGE,480);
+SetVidData(2430,VID_AIM_RADIUS,10);
+
+SetVidData(1840,VID_BATTLERANGE,480);
+SetVidData(1840,VID_AIM_RADIUS,10);
+
+SetVidData(3001,VID_RELOAD_TIME,1);
+SetVidData(3001,VID_AIM_RADIUS,20);
+SetVidData(3006,VID_DAMAGE_MIN,720);
+SetVidData(3006,VID_DAMAGE_MAX,800);
+SetVidData(3006,VID_DEATHRANGE,120);
+SetVidData(3011,VID_RELOAD_TIME,10);
+SetVidData(3011,VID_AIM_RADIUS,20);
+  iff(1)
+  {
+    SetMapTypeEx( MAP_TYPE_LEVEL, "Level_01" );
+    InitGame();
+  // іхКј»Їґ«ЛНПµНі ПлФЪДД№ШК№УГѕНјУХвТ»Мм
+    
+  // АэИзЈєКдИлK Z L  (ѕНКЗїЁЧЎБЛ)
+    
+  //НжјТ»бЧФОТЙЛє¦ЈїµгЈ¬И»єуґ«ЛНµЅКу±кѕаАл-50µҐО»µДѕаАл
+    
+  //InitTeleportSystem();  
+    //SetScrollBoxEx( 0 );
+  }
+  if( GameTact() )
+    return;
+
+  QuestsTact();
+  CompaignGameTact();
+  // ёьРВґ«ЛНПµНі
+  UpdateTeleportSystem();
+ 
+    //на начало квеста 1_53
+    iff( SendCommand( EXT_GETQUESTSSTATE, 0, 53, 1 ) & QS_BEGUN )
+    {// таймер на провал миссии
+        FailureMissionStartTime = GetTime();
     }
-	if( GetEffectState(EFF_FADE) > 45 || GetEffectState(EFF_FADE_OUT) > 45 || GetEffectState(EFF_ALPHAAPPEAR) > 45 )
-	{
-  		if(Picture)
-  		{
-  			if( NoPicture >= MaxPicture )
-  				NoPicture = 0;
-  			int dir = SendCommand( EXT_GETABSDIR, GetVid(Picture), NoPicture );
-  			Action( Picture, ACT_CHANGE_DIRECTION, dir );
-  			//Log2("aaa - " + itoa(NoPicture) + " - " + itoa(dir));
-  		}
-
-  		//грузим менюшк?разо?
-  		iff( 1 )
-  		{
-/*				MenuLoad( "Gamedata\\men\\nag.men" );
-  			if( FOR_PUBLISHERS )
-  			{
-  				Destroy( MenuFindNamed( "TESTERS_MM" ) );
-  				Destroy( MenuFindNamed( "TESTERS_EXIT" ) );
-  				Destroy( MenuFindNamed( "TESTERS_REPORT" ) );
-  				Destroy( MenuFindNamed( "Testers_Report" ) );
-  				Destroy( MenuFindNamed( "Testers_MainMenu" ) );
-  				Destroy( MenuFindNamed( "Testers_Exit" ) );
-  			}
-  			Picture = Create();//MenuFind(2208);*/
-  			NoPicture = 0;
-            //if ( ScreenX() == 800 )
-      			Picture = CreateSprite(2208, ScreenX()/2, ScreenY()/2, 0);
-            //else
-      		//	Picture = CreateSprite(2252, ScreenX()/2, ScreenY()/2, 0);
-//              if ( ScreenX() == 800 )
-//                  Action(Picture, ACT_SET_SCALE, 800000 / 1024, 800000 / 1024, 1000);
-  		}
-	}
-
-   	int btn;
-   	if( btn = MenuLClick() )
-   	{
-   		if( btn == MenuFindNamed( "TESTERS_MM" ) )
-   		{
-   			SetGlobValI("GoToMainMenuAfterSlide", 1 );
-  			Effect(EFF_ALPHAAPPEAR,0, 0, 0);
-   			Effect(EFF_FADE,0, 0, 1000);
-    		StartPicture = GetTime();
-   			Load( "Gamedata\\maps\\mainmenu.map" );
-            return;
-   		}
-   		else
-   		if( btn == MenuFindNamed( "TESTERS_EXIT" ) )
-   		{
-   			SetGlobValI("GoToMainMenuAfterSlide", 0 );
-  			Effect(EFF_ALPHAAPPEAR,0, 0, 0);
-   			Effect(EFF_FADE,0, 0, 1000);
-    		StartPicture = GetTime();
-   			NextMap = "exit";
-            return;
-   		}
-   		else
-   		if( btn == MenuFindNamed( "TESTERS_REPORT" ) )
-   		{
-   			Exec( GetString( "menu", "Testers_URL") );
-   			Load( "Gamedata\\maps\\mainmenu.map" );
-   			//
-   			//SetRe( GetDefaultRegPat(), "GoToMainMenuAfterSlide", 0 );
-   			//Effect(EFF_FADE,0);
-   			//NextMap = "exit";
-   		}
-   		else
-   		if( btn == MenuFindNamed( "Nag_Buy_Btn" ) )
-   		{
-//   			Exec("buynow.html");
-            Exec(GetString("strings","BuyLink"));
-   			Load( "Gamedata\\maps\\mainmenu.map" );
-   		}
-   	}
-
-    if ( !MenuLoadFlag && NoPicture == MaxPicture - 1 )
+    if ( FailureMissionStartTime )
     {
-        StartPicture += 7000;
-        MenuLoadFlag = 1;
-        //if ( ScreenX() == 800 )
-            MenuLoad( "Gamedata\\men\\nag.men" );
-        //else
-        //    MenuLoad( "Gamedata\\men\\nag1024.men");
-        if ( GetGlobValI("GoToMainMenuAfterSlide", 0 ) )
+        int sec = FAILURE_COUNTER - (GetTime() - FailureMissionStartTime) / 1000;
+        if ( sec <= 0 )
         {
-            Destroy(MenuFindNamed( "TESTERS_EXIT" ));
-            Destroy(MenuFindNamed( "Testers_Exit" ));
+            FailureMissionStartTime = 0;
+            Destroy(FailureMissionCounter); FailureMissionCounter = 0;
+            GameState = GAME_MISSION_FAILED;
+            Effect( EFF_NUKE, 0xffffff, 0, 3000 );
+            PlaySFX(40);
+            EarthQuake(4000);
         }
-        else
+        else if ( sec != FailureMissionPrevCounterSec )
         {
-            Destroy(MenuFindNamed( "TESTERS_MM" ));
-            Destroy(MenuFindNamed( "Testers_MainMenu" ));
+            FailureMissionPrevCounterSec = sec;
+            string str = itoa(sec / 60) + ":";
+            if ( (sec % 60) < 10 )
+                str += "0";
+            str += itoa(sec % 60);
+            if ( !FailureMissionCounter )
+                FailureMissionCounter = CreateText( 14, ScreenX() / 2, MISSION_FAILURE_COUNTER_Y, 0, str, BEH_CENTER );
+            else
+                Action(FailureMissionCounter, ACT_SET_TEXT, &str);
         }
-		SetCursor( CURSOR_NORMAL );
     }
-	//кртинк?уж?показана - обрабатываем клик?
-	if( GetEffectState(EFF_FADE) < 0 && GetEffectState(EFF_ALPHAAPPEAR) < 0 )
-	{
-		if ( (GetTime() - StartPicture) > NAG_DELAY )
-		{
-			StartPicture = GetTime();
-  			Effect(EFF_ALPHAAPPEAR,0, 0, 1500);
-			NoPicture++;
-		}
-  		else
-		{
-			if ( MenuLoadFlag && GetKey() == VK_ESCAPE )
-			{
-       			Effect(EFF_FADE,0, 0, 1000);
-				Load( "Gamedata\\maps\\mainmenu.map" );
-			}
-			else if ( KeyPressed )
-            {
-                KeyPressed = 0;
-				StartPicture = GetTime() + NAG_DELAY + 900;
-				Effect(EFF_ALPHAAPPEAR,0, 0, 1500);
-				NoPicture++;
-			}
-		}
-	}
-    if( GetInputAction(IA_ANY_KEY) )
-        KeyPressed = 1;
+    //на начало квеста 1_54
+    iff( SendCommand( EXT_GETQUESTSSTATE, 0, 54, 1 ) & QS_BEGUN )
+    {
+        FailureMissionStartTime = 0;
+        Destroy(FailureMissionCounter); FailureMissionCounter = 0;
+ }
+     
+           //iff( SizeTo(Flagman(0),2301,362) < 70 )
+  //{                               
+    //Win();
+  //}
 }
-
-//-----
-//затычк?- чтоб?не писало ?ло? чт?не може?найт?функци?
-OnGetExperience( int iHeroId, int iExp ) {return 0; }
-GetHeroColor( int iColor, int iArmy, int iInd ) {return 0; }
-GetAddonSkillFormulaForHero( int id, int skill_num ) {return 0; }
-GetAddonSkillFormulaForWeapon( int id, int parent_id, int skill_num ) {return 0; }
-GetAddonSkillFormulaForArmor( int id, int parent_id, int skill_num ) {return 0; }
 
