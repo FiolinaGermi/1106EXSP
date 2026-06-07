@@ -3,6 +3,26 @@
   "base": "Gamedata",
   "files": [
     {
+      "path": "ui/dialogs/391_16.tga",
+      "md5": "637e93ae61aa897548ed5c7bca75df56",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/391_16.tga"
+    },
+    {
+      "path": "ui/dialogs/392_18.tga",
+      "md5": "3c46518bd60098981c687b87363848f7",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/392_18.tga"
+    },
+    {
+      "path": "ui/dialogs/392_17.tga",
+      "md5": "229efd35e3800ce86e5922aaef2f1438",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/392_17.tga"
+    },
+    {
+      "path": "ui/dialogs/391_17.tga",
+      "md5": "b7080c67dbbd39c198ab715b6ef554ad",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/391_17.tga"
+    },
+    {
       "path": "ui/dialogs/391_15.tga",
       "md5": "ccf2cbaf89ab9ca6947dcda35fbc9f93",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/391_15.tga"
@@ -28,9 +48,19 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/392_15.tga"
     },
     {
+      "path": "ui/dialogs/392_16.tga",
+      "md5": "372a270bbbe699f91c3c5dc41fbdf63b",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/392_16.tga"
+    },
+    {
       "path": "ui/dialogs/392_14.tga",
       "md5": "304deaa2afed09e2f4a5095e78ef242e",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/392_14.tga"
+    },
+    {
+      "path": "ui/dialogs/391_18.tga",
+      "md5": "a564273615d83021f5edcaea8ccbb10a",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/391_18.tga"
     },
     {
       "path": "ui/dialogs/391_13.tga",
