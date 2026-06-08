@@ -1,5 +1,5 @@
 {
-  "version": "2026.06.08.0856",
+  "version": "2026.06.08.0943",
   "base": "Gamedata",
   "files": [
     {
@@ -129,7 +129,7 @@
     },
     {
       "path": "maps/compaign/Level_08.map",
-      "md5": "ddba45ee8fcf0cb383409f76c838bde5",
+      "md5": "098ff03a813903763699c1b08d1ee06c",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_08.map"
     },
     {
