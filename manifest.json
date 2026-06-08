@@ -1,5 +1,5 @@
 {
-  "version": "2026.06.08.0720",
+  "version": "2026.06.08.0733",
   "base": "Gamedata",
   "files": [
     {
@@ -424,7 +424,7 @@
     },
     {
       "path": "sounds/speech/zyqsh8-1.ogg",
-      "md5": "cdf5a6781c2eb242091d8ef62e3062c5",
+      "md5": "c730cf5ea2d7915cc3be5eb5cdcd5a21",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/zyqsh8-1.ogg"
     },
     {
