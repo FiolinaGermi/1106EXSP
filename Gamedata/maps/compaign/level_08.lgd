@@ -2,7 +2,7 @@
 #include "gamedata\scripts\common\common_compaign.lgc"
 #include "gamedata\maps\compaign\tlks.lgc"
 
-#define FAILURE_COUNTER           720 // 怵屐
+#define FAILURE_COUNTER           900 // 怵屐
 #define MISSION_FAILURE_COUNTER_Y 160  // 恹耦蜞 磬 觐蝾痤?痂皴蝰 聍弪麒?怵屐屙?
 
 static int EndQuest = 0;
