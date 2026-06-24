@@ -1,5 +1,5 @@
 {
-  "version": "2026.06.11.0800",
+  "version": "2026.06.24.1536",
   "base": "Gamedata",
   "files": [
     {
@@ -81,6 +81,11 @@
       "path": "sounds/speech/lpld8-7.ogg",
       "md5": "66dae88a0e0a6e14ca67fefb59ba89ac",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/lpld8-7.ogg"
+    },
+    {
+      "path": "sounds/speech/mzl4-16.ogg",
+      "md5": "c4c4bc9fb18790f080ed4470a6f4201a",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/mzl4-16.ogg"
     },
     {
       "path": "sounds/speech/lpld8-14.ogg",
