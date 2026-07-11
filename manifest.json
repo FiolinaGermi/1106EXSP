@@ -1,5 +1,5 @@
 {
-  "version": "2026.07.11.1345",
+  "version": "2026.07.11.1346",
   "base": "Gamedata",
   "files": [
     {
@@ -16,51 +16,6 @@
       "path": "sounds/speech/zyqsh9-4.ogg",
       "md5": "0991a426853be682b415501c2db1dc8e",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/zyqsh9-4.ogg"
-    },
-    {
-      "path": "sounds/zs2/weapons/sniper_shot4.wav",
-      "md5": "02bc5ea4f2fef2995a6ec02c26511ff8",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/zs2/weapons/sniper_shot4.wav"
-    },
-    {
-      "path": "sounds/zs2/weapons/sniper_shot3.wav",
-      "md5": "da6eaff38205e19ff9a4cf61afc326e7",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/zs2/weapons/sniper_shot3.wav"
-    },
-    {
-      "path": "sounds/zs2/weapons/chainsaw_attack.wav",
-      "md5": "ef63c99f736e3af3258f2e6fd35a3e24",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/zs2/weapons/chainsaw_attack.wav"
-    },
-    {
-      "path": "sounds/zs2/weapons/disk01.wav",
-      "md5": "c19f2b6f9e3c896525bf87eddf2effea",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/zs2/weapons/disk01.wav"
-    },
-    {
-      "path": "sounds/zs2/weapons/sniper_shot2.wav",
-      "md5": "30f0014c557e76fdad08c0219f784cf4",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/zs2/weapons/sniper_shot2.wav"
-    },
-    {
-      "path": "sounds/zs2/weapons/disk02.wav",
-      "md5": "a679106dd7cced4b03dd4bbc5964cd43",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/zs2/weapons/disk02.wav"
-    },
-    {
-      "path": "sounds/zs2/weapons/disk_luncher.wav",
-      "md5": "104384214e9ca1e00625ece2aab4fb17",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/zs2/weapons/disk_luncher.wav"
-    },
-    {
-      "path": "sounds/zs2/weapons/chainsaw_std.wav",
-      "md5": "e858ee4d6555a14b51665d7307fefec3",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/zs2/weapons/chainsaw_std.wav"
-    },
-    {
-      "path": "sounds/zs2/weapons/sniper_shot.wav",
-      "md5": "c3194018e115f6b2b9a1353f4c09e379",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/zs2/weapons/sniper_shot.wav"
     },
     {
       "path": "db/weapon.db",
