@@ -98,6 +98,11 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/men/createnewplayer.men"
     },
     {
+      "path": "text/1",
+      "md5": "b026324c6904b2a9cb4b88d6d61c81d1",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/1"
+    },
+    {
       "path": "maps/compaign/level_09.map",
       "md5": "512815bbef5ae1fc5f311221a4d4cdb3",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/level_09.map"
