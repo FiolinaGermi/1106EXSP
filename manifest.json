@@ -116,6 +116,11 @@
       "path": "text/dialogs.txt",
       "md5": "60748b5fccfd360eae469184a60ea78f",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/dialogs.txt"
+    },
+    {
+      "path": "maps/compaign/1",
+      "md5": "b026324c6904b2a9cb4b88d6d61c81d1",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/1"
     }
   ]
 }
