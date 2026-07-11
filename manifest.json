@@ -3,11 +3,6 @@
   "base": "Gamedata",
   "files": [
     {
-      "path": "scripts/const/const.lgc",
-      "md5": "c07b5dbfce75336a1f8195b2fad9bfec",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/scripts/const/const.lgc"
-    },
-    {
       "path": "sounds/speech/zyqsh9-4.ogg",
       "md5": "0991a426853be682b415501c2db1dc8e",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/zyqsh9-4.ogg"
@@ -91,11 +86,6 @@
       "path": "ui/dialogs/392_16.tga",
       "md5": "372a270bbbe699f91c3c5dc41fbdf63b",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/392_16.tga"
-    },
-    {
-      "path": "men/createnewplayer.men",
-      "md5": "1325b112e0a773ec01f0500e734e163e",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/men/createnewplayer.men"
     },
     {
       "path": "text/1",
