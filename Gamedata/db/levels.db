@@ -560,6 +560,7 @@ Quest=1_1_55
 LevelNum=1
 TimeLine=67
 NextQuests=1056
+Comment=ЅшИлµШПВНЁµА
 Coment2=1_1_55Coment2
 ;************
 Quest=1_1_56
@@ -568,7 +569,7 @@ TimeLine=68
 AddMoneyMAIN=20000
 AddExperienceMAIN=120000
 NextQuests=1100
-Comment=Охрана отключена, деньги перечисленны
+Comment=С°ХТРоµзіШ
 Coment2=1_1_56Coment2
 ;************
 Quest=1_1_57
@@ -610,7 +611,7 @@ TimeLine=73
 AddExperienceMAIN=20000
 LineQuests=1 1057
 ChangeStateItem=QS_BEGUN CSI_DEATH m1
-Comment=Уничтожены генераторы решеток
+Comment=Уничтожены генераторы решето?
 Coment2=1_2_10Coment2
 ;************
 Quest=1_1_59
@@ -625,7 +626,7 @@ TimeLine=77
 AddExperienceMAIN=5000
 NextQuests=1061
 ChangeStateItem=QS_BEGUN CSI_DEATH m3
-Comment=Уничтожены генераторы решеток
+Comment=Уничтожены генераторы решето?
 Coment2=1_1_60Coment2
 ;************
 Quest=1_1_61
@@ -642,7 +643,7 @@ Quest=1_2_11
 LevelNum=1
 TimeLine=78
 LineQuests=1 1060
-Comment=Уничтожены генераторы решеток
+Comment=Уничтожены генераторы решето?
 Coment2=1_2_11Coment2
 ;************
 Quest=1_1_62
@@ -674,7 +675,7 @@ Quest=1_1_66
 LevelNum=1
 TimeLine=84
 NextQuests=1067
-Comment=ИССЛЕДОВАТЬ ШАХТЫ
+Comment=ИССЛЕДОВАТ?ШАХТ?
 Coment2=1_1_66Coment2
 ;************
 Quest=1_1_67
@@ -701,14 +702,14 @@ LevelNum=1
 TimeLine=88
 AddExperienceMAIN=400000
 NextQuests=1071
-Comment=ворота взорванны
+Comment=ворота взорванн?
 Coment2=1_1_70Coment2
 ;************
 Quest=1_1_71
 LevelNum=1
 TimeLine=89
 NextQuests=1073
-Comment=НАЙТИ И УНИЧТОЖИТЬ 3 МАТКИ
+Comment=НАЙТ??УНИЧТОЖИТЬ 3 МАТК?
 Coment2=1_1_71Coment2
 ;************
 Quest=1_1_72
@@ -717,7 +718,7 @@ TimeLine=92
 AddExperienceMAIN=50000
 NextQuests=1095
 ChangeStateItem=QS_BEGUN CSI_DEATH m4
-Comment=НАЙТИ ЛОГОВО ГЛАВОРЯ
+Comment=НАЙТ?ЛОГОВО ГЛАВОР?
 Coment2=1_1_72Coment2
 ;************
 Quest=1_2_12
@@ -919,16 +920,14 @@ Quest=1_1_87
 LevelNum=1
 TimeLine=71
 NextQuests=1057
-BeginNext=1
-Comment=Начало квеста-сохранить данные
+Comment=µИґэО¬КІґч¶ыј°іа¶¬РЎ¶У
 Coment2=1_1_87Coment2
 ;************
 Quest=1_1_88
 LevelNum=1
 TimeLine=70
 NextQuests=1087
-ChangeStateItem=QS_BEGUN CSI_DEATH m1
-Comment=Монстры убиты
+Comment=УлЖдЛыРЎ¶У»гєП
 Coment2=1_1_88Coment2
 ;************
 Quest=1_1_89
@@ -974,7 +973,7 @@ Quest=1_1_92
 LevelNum=1
 TimeLine=102
 NextQuests=1097
-Comment=УНИЧТОЖИТЬ ГЛАВОРЯ
+Comment=УНИЧТОЖИТЬ ГЛАВОР?
 Coment2=1_1_92Coment2
 ;************
 Quest=1_19_1
@@ -990,7 +989,7 @@ LevelNum=1
 TimeLine=96
 NextQuests=4007
 ChangeStateItem=QS_BEGUN CSI_DEATH m6
-Comment=Уничтожина m6, отдаём диск Бэйкеру
+Comment=Уничтожина m6, отдаём диск Бэйкер?
 Coment2=1_4_6Coment2
 ;************
 Quest=1_1_93
@@ -999,14 +998,14 @@ TimeLine=104
 AddExperienceMAIN=500000
 NextQuests=1094
 ChangeStateItem=QS_BEGUN CSI_DEATH 1901
-Comment=Босс убит, найти кейт
+Comment=Босс убит, найт?кейт
 Coment2=1_1_93Coment2
 ;************
 Quest=1_1_94
 LevelNum=1
 TimeLine=105
 Accomplished=1
-Comment=Нашли кейт
+Comment=Нашл?кейт
 Coment2=1_1_94Coment2
 ;************
 Quest=1_1_95
@@ -1021,13 +1020,13 @@ TimeLine=97
 AddMoneyMAIN=40000
 AddExperienceMAIN=300000
 NextQuests=4008
-Comment=Отдали диск бэйкеру!
+Comment=Отдали диск бэйкер?
 Coment2=1_4_7Coment2
 ;************
 Quest=1_4_8
 LevelNum=1
 TimeLine=98
-Comment=Миссия выполнена
+Comment=Мисс? выполнен?
 Coment2=1_4_8Coment2
 ;************
 Quest=1_1_96
@@ -1049,14 +1048,14 @@ Quest=1_1_97
 LevelNum=1
 TimeLine=103
 NextQuests=1093
-Comment=Ловушка включена
+Comment=Ловушк?включена
 Coment2=1_1_97Coment2
 ;************
 Quest=1_1_98
 LevelNum=1
 TimeLine=100
 NextQuests=1099
-Comment=СПАСТИ КЕЙТ ЛИА
+Comment=СПАСТИ КЕЙТ ЛИ?
 Coment2=1_1_98Coment2
 ;************
 Quest=1_1_99
@@ -1072,7 +1071,7 @@ Quest=1_1_100
 LevelNum=1
 TimeLine=69
 NextQuests=1088
-Comment=DESTROY TELEPORTERS
+Comment=З°НщїуЗш
 Coment2=1_1_100Coment2
 ;************
 Quest=1_2_27
@@ -1231,7 +1230,7 @@ Coment2=1_2_57Coment2
 Quest=1_2_58
 LevelNum=1
 TimeLine=61
-AddItemMAIN=ShotGun_craft2_v2 Ammo_granate Ammo_granate Ammo_granate Ammo_granate
+AddItemMAIN=ShotGun_craft2_v2 Ammo_granate Ammo_granate Ammo_granate Ammo_granate Armor_bayonet
 Comment=»сµГёЯ±¬ц±µЇЗ№
 Coment2=1_2_58Coment2
 ;************
@@ -1300,3 +1299,32 @@ TimeLine=66
 RemItem=ShotGun_SVD5 ShotGun_craft_v6
 Comment=ЙѕіэОдЖч
 Coment2=1_2_69Coment2
+;************
+Quest=1_2_70
+LevelNum=1
+TimeLine=67
+RemItem=ShotGun_SVD5 ShotGun_craft_v6
+Comment=К§ИҐІвКФОдЖч
+Coment2=1_2_70Coment2
+;************
+Quest=1_2_71
+LevelNum=1
+TimeLine=68
+ChangeStateItem=QS_BEGUN CSI_TAKE stabil
+Comment=»сµГЦ±Йэ»ъРоµзіШ
+Coment2=1_2_71Coment2
+;************
+Quest=1_2_72
+LevelNum=1
+TimeLine=69
+AddItemMAIN=Minigun_Vector
+Comment=»сµГО¬їЛНР
+Coment2=1_2_72Coment2
+;************
+Quest=1_2_73
+LevelNum=1
+TimeLine=70
+AddMoneyMAIN=40000
+AddExperienceMAIN=3500000
+Comment=»сµГЅрЗ®єНѕ­Сй
+Coment2=1_2_73Coment2
