@@ -1,11 +1,16 @@
 {
-  "version": "2026.07.11.1344",
+  "version": "2026.07.11.1345",
   "base": "Gamedata",
   "files": [
     {
       "path": "scripts/const/const.lgc",
       "md5": "c07b5dbfce75336a1f8195b2fad9bfec",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/scripts/const/const.lgc"
+    },
+    {
+      "path": "sounds/speech/1",
+      "md5": "b026324c6904b2a9cb4b88d6d61c81d1",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/1"
     },
     {
       "path": "sounds/zs2/weapons/sniper_shot4.wav",
