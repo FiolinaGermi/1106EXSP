@@ -1,5 +1,5 @@
 {
-  "version": "2026.07.11.0831",
+  "version": "2026.07.11.1344",
   "base": "Gamedata",
   "files": [
     {
@@ -924,12 +924,17 @@
     },
     {
       "path": "db/weapon.db",
-      "md5": "c3401a70a193d463a74909d6cecf9943",
+      "md5": "9579b4a76766761630af60e4363b86c0",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/weapon.db"
     },
     {
+      "path": "db/ObjectsExtended.db",
+      "md5": "072d25f36c9277c668b348cc487e2020",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/ObjectsExtended.db"
+    },
+    {
       "path": "db/levels.db",
-      "md5": "6a6a1cfe89bfe8e33a1c01a7c78eec90",
+      "md5": "805cfd4433066fac3d071f75be52da8f",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/levels.db"
     },
     {
