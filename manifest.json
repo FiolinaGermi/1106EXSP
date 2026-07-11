@@ -98,21 +98,6 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/men/createnewplayer.men"
     },
     {
-      "path": "text/Weapon.txt",
-      "md5": "e808b047060ae85995617673aa5934c9",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/Weapon.txt"
-    },
-    {
-      "path": "text/mission.txt",
-      "md5": "fe6984ee36a52341f1f59e8af20ce66f",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/mission.txt"
-    },
-    {
-      "path": "text/dialogs.txt",
-      "md5": "60748b5fccfd360eae469184a60ea78f",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/dialogs.txt"
-    },
-    {
       "path": "maps/compaign/level_09.map",
       "md5": "512815bbef5ae1fc5f311221a4d4cdb3",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/level_09.map"
