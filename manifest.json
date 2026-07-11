@@ -1,5 +1,5 @@
 {
-  "version": "2026.07.11.1349",
+  "version": "2026.07.11.1350",
   "base": "Gamedata",
   "files": [
     {
@@ -26,11 +26,6 @@
       "path": "db/plugins/uid_reset.cp313-win_amd64.pyd",
       "md5": "bea9bcd19350ac30b67caf1bcf829a21",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/plugins/uid_reset.cp313-win_amd64.pyd"
-    },
-    {
-      "path": "text/1",
-      "md5": "b026324c6904b2a9cb4b88d6d61c81d1",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/1"
     },
     {
       "path": "text/dialogs.txt",
