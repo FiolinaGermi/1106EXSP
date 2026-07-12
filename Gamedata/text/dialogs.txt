@@ -6237,11 +6237,16 @@ A启动的吗？
 <Icon=391,9>
 <SFX=115>
 <Speech=Gamedata\sounds\Speech\zyqsh9-4.ogg>
-正义骑士号：Tips：为了防止玩家卡BUG了，先丢弃掉2把测
+正义骑士号：提示：为了防止玩家卡BUG了，先丢弃掉2把测
 
 试武器。待会儿有交出测试武器的对应剧情。
 
-
+<9_124>
+<Font=10>
+<Icon=391,9>
+<SFX=115>
+<Speech=Gamedata\sounds\Speech\zyqsh9-5.ogg>
+正义骑士号：此场景为弥赛亚模组第10关的某个场景。
 
 
 
