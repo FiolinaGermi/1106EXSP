@@ -1,7 +1,17 @@
 {
-  "version": "2026.07.12.1649",
+  "version": "2026.07.12.1651",
   "base": "Gamedata",
   "files": [
+    {
+      "path": "sounds/speech/zdz9-3.ogg",
+      "md5": "fe009a773b95bb1d364880a0a1ebd378",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/zdz9-3.ogg"
+    },
+    {
+      "path": "sounds/speech/zdz9-1.ogg",
+      "md5": "6b256103da334b2aff1fc73b62ff2bfe",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/zdz9-1.ogg"
+    },
     {
       "path": "sounds/speech/zyqsh9-4.ogg",
       "md5": "0991a426853be682b415501c2db1dc8e",
@@ -11,6 +21,11 @@
       "path": "sounds/speech/zyqsh9-5.ogg",
       "md5": "e70ba476ffbaef4c714b5abef1400c0e",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/zyqsh9-5.ogg"
+    },
+    {
+      "path": "sounds/speech/zdz9-2.ogg",
+      "md5": "2afe0f0c04b3b7916b97a2da4cb60eb5",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/zdz9-2.ogg"
     },
     {
       "path": "db/weapon.db",
