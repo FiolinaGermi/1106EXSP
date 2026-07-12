@@ -1,0 +1,2517 @@
+<Ammo_pistol>
+<Font=04>
+.50 B M G 弹 药
+<split>
+<Font=06>
+价格:                      <Align=20><Font=06><Cost>
+<split>
+<Font=04>
+又称（12.7 NATO）大口
+径弹药该弹药弹种涵盖全
+金属被弹、穿甲弹、曳光
+弹及复合功能弹型。
+
+<Ammo_shotgun>
+<Font=04>
+霰 弹 枪 弹 药 
+<split>
+<Font=06>
+价格:                      <Align=20><Font=06><Cost>
+<split>
+<Font=04>
+标准霰弹枪弹药（适用于
+泵动式霰弹枪）。
+
+<Ammo_granate>
+<Font=04>
+H E 高 爆 弹
+<split>
+<Font=06>
+价格:                      <Align=20><Font=06><Cost>
+<split>
+<Font=04>
+能有效对付多种类型的目
+标，包括人员、工事、轻
+装甲车辆等。
+
+<Ammo_ballon>
+<Font=04>
+特   殊   燃   料
+<split>
+<Font=06>
+价格:                      <Align=20><Font=06><Cost>
+<split>
+<Font=04>
+适合于各种火焰喷射器和
+冷冻发射器。
+ 
+<Ammo_minigun>
+<Font=04>
+通 用 弹 药 
+<split>
+<Font=06>
+价格:                      <Align=20><Font=06><Cost>
+<split>
+<Font=04>
+通用型弹药（适用于所有
+手枪、冲锋枪与机枪）。
+
+<Ammo_rocket>
+<Font=04>
+火 箭 发 射 器 弹 药
+<split>
+<Font=06>
+价格:                      <Align=20><Font=06><Cost>
+<split>
+<Font=04>
+火箭发射器专用弹药。
+
+<Ammo_energy>
+<Font=4>
+能 量 电 池 组
+<split>
+<Font=06>
+价格:                      <Align=20><Font=06><Cost>
+<split>
+<Font=04>
+为“能量武器”提供动力的电
+池，这些武器非常先进（且昂
+贵）。
+
+<Obj_money1>
+<split>
+<Font=04>
++$20
+
+<Obj_money2>
+<split>
+<Font=04>
++$100
+
+<Obj_money3> 
+<split>
+<Font=04>
++$300
+
+<Obj_money4>
+<split>
+<Font=04>
++$1000
+
+<Pistol_nail>
+<Font=04>NAIL GUN
+ 射 钉 枪
+<split>
+<Font=06>
+伤害:               <Align=18><Font=06><Damage><Font=06>
+精准:                  <Align=18><Font=06><Wp_acc><Font=06>
+价格:                      <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:∞/射速:一般
+火力:x2/范围:5
+
+无限弹药。适合把东西打
+成针垫。
+
+<Pistol_DesertEgle>
+<Font=04>DESERT EAGLE
+沙 漠 之 鹰
+<split>
+<Font=06>
+伤害:               <Align=18><Font=06><Damage><Font=06>
+精准:                  <Align=18><Font=06><Wp_acc><Font=06>
+价格:                      <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:8/射速:较慢/装填:1.6
+火力:x1/消耗:1/范围:70
+
+是一款因强大威力、独特
+外观的狩猎手枪，50AE
+口径弹匣容量仅7发，在近
+距离交火中火力持续性差。
+
+
+
+<Pistol_flash>
+<Font=04>FLASH PISTOL
+闪 光 手 枪
+<split>
+<Font=06>
+伤害:               <Align=18><Font=06><Damage><Font=06>
+精准:                  <Align=18><Font=06><Wp_acc><Font=06>
+价格:                      <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:∞/射速:较慢
+火力:x2/消耗:2/范围:9
+
+使用小型照明弹照亮黑暗
+区域，且弹药无限供应。
+
+<Pistol_revolver>
+<Font=04>MAGNUM 44
+.44 马 格 南
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:8/射速:较慢/装填:0.6
+火力:x2/消耗:2/范围:10
+
+一把快速且易用的手枪，
+是初学者的理想选择。
+
+<Pistol_colt45>
+<Font=04>COLT .45
+柯 尔 特.45
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:5/射速:一般/装填:0.7
+火力:x2/消耗:2/范围:5
+
+.45手枪，是全球最负盛
+名的传奇枪械之一。其
+生产历史已逾两个世纪，
+至今风靡不减。
+
+<Pistol_pm>
+<Font=04>PM-5
+马 卡 洛 夫PM-5
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:5/射速:较慢/装填:0.7
+火力:x2/消耗:2/范围:6
+
+俄罗斯产手枪，名为“马卡
+洛夫PM”。它结构简单、
+性能可靠且价格低廉，堪
+称最优秀的紧凑型手枪。
+
+<Pistol_sigsauer>
+<Font=04>SIG-SAUER P250 DCC
+西格绍尔P250双动紧凑型
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:5/射速:较慢/装填:0.7
+火力:x2/消耗:2/范围:7
+
+一把可靠且高精度的德制
+手枪，操控简便。
+
+<Pistol_GLK>
+<Font=04>GLK P5
+『格 洛 克』P5 型 
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:15/射速:快/装填:0.6
+火力:x2/消耗:2/范围:18
+
+采用枪管冷却系统的现代
+设计，使其能够实现极高
+的射速。
+
+<Pistol_red>
+<Font=04>PROTOTYPE ET5
+原 型 ET5
+<split>
+<Font=06> 
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:10/射速:较慢/装填:1.8
+火力:x2/消耗:2/范围:15
+
+由M.A.G.M.A.能源实验室
+研发；仅存在单一型号。
+
+<Pistol_beretta2>
+<Font=04>BERETTA L5
+伯 莱 塔 L5
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:5/射速:一般/装填:0.5
+火力:x2/消耗:2/范围:9
+
+这是法国国家宪兵队采用
+的宪兵特制版，由法国GI
+AT工业集团本土制造。
+
+
+<Pistol_sigp250>
+<Font=04>SIG-SAUER SIG PRO
+西格绍尔SIG PRO系列
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:16/射速:一般/装填:0.6
+火力:x2/消耗:2/范围:10
+
+美国缉毒局(DEA)及全球多
+国执法机构制式配枪。
+
+<Pistol_beretta>
+<Font=04> BERETTA GL15
+伯 莱 塔 GL15
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost> 
+<split>
+<Font=04>
+弹匣:5/射速:一般/装填:0.5
+火力:x2/消耗:2/范围:9
+
+集战斗手枪设计精华于一
+身，兼具威力、操控性与
+可靠性。伯莱塔堪称个人
+防卫与执法用枪的标杆。
+
+<Pistol_btk>
+<Font=04>BITTLER G2
+比特勒G2战术手枪
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:5/射速:较慢/装填:0.6
+火力:x2/消耗:2/范围:8
+
+特种部队专属机密武器。
+
+<Pistol_comando>
+<Font=04>
+LIBERT SP-120 J5
+『自由者』SP120 J5
+<split>
+<Font=06>
+伤害:         <Align=16><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:6/射速:慢/装填:3
+火力:x1/消耗:1/范围:110
+
+此枪为0.50英寸口径，即
+12.7毫米。弹头重约22克，
+初速达602米/秒，枪口动
+能超“沙漠之鹰”手枪。
+
+
+<ShotGun_mossberg>
+<Font=04> MOSSBERG 500 "CRUISER"
+莫斯伯格 500 "巡洋舰"
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:2/射速:极快/装填:0.6
+火力:x10/消耗:2/范围:7
+
+美国最具代表性且多功能
+的泵动式霰弹枪之一。
+
+<ShotGun_dm5>
+<Font=04>SHOTGUN SLIBERT DM5
+斯利伯特DM5战术霰弹枪
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:12/射速:较慢/装填:0.8
+火力:x12/消耗:4/范围:12
+
+泵动式霰弹枪的革新之作
+——DM5采用6发弹匣供
+弹与短枪管设计，是近战
+遭遇的理想武器。
+
+<ShotGun_dm5_v2>
+<Font=04> SLIBERT DZ5 Slug
+斯利伯特DZ5独弹头
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:12/射速:较慢/装填:0.8
+火力:x1/消耗:4/范围:50
+
+DZ5采用了独弹头，精准
+和杀伤都有不小的提升，
+带部分范围伤害效果。
+
+<ShotGun_rife2>
+<Font=04>SHOTGUN FABARM SDASS
+费 巴 尔 姆 SDASS
+<split>
+<Font=06>
+伤害:               <Align=18><Font=06><Damage><Font=06>
+精准:                  <Align=18><Font=06><Wp_acc><Font=06>
+价格:                      <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:8/射速:慢/装填:1.2
+火力:x5/消耗:1/范围:28
+
+一款意大利霰弹枪，配备
+折叠式准星和机匣顶部内
+置韦弗式导轨，整体操控
+轻便。
+
+<ShotGun_rife1>
+<Font=04>SHOTGUN BERETTA 1201 FP
+伯 莱 塔 1201 FP
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:16/射速:慢/装填:1
+火力:x8/消耗:2/范围:18
+
+伯莱塔（Beretta）于20世
+纪80年代末研发的滑膛霰
+弹枪。
+
+<ShotGun_dm15>
+<Font=04>SHOTGUN SLIBERT DM50
+斯利伯特DM50战术霰弹枪
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:20/射速:一般/装填:1
+火力:x16/消耗:4/范围:20
+
+DM 5改进型,加长枪管与散
+热器设计确保高射速，优质
+光学瞄具进一步提升精度。
+
+<ShotGun_dm15_v2>
+<Font=04> SLIBERT DM50 Laser
+斯利伯特DM50战术镭射型
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:20/射速:一般/装填:1
+火力:x16/消耗:4/范围:20
+
+DM50的镭射试做，采用超
+耐热和超快散热模块使其
+可以发射高穿透的镭射子
+弹。
+
+<ShotGun_duble>
+<Font=04>DOUBLE SHOTGUN RUIN S2
+毁灭者S2双管战术霰弹枪
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:4/射速:较慢/装填:1
+火力:x16/消耗:4/范围:60
+
+自制双管短管霰弹枪——锯
+短的双枪管设计，适合快速
+清房作战。
+
+<ShotGun_craft>
+<Font=04>CRAFT SP200 AP
+『静默风暴』SP200 穿甲型 
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:40/射速:一般/装填:1.2
+火力:x25/消耗:8/范围:30
+
+特殊消焰喷嘴配合强化枪
+管与扳机改装，实现超高
+射速。使用贫铀合金制的
+子弹，能击穿厚重的护甲。
+
+<ShotGun_craft_v2>
+<Font=04>CRAFT SP200 HE
+『静默风暴』SP200 高爆型 
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:40/射速:一般/装填:1.2
+火力:x20/消耗:8/范围:80
+
+特殊消焰喷嘴配合强化枪
+管与扳机改装，实现超高
+射速。使用烈性高爆弹，造
+成更强劲的爆炸冲击波伤害。
+
+
+<ShotGun_craft_v3>
+<Font=04>CRAFT SP240 HE&AP
+『静默风暴』SP240高爆穿甲
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:40/射速:一般/装填:1.2
+火力:x24/消耗:10/范围:120
+
+通过技术手段将SP200的
+高爆型和穿甲型结合在一
+起，实现穿甲高爆。
+
+<ShotGun_craft_v4>
+<Font=04>CRAFT SP200 MOLD
+『静默风暴』SP200 模型
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:40/射速:一般/装填:1.2
+火力:x20/消耗:4/范围:40
+
+由某个玩具厂商参照『静
+默风暴』SP200而制造出
+来的玩具模型。适合观赏
+和游玩。
+
+<ShotGun_craft_v5>
+<Font=04>Combat Shotgun Copy
+『纷争平息』战斗霰弹枪 仿
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:∞/射速:很快/
+火力:x28/消耗:15/范围:60
+
+仿制Doom Slayer的战斗
+霰弹枪（全自动模块）将
+枪管部分更换为三管转轮
+枪管模块。
+
+<ShotGun_craft_v6>
+<Font=04>Combat Shotgun Copy TST
+『纷争平息』战斗霰弹枪 测试
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:∞/射速:很快/
+火力:x28/消耗:15/范围:60
+
+仿制Doom Slayer的战斗
+霰弹枪（全自动模块）此
+为测试火力上限的测试版
+并不能代表最终型号。
+
+
+
+<ShotGun_craft2>
+<Font=04>CRAFT S-100
+『幽灵工匠』S-100系列
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:40/射速:一般/装填:1.3
+火力:x16/消耗:6/范围:30
+
+『静默风暴』SP200系列
+轻量化版本——配备特殊
+消焰喷嘴，有效抑制枪口
+冲击波，但射速也相对降
+低了一些。
+
+<ShotGun_craft2_v2>
+<Font=04>CRAFT S-140 HE
+『幽灵工匠』S-140 高爆型
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:40/射速:一般/装填:1.3
+火力:x16/消耗:8/范围:60
+
+『幽灵工匠』S-100的试
+做型，装填的高爆弹，产
+生冲击波和高温摧毁目
+标。射速比常规型号的慢。
+
+<ShotGun_jack>
+<Font=04>JACKHAMMER MK3A1
+『粉碎者』MK3A1战术型
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:24/射速:较慢/装填:1
+火力:x12/消耗:4/范围:30
+
+一款采用导气式原理、全
+自动射击的霰弹枪，配备
+浮动枪管及拆卸弹匣（称
+为“弹药盒”）
+
+<ShotGun_jack_v2>
+<Font=04>JACKHAMMER MK3A1 Slug
+『粉碎者』MK3A1独弹头
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:24/射速:较慢/装填:1
+火力:x1/消耗:4/范围:50
+
+MK3A1采用了独弹头，精
+准和杀伤都有不小的提升
+，带部分范围伤害效果。
+
+<Minigun_uzi>
+<Font=04>
+MINI UZI
+迷 你 乌 兹 冲 锋 枪
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06> 
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:40/射速:很快/装填:0.3
+火力:x3/消耗:4/范围:2
+
+以色列经典冲锋枪的紧凑
+型（无托式）版本——高
+射速弥补了停止作用的不
+足。
+
+<Minigun_hkmp5>
+<Font=04>Steyr TMP
+斯太尔TMP战术冲锋枪
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:30/射速:很快/装填:0.4
+火力:x3/消耗:4/范围:3
+
+9mm口径自动武器，兼具
+冲锋枪与手枪双重功能，
+支持单手发射操作。
+
+<Minigun_machine>
+<Font=04>MACHINE GUN M240G
+M240G 通 用 机 枪
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:100/射速:很快/装填:0.8
+火力:x3/消耗:4/范围:16
+
+美国海军陆战队采用的轻
+量化机枪——停止作用强，
+但射速较低。
+
+<Minigun_KG-9>
+<Font=04>INTERDYNAMIC KG-9
+KG-9 9mm冲 锋 枪
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06> 
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+作为独头弹火力的巅峰之
+作，该枪因威力过大而被
+美国1994年《攻击性武器
+禁令》限制生产。其独特
+外观、超大弹匣容量和亲
+民价格，使其广受欢迎。
+
+<Minigun_vihr-sp4>
+<Font=04>VIKHR SR-4
+VIKHR SR-4 战术突击步枪
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:30/射速:很快/装填:0.4
+火力:x3/消耗:4/范围:6
+
+一款专为隐蔽携行设计的
+紧凑型突击步枪，主要供
+要员保护小组及国家安全
+特勤使用。
+
+<Minigun_g11>
+<Font=04>HECKLER&KOCH G11
+黑 克 勒 和 科 赫 G11
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:30/射速:很快/装填:0.4
+火力:x3/消耗:4/范围:6
+
+德国突击步枪，以采用无
+壳弹药技术著称，兼具可
+靠性与高精度。
+
+<Minigun_steyr>
+<Font=04>STEYR AUG
+斯太尔AUG突击步枪
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:35/射速:很快/装填:0.4
+火力:x3/消耗:4/范围:2
+
+采用无托式设计的通用步
+枪，兼具高精度与操作便
+捷性。
+
+<Minigun_ak>
+<Font=04>AK12
+AK12突 击 步 枪
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:30/射速:很快/装填:0.4
+火力:x3/消耗:4/范围:6
+
+第5代AK系列步枪，枪管
+口径分为4种，另外还有
+重型枪弹的口径。实现了
+导轨加装，可伸缩枪托。
+
+<Minigun_m16>
+<Font=04>ASSAULT RIFLE M16A1
+M16A1 突 击 步 枪
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:30/射速:很快/装填:0.7
+火力:x3/消耗:4/范围:6
+
+美制M16突击步枪，性能
+全面，久负盛名。
+
+<Minigun_112w2>
+<Font=04>Fabrique Nationale 2000
+FN 2000 突击步枪
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:80/射速:很快/装填:0.7
+火力:x3/消耗:4/范围:4
+
+采用导气式自动原理与枪
+击回转式闭锁结构。采用
+模块化设计，护木可加装
+40mm榴弹或激光仪等。
+
+<Minigun_battle1>
+<Font=04>MG 36 MachineGun
+MG 36 轻机枪
+<split>
+<Font=06>
+伤害:         <Align=18><Font=03><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:50/射速:超快-/装填:1
+火力:x3/消耗:4/范围:15
+
+基于G36步枪改进的支援武
+器，可使用30发弹匣或100
+发C-MAG弹鼓供弹。
+
+<Minigun_battle2>
+<Font=04>DISEMBOWEL H240
+开膛手H240重型机枪
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:100/射速:很快/装填:0.9
+火力:x4/消耗:5/范围:25
+
+同级火力最强的重型机枪，
+能有效压制冲锋的敌群。
+
+<Minigun_battle2_v2>
+<Font=04>DISEMBOWEL H140 
+开膛手H140重型机枪
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:100/射速:很快/装填:0.9
+火力:x4/消耗:5/范围:25
+
+开膛手H240的早期测试版
+本。
+
+<Minigun_volcano1>
+<Font=04>VOLCANO G2000
+『熔 岩 巨 兽』G2000
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:150/射速:超快/装填:1
+火力:x4/消耗:6/范围:20
+
+一款高射速高杀伤力的加
+特林。
+
+<Minigun_volcano2>
+<Font=04>VOLCANO GP5500
+『灭 世 泰 坦』GP5500
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:200/射速:超快/装填:1.2
+火力:x4/消耗:6/范围:30
+
+『熔 岩 巨 兽』G2000加特
+林的增强型号——配备电
+池系统，射速高、弹速快，
+杀伤力惊人。
+
+<Minigun_volcano2_v2>
+<Font=04>VOLCANO GP5000
+『灭 世 泰 坦』GP5000
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:200/射速:超快-/装填:1.2
+火力:x4/消耗:6/范围:30
+
+『灭 世 泰 坦』GP5500加
+特林的测试版，较GP5500
+口径较小，射速较慢。
+
+<Minigun_volcano3>
+<Font=04>
+SLRK ATOM S100
+『死神之镰』 S100
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:300/射速:超快/装填:1.2
+火力:x10/消耗:10/范围:45
+
+流行的加特林/步枪技能系
+列的最新型号。
+
+<Minigun_volcano3_v2>
+<Font=04>METAL STORM S500
+『金属风暴』SP500
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:300/射速:极快-/装填:1.2
+火力:x12/消耗:12/范围:60
+
+『死神之镰』 S100为基
+础开发的最新款手持火神
+炮。采用全新的特制弹药，
+重甲目标也会轻易撕碎。
+
+
+<Minigun_volcano3_v3>
+<Font=04>METAL STORM PROTOTYPE
+『金属风暴』原型
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:∞/射速:极快
+火力:x24/消耗:16/范围:75
+
+『金属风暴』SP500的原
+型枪，超高的射速和较大
+的口径在平衡方面投入大
+量资金而导致研发中断。
+
+<Minigun_volcano3_v4>
+<Font=04>Heavy Cannon Copy
+『獠牙』重型大炮 仿
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:∞/射速:很快
+火力:x6/消耗:12/范围:60
+
+仿制Doom Slayer常用的
+重型大炮。大部分组件由
+某种合金铸成，大体积和
+重量可以减轻摇摆和颤动。
+
+<Minigun_Vector>
+<Font=04>能天使的『维克托』
+『开火成瘾症』
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:45/射速:极快/装填:0.5
+火力:x12/消耗:6/范围:45
+
+“蕾缪乐”亲自改装的爱
+枪。使用快速冷却枪管和
+扩容弹匣以提高射速和续
+航，不过续航还是不够。
+
+<Granade_rg6>
+<Font=04>GRENADE LAUNCHER RG-6
+RG-6 转轮榴弹发射器
+<split>
+<Font=06>
+伤害:          <Align=18><Font=06><Damage><Font=06>
+精准:        <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:16/射速:较慢/装填:2.8
+火力:x2/消耗:4/范围:200
+
+便携式榴弹发射器的紧凑
+型号——凭借高射速与杀
+伤范围，可有效消灭敌步
+兵集群。
+
+<Granade_rg6_v2>
+<Font=04>Combat Shotgun Copy 
+『纷争平息』战斗霰弹枪 仿
+<split>
+<Font=06>
+伤害:          <Align=18><Font=06><Damage><Font=06>
+精准:        <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:5/射速:较慢/装填:0.8
+火力:x1/消耗:24/范围:240
+
+仿制Doom Slayer常用的
+战斗霰弹枪（榴弹模块）
+将枪管部分更换为榴弹模
+块发射带爆的高爆榴弹。
+
+<Granade_rg6_v3>
+<Font=04>维什戴尔的『祖宗发射器』
+『爆裂黎明』
+<split>
+<Font=06>
+伤害:          <Align=18><Font=06><Damage><Font=06>
+精准:        <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:5/射速:极慢/装填:1.5
+火力:x1/消耗:50/范围:600
+
+维什戴尔的专用武器——
+不知道她从哪儿搞来的，
+好像很厉害的样子。
+
+
+<Rocket_muha>
+<Font=04>ROCKET LAUNCHER FLY-2
+FLY-2 火 箭 发 射 器 
+<split>
+<Font=06>
+伤害:          <Align=18><Font=06><Damage><Font=06>
+精准:        <Align=18><Font=06><Wp_acc><Font=06>
+价格:            <Align=18><Font=06><Cost> 
+<split>
+<Font=04>
+弹匣:1/装填:2.8
+火力:x2/消耗:4/范围:190
+
+是一款短程、管式发射的
+单兵反坦克火箭筒。它发
+射73毫米尾翼火箭弹配备
+破甲战斗部，可穿透装甲。
+
+
+<Rocket_l1>
+<Font=04>ROCKET LAUNCHER SL-1
+SL-1火 箭 发 射 器 
+<split>
+<Font=06>
+伤害:          <Align=18><Font=06><Damage><Font=06>
+精准:        <Align=18><Font=06><Wp_acc><Font=06>
+价格:            <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:1/装填:2
+火力:x2/消耗:4/范围:320
+
+一种紧凑型手持火箭发射
+器，对无装甲敌人极为有
+效。
+
+<Rocket_l2>
+<Font=04>RPG-7V
+RPG-7V火 箭 发 射 器 
+<split>
+<Font=06>
+伤害:          <Align=18><Font=06><Damage><Font=06>
+精准:        <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:1/装填:2.3
+火力:x2/消耗:4/范围:450
+
+40毫米榴弹发射器，全长
+1米，专用于对抗坦克、自
+行火炮及其他装甲目标，
+配备光学及夜视瞄准镜。
+
+<Rocket_l2X4>
+<Font=04>ROCKET LAUNCHER DSx4
+DSx4火 箭 发 射 器 
+<split>
+<Font=06>
+伤害:          <Align=18><Font=06><Damage><Font=06>
+精准:        <Align=18><Font=06><Wp_acc><Font=06>
+价格:            <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:4/射速:较慢/装填:1.9
+火力:x2/消耗:4/范围:230
+
+多联装火箭发射器——射
+速极快，但装填时间较长。
+
+
+<Burner>
+<Font=04>FT PINOCCHIO Z
+FT 匹 诺 曹 Z
+<split>
+<Font=06>
+伤害:          <Align=18><Font=06><Damage><Font=06>
+精准:        <Align=18><Font=06><Wp_acc><Font=06>
+价格:            <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:50/射速:超快/装填:2
+火力:x2/消耗:4/范围:20
+
+火焰喷射器是一种有效的
+武器，能用特殊的可燃混
+合物攻击目标。它非常适
+合执行辅助性战术任务。 
+
+<flamethrower1>
+<Font=04>07 FIREBUG
+07 式 喷 火 虫
+<split>
+<Font=06>
+伤害:          <Align=18><Font=06><Damage><Font=06>
+精准:        <Align=18><Font=06><Wp_acc><Font=06>
+价格:            <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:75/射速:超快/装填:1.5
+火力:x2/消耗:4/范围:100
+
+对近战而言极其有效的手
+段，尤其适用于摧毁那些
+用常规武器难以消灭的目
+标。
+
+
+<flamethrower1_v2>
+<Font=04>EXTERMINATOR XL
+灭绝者 XL
+<split>
+<Font=06>
+伤害:          <Align=18><Font=06><Damage><Font=06>
+精准:        <Align=18><Font=06><Wp_acc><Font=06>
+价格:            <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:150/射速:超快/装填:1.5
+火力:x8/消耗:4/范围:135
+
+重型步兵火焰喷射器，专
+为在城市环境及开阔地带
+执行战斗任务而设计
+
+<flamethrower1_v3>
+<Font=04>EXTERMINATOR XXL
+灭绝者 XXL
+<split>
+<Font=06>
+伤害:          <Align=18><Font=06><Damage><Font=06>
+精准:        <Align=18><Font=06><Wp_acc><Font=06>
+价格:            <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:∞/射速:超快+
+火力:x16/消耗:10/范围:170
+
+灭绝者 XL的强化版本，
+采用了最新技术的点火模
+块和燃料压缩技术，能极
+速的焚化目标。
+
+<Rocket_auto_sd20>
+<Font=04>SLR 500 AUTO R5
+SLR 500 AUTO R5发射器
+<split>
+<Font=06>
+伤害:          <Align=18><Font=06><Damage><Font=06>
+精准:        <Align=18><Font=06><Wp_acc><Font=06>
+价格:            <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:1/装填:1
+火力:x2/消耗:4/范围:300
+
+一款配备自动瞄准系统的
+现代手持发射器，光学装
+置可实现目标锁定。
+
+<Rocket_autorain>
+<Font=04>
+Rocket Volcano TF5 "Rain"
+『钢雹』TF5"暴雨"107mm
+<split>
+<Font=06>
+伤害:          <Align=18><Font=06><Damage><Font=06>
+精准:        <Align=18><Font=06><Wp_acc><Font=06>
+价格:            <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:3/射速:一般/装填:1.4
+火力:x3/消耗:12/范围:400
+
+配备红外瞄准系统的三管
+手持火箭发射器，高射速
+设计。
+
+<Rocket_autorain_v2>
+<Font=04>
+Rocket Volcano TF5 "Rain"
+『钢雹』TF10"暴雨"107mm
+<split>
+<Font=06>
+伤害:          <Align=18><Font=06><Damage><Font=06>
+精准:        <Align=18><Font=06><Wp_acc><Font=06>
+价格:            <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:6/射速:一般/装填:1.2
+火力:x4/消耗:18/范围:480
+
+在『钢雹』TF5"暴雨"上
+增添了扩容的弹仓，装填
+一次能多发射一轮。
+
+<Rocket_big1>
+<Font=04>NTR-40 S1
+『量子坍缩』NTR-40 S1 
+<split>
+<Font=06>
+伤害:          <Align=18><Font=06><Damage><Font=06>
+精准:        <Align=18><Font=06><Wp_acc><Font=06>
+价格:            <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:2/射速:较慢/装填:4
+火力:x2/消耗:60/范围:600
+
+一款配备核装药的手持火
+箭发射器，杀伤范围巨大，
+但装填速度较慢。
+
+<Rocket_big1_v2>
+<Font=04>NTR-80 S1
+『量子坍缩』NTR-80 S10 
+<split>
+<Font=06>
+伤害:          <Align=18><Font=06><Damage><Font=06>
+精准:        <Align=18><Font=06><Wp_acc><Font=06>
+价格:            <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:4/射速:较慢/装填:6
+火力:x4/消耗:120/范围:1000
+
+『量子坍缩』NTR-40 S1
+的加强版，最新压缩技术
+使火箭弹核装填量增多杀
+伤及范围进增大。
+
+<Energy_Laserpistol>
+<Font=04>
+LASER PISTOL S50
+S50 镭 射  战 术 手 枪
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:20/射速:一般/装填:0.8
+火力:x2/消耗:4/范围:30
+
+早期激光手枪之一，因设
+计陈旧而未普及。
+
+<Energy_LaserRife>
+<Font=04>GP53 LASER RIFLE
+GP53 镭 射 步 枪
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:16/射速:较慢-/装填:1.3
+火力:x2/消耗:4/范围:110
+
+一款高精度标准步兵镭射
+武器，可穿透多数现代防
+弹护甲。
+
+<Energy_pulserife>
+<Font=04>PR-1500 PULSE RIFLE
+PR-1500 脉 冲 步 枪
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:          <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:50/射速:很快/装填:1.4
+火力:x2/消耗:4/范围:70
+
+M.A.G.M.A.能源公司开发
+的试验型脉冲步枪。
+
+<Energy_LaserMinigun>
+<Font=04>SGP53-L1 LASER MINIGUN
+『暴怒』SGP53-L1镭射机枪
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:300/射速:超快/装填:1.2
+火力:x6/消耗:5/范围:90
+
+最强近战武器——这款怪
+物级装备兼具超高精度与
+极致杀伤力。
+
+<Energy_LaserMinigun_v2>
+<Font=04>SGP55-R  PROTOTYPE
+『暴怒』SGP55-R 原型
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:∞/射速:超快+
+火力:x12/消耗:8/范围:112
+
+更快的射速和更强的威力
+操控变得尤为困难，在多
+次意外后。进行射速和出
+力调整量产为SGP53-L1
+
+<Energy_freeze>
+<Font=04>FR-Z5 CRYOGENIC THROWER
+FR-Z5  冰 魄 喷 射 器
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:75/射速:超快/装填:1.5
+火力:x2/消耗:4/范围:100
+
+这把发射器能发射一种特
+殊化学物质，瞬间将异形
+变成异形冰棒（冷冻异形）。
+
+<Energy_freeze_v2>
+<Font=04>CRYOLATOR X078
+『霜龙吐息』X-078
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:150/射速:超快/装填:1.5
+火力:x8/消耗:4/范围:100
+
+FR-Z5 的加强版，强化冷
+却模块，使其能更快速的
+冻结目标并增加了冻结有
+效范围。
+
+<Energy_freeze_v3>
+<Font=04>CRYOLATOR X-178
+ 『冰霜绽放』X-178
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:∞/射速:超快+
+火力:x16/消耗:10/范围:200
+
+X-078 的加强版，采用了
+最新技术的冷却模块和燃
+料压缩技术，并且极速的
+冻结目标。
+
+<Energy_ionrife>
+<Font=04>G200 ION RIFLE
+G200 离 子 步 枪
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:50/射速:较快/装填:1.6
+火力:x4/消耗:6/范围:120
+
+离子步枪是军工领域的最
+新研发成果，其高能粒子
+束可贯穿最厚重的装甲。
+
+<Energy_ioncannon>
+<Font=04>
+G5000 ION CANNON
+『创世』G5000 重型离子炮
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:15/射速:很慢/装填:1.7
+火力:x3/消耗:15/范围:460
+
+离子炮原型机。其加厚型
+炮管与新型冷却系统可提
+供更强的能量聚焦效果。
+
+<Energy_ioncannon_v2>
+<Font=04>
+G5000 ION CANNON Low
+『创世』G5000 低出力
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:15/射速:缓慢/装填:1.7
+火力:x3/消耗:12/范围:320
+
+使『创世』的出力降低，
+它的射速、装填更加迅速
+。但是杀伤力和破坏范围
+只有『创世』的70%
+
+<Energy_ioncannon_v3>
+<Font=04>DISINTEGRATOR XL
+『分解者』XL
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:10/射速:极慢+/装填:1.7
+火力:x4/消耗:80/范围:720
+
+最新一代的分子分解器，
+较慢的充能速度由巨大的
+伤害和杀伤范围所弥补。
+能打穿大部分建筑的墙体。
+
+<Energy_ioncannon_v4>
+<Font=04>Big Fuking Gun-9000
+『BFG』-9000 仿
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:1/装填:6
+火力:x1/消耗:700/范围:1500
+
+仿制联合航天公司迄今为
+止设计出的最强武器。释
+放纯粹的、激荡的亚金等
+离子射弹。
+
+<Energy_plasmadis>
+<Font=04>Plasma Desintegrator 5G
+『天殛』5G等离子裂解炮 
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:45/射速:缓慢/装填:2
+火力:x2/消耗:8/范围:180
+
+最新款重型能量炮。
+
+<Energy_plasmadis_v2>
+<Font=04>SPACE 5G
+『空间』 5G
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:45/射速:一般/装填:1.5
+火力:x2/消耗:6/范围:120
+
+『天殛』的分支版本，
+它的射速、 装填更加迅
+速。 但是杀伤力和破坏
+范围只有『天殛』的70%
+
+<Energy_plasmadis_v3>
+<Font=04>Plasma Desintegrator 5G
+『天殛』5G（旧） 
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:45/射速:缓慢/装填:2
+火力:x2/消耗:8/范围:90
+
+没有精心维护的 『天殛』
+裂解炮，有点故障使能量
+还未蓄力完成就提前发射，
+导致伤害及范围只有50%。
+
+<Energy_PlazmaMiniGun>
+<Font=04>PLASMA MINIGUN SL2000
+『极光』SL2000镭射加特林
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:300/射速:超快-/装填:1.1
+火力:x2/消耗:8/范围:90
+
+新一代等离子武器，所经
+之处，万物湮灭。
+
+<Equip_Drone1>
+<Font=04>DRON M50
+「夜枭-M50智能侦巡者」
+<split>
+<Font=06>
+伤害:   <Align=20><Damage><Font=06>
+耐久: <Align=20><DroneMaxHp><Font=06>
+价格:     <Align=20><Cost><Font=06>
+<split>
+<Font=04>
+基础型战斗无人机——搭
+载高性能核心，实现快速
+锁定与打击。
+
+
+<Equip_Drone2>
+<Font=04>DRON M70
+「影隼-M70战术无人机」
+<split>
+<Font=06>
+伤害:   <Align=20><Damage><Font=06>
+耐久: <Align=20><DroneMaxHp><Font=06>
+价格:     <Align=20><Cost><Font=06>
+<split>
+<Font=04>
+最新款战斗无人机配备G5
+255爆能枪，可造成大量伤
+害强力CPU实现快速瞄准
+与射击。
+
+<Equip_Drone3>
+<Font=04>DRON S200
+「黯鸦-S200突击无人机」
+<split>
+<Font=06>
+伤害:   <Align=20><Damage><Font=06>
+耐久: <Align=20><DroneMaxHp><Font=06>
+价格:     <Align=20><Cost><Font=06>
+<split>
+<Font=04>
+该独立导弹防御系统结构
+紧凑，可拦截并摧毁绝大
+多数已知型号的来袭导弹，
+有效保护目标不受攻击。
+
+<Armor_Lethalg1>
+<Font=04>LEATHER ARMOR S1
+S1 型 皮 革 护 甲
+<split>
+<Font=06>
+防御:        <Align=18><Font=06><Defence><Font=06>
+耐久:     <Align=18><Font=06><Hp><Font=06>
+价格:           <Align=18><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+简易钉甲（最基础的皮质
+护甲，表面覆有铆钉）防
+护性能有限但总好过没有。
+
+<Armor_Lethals1>
+<Font=04>LEATHER ARMOR S2-R
+S2-R型强化皮革护甲
+<split>
+<Font=06>
+防御:        <Align=18><Font=06><Defence><Font=06>
+耐久:     <Align=18><Font=06><Hp><Font=06>
+价格:           <Align=18><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+S2-R型强化皮甲（基于S1
+型升级的进阶防护装备）
+内嵌合金甲板层抗冲击性
+能提升40%，穿戴者战场
+存活率显著提高。
+
+<Armor_Lethalg2>
+<Font=04>PLATES DF10
+DF10型合金护甲板
+<split>
+<Font=06>
+防御:        <Align=18><Font=06><Defence><Font=06>
+耐久:     <Align=18><Font=06><Hp><Font=06>
+价格:           <Align=18><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+轻量化防弹衣，由塑料和
+金属板制成，提供中等防
+护能力。
+
+<Armor_plates>
+<Font=04>PLATES SPN10
+SPN10型特种护甲板
+<split>
+<Font=06>
+防御:        <Align=18><Font=06><Defence><Font=06>
+耐久:     <Align=18><Font=063><Hp><Font=06>
+价格:           <Align=18><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+DF10型合金护甲板改进型
+，采用复合装甲结构，内
+置陶瓷防护层强化。
+
+<Armor_G1>
+<Font=04>DEFENDER G1
+防御者G1型战术护甲
+<split>
+<Font=06>
+防御:        <Align=18><Font=06><Defence><Font=06>
+耐久:     <Align=18><Font=06><Hp><Font=06>
+价格:           <Align=18><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+当前最先进的轻量化防弹
+衣，采用高强度塑料与特
+种合金装甲板。
+
+<Armor_bayonet>
+<Font=04>BAYONET SL-G105
+刺刀SL-G105型战术护甲
+<split>
+<Font=06>
+防御:        <Align=18><Font=06><Defence><Font=06>
+耐久:     <Align=18><Font=06><Hp><Font=06>
+价格:           <Align=18><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+标准中量级防弹护甲，提
+供全方位优质防护。
+
+<Armor_BlueG2>
+<Font=04>DEFENDER BLUE G200
+防御者·魅蓝G200战术护甲
+<split>
+<Font=06>
+防御:        <Align=18><Font=06><Defence><Font=06>
+耐久:     <Align=18><Font=06><Hp><Font=06>
+价格:           <Align=18><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+G1系列增强版，内置实心
+钛合金装甲层。
+
+
+<Armor_bayonet2>
+<Font=04>BAYONET2 SL-P550
+刺刀SL-P550战术护甲
+<split>
+<Font=06>
+防御:        <Align=18><Font=06><Defence><Font=06>
+耐久:     <Align=18><Font=06><Hp><Font=06>
+价格:           <Align=18><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+中量级防弹护甲巅峰之作，
+专为精锐部队特制。
+
+<Armor_heavy1>
+<Font=04>BLOCKER SG32-50
+『泰坦』复合式反应装甲
+<split>
+<Font=06>
+防御:        <Align=18><Font=06><Defence><Font=06>
+耐久:     <Align=18><Font=06><Hp><Font=06>
+价格:           <Align=18><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+改良自BAYONET(刺刀)系
+列护甲，专为抵御高强度
+杀伤设计，液压助力系统
+显著减重，但会降低机动
+速度。
+
+<Armor_rejector>
+<Font=04>BATTLE SUIT SMR-25
+『铁幕』复合式反应装甲
+<split>
+<Font=06>
+防御:        <Align=18><Font=06><Defence><Font=06>
+耐久:     <Align=18><Font=06><Hp><Font=06>
+价格:           <Align=18><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+专为第三次世界大战中的
+特种作战设计，在重型装
+甲级别中提供最佳防护。
+
+<Armor_rejector_v2>
+<Font=04>BATTLE SUIT SMR-25 LW
+『铁幕』复合装甲轻量化
+<split>
+<Font=06>
+防御:        <Align=18><Font=06><Defence><Font=06>
+耐久:     <Align=18><Font=06><Hp><Font=06>
+价格:           <Align=18><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+将最新的纳米技术应用于
+『铁幕』装甲上，以实现
+在强大的防护能力下还能
+拥有不俗的机动性能。
+
+<Armor_rejector_v3>
+<Font=04>
+『执政官护甲』
+<split>
+<Font=06>
+防御:        <Align=18><Font=06><Defence><Font=06>
+耐久:     <Align=18><Font=06><Hp><Font=06>
+价格:           <Align=18><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+即便是M.A.G.M.A也不知
+道Doom   Slaer的执政官
+护甲究竟是什么材料制成
+仿佛不是来自这个世界。
+只能用目前最强的材料仿
+制。即便如此，和真的执
+政官护甲相比就像纸糊的。
+
+<Armor_rejector2>
+<Font=04>BLOCKER SG32-10
+『磐石』复合式反应装甲
+<split>
+<Font=06>
+防御:        <Align=18><Font=06><Defence><Font=06>
+耐久:     <Align=18><Font=06><Hp><Font=06>
+价格:           <Align=18><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+『泰坦』复合式反应装甲
+轻型版本。液压助推器大
+幅减轻装甲重量，但会降
+低移动速度。
+
+<Equip_flash>
+<Font=04>POCKET FLASHLIGHT
+便 携 式 手 电
+<split>
+<Font=06>
+价格:                      <Align=20><Font=06<Cost>
+<split>
+<Font=04>
+一个典型的便携式手电。
+
+<Equip_flash2>
+<Font=04>FLASHLIGHT X2
+X2 型 手 电
+<split>
+<Font=06>
+价格:                      <Align=20><Font=06><Cost>
+<split>
+<Font=04>
+通用型手电筒， 照明效果
+出色， 持久续航耐用。
+
+<Equip_nigthglass>
+<Font=04>NIGHT GLASSES S1
+夜 视 仪 S1型
+<split>
+<Font=06>
+价格:                      <Align=20><Font=06><Cost>
+<split>
+<Font=04>
+有效夜视范围有限，暗光
+环境仍具实用价值。
+
+<Equip_radar>
+<Font=04>RADAR G12
+G12型 雷 达
+<split>
+<Font=06>
+价格:                      <Align=20><Font=06><Cost>
+<split>
+<Font=04>
+一种个人雷达装置，用来
+监视敌人的位置。
+
+<implant_rnd1_1>
+<Font=04>SPMG 10-234 Booster
+SPMG 10-234"夜枭α"增强器
+<split>
+<Font=06>
+<Template>增长      <ParamName>: <Align=20><Font=06><ParamVal><Font=06>
+价格:                   <Align=20><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+这款SPMG系列推出的植
+入体是所有现有型号中最
+简单且最经济实惠的。
+
+<implant_rnd1_2>
+<Font=04>SPMG 20-100 Booster
+SPMG 20-100"夜枭β"增强器
+<split>
+<Font=06>
+<Template>增长      <ParamName>: <Align=20><Font=06><ParamVal><Font=06>
+价格:                   <Align=20><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+
+SPMG植入体系列新品上
+市。
+
+<implant_rnd1_3>
+<Font=04>SPMG 30-177 Booster 
+SPMG 30-177"夜枭γ" 增强器
+<split>
+<Font=06>
+<Template>增长      <ParamName>: <Align=20><Font=06><ParamVal><Font=06>
+价格:                   <Align=20><Font=03><Cost><Font=06>
+<split>
+<Font=04>
+
+SPMG植入体系列第三十
+代（最新款）。
+
+<implant_rnd2_1>
+<Font=04>SPMG2 10-096 Booster 
+SPMG2 10-096"雷霆α"增强器
+<split>
+<Font=06>
+<Template>增长      <ParamName>: <Align=20><Font=06><ParamVal><Font=06>
+价格:                   <Align=20><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+
+这款第二代植入体大幅提
+升了基础能力，价格也随
+之水涨船高。
+
+<implant_rnd2_2>
+<Font=04>SPMG2 20-367 Booster 
+SPMG2 20-367"雷霆β"增强器
+<split>
+<Font=06>
+<Template>增长      <ParamName>: <Align=20><Font=06><ParamVal><Font=065>
+价格:                   <Align=20><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+
+SPMG2系列植入体。
+
+<implant_rnd2_3>
+<Font=04>SPMG2 30-351 Booster 
+SPMG2 30-351"雷霆γ" 增强器
+<split>
+<Font=06>
+<Template>增长      <ParamName>: <Align=20><Font=06><ParamVal><Font=06>
+价格:                   <Align=20><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+
+SPMG2系列植入体。
+
+<implant_rnd3_1>
+<Font=04>SPMG3 10-008 Booster 
+SPMG3 10-008"幻影"增强器
+<split>
+<Font=06>
+<Template>增长      <ParamName>: <Align=20><Font=06><ParamVal><Font=06>
+价格:                   <Align=20><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+
+第三代神经增强植入体。
+——该植入体对机体能
+力的提升如此显著，甚
+至能让使用者获得近乎
+无敌的战场优势。
+
+<implant_rnd3_2>
+<Font=04>SPMG3 20-101 Booster 
+SPMG3 20-101"天殛"增强器
+<split>
+<Font=06>
+<Template>增长      <ParamName>: <Align=20><Font=06><ParamVal><Font=06>
+价格:                   <Align=20><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+
+第三代植入体。
+
+<implant_rnd3_3>
+<Font=04>SPMG3 30-235 Booster 
+SPMG3 30-235"终焉"增强器
+<split>
+<Font=06>
+<Template>增长      <ParamName>: <Align=20><Font=06><ParamVal><Font=06>
+价格:                   <Align=20><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+
+第三代植入物的第三十次
+发布。
+
+<Obj_dynamite>
+<Font=04>
+DYNAMITE
+炸 药
+<split>
+<Font=06>
+Damage:           <Align=20><Font=06>300<Font=06>
+<split>
+<Font=04>
+带定时延迟的炸药。设置
+好这家伙，然后赶紧跑出
+它的有效杀伤范围。
+
+<Obj_accesskey>
+<Font=04>
+ACCESS KEY 
+访 问 密 钥
+<split>
+<split>
+<Font=04>
+电梯启动钥匙。
+
+<Obj_personalkey>
+<Font=04>
+STAFF ACCESS KEY 
+员 工 访 问 密 钥 
+<split>
+<split>
+<Font=04>
+员工宿舍通行钥匙。
+
+<Obj_perkey_andry>
+<Font=04>
+STAFF ACCESS CARD
+员 工 门 禁 卡
+<split>
+<split>
+<Font=04>
+安德烈·沃罗帕耶夫的门禁
+卡。
+
+<Obj_perkey_statham>
+<Font=04>
+STAFF ACCESS CARD 
+员 工 门 禁 卡
+<split>
+<split>
+<Font=04>
+斯坦森·麦迪逊访的门禁
+卡问。
+
+<Obj_seckey>
+<Font=04>
+SECURITY ACCESS CARD 
+安 全 门 禁 卡
+<split>
+<split>
+<Font=04>
+员工宿舍门禁卡。
+
+<Obj_redkey>
+<Font=04>
+SECRET ACCESS CARD 
+绝 密 门 禁 卡
+<split>
+<split>
+<Font=03>
+<Font=04>
+机密区域准入密钥。
+
+<Obj_tankshell>
+<Font=04>100mm SHELLS 
+100毫米炮弹
+<split>
+<Font=06>
+Damage:           <Align=20><Font=06>300<Font=06>
+<split>
+<Font=04>
+重型炮弹（供坦克或火炮
+使用）
+
+<Obj_stabil>
+<Font=04>
+STABILIZER
+稳定装置
+<split>
+<split>
+<Font=06>
+发电机稳定器，用于高压
+设备。
+
+
+<Obj_cigar>
+<Font=04>
+CIGARETTE PACK
+一包香烟
+<split>
+<split>
+<Font=04>
+一盒薄荷味香烟。
+
+<Bonus_health10>
+<Font=04>
+HEALTH +20
+<Font=03>
+  
+<Bonus_health50>
+<Font=04>
+HEALTH +50
+<Font=03>
+ 
+<Bonus_health100>
+<Font=04>
+HEALTH +100
+<Font=03>
+  
+<Bonus_ammo_box>
+<Font=04> 
+装有弹药的盒子
+<Font=03>
+ 
+<Bonus_ammo_pistol>
+<Font=04>
++50 手 枪 弹 药
+<Font=03>
+ 
+<Bonus_ammo_shotgun>
+<Font=04>
++50 霰 弹 弹 药
+<Font=03>
+ 
+<Bonus_ammo_minigun>
+<Font=04>
++150 机 枪 弹 药 
+<Font=04>
+ 
+<Bonus_ammo_granade>
+<Font=04>
++25 榴 弹 
+<Font=03>
+ 
+<Bonus_ammo_rocket>
+<Font=04>
++25 火 箭 弹
+<Font=03>
+ 
+<Bonus_ammo_ballon>
+<Font=04>
++150 罐
+<Font=03>
+
+<Bonus_ammo_energy>
+<Font=04>
++100 能 源 电 池 
+<Font=03>
+
+<Equip_flash3>
+<Font=04>FLOODLIGHT
+强 光 灯
+<split>
+<Font=06>
+价格:                      <Align=20><Font=06><Cost>
+<split>
+<Font=04>
+一款提供卓越能见度的特
+殊紧凑型泛光灯。
+
+<Obj_accumulator>
+<Font=04>
+ACCUMULATOR
+蓄 电 池
+<split>
+<split>
+<Font=04>
+标准12的伏蓄电池。
+
+<Obj_transf>
+<Font=04>
+TRANSFORMER BLOCK
+变 压 器 模 组 
+<split>
+<split>
+<Font=04>
+将转换大量能量。具体用
+途未知。
+
+<Obj_cooling>
+<Font=04>
+COOLER BLOCK
+冷 却 模 块
+<split>
+<split>
+<Font=04>
+该装置可瞬间冷却任何液
+体，具体用途未知。
+
+<Equip_medikit_small>
+<Font=04>SMALL MEDKIT
+小 型 医 疗 包
+<split>
+<Font=06>
+健康:   +<AddHp>
+价格:                      <Align=20><Font=06><Cost>
+<split>
+<Font=04>
+最基础的医疗包，仅含最
+低限度的药物。当生命值
+过低时自动使用。
+
+<Equip_medikit_big>
+<Font=04>MEDKIT
+标 准 医 疗 包
+<split>
+<Font=06>
+健康:   +<AddHp>
+价格:                      <Align=20><Font=06><Cost>
+<split>
+<Font=04>
+该医疗包比小型医疗包配
+备更齐全，可治疗大多数
+重伤。生命值过低时将自
+动使用。
+
+
+<Equip_medikit_mega>
+<Font=04>MEGA MEDKIT
+大 型 医 疗 包
+<split>
+<Font=06>
+健康:   +<AddHp>
+价格:                      <Align=20><Font=06><Cost>
+<split>
+<Font=04>
+
+战地医疗的终极解决方案。
+该医疗包可瞬间恢复全部
+生命值，当生命值过低时
+自动使用。
+
+<Obj_disk>
+<Font=04>
+DATA DISK
+数 据 磁 盘
+<split>
+<split>
+<Font=04>
+包含公司公司实验项目的
+全部机密数据。
+
+<Rocket_l3>
+<Font=04>
+RPG-29 VAMPIR
+RPG-29 血蝠 反坦克火箭
+<split>
+<Font=06>
+伤害          <Align=18><Font=06><Damage><Font=06>
+精准:        <Align=18><Font=06><Wp_acc><Font=06>
+价格:            <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:1/装填:0.75
+火力:x2/消耗:4/范围:320
+
+用于摧毁敌方坦克装甲车
+辆，可对建筑物、钢筋混
+凝土工事、土木掩体中的
+火力点及人员实施压制。
+
+<ShotGun_disk>
+<Font=04>DISK LAUNCHER
+锯 片 发 射 器
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:30/射速:较慢/装填:0.9
+火力:x4/消耗:2/范围:15
+
+特种用途武器。专为大规
+模歼灭敌军而设计，通过
+发射高速碳合金碟片，可
+一次性穿透多个目标。
+
+<ShotGun_SVD>
+<Font=04>DRAGUNOV SNIPER RIFLE
+德拉贡诺夫狙击步枪
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=05>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:8/射速:一般/装填:1.5
+火力:x2/消耗:2/范围:40
+
+这把传奇狙击步枪拥有理
+想的平衡性，可实现高达
+每分钟30发的精准射击。
+
+<ShotGun_SVD2>
+<Font=04>Intervention M220
+『干预者』M220狙击步枪
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:10/射速:缓慢/装填:1.3
+火力:x1/消耗:30/范围:60
+
+这款远程狙击武器的独特
+之处在于：能在超远距离
+进行狙杀，同时保持对反
+狙击手的绝对隐蔽优势。
+
+<ShotGun_SVD3>
+<Font=04>Barrett M99
+『巴雷特』M99反器材步枪
+<split>
+<Font=06>
+伤害:           <Align=16><Font=06><Damage><Font=06>
+精准:           <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:1/装填:2
+火力:x1/消耗:1/范围:150
+
+"Big Shot"。非自动发射
+方式，发射后，需手动装
+填下一发子弹。主要打击
+高价值装备，设备或设施。
+
+<ShotGun_SVD4>
+<Font=04>Heavy Cannon Copy
+『獠牙』狙击大炮 仿
+<split>
+<Font=06>
+伤害:           <Align=16><Font=06><Damage><Font=06>
+精准:           <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:20/射速:较慢/装填:0.4
+火力:x1/消耗:40/范围:120
+
+仿制Doom Slayer常用的
+重型大炮将普通模块切换
+成能发射高精准度高威力
+炮弹的半自动射击模块。
+
+
+<ShotGun_SVD5>
+<Font=04>Heavy Cannon Copy TEST
+『獠牙』狙击大炮 仿 测试
+<split>
+<Font=06>
+伤害:           <Align=16><Font=06><Damage><Font=06>
+精准:           <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:20/射速:较慢/装填:0.4
+火力:x1/消耗:40/范围:120
+
+仿制Doom Slayer常用的
+重型大炮（狙击模块）此
+为测试火力上限的测试版
+并不能代表最终型号。
+
+<Energy_Miner>
+<Font=04>MINER-P1
+矿工-P1
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06>150 - 160<Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:∞/射速:缓慢
+火力:x2/消耗:2/范围:？
+
+现代战场工程武器，专为
+快速实施大面积地表剥离
+作战而生。
+
+<Armor_Green>
+<Font=04>LEATHER ARMOR S1
+S1 型 皮 革 护 甲
+<split>
+<Font=06>
+防御:        <Align=18><Font=06><Defence><Font=06>
+耐久:     <Align=18><Font=06><Hp><Font=06>
+价格:           <Align=18><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+简易钉甲（最基础的皮质
+护甲，表面覆有铆钉）防
+护性能有限但总好过没有。
+
+<Armor_Yellow>
+<Font=04>BAYONET2 SL-P550
+刺刀SL-P550战术护甲
+<split>
+<Font=06>
+防御:        <Align=18><Font=06><Defence><Font=06>
+耐久:     <Align=18><Font=06><Hp><Font=06>
+价格:           <Align=18><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+中量级防弹护甲巅峰之作，
+专为精锐部队特制。
+
+<Armor_Red>
+<Font=04>BLOCKER SG32-50
+『泰坦』复合式反应装甲
+<split>
+<Font=06>
+防御:        <Align=18><Font=06><Defence><Font=06>
+耐久:     <Align=18><Font=06><Hp><Font=06>
+价格:           <Align=18><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+改良自BAYONET(刺刀)系
+列护甲，专为抵御高强度
+杀伤设计，液压助力系统
+显著减重，但会降低机动
+速度。
+
+<sm_glock18>
+<Font=04>Glock 18C "Tac 3"
+『格 洛 克』18C "Tac 3"
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+弹匣:60/射速:很快/装填:1.2
+火力:x6/消耗:4/范围:50
+
+格洛克18C手枪改装版在
+格洛克17基础上改造可实
+现全自动射击。
+
+<implant_standfirm_male>
+<Font=04>SPMG-3 30-235-M
+SPMG3 30-235"终焉-M"增强器
+<split>
+<Font=06>
+<Template>增长      <ParamName>: <Align=20><Font=06><ParamVal><Font=06>
+价格:                   <Align=20><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+
+第三代植入物的第三十次
+发布。
+
+<implant_standfirm_female>
+<Font=04>SPMG-3 30-235
+SPMG3 30-235"终焉-F"增强器
+<split>
+<Font=06>
+<Template>增长      <ParamName>: <Align=20><Font=06><ParamVal><Font=06>
+价格:                   <Align=20><Font=06><Cost><Font=06>
+<split>
+<Font=04>
+
+第三代植入物的第三十次
+发布。
+
+<Obj_carkey>
+<Font=04>Car keys
+汽 车 钥 匙
+<split>
+<split>
+<Font=04>
+军用悍马车钥匙
+
+<sm_rgd5>
+<Font=04>GRANATE RGD-5
+RGD-5 高 爆 手 雷
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+此物属于进攻型破片杀伤
+手榴弹，采用远程触发式
+作用方式。
+
+<saw>
+<Font=04>"Doom Slayer" Chainsaw
+『毁灭战士之锯』
+<split>
+<Font=06>
+伤害:         <Align=18><Font=06><Damage><Font=06>
+精准:       <Align=18><Font=06><Wp_acc><Font=06>
+价格:           <Align=18><Font=06><Cost>
+<split>
+<Font=04>
+射速:极速++
+范围:33
+
+用于建筑工作、砍伐树木
+、修剪枝条，以及清除区
+域恶魔活动迹象的工具。
