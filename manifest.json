@@ -1,5 +1,5 @@
 {
-  "version": "2026.07.15.1646",
+  "version": "2026.07.15.1647",
   "base": "Gamedata",
   "files": [
     {
@@ -26,6 +26,11 @@
       "path": "sounds/speech/zdz9-3.ogg",
       "md5": "fe009a773b95bb1d364880a0a1ebd378",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/zdz9-3.ogg"
+    },
+    {
+      "path": "maps/mainmenu.lgd",
+      "md5": "fc346a73c1e83f2572744ef739dd0686",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/mainmenu.lgd"
     },
     {
       "path": "maps/compaign/level_09.lgd",
