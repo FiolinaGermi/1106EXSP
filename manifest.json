@@ -1,5 +1,5 @@
 {
-  "version": "2026.07.15.1622",
+  "version": "2026.07.15.1645",
   "base": "Gamedata",
   "files": [
     {
@@ -46,6 +46,11 @@
       "path": "db/plugins/uid_reset.cp313-win_amd64.pyd",
       "md5": "bea9bcd19350ac30b67caf1bcf829a21",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/plugins/uid_reset.cp313-win_amd64.pyd"
+    },
+    {
+      "path": "db/plugins/1106phb.pyd",
+      "md5": "cf12be845ebeba7ba66f8a6d95a749d9",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/plugins/1106phb.pyd"
     },
     {
       "path": "text/Weapon.txt",
