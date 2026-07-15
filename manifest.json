@@ -1,5 +1,5 @@
 {
-  "version": "2026.07.13.1648",
+  "version": "2026.07.15.1306",
   "base": "Gamedata",
   "files": [
     {
@@ -56,6 +56,11 @@
       "path": "text/dialogs.txt",
       "md5": "dbeb3dc56d48d0be6124f744c199cbb9",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/dialogs.txt"
+    },
+    {
+      "path": "maps/compaign/Level_02.map",
+      "md5": "dd89e5d4e51e2f757e62c411a58a5455",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_02.map"
     },
     {
       "path": "maps/compaign/Level_01.map",
