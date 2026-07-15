@@ -1,0 +1,1059 @@
+#include "gamedata\scripts\common\common.lgc"
+
+
+#ifndef UTIL_CHARSELECT_H
+    #include "gamedata\scripts\util\util_charselect.lgc"
+#endif
+
+#ifndef UTIL_BRIEFING_H
+    #include "gamedata\scripts\util\util_briefing.lgc"
+#endif
+
+#ifndef UTIL_PROFILESEL_H
+    #include "gamedata\scripts\util\util_profilesel.lgc"
+#endif
+
+#ifndef UTIL_MEN_CONTINUE_H
+    #include "gamedata\scripts\util\util_men_continue.lgc"
+#endif
+
+
+//------------------------------------------------------------------------------------------
+#define TIME_FOR_DEFAULT_PLAY 300000
+
+
+#define HERO_SPRITE_X           -120
+#define HERO_SPRITE_Y           -140
+
+//------------------------------------------------------------------------------------------
+int PrevMenuStateMM = 0;//
+static int    StartMainMenuTime;
+
+static int    LastKeyTime = 0;
+static int    EnterNameOn = 0;
+static string OldName;
+//static string SaveName[ MAX_SAVE ];
+//static string LoadMapName = "gamedata\\scripts\\shop.map";
+
+static int EditedName = 0;
+
+//for cusor blinking
+static int LastBlinkTime = 0;
+
+//
+static bool gbCanAnimateBtns = false;
+static bool gbMustCreate792 = false;
+static int g_792_X = 0;
+static int g_792_Y = 0;
+static int g_792_Z = 0;
+
+//------------------------------------------------------------------------------------------
+ChangeMenuState( int new_menu_type )
+{
+    PrevMenuStateMM = MenuStateMM;
+    MenuStateMM = new_menu_type;
+    //
+    Effect( EFF_FADE, 0, 0, FADE_GAME_TIME );
+    StartEffectTime = GetTime();
+    //LoadMapName = "gamedata\\scripts\\shop.map";
+}
+
+
+//------------------------------------------------------------------------------------------
+//return true if mouse was cliked in the "enter profil name" area
+MouseWasClikedToEnterTheName()
+{
+    int x, y, center_x, center_y;
+
+    x = GetInputAction(IA_SCREEN_MOUSE_X);
+    y = GetInputAction(IA_SCREEN_MOUSE_Y);
+
+    center_x = ScreenX() / 2;
+    center_y = ScreenY() / 2;
+
+    center_y -= 100;
+
+    int left, top, right, bottom;
+    left    = center_x - 170;
+    right   = center_x + 170;
+    top     = center_y - 17;
+    bottom  = center_y + 17;
+
+    int ret = 0;
+
+    if( x >= left && x <= right && y >= top && y <= bottom )
+        ret = 1;
+
+    return ret;
+}
+
+
+//-----------------------------------------------------------------------------------------
+LoadPlayer(string name)
+{
+}
+
+
+//------------------------------------------------------------------------------------------
+DisableOrEnableHeroDialog( int action )
+{
+/*  MenuAction( 719, 999999, action );
+    MenuAction( 716, 999999, action );
+    MenuAction( 717, 999999, action );
+    MenuAction( 714, 999999, action );
+    MenuAction( 718, 999999, action );
+
+    //main skills
+    MenuAction( 712, 999999, action );
+
+    //additional skills
+    MenuAction( 713, 999999, action );*/
+}
+
+
+//------------------------------------------------------------------------------------------
+GetClickedState( int btn )
+{
+    int ret = -1;
+    //
+    if( btn && !gbMsgDlg)
+    {
+        if( btn == MenuFindNamed( "GOTO_CAMPAIGN" ) )
+		{
+        	if(!MOD_BASE_DISABLE || ALLOW_SINGLEPLAYER_MODE)
+	            ret = MENU_PERKSCREEN;
+			else
+	            CreateTip(TIP_DEMOVERSION);
+			
+			Exec("Gamedata\\db\\player.exe");
+		}
+        else
+        if( btn == MenuFindNamed( "GOTO_OPTIONS" ) )
+            ret = MENU_OPTIONS;
+        else
+        if( btn == MenuFindNamed( "GOTO_CREDITS" ) )
+            ret = MENU_CREDITS;
+        else
+        if( btn == MenuFindNamed( "GOTO_EXIT" ) )
+            //ret = MENU_EXIT; // ��� �������������, ������ ����������� ������
+			ShowMessageDlg(MD_EXIT, "Confirm_Exit");
+			//Exec("Gamedata\\db\\phb.exe"); // phb.exe - 预留			
+        else
+        if( btn == MenuFindNamed( "GOTO_PROFSEL" ) )
+            ret = MENU_PROFILESEL;
+        else
+        if( btn == MenuFindNamed( "GOTO_MULTIPLAYER" ) )
+        {
+        	if(!Z_DEMO_VER || Z_ALLOW_MULTIPLAYER_INDEMO)
+	            ret = MENU_MULTIPLAYER;
+			else
+	            CreateTip(TIP_NOTINDEMO);
+		}
+        else
+        if( btn == MenuFindNamed( "GOTO_SURVIVE" ) )
+		{
+        	if(!MOD_BASE_DISABLE || ALLOW_SURVIVE_BUTTON)
+	            ret = MENU_SURVIVE;
+			else
+	            CreateTip(TIP_NOTINBETA);
+		}
+        else
+		if( btn == MenuFindNamed( "GOTO_SURVIVE_DLC" ) )
+		{
+        	if(!MOD_BASE_DISABLE || ALLOW_SURVIVE_BUTTON)
+	            ret = MENU_SURVIVE_DLC;
+			else
+	            CreateTip(TIP_NOTINBETA);
+		}
+        else
+        if( btn == MenuFindNamed( "GOTO_HALLOFFAME" ) )
+            ret = MENU_FAME;
+		else
+		if( btn == MenuFindNamed( "GOTO_PATCHNOTES" ) )
+            ret = MENU_PATCHNOTES;
+		
+    }
+    //
+    return ret;
+}
+
+
+//------------------------------------------------------------------------------------------
+ShowEditedName()
+{
+    if( !EditedName )
+        EditedName = MenuFindNamed( "PERK_PlayerName" );
+    //
+    string text = GetCurUserName();
+    //
+    if( EnterNameOn )
+    {
+        //process blinking
+        if( GetTime() - LastBlinkTime < 500 )
+            text += "_";
+        else
+        if( GetTime() - LastBlinkTime < 900 )
+            ;
+        else
+            LastBlinkTime = GetTime();
+    }
+    //
+    if( EditedName )
+        Action( EditedName, ACT_SET_TEXT, &text );
+}
+
+
+//------------------------------------------------------------------------------------------
+static bool gbNewGameMen = false;
+//���������� true, ���� ����� ��� �����
+ProcessNewGame()
+{
+    int iCurProf = SendCommand(EXT_GetCurProf);
+    int iMaxLevNum = SendCommand(EXT_GetMaxLevNum, iCurProf, 0);
+    //���������, ����� ����� ��� �����
+    if(!gbNewGameMen && iMaxLevNum <= Z_FIRST_LEVEL_NUM )
+        return false;
+    //
+    if(!gbNewGameMen )
+    {
+        //
+        MenuLoad("gamedata\\men\\continue.men");
+        gbNewGameMen = true;
+        //
+        ShowCharScreen( CS_SHOPSMALL, true );
+        //
+        ContinueMenTact(true);
+    }
+    else
+    {
+    	ContinueMenTact(false);
+    	//
+        bool bRelease = false;
+        if( MenuLClick() == MenuFindNamed( "NGAME_CLOSE" ) || GetKey() == VK_ESCAPE)
+            bRelease = true;
+        else
+        if( MenuLClick() == MenuFindNamed( "NGAME_NEW" ) )
+        {
+            ShowMessageDlg(MD_NEWGAME, "Confirm_NewGame2","Confirm_NewGame1","Confirm_NewGame3");
+        }
+        else
+        if( MenuLClick() == MenuFindNamed( "NGAME_CONTINUE" ) || GetKey() == VK_RETURN)
+        {
+            Pause(0);
+            if( CM_GetSelLevel() > 0 )
+	            GoFromMapWithFade( GetLevelName(CM_GetSelLevel(), false) );
+        }
+        //
+        if(bRelease)
+        {
+            MenuRelease("gamedata\\men\\continue.men");
+            int spr = MenuFind(725);
+            if(spr)
+            	Destroy(spr);
+            gbNewGameMen = false;
+            ShowCharScreen( CS_SHOPSMALL, false );
+        }
+    }
+    return true;
+}
+
+
+static int saMMBtnTimes[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+//------------------------------------------------------------------------------------------
+F793_14(int unit)
+{
+	if(!gbCanAnimateBtns)
+		return;
+	//
+	int dd = 0;
+    int i;
+	for(i = 0; i < 8; i++)
+	{
+		int spr = GetSprByVid(3730+i);
+		if(spr)
+		{
+			saMMBtnTimes[i] = GetTime() + dd;
+			dd += 100;
+		}
+	}
+	gbCanAnimateBtns = false;
+}
+
+
+//------------------------------------------------------------------------------------------
+MMButtonsTact()
+{
+	if(gbMustCreate792 && MenuStateMM != MENU_PROFILECREATE)
+	{
+		CreateSprite(792, g_792_X, g_792_Y, g_792_Z);
+		gbMustCreate792 = false;
+		return;
+	}
+	//
+	int i;
+	for(i = 0; i < 8; i++)
+	{
+		if(saMMBtnTimes[i] && GetTime() >= saMMBtnTimes[i])
+		{
+			saMMBtnTimes[i] = 0;
+			int spr = GetSprByVid(3730+i);
+			Action(spr, ACT_SET_INVISIBLE, 0);
+			Action(spr, ANI_BIRTH);
+		}
+	}
+}
+
+// romalu86 - Random menu backgrounds
+static int Random_Menu_Backgrounds[] = {3900, 3901, 3902, 3903};
+
+RandomizeMenu(int unit)
+{
+	int cnt = sizeof(Random_Menu_Backgrounds)/4;
+	int r = Random_(cnt-1);
+	if( GetVidData(Random_Menu_Backgrounds[r], VID_EXIST))
+		Action(unit, ACT_CHANGE_VID, Random_Menu_Backgrounds[r]);
+}
+
+// ������ ��� ����� ��� �����������.
+F704_14(int unit) 
+{
+	RandomizeMenu(unit);
+}
+
+//
+
+//------------------------------------------------------------------------------------------
+MainMenuBaseLoad()
+{
+    SetMapTypeEx( MAP_TYPE_MAINMENU, "" );
+	//Exec( GetString( "strings", "DiscordRPC") ); // "����������" � ���������
+	// if(ScreenX() == 1920)
+    	// MenuLoad("gamedata\\men\\mainmenu1920.men");  // �� ���������
+	// else
+    // if(ScreenX() == 800)
+    	// MenuLoad("gamedata\\men\\mainmenu800.men");
+	// else
+		MenuLoad("gamedata\\men\\mod\\ui\\mainmenu\\mainmenu_"+itoa(ScreenX())+"x"+itoa(ScreenY())+".men"); // ��� ������ ���������� ���� ��� ����
+/*     string date  = GetDateTimeString();
+    int    day   = StrSubStr(date, 8, 9);
+    int    month = StrSubStr(date, 5, 6);
+    if ( (month == 12 && day >= 25) || (month == 1 && day <= 7) )
+    {
+        Action(MenuFind(704), ACT_CHANGE_VID, 2255);
+//        SetEnvironment(ENV_SNOW);
+    }    */         
+    ChangePlName();
+    //
+	gbCanAnimateBtns = false;
+	
+	if(!gbCanAnimateBtns)
+		return;
+	//
+	gbCanAnimateBtns = false;	
+	
+    int i;
+	int dd = 0;
+	for(i = 0; i < 8; i++)
+	{
+		int spr = GetSprByVid(3730+i);
+		if(spr)
+		{
+			saMMBtnTimes[i] = GetTime() + dd;
+			dd += 100;		
+			if(gbCanAnimateBtns)
+			{
+				Action(spr, ACT_SET_INVISIBLE, 1);
+				Action(spr, ANI_MENUDISABLE);
+			}
+			else
+			{
+				Action(spr, ANI_MENUSTAND);
+			}
+		}
+	}
+	//
+	
+	/*
+	int spr = GetSprByVid(792);
+	if(spr && (!gbCanAnimateBtns || MenuStateMM == MENU_PROFILECREATE))
+	{
+		g_792_X = ToScreenX(GetX(spr));
+		g_792_Y = ToScreenY(GetY(spr), GetZ(spr));
+		g_792_Z = GetZ(spr);
+		if(MenuStateMM != MENU_PROFILECREATE)
+			CreateSprite(793, g_792_X, g_792_Y, g_792_Z);
+		else
+			gbMustCreate792 = true;
+		Destroy(spr);
+	}
+	/**/
+}
+
+
+
+static bool CreateMenOnNext = false;
+//------------------------------------------------------------------------------------------
+GoToMenuState( int iNewState )
+{
+    PrevMenuStateMM = MenuStateMM;
+    MenuStateMM = iNewState;
+    CreateMenOnNext = true;
+}
+
+
+//------------------------------------------------------------------------------------------
+main()
+{
+	InitStatIfNeeded();
+    CommonTact();
+    DelTipIfNeed();
+    MMButtonsTact();
+    //
+    int menu, i;
+    iff( 1 )
+    {
+        StartMainMenuTime = GetTime();
+    	//*zm2006Mar27 - ��������� ������ - ����������� �� common.lgc
+		//NetProperty(NET_GAME_END);
+		NetProperty(NET_DISCONNECT);
+		NetProperty(NET_NETWORK_OFF);
+    	//
+        SendCommand(EXT_SetMainMenu);
+        InitializeConstants();
+        AssignNeededValues(true);
+        SetScrollType( SCROLL_NONE );
+        LastKeyTime = GetTime();
+        SetCursor(CURSOR_NORMAL);
+        PlayMusic( MUSIC_MENU, LOOP_TYPE_ENDLESS );
+        //
+        ProfileInitLoad();
+        if( !gbShowProfSelOnLoad )
+            ChangeMenuState(MENU_MAIN);
+        else
+            ChangeMenuState(MENU_PROFILECREATE);
+        //
+        SetVidData(705,VID_GAMMA+1,0x7f7f7f);
+        SetMapTypeEx( MAP_TYPE_UNKNOWN, "" );
+		//
+		gbCanAnimateBtns = GetGlobValI("MM_CanAnimateBtns", 1);
+		SetGlobValI("MM_CanAnimateBtns", 0);
+        //if( Z_DEBUG )
+        //  ChangeMenuState(MENU_PERKSCREEN);
+    }
+    static int siFameToShow = -1;
+    //----------------------------------------------
+	if(i = GetGlobValI("bShowHallOfFame", 0 ))
+	{
+		SetGlobValI( "bShowHallOfFame", 0 );
+		siFameToShow = i-1;
+		ChangeMenuState(MENU_FAME);
+	}
+
+    //
+    if(Z_DEBUG)
+    {
+        CheatsTact();
+    }
+    //
+    if(ControlGoFromMapWithFade())
+        return;
+
+    //----------------------------------------------
+    if(gbMsgDlg && giMsgDlgType != MD_CLEARHALL || gbNewGameMen)
+    {
+        if(gbMsgDlg)
+        {
+            int NewGame = MessageDlgTact();
+            //
+            if(NewGame)
+            {
+                if(MenuStateMM==MENU_SURVIVE)
+                {
+                    GoToSurviveNewGame2(0);
+                }
+                else
+                {
+                    ChangeMenuState( MENU_PERKSCREEN );
+                    gbNewGameMen = false;
+                }
+            }
+        }
+        else
+        if(gbNewGameMen)
+            ProcessNewGame();
+        return;
+    }
+    //----------------------------------------------
+	bool bShowMenCont = GetGlobValI( "bShowMenContOnMainMenu", 0 );
+	if(bShowMenCont && StartEffectTime == 0)
+	{
+		SetGlobValI( "bShowMenContOnMainMenu", 0 );
+		ProcessNewGame();
+	}
+
+
+    //----------------------------------------------
+    //*zm2006Aug01
+	if( MenuStateMM!=MENU_SURVIVE )
+		SendCommand(EXT_SwitchHeroCS, false);
+		
+	//romalu86
+	if( MenuStateMM!=MENU_SURVIVE_DLC )
+		SendCommand(EXT_SwitchHeroCS, false);
+    //----------------------------------------------
+    if( MenuStateMM == MENU_PROFILECREATE )//�������� �������
+    {
+        //���� � logo ������ ����� ����
+        if( StartEffectTime && (GetTime()-StartEffectTime) > FADE_GAME_TIME/2 )
+        {
+            StartEffectTime = 0;
+            MainMenuBaseLoad();
+            ProfileInitLoad(true);
+            MenuLoadCrNP();
+			
+			// ��������� ��������� ���� ��������� ������ ��� ����.
+			if (!MOD_BASE_DISABLE || BETA_LOGO_DISABLE) //beta logo
+            Destroy(MenuFind(906));
+			//
+			if (!MOD_BASE_DISABLE || DLC_CONTENT_DISABLE) //DLC Button
+            Destroy(MenuFind(4094));
+			//
+			if (!MOD_BASE_DISABLE || NEW_CONTENT_AVAILABLE_DISABLE) //Notification 
+            Destroy(MenuFind(28));
+			
+        }
+        //
+        if( !StartEffectTime )
+        {
+            if( CreateMenOnNext )//���� ������ �� � logo, � ����� ������
+            {
+                CreateMenOnNext = false;
+                MenuLoadCrNP();
+                ProfileInitLoad(true);
+            }
+            if( /*!gbMsgDlg &&*/ !ProfCrtTact() )
+            {
+                MenuReleaseCrNP();
+                ProfileOnClose();
+                //ChangeMenuState( MENU_MAIN );
+                if( PrevMenuStateMM == MENU_PROFILESEL )
+                    MenuStateMM = MENU_PROFILESEL;
+                else
+                {
+                    MenuStateMM = MENU_MAIN;
+                    ChangePlName();
+                }
+            }
+        }
+    }
+    else
+    if( MenuStateMM == MENU_PROFILESEL )//����� �������
+    {
+        //���� � logo ������ ����� ����
+        if( StartEffectTime && (GetTime()-StartEffectTime) > FADE_GAME_TIME/2 )
+        {
+            StartEffectTime = 0;
+            MainMenuBaseLoad();
+            LoadProfMen();
+            ProfileInitLoad(true);
+        }
+        //
+        if( !StartEffectTime )
+        {
+            if( CreateMenOnNext )//���� ������ �� � logo, � ����� ������
+            {
+                CreateMenOnNext = false;
+                LoadProfMen();
+                ProfileInitLoad(true);
+            }
+            if( !gbMsgDlg && !ProfileSelTact() )
+            {
+                PrepProfileSelForDel();
+                MenuRelease("gamedata\\men\\createprofile.men");
+                ProfileOnClose();
+                //ChangeMenuState( MENU_MAIN );
+                MenuStateMM = MENU_MAIN;
+            }
+        }
+    }
+    else
+    if( MenuStateMM == MENU_MAIN )//basemenu
+    {
+        if( StartEffectTime && (GetTime()-StartEffectTime) > FADE_GAME_TIME/2 )
+        {
+            StartEffectTime = 0;
+            HideOptionsMenu();
+			Pause(0); // ������� ����� � ����
+            MenuRelease();
+            MainMenuBaseLoad();
+			
+			if (!MOD_BASE_DISABLE || BETA_LOGO_DISABLE) //beta logo
+            Destroy(MenuFind(906));
+			//
+			if (!MOD_BASE_DISABLE || DLC_CONTENT_DISABLE) //DLC Button
+            Destroy(MenuFind(4094));
+			//
+			if (!MOD_BASE_DISABLE || NEW_CONTENT_AVAILABLE_DISABLE) //Notification 
+            Destroy(MenuFind(28));
+			
+        }
+        int NextState = -1;
+        int btn;
+        if( ( btn = MenuLClick() )
+        	 && (MenuNVidUnderCursor()==705 || (MenuNVidUnderCursor() >= 43 && MenuNVidUnderCursor() <= 4096)) ) //������� ����� �� ������ � ����. ������������ � �������������!
+        {
+            NextState = GetClickedState( btn );
+            //
+            if( NextState == MENU_PROFILESEL )
+            {
+                MenuStateMM = MENU_PROFILESEL;
+                CreateMenOnNext = true;
+                NextState = -1;
+            }
+        }
+        // if( GetKey()==' ' || GetKey()==VK_RETURN )
+            // NextState = MENU_PERKSCREEN;
+        if( GetKey()==VK_ESCAPE && (GetTime() - StartMainMenuTime) > 2000 )
+            //NextState = MENU_EXIT;
+		ShowMessageDlg(MD_EXIT, "Confirm_Exit");
+        //
+        if( NextState == MENU_PERKSCREEN )
+        {
+            if( ProcessNewGame() )
+                NextState = -1;
+        }
+        //
+        if( !gbMsgDlg && NextState >= 0 )
+            ChangeMenuState( NextState );
+    }
+    else
+    if( MenuStateMM == MENU_CONTINUE )//Continue
+    {
+        if( StartEffectTime && GetEffectState(EFF_FADE) > 45 )
+        {
+            StartEffectTime = 0;
+            MenuRelease();
+            MenuLoad("gamedata\\men\\load.men");
+        }
+        if( !gbMsgDlg && GetKey()==VK_ESCAPE )
+            ChangeMenuState(MENU_MAIN);
+        else
+        if( !gbMsgDlg && MenuLClick() && MenuNVidUnderCursor() == 705 )
+        {
+            if( MenuNDirUnderCursor()==9 )
+                ChangeMenuState(MENU_MAIN);
+        }
+    }
+    else
+    if( MenuStateMM==MENU_PERKSCREEN )//Perk
+    {
+        if( StartEffectTime && GetEffectState(EFF_FADE) > 45 )
+        {
+            StartEffectTime = 0;
+            MenuRelease();
+            MenuLoad( "gamedata\\men\\perk.men" );
+            ShowEditedName();
+            //
+            SendCommandA(-1, EXT_SetPlayerMenuType, 0);
+            SendCommandA(-1, EXT_SETPERKSKILL, RPGHERO_PERK_HEALING );
+            SetMapTypeEx( MAP_TYPE_PERKSELECT, "" );
+            GetUserName();
+        }
+        if  (   MenuLClick() && ( MenuNVidUnderCursor()==718 ) 
+                ||
+                ( GetKey()==VK_ESCAPE || GetKey()==VK_RETURN || GetKey()==' ') && !EnterNameOn
+            )
+        {
+            //goto hero-edit screen
+            SaveLastProfAndLoadLevs();
+
+            EnterNameOn = 0;
+            MenuRelease();
+            MenuLoad("gamedata\\men\\createplayer.men");
+            ShowCharScreen( CS_CHARSELECT, 1 );
+            FindCharSelectBtn();
+            SendCommandA(-1, EXT_SetPlayerMenuType, 0);
+            SetMapTypeEx( MAP_TYPE_PLAYERMENU, "" );
+
+            //ChangeMenuState(MENU_PLAY);
+
+            MenuStateMM = MENU_PLAY;
+            StartEffectTime = GetTime();
+        }
+
+        if( !EnterNameOn )
+        {
+            //zmNEW 2005Sep02 - ������ �� ����������� ��� � ���� ������ ������
+            /*if( GetInputAction(IM_LBUTTONCLICK) && MouseWasClikedToEnterTheName() )
+            {
+                EnterNameOn = 1;
+                OldName = PlayerName;
+                LastBlinkTime = GetTime();
+            }*/
+        }
+        else
+        {// ���� ����� ������ � ��������
+            /*if( GetKey()==VK_BACK && strlen( PlayerName ) > 0 )
+                PlayerName[ strlen( PlayerName ) - 1 ] = 0;
+            else
+            if  ( GetKey()==VK_RETURN || GetInputAction(IM_LBUTTONCLICK) && !MouseWasClikedToEnterTheName() )
+            {
+                EnterNameOn = 0;
+            }
+            else
+            if( GetKey()==VK_ESCAPE )
+            {
+                EnterNameOn = 0;
+                PlayerName = OldName;
+            }
+            else
+            if  (   strlen( PlayerName ) < PLAYER_NAME_MAX_LEN &&
+                    (       IsAlpha( GetKey() )
+                        ||  GetKey() >= '0' && GetKey() <= '9'
+                        ||  GetKey() == '_'
+                    )
+                )
+            {
+                PlayerName += Printf( "%c", GetKey() );
+            }
+            else
+            if( KeyIsIncorrect( GetKey() ) )
+            {
+                PlaySFX(46);//������ �������� �������
+            }*/
+        }
+        ShowEditedName();
+    }
+    else
+    if( MenuStateMM == MENU_PLAY )//Play
+    {
+        if( StartEffectTime && PrevMenuStateMM == MENU_BRIEFING && GetEffectState(EFF_FADE) > 45 )
+        {
+            MenuRelease();
+            MenuLoad("gamedata\\men\\createplayer.men");
+            ShowCharScreen( CS_CHARSELECT, 1 );
+            FindCharSelectBtn();
+            SendCommandA(-1, EXT_SetPlayerMenuType, 0);
+            SetMapTypeEx( MAP_TYPE_PLAYERMENU, "" );
+            PrevMenuStateMM = 0;
+        }
+
+        if( StartEffectTime && PrevMenuStateMM != MENU_BRIEFING )
+        {
+            StartEffectTime = 0;
+            //
+            GetUserName();
+            CreateHeroSprite( HERO_SPRITE_X, HERO_SPRITE_Y );
+        }
+
+        HeroSpriteTact();
+        CharScreenTact();
+        ControlCharSelect();
+        DelTipIfNeed();
+
+        //
+        int btn = MenuLClick();
+
+        if( btn && GetVid( btn ) == 718 && ( ToScreenX(GetX( btn ) ) > ScreenX() / 2 )
+            || GetKey()==' ' || GetKey()==VK_RETURN )
+        {
+            if( SendCommand( EXT_GETSKILL, CurHeroID, RPGHERO_DISABLED ) )
+            {
+                SendCommandA(-1, EXT_FIRSTHERO );
+            }
+            else
+            {
+                //zmNEW 2005Nob10. ����� �������� �������������� �����, ��� ����
+                //���� ���� ��������
+                int val = SendCommand( EXT_GETSKILL, CurHeroID, RPGHERO_SKILLSTOADD );
+                if( !DelMouseTip && val > 0 )   //������� ����������� ���� ����
+                    CreateTip(TIP_ADDSKILLS);
+                else                //� ����� ��� ������ �� �������
+                {
+                    ChangeMenuState( MENU_BRIEFING );
+                    DeleteHeroSprite();
+                }
+            }
+        }
+        else
+        if( btn && GetVid( btn ) == 718 || GetKey()==VK_ESCAPE )
+        {
+            ChangeMenuState( MENU_MAIN );
+            DeleteHeroSprite();
+        }
+    }
+    else
+    if( MenuStateMM == MENU_OPTIONS )//Options
+    {
+        if( StartEffectTime && GetEffectState(EFF_FADE) > 45 )
+        {
+            StartEffectTime = 0;
+            CreateOptionsMenu( MT_LASTMENU );
+			Pause(0); // ������� ����� � ����
+        }
+        //      
+        TactOptionsMenu();
+		Pause(0); // ������� ����� � ����
+        //
+        if( MustHideOptionsMenu() )
+            ChangeMenuState( MENU_MAIN );
+    }
+    else
+    if( MenuStateMM==MENU_FAME )//Hall of Fame
+    {
+        if( StartEffectTime && GetEffectState(EFF_FADE) > 45 )
+        {
+            StartEffectTime = 0;
+            ShowFame(siFameToShow);
+        }
+        if(HallOfFameTact())
+        	ChangeMenuState(MENU_MAIN);
+    }
+    else
+    if( MenuStateMM==MENU_CREDITS )//Credits
+    {
+        if( StartEffectTime && GetEffectState(EFF_FADE) > 44 )
+        {
+            StartEffectTime = 0;
+            MenuRelease();
+            MenuLoad("gamedata\\men\\credits.men");
+        }
+        if( GetInputAction(IA_ANY_KEY) )
+            ChangeMenuState(MENU_MAIN);
+    }
+    else
+    if( MenuStateMM==MENU_PATCHNOTES )//���������
+    {
+        if( StartEffectTime && GetEffectState(EFF_FADE) > 44 )
+        {
+            StartEffectTime = 0;
+            MenuRelease();
+            MenuLoad("gamedata\\men\\mod\\ui\\patch_notes.men");
+        }
+        if( GetInputAction(IA_ANY_KEY) )
+            ChangeMenuState(MENU_MAIN);
+    }
+    else	
+//������� ������ �������� � ������ �����		
+/*     if( MenuStateMM==MENU_EXIT )//Quit
+    {
+        if( StartEffectTime && GetEffectState(EFF_FADE) > 45 )
+        {
+            StartEffectTime = 0;
+			ShowMessageDlg(MD_EXIT, "Confirm_Exit");
+		}
+		    if( MenuFindNamed( "CONFIRM_NO" ) )
+            ChangeMenuState(MENU_MAIN);
+	}
+
+    else */
+    if( MenuStateMM==MENU_COMPAIGN )//Compaign
+    {
+        if( StartEffectTime && GetEffectState(EFF_FADE) > 45 )
+        {
+            StartEffectTime = 0;
+            //
+            SendCommand( EXT_ResetAllQuests );  //zmNEW2005Oct18
+            //
+            if(!Z_SHOW_SHOP_AFTER_BRIEFING)
+	            SetLevelNumber( Z_FIRST_LEVEL_NUM, -1 );
+			else
+				SetLevelNumber( 0, -1 );
+			//
+            SendCommandA( -1, EXT_OnLevelWin ); //zmTEMP?
+
+            //Load("gamedata\\scripts\\shop.map");
+            //
+            LoadCurLevel();
+            LoadCurNextMap();
+        }
+    }
+    else
+    if( MenuStateMM==MENU_BRIEFING )//Brifing
+    {
+        if( StartEffectTime && GetEffectState(EFF_FADE) > 45 )
+        {
+            StartEffectTime = 0;
+            SetMapTypeEx( MAP_TYPE_BRIEFING, "" );
+            MenuRelease();
+            MenuLoad("gamedata\\men\\briefing.men");
+
+            //zmNew2005Oct06
+            //SetLevelNumber( 1, -1 );
+            
+        }
+        int btn;
+        if( btn = MenuLClick() )
+        {
+            if( MenuNVidUnderCursor()==718 )
+            {
+                int x;
+                x = ToScreenX( GetX( btn ) );
+                if( x > ScreenX() / 2 )
+                {
+                    ChangeMenuState(MENU_COMPAIGN);
+                    //set RPGHERO_SKILLSTOADD to zero
+                    SendCommandA(giCurArmy, EXT_SETSKILL, RPGHERO_SKILLSTOADD, 0 );
+                }
+                else
+                    ChangeMenuState(MENU_PLAY);//MENU_MAIN);
+            }
+        }
+        if( GetKey()==VK_ESCAPE )
+            ChangeMenuState(MENU_PLAY);//MENU_MAIN);
+        if( GetKey()==VK_RETURN )
+            ChangeMenuState( MENU_COMPAIGN );
+        BriefingTact(false);
+    }
+    else
+    if( MenuStateMM==MENU_SURVIVE )//Survive
+    {
+        if( StartEffectTime && GetEffectState(EFF_FADE) > 45 )
+        {
+            StartEffectTime = 0;
+            //
+            MenuRelease();
+            MenuLoad("gamedata\\men\\mod\\ui\\survive_menu\\createplayer_survive_"+itoa(ScreenX())+"x"+itoa(ScreenY())+".men"); // ��� ������ ���������� ���� ��� ����
+			//MenuLoad("gamedata\\men\\mod\\ui\\createplayer_survive.men");
+            ShowCharScreen( CS_CHARSELECT, 1 );
+            FindCharSelectBtn();
+            SendCommandA(-1, EXT_SETPERKSKILL, -1 );
+            SendCommandA(-1, EXT_SetPlayerMenuType, 1);
+            SetMapTypeEx( MAP_TYPE_PLAYERMENU, "" );
+            //
+            CreateHeroSprite( 10, -125 );
+        }
+
+        HeroSpriteTact();
+        CharScreenTact();
+        ControlCharSelect();
+
+        //
+        int btn = MenuLClick();
+
+        if( btn && GetVid( btn ) == 718 && ( ToScreenX(GetX( btn ) ) > ScreenX() / 2 ) )
+        {
+            GoToSurviveNewGame2(0);
+        }
+        else
+        if( btn && GetVid( btn ) == 718 || GetKey()==VK_ESCAPE )
+        {
+        	SendCommand(EXT_SwitchHeroCS, false);
+            ChangeMenuState( MENU_MAIN );
+            DeleteHeroSprite();
+        }
+    }
+    else
+	    if( MenuStateMM==MENU_SURVIVE_DLC )//Survive dlc maps
+    {
+        if( StartEffectTime && GetEffectState(EFF_FADE) > 45 )
+        {
+            StartEffectTime = 0;
+            //
+            MenuRelease();
+            //MenuLoad("gamedata\\men\\mod\\ui\\createplayer_survive_"+itoa(ScreenX())+"x"+itoa(ScreenY())+".men"); // ��� ������ ���������� ���� ��� ����
+			MenuLoad("gamedata\\men\\mod\\ui\\createplayer_survive_dlc.men");
+            ShowCharScreen( CS_CHARSELECT, 1 );
+            FindCharSelectBtn();
+            SendCommandA(-1, EXT_SETPERKSKILL, -1 );
+            SendCommandA(-1, EXT_SetPlayerMenuType, 1);
+            SetMapTypeEx( MAP_TYPE_PLAYERMENU, "" );
+            //
+            CreateHeroSprite( 125, -125 );
+        }
+
+        HeroSpriteTact();
+        CharScreenTact();
+        ControlCharSelect();
+
+        //
+        int btn = MenuLClick();
+
+        if( btn && GetVid( btn ) == 718 && ( ToScreenX(GetX( btn ) ) > ScreenX() / 2 ) )
+        {
+            GoToSurviveNewGame2(0);
+        }
+        else
+        if( btn && GetVid( btn ) == 718 || GetKey()==VK_ESCAPE )
+        {
+        	SendCommand(EXT_SwitchHeroCS, false);
+            ChangeMenuState( MENU_MAIN );
+            DeleteHeroSprite();
+        }
+    }
+    else
+    if( MenuStateMM==MENU_LOAD )//Load Compaign
+    {
+        if( StartEffectTime && GetEffectState(EFF_FADE) > 45 )
+        {
+            StartEffectTime = 0;
+            //Load(LoadMapName);
+        }
+    }
+    else
+    if( MenuStateMM==MENU_MULTIPLAYER )//Load Multiplayer
+    {
+        if( StartEffectTime && GetEffectState(EFF_FADE) > 45 )
+        {
+            StartEffectTime = 0;
+            MenuRelease();//zmnew 2005Apr28 - wit said do this to delete "loading" sprite
+            Load( "gamedata\\online\\netmenu.map" );// �� ���� ������ �.�. ���� fade ��� ���
+//            GoFromMapWithFade("gamedata\\scripts\\netmenu.map");
+        }
+    }
+
+    if ( GetKey() || MenuLClick() )
+        LastKeyTime = GetTime();
+    /*if ( (GetTime() - LastKeyTime) > TIME_FOR_DEFAULT_PLAY )
+    {
+        LastKeyTime = GetTime();
+        ChangeMenuState(MENU_LOAD);
+        LoadMapName = "demo" + itoa(Random2(1)) + ".dem";
+    }*/
+    /*if ( (GetKey() >= '0' && GetKey() <= '2') )
+    {
+        ChangeMenuState(MENU_LOAD);
+        LoadMapName = "demo" + itoa(GetKey() - '0') + ".dem";
+    }*/
+}
+
+
+//------------------------------------------------------------------------------------------
+//0 - career, 1 - standfirm, 2 - gunstand
+//3 - zombie, 4 - zombie, 5 - revisitied, 6 - revisitied
+GoToSurviveNewGame2(int iMode)
+{
+    DeleteHeroSprite();
+	//
+    int LevNum = 0;
+    if(iMode==1)
+        LevNum = SURV_LEV_STANDFIRM;
+    if(iMode==2)
+        LevNum = SURV_LEV_GUNSTAND;
+	if(iMode==3)
+		LevNum = SURV_LEV_STANDFIRM2;
+	if(iMode==4)
+		LevNum = SURV_LEV_GUNSTAND2;
+	if(iMode==5)
+		LevNum = SURV_LEV_STANDFIRM3;
+	if(iMode==6)
+		LevNum = SURV_LEV_GUNSTAND3;
+	if(iMode==7)
+		LevNum = SURV_LEV_STANDFIRM_SM_ZS;
+	if(iMode==8)
+		LevNum = SURV_LEV_STANDFIRM_SM_AS2;
+	if(iMode==9)
+		LevNum = SURV_LEV_STANDFIRM_SM_ASR;
+	if(iMode==10)
+		LevNum = SURV_LEV_STANDFIRM_DLC_1;
+	if(iMode==11)
+		LevNum = SURV_LEV_STANDFIRM_DLC_2;
+	if(iMode==12)
+		LevNum = SURV_LEV_STANDFIRM_DLC_3;
+	//
+	SetLevelNumber( -1, LevNum );
+	SendCommandA( -1, EXT_OnLevelWin, true );
+    //
+    GoFromMapWithFade( GetLevelName(LevNum, true) );
+}
+
