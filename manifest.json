@@ -28,11 +28,6 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/zdz9-2.ogg"
     },
     {
-      "path": "db/player.exe",
-      "md5": "aad3d196daf286bb560e8db034fd84d1",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/player.exe"
-    },
-    {
       "path": "db/weapon.db",
       "md5": "b64c07943cb8a2bee21f0f58bc369b40",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/weapon.db"
