@@ -53,6 +53,11 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/plugins/uid_reset.cp313-win_amd64.pyd"
     },
     {
+      "path": "db/plugins/1106phb.pyd",
+      "md5": "cf12be845ebeba7ba66f8a6d95a749d9",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/plugins/1106phb.pyd"
+    },
+    {
       "path": "text/Weapon.txt",
       "md5": "672a9ad7d04e5eed39f678ed9cbd670b",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/Weapon.txt"
