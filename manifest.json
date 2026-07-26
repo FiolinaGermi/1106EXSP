@@ -1,5 +1,5 @@
 {
-  "version": "2026.07.25.1354",
+  "version": "2026.07.26.0507",
   "base": "Gamedata",
   "files": [
     {
@@ -39,13 +39,18 @@
     },
     {
       "path": "db/player.exe",
-      "md5": "3ad59e803bf58a0eebc36804f4700cfe",
+      "md5": "d162926425333f9b6f8643790e292a81",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/player.exe"
     },
     {
       "path": "db/levels.db",
       "md5": "805cfd4433066fac3d071f75be52da8f",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/levels.db"
+    },
+    {
+      "path": "db/phb.exe",
+      "md5": "791e96e4063863f317dcb4b18e0604c8",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/phb.exe"
     },
     {
       "path": "db/ObjectsExtended.db",
