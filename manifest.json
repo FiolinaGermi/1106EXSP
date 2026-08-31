@@ -1,5 +1,5 @@
 {
-  "version": "2026.08.31.1557",
+  "version": "2026.08.31.1558",
   "base": "Gamedata",
   "files": [
     {
@@ -141,11 +141,6 @@
       "path": "sounds/speech/hdl11-3.ogg",
       "md5": "96382f04293aeac6d948a9f417abcbfb",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/hdl11-3.ogg"
-    },
-    {
-      "path": "sounds/speech/2",
-      "md5": "26ab0db90d72e28ad0ba1e22ee510510",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/2"
     },
     {
       "path": "sounds/speech/dlx11-4.ogg",
