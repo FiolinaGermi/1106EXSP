@@ -1,5 +1,5 @@
 {
-  "version": "2026.08.31.1559",
+  "version": "2026.08.31.1600",
   "base": "Gamedata",
   "files": [
     {
@@ -156,11 +156,6 @@
       "path": "sounds/as2/granade_luncher3.wav",
       "md5": "d0b3abe7c7c450815b5381e7545c8135",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/as2/granade_luncher3.wav"
-    },
-    {
-      "path": "sounds/as2/2",
-      "md5": "26ab0db90d72e28ad0ba1e22ee510510",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/as2/2"
     },
     {
       "path": "maps/22",
