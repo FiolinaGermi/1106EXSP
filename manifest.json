@@ -1,5 +1,5 @@
 {
-  "version": "2026.08.31.1555",
+  "version": "2026.08.31.1556",
   "base": "Gamedata",
   "files": [
     {
@@ -11,6 +11,11 @@
       "path": "text/dialogs.txt",
       "md5": "dbeb3dc56d48d0be6124f744c199cbb9",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/dialogs.txt"
+    },
+    {
+      "path": "sounds/speech/2",
+      "md5": "26ab0db90d72e28ad0ba1e22ee510510",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/2"
     },
     {
       "path": "maps/22",
