@@ -43,6 +43,11 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/22"
     },
     {
+      "path": "maps/compaign/22",
+      "md5": "b026324c6904b2a9cb4b88d6d61c81d1",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/22"
+    },
+    {
       "path": "db/levels.db",
       "md5": "3a1b07bb3f936122777511ede4a2ce04",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/levels.db"
