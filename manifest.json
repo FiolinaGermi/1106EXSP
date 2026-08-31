@@ -1,21 +1,21 @@
 {
-  "version": "2026.07.26.0507",
+  "version": "2026.08.31.1546",
   "base": "Gamedata",
   "files": [
     {
-      "path": "sounds/speech/zdz9-1.ogg",
-      "md5": "6b256103da334b2aff1fc73b62ff2bfe",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/zdz9-1.ogg"
+      "path": "text/Weapon.txt",
+      "md5": "672a9ad7d04e5eed39f678ed9cbd670b",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/Weapon.txt"
+    },
+    {
+      "path": "text/dialogs.txt",
+      "md5": "dbeb3dc56d48d0be6124f744c199cbb9",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/dialogs.txt"
     },
     {
       "path": "sounds/speech/zdz9-2.ogg",
       "md5": "2afe0f0c04b3b7916b97a2da4cb60eb5",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/zdz9-2.ogg"
-    },
-    {
-      "path": "sounds/speech/zyqsh9-5.ogg",
-      "md5": "e70ba476ffbaef4c714b5abef1400c0e",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/zyqsh9-5.ogg"
     },
     {
       "path": "sounds/speech/zyqsh9-4.ogg",
@@ -28,49 +28,14 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/zdz9-3.ogg"
     },
     {
-      "path": "text/Weapon.txt",
-      "md5": "672a9ad7d04e5eed39f678ed9cbd670b",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/Weapon.txt"
+      "path": "sounds/speech/zdz9-1.ogg",
+      "md5": "6b256103da334b2aff1fc73b62ff2bfe",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/zdz9-1.ogg"
     },
     {
-      "path": "text/dialogs.txt",
-      "md5": "dbeb3dc56d48d0be6124f744c199cbb9",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/dialogs.txt"
-    },
-    {
-      "path": "db/player.exe",
-      "md5": "d162926425333f9b6f8643790e292a81",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/player.exe"
-    },
-    {
-      "path": "db/levels.db",
-      "md5": "805cfd4433066fac3d071f75be52da8f",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/levels.db"
-    },
-    {
-      "path": "db/phb.exe",
-      "md5": "791e96e4063863f317dcb4b18e0604c8",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/phb.exe"
-    },
-    {
-      "path": "db/ObjectsExtended.db",
-      "md5": "072d25f36c9277c668b348cc487e2020",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/ObjectsExtended.db"
-    },
-    {
-      "path": "db/weapon.db",
-      "md5": "b64c07943cb8a2bee21f0f58bc369b40",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/weapon.db"
-    },
-    {
-      "path": "db/plugins/uid_reset.cp313-win_amd64.pyd",
-      "md5": "bea9bcd19350ac30b67caf1bcf829a21",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/plugins/uid_reset.cp313-win_amd64.pyd"
-    },
-    {
-      "path": "db/plugins/1106phb.pyd",
-      "md5": "cf12be845ebeba7ba66f8a6d95a749d9",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/plugins/1106phb.pyd"
+      "path": "sounds/speech/zyqsh9-5.ogg",
+      "md5": "e70ba476ffbaef4c714b5abef1400c0e",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/zyqsh9-5.ogg"
     },
     {
       "path": "maps/mainmenu.lgd",
@@ -78,39 +43,9 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/mainmenu.lgd"
     },
     {
-      "path": "maps/compaign/Level_01.map",
-      "md5": "dc3d59d0c21a33e0623b56bb02789c63",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_01.map"
-    },
-    {
-      "path": "maps/compaign/Level_06.map",
-      "md5": "38772bbf2d0468761a1a865e065019e1",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_06.map"
-    },
-    {
-      "path": "maps/compaign/Level_08.map",
-      "md5": "920b9c413fec96093f6384c150a59e92",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_08.map"
-    },
-    {
-      "path": "maps/compaign/level_09.lgd",
-      "md5": "be0a59bd245edeac3ab0faba7f80251a",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/level_09.lgd"
-    },
-    {
-      "path": "maps/compaign/Level_04.map",
-      "md5": "07ec75a6d37e3d7634fb5f77349291c6",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_04.map"
-    },
-    {
-      "path": "maps/compaign/Level_07.map",
-      "md5": "8d8fe6f34a5bfbaf744a58d82ef3ec4b",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_07.map"
-    },
-    {
-      "path": "maps/compaign/level_09.map",
-      "md5": "fe33fb5d1a07d7bc7546b35c75804168",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/level_09.map"
+      "path": "maps/compaign/Level_05.map",
+      "md5": "36c611366ccb1e1cbbf630555d92ac39",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_05.map"
     },
     {
       "path": "maps/compaign/Level_02.map",
@@ -118,9 +53,39 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_02.map"
     },
     {
-      "path": "maps/compaign/Level_05.map",
-      "md5": "36c611366ccb1e1cbbf630555d92ac39",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_05.map"
+      "path": "maps/compaign/Level_06.map",
+      "md5": "38772bbf2d0468761a1a865e065019e1",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_06.map"
+    },
+    {
+      "path": "maps/compaign/Level_07.map",
+      "md5": "8d8fe6f34a5bfbaf744a58d82ef3ec4b",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_07.map"
+    },
+    {
+      "path": "maps/compaign/Level_08.map",
+      "md5": "920b9c413fec96093f6384c150a59e92",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_08.map"
+    },
+    {
+      "path": "maps/compaign/Level_04.map",
+      "md5": "07ec75a6d37e3d7634fb5f77349291c6",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_04.map"
+    },
+    {
+      "path": "maps/compaign/Level_01.map",
+      "md5": "dc3d59d0c21a33e0623b56bb02789c63",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_01.map"
+    },
+    {
+      "path": "maps/compaign/level_09.lgd",
+      "md5": "be0a59bd245edeac3ab0faba7f80251a",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/level_09.lgd"
+    },
+    {
+      "path": "maps/compaign/level_09.map",
+      "md5": "fe33fb5d1a07d7bc7546b35c75804168",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/level_09.map"
     }
   ]
 }
