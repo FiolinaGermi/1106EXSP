@@ -1,5 +1,5 @@
 {
-  "version": "2026.08.31.1548",
+  "version": "2026.08.31.1549",
   "base": "Gamedata",
   "files": [
     {
@@ -36,6 +36,11 @@
       "path": "sounds/speech/zyqsh9-5.ogg",
       "md5": "e70ba476ffbaef4c714b5abef1400c0e",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/zyqsh9-5.ogg"
+    },
+    {
+      "path": "maps/22",
+      "md5": "b026324c6904b2a9cb4b88d6d61c81d1",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/22"
     },
     {
       "path": "db/levels.db",
