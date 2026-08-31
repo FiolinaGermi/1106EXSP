@@ -1,0 +1,176 @@
+#include "gamedata\scripts\common\common.lgc"
+#include "gamedata\scripts\common\common_compaign.lgc"
+#include "gamedata\maps\compaign\tlks.lgc"
+
+#define FAILURE_COUNTER           900 // 怵屐
+#define MISSION_FAILURE_COUNTER_Y 160  // 恹耦蜞 磬 觐蝾痤?痂皴蝰 聍弪麒?怵屐屙?
+
+static int EndQuest = 0;
+static int FailureMissionStartTime = 0;
+static int FailureMissionCounter = 0;
+static int FailureMissionPrevCounterSec = 0;
+
+main()
+{
+SetVidData(2042,VID_MAXHP,132000);
+SetVidData(2042,VID_RELOAD_TIME,15);
+SetVidData(2043,VID_BATTLERANGE,850);
+SetVidData(2043,VID_DETECTRANGE,850);
+SetVidData(2043,VID_AIM_RADIUS,20);
+SetVidData(2041,VID_DAMAGE_MIN,85);
+SetVidData(2041,VID_DAMAGE_MAX,85);
+SetVidData(2041,VID_DEATHRANGE,40);
+
+SetVidData(1155,VID_RELOAD_TIME,75);
+SetVidData(1155,VID_BATTLERANGE,580);
+SetVidData(1155,VID_DETECTRANGE,580);
+SetVidData(1155,VID_AIM_RADIUS,20);
+SetVidData(1402,VID_DAMAGE_MIN,120);
+SetVidData(1402,VID_DAMAGE_MAX,120);
+SetVidData(1402,VID_DEATHRANGE,40);
+
+SetVidData(1182,VID_RELOAD_TIME,50);
+SetVidData(1182,VID_BATTLERANGE,640);
+SetVidData(1182,VID_DETECTRANGE,640);
+SetVidData(1182,VID_AIM_RADIUS,20);
+SetVidData(1404,VID_DAMAGE_MIN,160);
+SetVidData(1404,VID_DAMAGE_MAX,160);
+SetVidData(1404,VID_DEATHRANGE,40);
+
+SetVidData(50,VID_MAXHP,100000);
+SetVidData(51,VID_MAXHP,100000);
+SetVidData(3411,VID_MAXHP,200000);
+SetVidData(3412,VID_MAXHP,200000);
+SetVidData(3416,VID_MAXHP,200000);
+SetVidData(3460,VID_MAXHP,200000);
+SetVidData(3452,VID_MAXHP,200000);
+SetVidData(3453,VID_MAXHP,200000);
+SetVidData(3412,VID_MAXHP,200000);
+if (GetCurResolution() == 11) {
+    // 2k（2560x1440） 数值
+SetVidData(2088,VID_BATTLERANGE,550);
+SetVidData(2090,VID_BATTLERANGE,550);
+SetVidData(2092,VID_BATTLERANGE,600);
+
+SetVidData(1021,VID_BATTLERANGE,530);
+SetVidData(1021,VID_AIM_RADIUS,20);
+SetVidData(1021,VID_RELOAD_TIME,120);
+
+SetVidData(1074,VID_BATTLERANGE,530);
+SetVidData(1074,VID_AIM_RADIUS,20);
+
+SetVidData(1042,VID_BATTLERANGE,530);
+SetVidData(1042,VID_AIM_RADIUS,20);
+SetVidData(1042,VID_RELOAD_TIME,120);
+
+SetVidData(1079,VID_BATTLERANGE,550);
+SetVidData(1079,VID_AIM_RADIUS,20);
+
+SetVidData(1077,VID_BATTLERANGE,550);
+SetVidData(1077,VID_AIM_RADIUS,20);
+
+SetVidData(1840,VID_BATTLERANGE,550);
+SetVidData(1840,VID_AIM_RADIUS,20);
+
+SetVidData(3408,VID_BATTLERANGE,600);
+
+SetVidData(3464,VID_BATTLERANGE,600);
+
+SetVidData(3465,VID_BATTLERANGE,600);
+
+} else {
+SetVidData(2088,VID_BATTLERANGE,450);
+SetVidData(2090,VID_BATTLERANGE,450);
+SetVidData(2092,VID_BATTLERANGE,500);
+
+SetVidData(1021,VID_BATTLERANGE,430);
+SetVidData(1021,VID_AIM_RADIUS,20);
+SetVidData(1021,VID_RELOAD_TIME,120);
+
+SetVidData(1074,VID_BATTLERANGE,430);
+SetVidData(1074,VID_AIM_RADIUS,20);
+
+SetVidData(1042,VID_BATTLERANGE,430);
+SetVidData(1042,VID_AIM_RADIUS,20);
+SetVidData(1042,VID_RELOAD_TIME,120);
+
+SetVidData(1079,VID_BATTLERANGE,450);
+SetVidData(1079,VID_AIM_RADIUS,20);
+
+SetVidData(1077,VID_BATTLERANGE,450);
+SetVidData(1077,VID_AIM_RADIUS,20);
+
+SetVidData(1840,VID_BATTLERANGE,450);
+SetVidData(1840,VID_AIM_RADIUS,20);
+
+SetVidData(3408,VID_BATTLERANGE,500);
+
+SetVidData(3464,VID_BATTLERANGE,500);
+
+SetVidData(3465,VID_BATTLERANGE,500);
+}
+
+  iff(1)
+  {
+    SetMapTypeEx( MAP_TYPE_LEVEL, "Level_01" );
+    InitGame();
+  // 初始化传送系统 想在哪关使用就加这一天
+    
+  // 例如：输入K Z L  (就是卡住了)
+    
+  //玩家会自我伤害？点，然后传送到鼠标距离-50单位的距离
+    
+  //InitTeleportSystem();  
+    //SetScrollBoxEx( 0 );
+  }
+  if( GameTact() )
+    return;
+
+  QuestsTact();
+  CompaignGameTact();
+// 更新传送系统
+  UpdateTeleportSystem();
+ 
+    //磬 磬鬣腩 赈羼蜞 1_53
+    iff( SendCommand( EXT_GETQUESTSSTATE, 0, 53, 1 ) & QS_BEGUN )
+    {// 蜞殪屦 磬 镳钼嚯 扈耨梃
+        FailureMissionStartTime = GetTime();
+    }
+    if ( FailureMissionStartTime )
+    {
+        int sec = FAILURE_COUNTER - (GetTime() - FailureMissionStartTime) / 1000;
+        if ( sec <= 0 )
+        {
+            FailureMissionStartTime = 0;
+            Destroy(FailureMissionCounter); FailureMissionCounter = 0;
+            GameState = GAME_MISSION_FAILED;
+            Effect( EFF_NUKE, 0xffffff, 0, 3000 );
+            PlaySFX(40);
+            EarthQuake(4000);
+        }
+        else if ( sec != FailureMissionPrevCounterSec )
+        {
+            FailureMissionPrevCounterSec = sec;
+            string str = itoa(sec / 60) + ":";
+            if ( (sec % 60) < 10 )
+                str += "0";
+            str += itoa(sec % 60);
+            if ( !FailureMissionCounter )
+                FailureMissionCounter = CreateText( 14, ScreenX() / 2, MISSION_FAILURE_COUNTER_Y, 0, str, BEH_CENTER );
+            else
+                Action(FailureMissionCounter, ACT_SET_TEXT, &str);
+        }
+    }
+    //磬 磬鬣腩 赈羼蜞 1_54
+    iff( SendCommand( EXT_GETQUESTSSTATE, 0, 54, 1 ) & QS_BEGUN )
+    {
+        FailureMissionStartTime = 0;
+        Destroy(FailureMissionCounter); FailureMissionCounter = 0;
+ }
+     
+           //iff( SizeTo(Flagman(0),2301,362) < 70 )
+  //{                               
+    //Win();
+  //}
+}
+
