@@ -4,12 +4,17 @@
   "files": [
     {
       "path": "text/Weapon.txt",
-      "md5": "672a9ad7d04e5eed39f678ed9cbd670b",
+      "md5": "115891bb44258ac617679a6ee1521ad9",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/Weapon.txt"
     },
     {
+      "path": "text/mission.txt",
+      "md5": "8df1395967238ff4dc62e77f9b75ed7a",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/mission.txt"
+    },
+    {
       "path": "text/dialogs.txt",
-      "md5": "dbeb3dc56d48d0be6124f744c199cbb9",
+      "md5": "939596206e1700282bf7b0c8fddde80d",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/dialogs.txt"
     },
     {
