@@ -1,5 +1,5 @@
 {
-  "version": "2026.08.31.1547",
+  "version": "2026.08.31.1548",
   "base": "Gamedata",
   "files": [
     {
@@ -91,11 +91,6 @@
       "path": "db/levels.db",
       "md5": "3a1b07bb3f936122777511ede4a2ce04",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/levels.db"
-    },
-    {
-      "path": "db/22",
-      "md5": "166d77ac1b46a1ec38aa35ab7e628ab5",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/22"
     },
     {
       "path": "db/weapon.db",
