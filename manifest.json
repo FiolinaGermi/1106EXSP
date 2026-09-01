@@ -1,5 +1,5 @@
 {
-  "version": "2026.08.31.1603",
+  "version": "2026.09.01.1316",
   "base": "Gamedata",
   "files": [
     {
@@ -199,7 +199,7 @@
     },
     {
       "path": "maps/compaign/Level_11.map",
-      "md5": "201c273d82afa9f68ee397d11f92b736",
+      "md5": "172279b0f3450c6e827c3fd4f12a96a1",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_11.map"
     },
     {
