@@ -1,5 +1,5 @@
 {
-  "version": "2026.09.12.0616",
+  "version": "2026.09.12.0619",
   "base": "Gamedata",
   "files": [
     {
@@ -181,11 +181,6 @@
       "path": "scripts/const/const_perks.lgc",
       "md5": "94f9f90847bc84d64602a2bceb015dae",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/scripts/const/const_perks.lgc"
-    },
-    {
-      "path": "maps/22",
-      "md5": "b026324c6904b2a9cb4b88d6d61c81d1",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/22"
     },
     {
       "path": "maps/compaign/22",
