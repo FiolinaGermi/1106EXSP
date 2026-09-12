@@ -1,0 +1,1350 @@
+#define MONSTERS_H  aaa
+//----------------------------------------------------------------------------
+//  @brief
+//        this file include procedures for working with monsters, their logic
+//        and reactions on different events
+
+//  @ingroup
+    
+//  (C) 2004    Sigma-Team
+//-----------------------------------------------------------------------------
+
+#ifndef UTIL_REDUCER_H
+    #include "gamedata\scripts\util\util_reducer.lgc"
+#endif
+
+#ifndef UTIL_FLAMETHROWER_H
+    #include "gamedata\scripts\util\util_flamethrower.lgc"
+#endif
+
+#ifndef UTILNPC_H
+    #include "gamedata\scripts\util\util_NPC.lgc"
+#endif
+
+#ifndef UTIL_STATISTICS_H
+    #include "gamedata\scripts\util\util_statistics.lgc"
+#endif
+
+#ifndef COMMONPERKS_H
+    #include "gamedata\scripts\common\common_perks.lgc"
+#endif
+
+
+//------------------------------------------------------------------------------------
+//������, �� ������?������? �������� �� �����?
+#define Z_FOR_BORN_FROM_BOXES   8
+
+static int s_aRandZombies[] = {3800, 3950, 3976, 3805, 3984, 3988, 3972, 3980, 3954};
+
+RandomizeZombie(int unit)
+{
+	int cnt = sizeof(s_aRandZombies)/4;
+	int r = Random_(cnt-1);
+	if( GetVidData(s_aRandZombies[r], VID_EXIST))
+		Action(unit, ACT_CHANGE_VID, s_aRandZombies[r]);
+}
+
+
+// �������� ���� ������
+
+F446_14(int unit)
+{
+    Action(unit,ACT_SET_ARMY, 4);// ������ ����?���� ����?����?��?��������?������ ?����?�� ������
+}
+//������ ���� ������ ��?����?
+F446_8(int unit)
+{
+    Action(unit,ANI_DEATH);
+}
+
+
+
+
+//------------------------------------------------------------------------------------
+IsBoxVid( int iVid )
+{
+    int ret = 0;
+    if( iVid == 1270 || iVid == 1272 || iVid == 1274 || iVid == 1276 || iVid == 1225 
+        || iVid == 1768 || iVid == 1259 || iVid == 2332 )
+    {
+        ret = 1;
+    }
+    return ret;
+}
+
+
+//---------------------------------------------------------------------------------
+AddBonusIfNeeded(int unit)
+{
+    int buf = SendCommand( EXT_GETRANDBONUSID, GetVid( unit ) );
+    if( !buf || !unit )
+        return;
+
+    //LogToConsole( "Add bonus to monster (campaign) " + itoa( buf ) );
+    Action( unit, ACT_ADD_ITEM, buf );
+}
+
+
+//---------------------------------------------------------------------------------
+SetRandomScale(int unit)
+{
+    //if( !SendCommand( EXT_GETSURVIVEMODE ) )
+    //  return;
+
+    //
+    int MinScale = GetMinScale( GetVid(unit) ) * 10;
+    int MaxScale = GetMaxScale( GetVid(unit) ) * 10;
+    //
+    int CurScale = Action( unit, ACT_GET_SCALE, 0 );
+    if( CurScale == 1000 )  //if scale is not set in map editor
+    {
+        //change monster sizes from MinScale% to MaxScale%
+        CurScale = MinScale + Random( MaxScale - MinScale, 1009 );
+
+        //get current gamma
+        int r = Action( unit, ACT_GET_GAMMA, 1 );
+        int g = Action( unit, ACT_GET_GAMMA, 2 );
+        int b = Action( unit, ACT_GET_GAMMA, 3 );
+
+        //change monster color
+        if( CurScale > 1000 )
+        {
+            r += ( CurScale - 1000 ) * INC_RED_ON_MAX   / ( MaxScale - 1000 );
+            g += ( CurScale - 1000 ) * INC_GREEN_ON_MAX / ( MaxScale - 1000 );
+            b += ( CurScale - 1000 ) * INC_BLUE_ON_MAX  / ( MaxScale - 1000 );
+        }
+        else
+        if( CurScale < 1000 )
+        {
+            r += ( 1000 - CurScale ) * INC_RED_ON_MIN   / ( 1000 - MinScale);
+            g += ( 1000 - CurScale ) * INC_GREEN_ON_MIN / ( 1000 - MinScale);
+            b += ( 1000 - CurScale ) * INC_BLUE_ON_MIN  / ( 1000 - MinScale);
+        }
+        //set new gama
+        int gamma = GammaEncodeToDword( r, g, b );
+        //LogToConsole( "New Gamma - " + itoa(r) + "-" +itoa(g) + "-" +itoa(b)  );
+        Action( unit, ACT_SET_GAMMA, gamma );
+    }
+    //
+    MonsterScale( unit, CurScale, true, MinScale );
+}
+//zs2
+On3958Death(int unit);
+
+//������ ���� - ����?������
+On3958Death(int unit)
+{
+	if(!unit)
+		return;
+	//
+	int x = GetX(unit);
+	int y = GetY(unit);
+	int z = GetZ(unit);
+	//
+	int spr1 = 0;
+	int spr2 = 0;
+	spr1 = FindNearestSprite(GETSPRITE_VID(3316), x, y, 100);
+	if(SizeTo(spr1, x ,y) > 85)
+		spr1 = 0;
+	if(spr1)
+	{
+		spr2 = GetSprite(GETSPRITE_VID(3318), GetX(spr1), GetY(spr1));
+		if(!spr2)
+		spr2 = FindNearestSprite(GETSPRITE_VID(3318), x, y, 100);
+		if(SizeTo(spr2, x ,y) > 85)
+			spr2 = 0;
+	}
+	//
+	//Log2("spr1 = " + itoa(spr1) + ". spr2 = " + itoa(spr2));
+	//
+	if(spr1 && spr2)
+	{
+		int anim = GetAnimation(spr2);
+		if(anim != ANI_DEATH && anim != ANI_DEATH2)
+		{
+			Destroy(spr1);
+			Destroy(spr2);
+		}
+	}
+}
+//
+
+//---------------------------------------------------------------------------------
+Common_Born(int unit, int parent)
+{
+    SetRandomScale(unit);
+    //
+    //zmNEW2006Mar22 - ��?�������� �� ����������?����������? ��������� ?��������?
+    if(parent && Action(parent, ACT_HAVE_ITEM, -666) || SendCommand( EXT_GETSURVIVEMODE ))
+    {
+        InitStatData[ VSTAT_MMONSTERSCNT ]++;
+    }
+}
+
+
+//---------------------------------------------------------------------------------
+// ���������� ����?�� ������ ����
+AddScores(int unit)
+{
+	#ifdef Z_GUN_STAND
+	if(g_bGS_KillAllMonst)
+		return;
+	#endif
+	//
+    int MonstArmy = Action(unit, ACT_GET_ARMY);
+    //
+    int KillerArmy = Action(unit, ACT_GET_KILLER_ARMY);
+    //Log2("KILLER_ARMY - " + itoa(KillerArmy));
+	//
+	SendCommandA( KillerArmy, EXT_ADDSKILL, RPGHERO_KILLS, 1 );
+    //
+    bool bExplKill = IsMonstExplodeKillVid( GetVid( unit ) ) && GetAnimation( unit ) != ANI_DEATH;
+    //don't count rats and boxes. ����?�� ��������?�������� 6-�� ����?
+    if( IsMonsterVid( GetVid( unit ) ) || bExplKill )
+    {
+        if( Action(unit, ACT_GET_ARMY) == 6 )
+        {
+            //�������� 6-�� ����?��������� ������ ���� ��?����?������?
+            if( KillerArmy == 0 )
+            {
+                CurStatData[ VSTAT_MMONSTERSKILLED ]++;
+                InitStatData[ VSTAT_MMONSTERSCNT ]++;
+            }
+        }
+        else
+        {
+            CurStatData[ VSTAT_MMONSTERSKILLED ]++;
+            //zmTEMPaaa: for debug
+            /**/int i;
+            for( i = 0; i < sizeof( MonstersVid ) / sizeof( int ); i++ )
+            {
+                if( GetVid( unit ) == MonstersVid[ i ] )
+                {
+                    DebugKilledMonstersByVid[ i ]++;
+                    //zmTEMPaaa
+                    //Log2("VSTAT_killed:" + itoa(GetX(unit)) + "-" + itoa(GetY(unit)) + "-" + itoa(GetZ(unit)) );
+                }
+            }//*/
+        }
+    }
+   
+    //bool MustAdd = true;
+
+    //������ ������ �����:
+    //  1) ?survive ��������� exp ������
+    //  2) ?campaign ��������� exp ������ ����?�������� ������ �������������������� ��������?
+    //*zm060711 - ������ ��?�� ������ ��?
+
+  #ifndef NET_GAME_RUN
+    if( !SendCommand(EXT_GETSURVIVEMODE) && KillerArmy != 0 && MonstArmy != 4 )
+        return;
+  #endif
+  #ifdef NET_GAME_RUN
+    if( !NetProperty( NET_IS_PLAYER_EXIST + KillerArmy ) )
+        return;
+  #endif
+
+	//if(MustAdd)
+	//{
+	    int MaxHp = GetVidData(GetVid(unit),VID_MAXHP);
+
+	    //zm2006Jan30 - ������ ��������� �� ������
+    	//if( Action(unit,ACT_GET_ARMY) == 4 )//�� ��������� exp �� ������������������?��������
+	    //    MaxHp = 0;
+	    //
+	    OnEnemyKill( KillerArmy, MaxHp );
+	//}
+}
+
+
+//---------------------------------------------------------------------------------
+//return true if kill of unit adds exp to hero
+MustAddExpForKill( int unit )
+{
+    int ret;
+    ret = false;
+    //
+    int Army;
+    Army = Action( unit, ACT_GET_ARMY );
+
+    //LogToConsole( itoa( GetVidData( GetVid( unit ), VID_SPRITETYPE ) ) );
+
+    if( Army == 1 || Army == 4 || Army == 6 )
+    {
+        //add points for kill of all entities of the 1st army (enemies)
+        ret = true;
+    }
+    else
+    if( ( Army == 2 || Army == 3 ) && ( GetVidData( GetVid( unit ), VID_SPRITETYPE ) == U_UNIT ) )
+    {
+        //add points for kill of only monsters of 2nd (neutrals, such as rats) and 3rd army (soldiers)
+        ret = true;
+    }
+
+    return ret;
+}
+
+
+//---------------------------------------------------------------------------------
+// ��?������ ����?�������� ��?����������?
+CreateItems( int unit, int delay = 0 )
+{
+	//����?��������, ������ ���� ?����?������!  *zm060704
+	//冻结状态下跳过第二阶段变形，直接死亡
+	bool Freezed = HaveLink( unit, SURVIVE_FREEZE_EFFECT ) || Action(unit, ACT_HAVE_ITEM, -666);
+	if(Freezed)
+		Action( unit, ACT_DELETE_ITEM, -666 );
+	//
+	int KillerrArmy = Action( unit, ACT_GET_KILLER_ARMY );
+	if(Flagman(KillerrArmy) && !Freezed)
+	{
+	    //*zm2006Mar28. ��������? ����?���� ������
+	    //������?�������� CurWeaponExpl
+		//-1 -�� ��?��, 0 - ������ ��������?ANI_DEATH2, �� 1 �� 100 - ����������� ��������� ANI_DEATH2
+		int expl = CurWeaponExpl[KillerrArmy];
+		if(expl != -1)	//-1 -�� ��?��
+		{
+			//������ �������� ������, ����?�� ���� ���������������� ��?������ ������?violence
+			int rand = 0;
+			if(expl != 0)
+				rand = 1+Random(99, 1094); //1..100
+			//
+			if(expl == 0 || VM_TURNOFF_DEATH2[GetRealViolenceMode()])	//0 - ������ ��������?ANI_DEATH2
+			{
+				if(GetAnimation(unit) == ANI_DEATH2)
+		        {
+    		        Action(unit, ANI_DEATH);
+        		    return;
+		        }
+			}
+			else
+			if(expl != 0)
+	        {
+				if(GetAnimation(unit) == ANI_DEATH && expl >= rand)
+		        {	
+		        	//*zm2006Aug02
+		        	if(GetVidData(GetVid(unit), VID_CHILD + ANI_DEATH2))
+		        	{
+	    		        Action(unit, ANI_DEATH2);
+    	    		    return;
+					}
+		        }
+	        }
+		}
+	}
+	bool bWasBoss = false;
+    if(Action(unit, ACT_HAVE_ITEM, -777))
+    {
+        Action( unit, ACT_DELETE_ITEM, -777 );//������� ����?��?����
+        SetBossEnvGamma(false);
+        bWasBoss = true;
+        Log2("Boss killed. vid = " + itoa(GetVid(unit)));
+	}
+
+    //������������?������?������
+    BloodToCars(unit);
+
+    //���������� ����?�� ������ ����
+    if( MustAddExpForKill( unit ) )
+    {
+        AddScores(unit);
+        giLastMonsterKillTime = GetTime();
+    }
+
+    //������� ������?�� ������ ��������������?
+    if( Action( unit, ACT_HAVE_ITEM, -555 ) )
+        DeleteHypnMonster(unit);
+
+    //add bonuses in campaign mode
+    if( !SendCommand( EXT_GETSURVIVEMODE ) )
+    {
+        //remove all items, invalid items can exist (saved in mapedit) (from old version of AS)
+        if( !IsBoxVid( GetVid(unit) ) )
+            Action( unit, ACT_DELETE_ALL_ITEM );
+        AddBonusIfNeeded(unit);
+    }
+    //
+    //�������� ����?�� ������?
+    int no_items;
+    no_items = Action(unit,ACT_NO_ITEMS);
+    if( no_items )
+    {
+        int z = 5;
+        if( IsBoxVid( GetVid(unit) ) )
+            z = Z_FOR_BORN_FROM_BOXES;// ������������ �������� ��� ������?�����?
+
+        int ItemId;
+        int ItemVid = 0;
+        ItemId = Action(unit,ACT_GET_ITEM,Random(no_items-1, 1010),0 );
+
+        //����?��?Bonus_cur_ammo - ������������ Id (��?��?��-������)
+        int karmy = KillerrArmy;
+        if(!Flagman(karmy))
+        	karmy = 0;
+        ItemId = SendCommandA( karmy, EXT_GETITEMVIDBYID, ItemId, 3 );
+        //
+        if(ItemId != 0) //������ ����?��?��������
+            ItemVid = SendCommandA( -1, EXT_GETITEMVIDBYID, ItemId );
+		//
+	#ifdef NET_GAME_RUN
+		//?����?�� ���������� ��������?����?������
+		if(ItemVid>=1683 && ItemVid<=1689)
+			ItemVid = 0;
+		//����?�� ���������� ����?
+		if(ItemVid==1653)
+			ItemVid = 0;
+	#endif
+
+        //�� ���� ������?������ Jeep ���� �� ����?��?���� SURVIVE_JEEP_VID, 1208 ��?����?Jeep
+        if( ItemVid != 1686 || (!GetVidData( SURVIVE_JEEP_VID, VID_EXIST ) || !GetVidData( SURVIVE_JEEP_VID, VID_COUNT ) )
+            && ( !GetVidData( 1208, VID_EXIST ) || !GetVidData( 1208, VID_COUNT ) )
+            && ( !GetVidData( 1686, VID_EXIST ) || !GetVidData( 1686, VID_COUNT ) ) )
+        {
+            if( ItemVid != 0 )
+            {
+    	    	int jj, item;
+    	    	int cnt = 1;
+	            if(bWasBoss)
+	            {
+	            	cnt = NetPlCnt;
+	            	Log2("bWasBoss, cnt == " + itoa(cnt) + ", vid = " + itoa(ItemVid));
+				}
+				for(jj = 0; jj < cnt; jj++)
+				{
+	                item = CreateSprite( ItemVid, GetX(unit), GetY(unit), GetZ(unit)+z, GetDirection(unit) );
+    	            Action( item, ACT_SET_OBJECT_ID, ItemId );
+					//
+					//if(Z_DEBUG)
+					//	Action( item, ACT_SET_DEATH_TIMER, 1000000 );
+					//
+    	            if ( delay )
+        	        {
+            	        Action(item, ANI_SALUT);
+                	    Action(item, ACT_PAUSE, delay);
+	                }
+				}
+            }
+        }
+    }
+    //
+    if(Freezed)
+    {
+        Destroy(unit);
+        return 1;
+    }
+}
+
+#include "gamedata\scripts\monsters_rats.lgc"
+
+CommonCreateEffect(int unit, int parent)
+{
+    if ( GetVid(parent) == 1250 )//��� ��������?����������
+    {
+        CreateSprite(1390, GetX(unit), GetY(unit) + 40, GetZ(unit) + 40);
+    }
+}
+//---------------------------------------------------------------------------------
+//
+// F050_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+// F060_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+F1020_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+F1025_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+//zm2006Feb03
+F1070_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+F1870_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+F1890_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+// F1895_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+F1901_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+//
+F1030_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+F1820_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+F1830_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+F1840_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+F1850_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+F1037_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+F1050_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+//F1061_14(int unit) { Common_Born(unit); }
+F1080_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+F1087_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+F1086_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+//ZS2
+F4080_14(int unit, int parent) { Common_Born(unit,parent); }
+F3785_14(int unit, int parent) { Common_Born(unit,parent); }
+F3786_14(int unit, int parent) { Common_Born(unit,parent); }
+F3787_14(int unit, int parent) { Common_Born(unit,parent); }
+F3800_14(int unit, int parent) { Common_Born(unit,parent); }
+F3805_14(int unit, int parent) { Common_Born(unit,parent); }
+F3812_14(int unit, int parent) { Common_Born(unit,parent); }
+F3820_14(int unit, int parent) { Common_Born(unit,parent); }
+F3824_14(int unit, int parent) { Common_Born(unit,parent); }
+F3828_14(int unit, int parent) { Common_Born(unit,parent); }
+F3830_14(int unit, int parent) { Common_Born(unit,parent); }
+F3835_14(int unit, int parent) { Common_Born(unit,parent); }
+F3839_14(int unit, int parent) { Common_Born(unit,parent); }
+F3950_14(int unit, int parent) { Common_Born(unit,parent); }
+F3954_14(int unit, int parent) { Common_Born(unit,parent); }
+F3958_14(int unit, int parent) { Common_Born(unit,parent); }
+F3962_14(int unit, int parent) { Common_Born(unit,parent); }
+F3972_14(int unit, int parent) { Common_Born(unit,parent); }
+F3976_14(int unit, int parent) { Common_Born(unit,parent); }
+F3980_14(int unit, int parent) { Common_Born(unit,parent); }
+F3984_14(int unit, int parent) { Common_Born(unit,parent); }
+F3988_14(int unit, int parent) { Common_Born(unit,parent); }
+F3992_14(int unit, int parent) { Common_Born(unit,parent); }
+F3996_14(int unit, int parent) { Common_Born(unit,parent); }
+F4004_14(int unit, int parent) { Common_Born(unit,parent); }
+F2058_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+//AS2C
+F2000_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+F2006_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+F2013_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+F2020_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+F2031_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+F2034_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+//AS Revisited
+F2061_14(int unit, int parent) { Common_Born(unit,parent); }
+F2064_14(int unit, int parent) { Common_Born(unit,parent); }
+F2067_14(int unit, int parent) { Common_Born(unit,parent); }
+F2070_14(int unit, int parent) { Common_Born(unit,parent); }
+F2073_14(int unit, int parent) { Common_Born(unit,parent); }
+F2076_14(int unit, int parent) { Common_Born(unit,parent); }
+F2079_14(int unit, int parent) { Common_Born(unit,parent); }
+F2082_14(int unit, int parent) { Common_Born(unit,parent); }
+F2085_14(int unit, int parent) { Common_Born(unit,parent); }
+F2088_14(int unit, int parent) { Common_Born(unit,parent); }
+F2089_14(int unit, int parent) { Common_Born(unit,parent); }
+F2090_14(int unit, int parent) { Common_Born(unit,parent); }
+F2091_14(int unit, int parent) { Common_Born(unit,parent); }
+F2092_14(int unit, int parent) { Common_Born(unit,parent); }
+F2093_14(int unit, int parent) { Common_Born(unit,parent); }
+F2094_14(int unit, int parent) { Common_Born(unit,parent); }
+F2097_14(int unit, int parent) { Common_Born(unit,parent); }
+F2100_14(int unit, int parent) { Common_Born(unit,parent); }
+F2103_14(int unit, int parent) { Common_Born(unit,parent); }
+F2106_14(int unit, int parent) { Common_Born(unit,parent); }
+F2108_14(int unit, int parent) { Common_Born(unit,parent); }
+F2110_14(int unit, int parent) { Common_Born(unit,parent); }
+F2113_14(int unit, int parent) { Common_Born(unit,parent); }
+F2116_14(int unit, int parent) { Common_Born(unit,parent); }
+F2117_14(int unit, int parent) { Common_Born(unit,parent); }
+F2118_14(int unit, int parent) { Common_Born(unit,parent); }
+F2121_14(int unit, int parent) { Common_Born(unit,parent); }
+F2124_14(int unit, int parent) { Common_Born(unit,parent); }
+F2125_14(int unit, int parent) { Common_Born(unit,parent); }
+F2126_14(int unit, int parent) { Common_Born(unit,parent); }
+F2127_14(int unit, int parent) { Common_Born(unit,parent); }
+F2128_14(int unit, int parent) { Common_Born(unit,parent); }
+//New boss units
+F1952_14(int unit, int parent) { Common_Born(unit,parent); }
+F1953_14(int unit, int parent) { Common_Born(unit,parent); }
+F1954_14(int unit, int parent) { Common_Born(unit,parent); }
+F1955_14(int unit, int parent) { Common_Born(unit,parent); }
+F1956_14(int unit, int parent) { Common_Born(unit,parent); }
+F1957_14(int unit, int parent) { Common_Born(unit,parent); }
+F1958_14(int unit, int parent) { Common_Born(unit,parent); }
+F1959_14(int unit, int parent) { Common_Born(unit,parent); }
+F1960_14(int unit, int parent) { Common_Born(unit,parent); }
+F1961_14(int unit, int parent) { Common_Born(unit,parent); }
+F1962_14(int unit, int parent) { Common_Born(unit,parent); }
+F1963_14(int unit, int parent) { Common_Born(unit,parent); }
+F1964_14(int unit, int parent) { Common_Born(unit,parent); }
+F1965_14(int unit, int parent) { Common_Born(unit,parent); }
+//as2 legend
+F1894_14(int unit, int parent) { Common_Born(unit,parent); }
+F2380_14(int unit, int parent) { Common_Born(unit,parent); }
+F2390_14(int unit, int parent) { Common_Born(unit,parent); }
+F2391_14(int unit, int parent) { Common_Born(unit,parent); }
+F2394_14(int unit, int parent) { Common_Born(unit,parent); }
+F2404_14(int unit, int parent) { Common_Born(unit,parent); }
+F2410_14(int unit, int parent) { Common_Born(unit,parent); }
+F2416_14(int unit, int parent) { Common_Born(unit,parent); }
+F2423_14(int unit, int parent) { Common_Born(unit,parent); }
+F2430_14(int unit, int parent) { Common_Born(unit,parent); }
+F2438_14(int unit, int parent) { Common_Born(unit,parent); }
+F2439_14(int unit, int parent) { Common_Born(unit,parent); }
+F2440_14(int unit, int parent) { Common_Born(unit,parent); }
+// �������� ������?���������� ��?������ �� ����?
+F1060_14(int unit, int parent)
+{
+    if ( GetVid(parent)==1066 )
+    {
+        if ( GetDirection(parent) <= 128 )
+            Action(unit, ACT_CHANGE_DIRECTION, 96 + 64);
+        else
+            Action(unit, ACT_CHANGE_DIRECTION, 96);
+    }
+    else
+        Common_Born(unit,parent);
+}
+F1092_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+F1860_14(int unit, int parent) { Common_Born(unit,parent); CommonCreateEffect(unit, parent); }
+
+
+//---------------------------------------------------------------------------------
+//�������� �������� �� ������������?������
+// F050_15(int unit) { CreateItems(unit); }
+// F050_16(int unit) { CreateItems(unit); }
+// F060_15(int unit) { CreateItems(unit); }
+// F060_16(int unit) { CreateItems(unit); }
+F1025_15(int unit) { CreateItems(unit); }
+F1025_16(int unit) { CreateItems(unit); }
+//
+F1070_15(int unit) { Log("death 1070_15");CreateItems(unit); }
+F1070_16(int unit) { Log("death 1070_16");CreateItems(unit); }
+F1870_15(int unit) { CreateItems(unit); }
+F1870_16(int unit) { CreateItems(unit); }
+F1890_15(int unit) { CreateItems(unit); }
+F1890_16(int unit) { CreateItems(unit); }
+// F1895_15(int unit) { CreateItems(unit); }
+// F1895_16(int unit) { CreateItems(unit); }
+F1901_15(int unit) { CreateItems(unit); }
+F1901_16(int unit) { CreateItems(unit); }
+//
+F1030_15(int unit) { CreateItems(unit); }
+F1030_16(int unit) { CreateItems(unit); }
+F1820_15(int unit) { CreateItems(unit); }
+F1820_16(int unit) { CreateItems(unit); }
+F1830_15(int unit) { CreateItems(unit); }
+F1830_16(int unit) { CreateItems(unit); }
+F1840_15(int unit) { CreateItems(unit); }
+F1840_16(int unit) { CreateItems(unit); }
+F1037_15(int unit) { CreateItems(unit); }
+F1037_16(int unit) { CreateItems(unit); }
+F1050_15(int unit) { CreateItems(unit); }
+F1050_16(int unit) { CreateItems(unit); }
+F1060_15(int unit) { CreateItems(unit); }
+F1060_16(int unit) { CreateItems(unit); }
+F1061_15(int unit) { CreateItems(unit); }
+F1061_16(int unit) { CreateItems(unit); }
+F1092_15(int unit) { CreateItems(unit); }
+F1092_16(int unit) { CreateItems(unit); }
+F1850_15(int unit) { CreateItems(unit); }
+F1850_16(int unit) { CreateItems(unit); }
+F1851_15(int unit) { CreateItems(unit); }
+F1851_16(int unit) { CreateItems(unit); }
+F1860_15(int unit) { CreateItems(unit); }
+F1860_16(int unit) { CreateItems(unit); }
+F1861_15(int unit) { CreateItems(unit); }
+F1861_16(int unit) { CreateItems(unit); }
+//ZS2
+//---------------------------------------------------------------------------------
+F4080_15(int unit) { CreateItems(unit, 0); }
+F3785_15(int unit) { CreateItems(unit, 0); }
+F3786_15(int unit) { CreateItems(unit, 0); }
+F3787_15(int unit) { CreateItems(unit, 0); }
+F3800_15(int unit) { CreateItems(unit, 0); }
+F3805_15(int unit) { CreateItems(unit, 0); }
+F3812_15(int unit) { CreateItems(unit, 0); }
+F3820_15(int unit) { CreateItems(unit, 0); }
+F3824_15(int unit) { CreateItems(unit, 0); }
+F3828_15(int unit) { CreateItems(unit, 0); }
+F3830_15(int unit) { CreateItems(unit, 0); }
+F3835_15(int unit) { CreateItems(unit, 0); }
+F3839_15(int unit) { CreateItems(unit, 0); }
+F3950_15(int unit) { CreateItems(unit, 0); }
+F3954_15(int unit) { CreateItems(unit, 0); }
+F3958_15(int unit) { CreateItems(unit, 0); On3958Death(unit);}
+F3962_15(int unit) { CreateItems(unit, 0); }
+F3972_15(int unit) { CreateItems(unit, 0); }
+F3976_15(int unit) { CreateItems(unit, 0); }
+F3980_15(int unit) { CreateItems(unit, 0); }
+F3984_15(int unit) { CreateItems(unit, 0); }
+F3988_15(int unit) { CreateItems(unit, 0); }
+F3992_15(int unit) { CreateItems(unit, 0); }
+F3996_15(int unit) { CreateItems(unit, 0); }
+F4004_15(int unit) { CreateItems(unit, 0); }
+F2058_15(int unit) { CreateItems(unit); }
+//AS2C
+F2000_15(int unit) { CreateItems(unit); }
+F2000_16(int unit) { CreateItems(unit); }
+F2013_15(int unit) { CreateItems(unit); }
+F2013_16(int unit) { CreateItems(unit); }
+F2020_15(int unit) { CreateItems(unit); }
+F2020_16(int unit) { CreateItems(unit); }
+F2031_15(int unit) { CreateItems(unit); }
+F2031_16(int unit) { CreateItems(unit); }
+F2034_15(int unit) { CreateItems(unit); }
+F2034_16(int unit) { CreateItems(unit); }
+//AS Revisited
+F2061_15(int unit) { CreateItems(unit, 0); }
+F2064_15(int unit) { CreateItems(unit, 0); }
+F2067_15(int unit) { CreateItems(unit, 0); }
+F2070_15(int unit) { CreateItems(unit, 0); }
+F2073_15(int unit) { CreateItems(unit, 0); }
+F2076_15(int unit) { CreateItems(unit, 0); }
+F2079_15(int unit) { CreateItems(unit, 0); }
+F2082_15(int unit) { CreateItems(unit, 0); }
+F2085_15(int unit) { CreateItems(unit, 0); }
+F2088_15(int unit) { CreateItems(unit, 0); }
+F2089_15(int unit) { CreateItems(unit, 0); }
+F2090_15(int unit) { CreateItems(unit, 0); }
+F2091_15(int unit) { CreateItems(unit, 0); }
+F2092_15(int unit) { CreateItems(unit, 0); }
+F2093_15(int unit) { CreateItems(unit, 0); }
+F2094_15(int unit) { CreateItems(unit, 0); }
+F2097_15(int unit) { CreateItems(unit, 0); }
+F2100_15(int unit) { CreateItems(unit, 0); }
+F2103_15(int unit) { CreateItems(unit, 0); }
+F2106_15(int unit) { CreateItems(unit, 0); }
+F2108_15(int unit) { CreateItems(unit, 0); }
+F2110_15(int unit) { CreateItems(unit, 0); }
+F2113_15(int unit) { CreateItems(unit, 0); }
+F2116_15(int unit) { CreateItems(unit, 0); }
+F2117_15(int unit) { CreateItems(unit, 0); }
+F2118_15(int unit) { CreateItems(unit, 0); }
+F2121_15(int unit) { CreateItems(unit, 0); }
+F2124_15(int unit) { CreateItems(unit, 0); }
+F2125_15(int unit) { CreateItems(unit, 0); }
+F2126_15(int unit) { CreateItems(unit, 0); }
+F2127_15(int unit) { CreateItems(unit, 0); }
+F2128_15(int unit) { CreateItems(unit, 0); }
+//new boss units
+F1952_15(int unit) { CreateItems(unit, 0); }
+F1953_15(int unit) { CreateItems(unit, 0); }
+F1954_15(int unit) { CreateItems(unit, 0); }
+F1955_15(int unit) { CreateItems(unit, 0); }
+F1956_15(int unit) { CreateItems(unit, 0); }
+F1957_15(int unit) { CreateItems(unit, 0); }
+F1958_15(int unit) { CreateItems(unit, 0); }
+F1959_15(int unit) { CreateItems(unit, 0); }
+F1960_15(int unit) { CreateItems(unit, 0); }
+F1961_15(int unit) { CreateItems(unit, 0); }
+F1962_15(int unit) { CreateItems(unit, 0); }
+F1963_15(int unit) { CreateItems(unit, 0); }
+F1964_15(int unit) { CreateItems(unit, 0); }
+F1965_15(int unit) { CreateItems(unit, 0); }
+//as2 legend
+F1894_15(int unit) { CreateItems(unit, 0); }
+F2380_15(int unit) { CreateItems(unit, 0); }
+F2390_15(int unit) { CreateItems(unit, 0); }
+F2391_15(int unit) { CreateItems(unit, 0); }
+F2394_15(int unit) { CreateItems(unit, 0); }
+F2404_15(int unit) { CreateItems(unit, 0); }
+F2410_15(int unit) { CreateItems(unit, 0); }
+F2416_15(int unit) { CreateItems(unit, 0); }
+F2423_15(int unit) { CreateItems(unit, 0); }
+F2430_15(int unit) { CreateItems(unit, 0); }
+F2438_15(int unit) { CreateItems(unit, 0); }
+F2439_15(int unit) { CreateItems(unit, 0); }
+F2440_15(int unit) { CreateItems(unit, 0); }
+//---------------------------------------------------------------------------------
+
+F4029_14(int unit, int parent)
+{
+	Common_Born(unit, parent);
+	RandomizeZombie(unit);
+}
+
+F2006_15(int unit) 
+{ 
+  CreateItems(unit);
+//	F1080_15(unit);������ ��?�� ��������?
+  EarthQuake(800);
+  if( !Action(unit,ACT_GET_AMMO) )
+  {//���� ��?��������?������?����?�������� �� ������ ��?��?�������� ��?��������� �� ������?
+    Destroy(unit);
+  }
+//	Log("2006_15 "+itoa(GetAnimation(unit)));
+}
+F2006_16(int unit) { F2006_15(unit); }//{ CreateItems(unit); }
+
+//---------------------------------------------------------------------------------
+F1080_15(int unit)
+{
+  CreateItems(unit);
+  //���� ��?��������?������?����?�������� �� ������ ��?��?��������
+  if( !Action(unit,ACT_GET_AMMO) )
+  {
+//    CreateSprite(1084,GetX(unit),GetY(unit),GetZ(unit)+10,GetDirection(unit)); //����������?������
+//    CreateSprite(1335,GetX(unit),GetY(unit),GetZ(unit)+70,GetDirection(unit)); //�������� ������ ����������
+    Destroy(unit);
+  }
+}
+F1087_15(int unit) { F1080_15(unit); }
+
+
+//---------------------------------------------------------------------------------
+//�������� �������� �� ������������?������
+F1080_16(int unit) { CreateItems(unit); }
+F1087_16(int unit) { CreateItems(unit); }
+F1155_15(int unit) { CreateItems(unit); }
+F1155_16(int unit) { CreateItems(unit); }
+F1270_15(int unit) { CreateItems(unit, ITEM_DELAY); }
+F1270_16(int unit) { CreateItems(unit, ITEM_DELAY); }
+F1272_15(int unit) { CreateItems(unit, ITEM_DELAY); }
+F1272_16(int unit) { CreateItems(unit, ITEM_DELAY); }
+F1274_15(int unit) { CreateItems(unit, ITEM_DELAY); }
+F1274_16(int unit) { CreateItems(unit, ITEM_DELAY); }
+F1225_15(int unit) { CreateItems(unit, ITEM_DELAY); }
+F1225_16(int unit) { CreateItems(unit, ITEM_DELAY); }
+//
+F1259_15(int unit) { CreateItems(unit, ITEM_DELAY); }
+F1259_16(int unit) { CreateItems(unit, ITEM_DELAY); }
+F2332_15(int unit) { CreateItems(unit, ITEM_DELAY); }
+F2332_16(int unit) { CreateItems(unit, ITEM_DELAY); }
+//
+F1276_15(int unit) { CreateItems(unit, 500); }
+F1276_16(int unit) { CreateItems(unit, 500); }
+F1768_15(int unit) { CreateItems(unit, ITEM_DELAY); }
+F1768_16(int unit) { CreateItems(unit, ITEM_DELAY); }
+//ZS2
+//---------------------------------------------------------------------------------
+F3785_16(int unit) { CreateItems(unit, 0); }
+F3786_16(int unit) { CreateItems(unit, 0); }
+F3787_16(int unit) { CreateItems(unit, 0); }
+F3800_16(int unit) { CreateItems(unit, 0); }
+F3805_16(int unit) { CreateItems(unit, 0); }
+F3812_16(int unit) { CreateItems(unit, 0); }
+F3820_16(int unit) { CreateItems(unit, 0); }
+F3824_16(int unit) { CreateItems(unit, 0); }
+F3828_16(int unit) { CreateItems(unit, 0); }
+F3831_16(int unit) { CreateItems(unit, 0); }
+F3835_16(int unit) { CreateItems(unit, 0); }
+F3839_16(int unit) { CreateItems(unit, 0); }
+F3950_16(int unit) { CreateItems(unit, 0); }
+F3954_16(int unit) { CreateItems(unit, 0); }
+F3958_16(int unit) { CreateItems(unit, 0); On3958Death(unit);}
+F3972_16(int unit) { CreateItems(unit, 0); }
+F3976_16(int unit) { CreateItems(unit, 0); }
+F3980_16(int unit) { CreateItems(unit, 0); }
+F3984_16(int unit) { CreateItems(unit, 0); }
+F3988_16(int unit) { CreateItems(unit, 0); }
+F4004_16(int unit) { CreateItems(unit, 0); }
+F2058_16(int unit) { CreateItems(unit); }
+//AS Revisited
+F2061_16(int unit) { CreateItems(unit, 0); }
+F2064_16(int unit) { CreateItems(unit, 0); }
+F2067_16(int unit) { CreateItems(unit, 0); }
+F2070_16(int unit) { CreateItems(unit, 0); }
+F2073_16(int unit) { CreateItems(unit, 0); }
+F2076_16(int unit) { CreateItems(unit, 0); }
+F2079_16(int unit) { CreateItems(unit, 0); }
+F2082_16(int unit) { CreateItems(unit, 0); }
+F2085_16(int unit) { CreateItems(unit, 0); }
+F2088_16(int unit) { CreateItems(unit, 0); }
+F2089_16(int unit) { CreateItems(unit, 0); }
+F2090_16(int unit) { CreateItems(unit, 0); }
+F2091_16(int unit) { CreateItems(unit, 0); }
+F2092_16(int unit) { CreateItems(unit, 0); }
+F2093_16(int unit) { CreateItems(unit, 0); }
+F2094_16(int unit) { CreateItems(unit, 0); }
+F2097_16(int unit) { CreateItems(unit, 0); }
+F2100_16(int unit) { CreateItems(unit, 0); }
+F2103_16(int unit) { CreateItems(unit, 0); }
+F2106_16(int unit) { CreateItems(unit, 0); }
+F2108_16(int unit) { CreateItems(unit, 0); }
+F2110_16(int unit) { CreateItems(unit, 0); }
+F2113_16(int unit) { CreateItems(unit, 0); }
+F2116_16(int unit) { CreateItems(unit, 0); }
+F2117_16(int unit) { CreateItems(unit, 0); }
+F2118_16(int unit) { CreateItems(unit, 0); }
+F2121_16(int unit) { CreateItems(unit, 0); }
+F2124_16(int unit) { CreateItems(unit, 0); }
+F2125_16(int unit) { CreateItems(unit, 0); }
+F2126_16(int unit) { CreateItems(unit, 0); }
+F2127_16(int unit) { CreateItems(unit, 0); }
+F2128_16(int unit) { CreateItems(unit, 0); }
+//new boss units
+F1952_16(int unit) { CreateItems(unit, 0); }
+F1953_16(int unit) { CreateItems(unit, 0); }
+F1954_16(int unit) { CreateItems(unit, 0); }
+F1955_16(int unit) { CreateItems(unit, 0); }
+F1956_16(int unit) { CreateItems(unit, 0); }
+F1957_16(int unit) { CreateItems(unit, 0); }
+F1958_16(int unit) { CreateItems(unit, 0); }
+F1959_16(int unit) { CreateItems(unit, 0); }
+F1960_16(int unit) { CreateItems(unit, 0); }
+F1961_16(int unit) { CreateItems(unit, 0); }
+F1962_16(int unit) { CreateItems(unit, 0); }
+F1963_16(int unit) { CreateItems(unit, 0); }
+F1964_16(int unit) { CreateItems(unit, 0); }
+F1965_16(int unit) { CreateItems(unit, 0); }
+//as2 legend
+F1894_16(int unit) { CreateItems(unit, 0); }
+F2380_16(int unit) { CreateItems(unit, 0); }
+F2390_16(int unit) { CreateItems(unit, 0); }
+F2391_16(int unit) { CreateItems(unit, 0); }
+F2394_16(int unit) { CreateItems(unit, 0); }
+F2404_16(int unit) { CreateItems(unit, 0); }
+F2410_16(int unit) { CreateItems(unit, 0); }
+F2416_16(int unit) { CreateItems(unit, 0); }
+F2423_16(int unit) { CreateItems(unit, 0); }
+F2430_16(int unit) { CreateItems(unit, 0); }
+F2438_16(int unit) { CreateItems(unit, 0); }
+F2439_16(int unit) { CreateItems(unit, 0); }
+F2440_16(int unit) { CreateItems(unit, 0); }
+
+//������ ��������?����?����?
+F1080_8(int unit)
+{
+  //Action(unit,ACT_SET_SPEED,30);
+  AddCommand(unit,ANI_DEATH);
+}
+F1087_8(int unit) { F1080_8(unit); }
+F2006_8(int unit)//����?������ ��������?
+{
+	CreateSprite(2010, GetX(unit), GetY(unit), GetZ(unit));
+	Destroy(unit);
+}
+// ������?����?��������?��?������ ������ ������������?
+F1080_2(int unit)
+{
+    if ( !Random(7, 1011) )
+    {
+        Action(unit, ANI_STAND);
+        Action(unit, ACT_STOP, 0);
+//        Action(unit, ACT_SET_PAUSE, 500);
+        Action(unit, ACT_SET_COMMAND, 0);
+    }
+}
+
+//����?tank (?���� P_Track)
+ F2031_8(int unit)
+{
+	int inc_dir  = 128/GetVidData(2031,VID_NO_DIR);
+	int n_dir    = (((GetDirection(unit) + inc_dir)&255)*GetVidData(2031,VID_NO_DIR))/256;
+	int beg_cadr = GetVidData(2031,VID_NO_DIR) * (32 + 1) + n_dir * 31;
+//Log("4060 "+itoa(beg_cadr)+"/"+itoa(SendCommand(EXT_GETCURCADR,unit)));
+	if ( (SendCommand(EXT_GETCURCADR,unit)-beg_cadr)==20 )
+	{
+		int goal = Action(unit, ACT_GET_GOAL);
+//Log(itoa(beg_cadr)+" "+itoa(goal));
+		int spr  = CreateSprite(2037, GetX(unit), GetY(unit), GetZ(unit) + 30, GetDirection(unit), unit);
+		if ( goal )
+//			Action(spr, ACT_ATTACK, goal);//ACT_MOVE, 10, 10, 30);//goal);// ATTACK
+			Action(spr, ACT_MOVE_TO, goal);//goal);// ATTACK
+		EarthQuake(400);
+	}
+}
+
+// ��?
+F1810_0(int unit)
+{
+    if ( Action(unit, ACT_GET_GOAL) )
+        Action(unit, ANI_STAND_OPEN);
+}
+F1810_10(int unit)
+{
+    if ( !Action(unit, ACT_GET_GOAL) )
+        Action(unit, ANI_STAND);
+}
+//������ ���� ����?����?
+F1810_8(int unit)
+{
+  Action(unit,ANI_DEATH);
+}
+
+// ��?zs2
+F4080_0(int unit)
+{
+    if ( Action(unit, ACT_GET_GOAL) )
+        Action(unit, ANI_STAND_OPEN);
+}
+F4080_10(int unit)
+{
+    if ( !Action(unit, ACT_GET_GOAL) )
+        Action(unit, ANI_STAND);
+}
+//������ ���� zs2 ����?����?
+F4080_8(int unit)
+{
+  Action(unit,ANI_DEATH);
+}
+
+
+/* //����������� ����??��������?
+F1290_0(int unit)//������� ����?
+{
+  int command;
+  if( !Action(unit,ACT_NO_STACK) )
+  {
+    command = Action(unit,ACT_GET_COMMAND);
+    if( command==COM_ONEATTACK || command==COM_ATTACK || command==COM_DISTATTACK )
+    {
+      Action(unit,ACT_CHANGE_VID, 1291, ANI_BIRTH);
+      Action(unit, ACT_SET_HP, Action(unit, ACT_GET_HP)*GetVidData(1291, VID_MAXHP)/GetVidData(1290, VID_MAXHP));
+    }
+  }
+}
+F1290_8(int unit)
+{
+  Action(unit,ACT_CHANGE_VID, 1291, ANI_BIRTH);
+  Action(unit, ACT_SET_HP, Action(unit, ACT_GET_HP)*GetVidData(1291, VID_MAXHP)/GetVidData(1290, VID_MAXHP));
+} */
+
+//##########################################################################################################
+// ���� �� ������?������ �� ������ ������ ���������� ������ ����������
+F1066_COLLISION(int unit,int crushed_unit)
+{
+    int x = GetX(crushed_unit);
+    int y = GetY(crushed_unit);
+    int z = GetZ(crushed_unit);
+    int dir;// = GetDirection(unit);
+    int delit = 64;
+    int count;
+    do
+    {
+        count = 30;
+        delit = (delit * 2) / 3;
+        do
+        {
+            dir = Random(255, 31);
+        }
+        while ( --count > 0 && CanPlace(GetVid(crushed_unit), x + Sin(dir) / delit, y - Cos(dir) / delit, z) );
+Log("collision "+itoa(GetVid(unit)) + " "+itoa(GetVid(crushed_unit)) + " "+itoa(count) + " "+itoa(dir));
+    }
+    while ( count <= 0 && delit > 12 );
+Log("last collision "+itoa(GetVid(unit)) + " "+itoa(GetVid(crushed_unit)) + " "+itoa(count) + " "+itoa(dir));
+    if ( count > 0 )
+        Action(crushed_unit, ACT_CHANGE_COOR, x + Sin(dir) / delit, y - Cos(dir) / delit, z);
+}
+//##########################################################################################################
+// ��?������ �������� ��������?������ ��?������ ������? ?���������� �������� ��?
+F1250_9(int unit)
+{
+    if ( !Action(unit, ACT_HAVE_ITEM, -1) )
+    {
+        CreateSprite(1255, GetX(unit), GetY(unit), GetZ(unit) + 1, GetDirection(unit));
+        Action(unit, ACT_ADD_ITEM, -1);
+        int flagman = Flagman(0);
+        if ( Abs(GetX(flagman) - GetX(unit)) < (GetVidData(GetVid(flagman), VID_SIZE_X) + GetVidData(GetVid(unit), VID_SIZE_X) + 2)
+            && Abs(GetY(flagman) - GetY(unit)) < (GetVidData(GetVid(flagman), VID_SIZE_Y) + GetVidData(GetVid(unit), VID_SIZE_Y) + 2) )
+            {
+                int x = GetX(flagman);
+                int y = GetY(flagman);
+                int z = GetZ(flagman);
+                int dir;// = GetDirection(unit);
+                int delit = 64;
+                int count;
+                do
+                {
+                    count = 30;
+                    delit = (delit * 2) / 3;
+                    do
+                    {
+                        dir = Random(255, 31);
+                    }
+                    while ( --count > 0 && CanPlace(GetVid(flagman), x + Sin(dir) / delit, y - Cos(dir) / delit, z) );
+            Log("collision teleport "+itoa(GetVid(unit)) + " "+itoa(GetVid(flagman)) + " "+itoa(count) + " "+itoa(dir));
+                }
+                while ( count <= 0 && delit > 12 );
+            Log("last collision teleport "+itoa(GetVid(unit)) + " "+itoa(GetVid(flagman)) + " "+itoa(count) + " "+itoa(dir));
+                if ( count > 0 )
+                    Action(flagman, ACT_CHANGE_COOR, x + Sin(dir) / delit, y - Cos(dir) / delit, z);
+            }
+/*        for ( int spr = FirstInBox(GetX(unit) - 80, GetY(unit) - 80, GetX(unit) + 80, GetY(unit) + 80);
+              spr;
+              spr = NextInBox() )
+            if ( GetVidData(GetVid(spr), VID_CLASS) == B_MAN )*/
+    }
+}
+F1250_COLLISION(int unit,int crushed_unit)
+{
+    int x = GetX(crushed_unit);
+    int y = GetY(crushed_unit);
+    int z = GetZ(crushed_unit);
+    int dir = DirectionTo(unit, GetX(crushed_unit), GetY(crushed_unit));
+    Action(crushed_unit, ACT_CHANGE_COOR, x + Sin(dir) / 32, y - Cos(dir) / 32, z);
+}
+
+//------------------------------------------------------------------------------------------
+//PERF: continuous stream weapons (flamethrower/freeze gun) deal damage every frame
+//while their particles overlap a monster. The per-tick IsMonsterVid() linear scan in
+//Common_Damage is a major CPU cost for such weapons, so statistics skip these bullets.
+IsStreamDamageBullet( int iBeatingUnit )
+{
+    if( !iBeatingUnit )
+        return 0;
+    int bvid = GetVid( iBeatingUnit );
+    if( bvid == NVID_FLAMETHROWER_BULLET  || bvid == NVID_FLAMETHROWER_BULLET2
+     || bvid == NVID_BURNER_BULLET        || bvid == NVID_BURNER_BULLET2
+     || bvid == NVID_FREEZEWPN_BULLET     || bvid == NVID_FREEZEWPN_BULLET2 )
+        return 1;
+    return 0;
+}
+
+
+//------------------------------------------------------------------------------------------
+Common_Damage( int iUnit, int iBeatingUnit, int iDamage )
+{
+    int ret = 0;
+    //
+    int vid = GetVid(iUnit);
+	//
+    if ( vid == 1070 )
+    {// �������� ?�������� ����?��?�������� ����������?������ ��??��������
+        if ( GetAnimation(iUnit) != ANI_STAND_OPEN )
+        {
+            iDamage /= 10;
+            if ( !iDamage )
+                iDamage = 1;
+        }
+        ret = 1;
+        Action(iUnit, ACT_SET_HP, Action(iUnit, ACT_GET_HP) - iDamage);
+        //1070也支持冰冻枪冻结
+        ret |= FreezeDamage( iUnit, iBeatingUnit, iDamage );
+    }
+
+    if(vid != 1070)	//�������� ��?
+    {
+    	//������ ?��������?�� ��������??�� ������?
+    	if(vid != 1890 && vid != 1895 && vid != 1901 && vid != 1080 && vid != 1087 )
+    	{
+	        ret |= ReducingDamage( iUnit, iBeatingUnit, iDamage );
+	        ret |= FreezeDamage( iUnit, iBeatingUnit, iDamage );
+		}
+        //
+        ret |= BurningDamage( iUnit, iBeatingUnit, iDamage );
+    }
+
+    //
+#ifndef NET_GAME_RUN
+    //PERF: skip the IsMonsterVid() linear scan for flame/freeze stream bullets
+    //(they generate hundreds of damage ticks per frame; stats are unaffected)
+    if( !ret && !IsStreamDamageBullet(iBeatingUnit) && IsMonsterVid(vid) )
+    {
+        static int LastTime = 0;
+        if( LastTime != GetTime() )
+        {
+            CurStatData[ VSTAT_MACCURACY_NUM ] += iDamage;
+            LastTime = GetTime();
+        }
+    }
+#endif
+
+//zmNEW2006Jun28
+#ifdef NET_GAME_RUN
+	if(!ret && iBeatingUnit)
+	{
+	    int ExpToAdd = iDamage;
+	    int hp = Action(iUnit, ACT_GET_HP);
+	    if(ExpToAdd > hp)
+	    	ExpToAdd = hp;
+	    ExpToAdd = ExpToAdd * giScoresCoeff;
+    	SendCommandA( Action(iBeatingUnit, ACT_GET_ARMY), EXT_ADDSKILL, RPGHERO_EXP, ExpToAdd );
+	}
+#endif
+
+    //
+    return ret;
+}
+
+
+//------------------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------------------
+F50_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F60_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1025_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+//
+F1070_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1870_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1890_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+// F1895_DAMAGE( int iUnit, int iBeatingUnit, int iDamage )
+// {return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1901_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+//
+F1030_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1830_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1840_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1037_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1050_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1060_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1061_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1080_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1087_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1092_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1850_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1860_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1861_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1851_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2042_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2049_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3020_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F51_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F54_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F55_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F56_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F57_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F58_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F59_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F61_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F62_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F63_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F64_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F65_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1820_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3408_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3409_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3410_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3411_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3412_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3416_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3417_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3423_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3425_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3426_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3451_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3452_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3453_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3457_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3458_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3459_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3460_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3461_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3462_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3467_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3468_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3469_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3470_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3471_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3472_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3473_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3474_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1165_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1021_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1042_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1074_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1077_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1079_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2176_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2182_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3464_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3465_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3466_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3475_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3476_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2186_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+// ZS2
+F3785_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3786_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3787_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3800_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3805_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3812_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3820_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3824_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3828_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3830_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3835_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3839_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3950_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3954_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3958_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3962_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3972_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3976_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3980_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3984_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3988_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3992_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F3996_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F4020_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2058_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+// AS2C
+F2000_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2006_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2013_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2020_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2031_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2034_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+//AS Revisited
+F2061_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2064_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2067_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2070_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2073_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2076_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2079_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2082_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2085_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2088_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2089_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2090_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2091_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2092_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2093_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2094_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2097_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2100_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2103_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2106_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2108_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2110_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2113_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2116_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2117_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2118_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2121_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2124_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2125_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2126_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2127_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2128_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+//new boss units
+F1952_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1953_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1954_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1955_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1956_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1957_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1958_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1959_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1960_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1961_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1962_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1963_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1964_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F1965_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+//as2 legend
+F1894_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2380_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2390_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2391_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2394_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2404_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2410_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2416_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2423_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2430_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2438_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2439_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+F2440_DAMAGE(int iUnit, int iBeatingUnit, int iDamage){return Common_Damage( iUnit, iBeatingUnit, iDamage );}
+
+//------------------------------------------------------------------------------------------
+//borning of soldier's corpse
+F1157_14(int unit)
+{
+    //int item = CreateSprite( 1607, GetX(unit), GetY(unit), GetZ(unit), GetDirection(unit) );
+    //SendCommand( EXT_FIND_ID_FOR_SPRITE, item );
+}
+
+
+//------------------------------------------------------------------------------------------
+//��� ����? ����, ����?�� ����? ���������� ������? ���������� ����.
+//      �� ������ ����������?����?�������� ����?������ (����?��� ����?����)
+Barrel_Damage( int iUnit, int iBeatingUnit, int iDamage )
+{
+    int Army = 0;
+    if(iBeatingUnit)
+        Army = Action(iBeatingUnit, ACT_GET_ARMY);
+    //
+    if( !iBeatingUnit || !Flagman(Army) )   //���� ���������� ����?����?����?
+        return 0;
+    //
+    int NewHp = Action( iUnit, ACT_GET_HP ) - iDamage;
+    if( NewHp <= 0 )
+        Action(iUnit, ACT_SET_ARMY, Army);
+    //
+    //Log2("Army - " + itoa(Army) + ". NewHp - " + itoa(NewHp));
+    //
+    return 0;
+}
+//������ ��������? ��? ��?�������� �� ������ ��������� ����?�� ������ ��������
+F401_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Barrel_Damage( iUnit, iBeatingUnit, iDamage );}
+F402_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Barrel_Damage( iUnit, iBeatingUnit, iDamage );}
+F435_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Barrel_Damage( iUnit, iBeatingUnit, iDamage );}
+F1740_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Barrel_Damage( iUnit, iBeatingUnit, iDamage );}
+F2333_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Barrel_Damage( iUnit, iBeatingUnit, iDamage );}
+F3308_DAMAGE( int iUnit, int iBeatingUnit, int iDamage ){return Barrel_Damage( iUnit, iBeatingUnit, iDamage );}
