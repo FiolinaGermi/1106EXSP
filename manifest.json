@@ -173,6 +173,11 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/weapon.db"
     },
     {
+      "path": "scripts/monsters.lgc",
+      "md5": "db23209f74b41a351a4d1583075e29ab",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/scripts/monsters.lgc"
+    },
+    {
       "path": "scripts/const/const_perks.lgc",
       "md5": "94f9f90847bc84d64602a2bceb015dae",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/scripts/const/const_perks.lgc"
