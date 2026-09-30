@@ -1,5 +1,5 @@
 {
-  "version": "2026.09.30.1631",
+  "version": "2026.09.30.1632",
   "base": "Gamedata",
   "files": [
     {
@@ -944,7 +944,7 @@
     },
     {
       "path": "text/dialogs.txt",
-      "md5": "939596206e1700282bf7b0c8fddde80d",
+      "md5": "90d6c51c40cb9c680927dc0c9f44ed7b",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/dialogs.txt"
     },
     {
@@ -954,7 +954,7 @@
     },
     {
       "path": "text/mission.txt",
-      "md5": "8df1395967238ff4dc62e77f9b75ed7a",
+      "md5": "2dd1cd0653c403fa209004f531baab93",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/mission.txt"
     }
   ]
