@@ -1,5 +1,5 @@
 {
-  "version": "2026.09.30.1632",
+  "version": "2026.09.30.1633",
   "base": "Gamedata",
   "files": [
     {
@@ -136,6 +136,36 @@
       "path": "ui/dialogs/1",
       "md5": "68b329da9893e34099c7d8ad5cb9c940",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/1"
+    },
+    {
+      "path": "ui/dialogs/391_23.tga",
+      "md5": "03458ea6a2c9e56efec48cae49f55615",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/391_23.tga"
+    },
+    {
+      "path": "ui/dialogs/392_22.tga",
+      "md5": "ec4f5fdda5cbc3ea1f5bf6d75d97031e",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/392_22.tga"
+    },
+    {
+      "path": "ui/dialogs/392_23.tga",
+      "md5": "ee54317e1b33de4792ec5e3155d0b294",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/392_23.tga"
+    },
+    {
+      "path": "ui/dialogs/391_21.tga",
+      "md5": "1596a995042b41a62dd768cad51f533a",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/391_21.tga"
+    },
+    {
+      "path": "ui/dialogs/391_22.tga",
+      "md5": "3c7da43b0757bae4fe30ab0ee60e152d",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/391_22.tga"
+    },
+    {
+      "path": "ui/dialogs/392_21.tga",
+      "md5": "c34a41d58d9b4bfee6ee3bd44c13dd20",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/392_21.tga"
     },
     {
       "path": "scripts/monsters.lgc",
