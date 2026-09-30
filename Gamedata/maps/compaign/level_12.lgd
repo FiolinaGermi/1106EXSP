@@ -1,188 +1,705 @@
-//
-#ifndef CreateSprite
-	#include "Gamedata\scripts\core\export.lgc"
-#endif
+#include "gamedata\scripts\common\common.lgc"
+#include "gamedata\scripts\common\common_compaign.lgc"
+#include "gamedata\scripts\util\util_queen.lgc"
+#include "gamedata\maps\compaign\tlks.lgc"
 
-#ifndef COMMON_DEFS_H
-	#include "Gamedata\scripts\common\common_defs.lgc"
-#endif
+//int Telezhka;
 
-#define FOR_PUBLISHERS true
-#define NO_NAG         3    // количество на?скрино?
-#define NAG_DELAY      4100 // время на просмотр одно?картинки,  ?ms
-
-
-int    StartPicture = 0;// время начала показа картинки
-int    NoPicture    = 0;// номе?показываемой картинки
-int    Picture      = 0;// ссылка на саму показываемую ?данный момент картинку
-string NextMap      = "";
-int    MaxPicture;// количество на?скрино?
-int    MenuLoadFlag = 0;// 1 если меню уж?загружен?
-int    KeyPressed = 0;// была нажата какая либо кнопка
-
-
-//------------------------------------------------------------------------------------------
-main()
-{
-	iff( 1 )
-	{
-		//SetMapTypeEx( MAP_TYPE_UNKNOWN, "" );
-		if( FOR_PUBLISHERS )
-			SetCursor( CURSOR_OFF );
-		else
-			SetCursor( CURSOR_NORMAL );
-		StartPicture = GetTime();
-		//Effect(EFF_FADE_OUT,0);
-        MaxPicture = NO_NAG;//GetVidData(2208, VID_NO_DIR);
-	}
-
-	//
-    if ( GetEffectState(EFF_FADE) > 45 )
-    {
-    	//уходим ?nag-скрина
-		if( NextMap=="exit" )
-		{
-			int ToMainMenu = GetGlobValI("GoToMainMenuAfterSlide", 0 );
-			SetGlobValI("GoToMainMenuAfterSlide", 0 );
-			if( ToMainMenu )
-			{
-				MenuRelease();//zmnew 2005Apr28 - wit said do this to delete "loading" sprite
-				Load( "Gamedata\\maps\\mainmenu.map" );
-			}
-			else
-				Load( "Gamedata\\maps\\mainmenu.map" );
-		}
-    }
-	if( GetEffectState(EFF_FADE) > 45 || GetEffectState(EFF_FADE_OUT) > 45 || GetEffectState(EFF_ALPHAAPPEAR) > 45 )
-	{
-  		if(Picture)
-  		{
-  			if( NoPicture >= MaxPicture )
-  				NoPicture = 0;
-  			int dir = SendCommand( EXT_GETABSDIR, GetVid(Picture), NoPicture );
-  			Action( Picture, ACT_CHANGE_DIRECTION, dir );
-  			//Log2("aaa - " + itoa(NoPicture) + " - " + itoa(dir));
-  		}
-
-  		//грузим менюшк?разо?
-  		iff( 1 )
-  		{
-/*				MenuLoad( "Gamedata\\men\\nag.men" );
-  			if( FOR_PUBLISHERS )
-  			{
-  				Destroy( MenuFindNamed( "TESTERS_MM" ) );
-  				Destroy( MenuFindNamed( "TESTERS_EXIT" ) );
-  				Destroy( MenuFindNamed( "TESTERS_REPORT" ) );
-  				Destroy( MenuFindNamed( "Testers_Report" ) );
-  				Destroy( MenuFindNamed( "Testers_MainMenu" ) );
-  				Destroy( MenuFindNamed( "Testers_Exit" ) );
-  			}
-  			Picture = Create();//MenuFind(2208);*/
-  			NoPicture = 0;
-            //if ( ScreenX() == 800 )
-      			Picture = CreateSprite(2208, ScreenX()/2, ScreenY()/2, 0);
-            //else
-      		//	Picture = CreateSprite(2252, ScreenX()/2, ScreenY()/2, 0);
-//              if ( ScreenX() == 800 )
-//                  Action(Picture, ACT_SET_SCALE, 800000 / 1024, 800000 / 1024, 1000);
-  		}
-	}
-
-   	int btn;
-   	if( btn = MenuLClick() )
-   	{
-   		if( btn == MenuFindNamed( "TESTERS_MM" ) )
-   		{
-   			SetGlobValI("GoToMainMenuAfterSlide", 1 );
-  			Effect(EFF_ALPHAAPPEAR,0, 0, 0);
-   			Effect(EFF_FADE,0, 0, 1000);
-    		StartPicture = GetTime();
-   			Load( "Gamedata\\maps\\mainmenu.map" );
-            return;
-   		}
-   		else
-   		if( btn == MenuFindNamed( "TESTERS_EXIT" ) )
-   		{
-   			SetGlobValI("GoToMainMenuAfterSlide", 0 );
-  			Effect(EFF_ALPHAAPPEAR,0, 0, 0);
-   			Effect(EFF_FADE,0, 0, 1000);
-    		StartPicture = GetTime();
-   			NextMap = "exit";
-            return;
-   		}
-   		else
-   		if( btn == MenuFindNamed( "TESTERS_REPORT" ) )
-   		{
-   			Exec( GetString( "menu", "Testers_URL") );
-   			Load( "Gamedata\\maps\\mainmenu.map" );
-   			//
-   			//SetRe( GetDefaultRegPat(), "GoToMainMenuAfterSlide", 0 );
-   			//Effect(EFF_FADE,0);
-   			//NextMap = "exit";
-   		}
-   		else
-   		if( btn == MenuFindNamed( "Nag_Buy_Btn" ) )
-   		{
-//   			Exec("buynow.html");
-            Exec(GetString("strings","BuyLink"));
-   			Load( "Gamedata\\maps\\mainmenu.map" );
-   		}
-   	}
-
-    if ( !MenuLoadFlag && NoPicture == MaxPicture - 1 )
-    {
-        StartPicture += 7000;
-        MenuLoadFlag = 1;
-        //if ( ScreenX() == 800 )
-            MenuLoad( "Gamedata\\men\\nag.men" );
-        //else
-        //    MenuLoad( "Gamedata\\men\\nag1024.men");
-        if ( GetGlobValI("GoToMainMenuAfterSlide", 0 ) )
-        {
-            Destroy(MenuFindNamed( "TESTERS_EXIT" ));
-            Destroy(MenuFindNamed( "Testers_Exit" ));
-        }
-        else
-        {
-            Destroy(MenuFindNamed( "TESTERS_MM" ));
-            Destroy(MenuFindNamed( "Testers_MainMenu" ));
-        }
-		SetCursor( CURSOR_NORMAL );
-    }
-	//кртинк?уж?показана - обрабатываем клик?
-	if( GetEffectState(EFF_FADE) < 0 && GetEffectState(EFF_ALPHAAPPEAR) < 0 )
-	{
-		if ( (GetTime() - StartPicture) > NAG_DELAY )
-		{
-			StartPicture = GetTime();
-  			Effect(EFF_ALPHAAPPEAR,0, 0, 1500);
-			NoPicture++;
-		}
-  		else
-		{
-			if ( MenuLoadFlag && GetKey() == VK_ESCAPE )
-			{
-       			Effect(EFF_FADE,0, 0, 1000);
-				Load( "Gamedata\\maps\\mainmenu.map" );
-			}
-			else if ( KeyPressed )
-            {
-                KeyPressed = 0;
-				StartPicture = GetTime() + NAG_DELAY + 900;
-				Effect(EFF_ALPHAAPPEAR,0, 0, 1500);
-				NoPicture++;
-			}
-		}
-	}
-    if( GetInputAction(IA_ANY_KEY) )
-        KeyPressed = 1;
+F2695_2(int unit)
+{// перемещени?игрока ?тележкой
+    Action(Flagman(0), ACT_CHANGE_COOR, GetX(unit), GetY(unit), GetZ(unit) + 40);
 }
 
-//-----
-//затычк?- чтоб?не писало ?ло? чт?не може?найт?функци?
-OnGetExperience( int iHeroId, int iExp ) {return 0; }
-GetHeroColor( int iColor, int iArmy, int iInd ) {return 0; }
-GetAddonSkillFormulaForHero( int id, int skill_num ) {return 0; }
-GetAddonSkillFormulaForWeapon( int id, int parent_id, int skill_num ) {return 0; }
-GetAddonSkillFormulaForArmor( int id, int parent_id, int skill_num ) {return 0; }
+main()
+{
+SetVidData(1182,VID_SPEED,250);
+SetVidData(1182,VID_RELOAD_TIME,30);
+SetVidData(1182,VID_DETECTRANGE,1200);
+SetVidData(1182,VID_BATTLERANGE,1200);
+SetVidData(1182,VID_AIM_RADIUS,20);
+SetVidData(1404,VID_DAMAGE_MIN,1000);
+SetVidData(1404,VID_DAMAGE_MAX,1200);
+SetVidData(1402,VID_DEATHRANGE,40);
+
+SetVidData(3100,VID_MAXHP,50000);
+SetVidData(3006,VID_DAMAGE_MIN,1080);
+SetVidData(3006,VID_DAMAGE_MAX,1200);
+
+SetVidData(1200,VID_MAXHP,50000);
+SetVidData(1406,VID_DAMAGE_MIN,120000);
+SetVidData(1406,VID_DAMAGE_MAX,150000);
+SetVidData(1406,VID_DEATHRANGE,1250);
+
+SetVidData(3630,VID_MAXHP,50000);
+SetVidData(2998,VID_DAMAGE_MIN,620);
+SetVidData(2998,VID_DAMAGE_MAX,685);
+
+SetVidData(3629,VID_MAXHP,50000);
+SetVidData(3408,VID_DAMAGE_MIN,20000);
+SetVidData(3408,VID_DAMAGE_MAX,25000);
+SetVidData(3408,VID_DEATHRANGE,300);
+
+SetVidData(50,VID_MAXHP,350000);
+SetVidData(51,VID_MAXHP,350000);
+if (GetCurResolution() == 11) {
+    // 2kЈЁ2560x1440Ј© КэЦµ
+SetVidData(1050,VID_BATTLERANGE,700);
+SetVidData(1050,VID_RELOAD_TIME,400);
+SetVidData(1336,VID_DAMAGE_MIN,20);
+SetVidData(1336,VID_DAMAGE_MAX,20);
+SetVidData(1336,VID_SPEED,975);
+SetVidData(1336,VID_DEATHRANGE,18);
+
+SetVidData(1021,VID_BATTLERANGE,700);
+SetVidData(1021,VID_AIM_RADIUS,15);
+SetVidData(1021,VID_RELOAD_TIME,70);
+SetVidData(2138,VID_DAMAGE_MIN,4);
+SetVidData(2138,VID_DAMAGE_MAX,4);
+SetVidData(2138,VID_DEATHRANGE,10);
+
+SetVidData(1042,VID_MAXHP,4800);
+SetVidData(1042,VID_BATTLERANGE,700);
+SetVidData(1042,VID_RELOAD_TIME,70);
+SetVidData(1042,VID_AIM_RADIUS,15);
+SetVidData(1044,VID_DAMAGE_MIN,8);
+SetVidData(1044,VID_DAMAGE_MAX,12);
+SetVidData(1044,VID_SPEED,1250);
+SetVidData(1044,VID_DEATHRANGE,22);
+
+SetVidData(1074,VID_BATTLERANGE,700);
+SetVidData(1074,VID_AIM_RADIUS,15);
+SetVidData(1016,VID_DAMAGE_MIN,4);
+SetVidData(1016,VID_DAMAGE_MAX,4);
+SetVidData(1016,VID_DEATHRANGE,10);
+
+SetVidData(1084,VID_DAMAGE_MIN,10);
+SetVidData(1084,VID_DAMAGE_MAX,10);
+SetVidData(1080,VID_SPEED,380);
+
+SetVidData(1820,VID_BATTLERANGE,700);
+SetVidData(1820,VID_RELOAD_TIME,450);
+SetVidData(1826,VID_DAMAGE_MIN,20);
+SetVidData(1826,VID_DAMAGE_MAX,20);
+SetVidData(1826,VID_SPEED,450);
+SetVidData(1826,VID_DEATHRANGE,18);
+
+SetVidData(1830,VID_MAXHP,9600);
+SetVidData(1830,VID_BATTLERANGE,720);
+SetVidData(1830,VID_RELOAD_TIME,1200);
+SetVidData(1837,VID_DAMAGE_MIN,7);
+SetVidData(1837,VID_DAMAGE_MAX,7);
+SetVidData(1826,VID_DEATHRANGE,37);
+
+SetVidData(1077,VID_MAXHP,9600);
+SetVidData(1077,VID_BATTLERANGE,720);
+SetVidData(1077,VID_RELOAD_TIME,300);
+SetVidData(1077,VID_AIM_RADIUS,15);
+SetVidData(2136,VID_DAMAGE_MIN,3);
+SetVidData(2136,VID_DAMAGE_MAX,3);
+SetVidData(2136,VID_SPEED,1200);
+SetVidData(2136,VID_DEATHRANGE,22);
+
+SetVidData(1079,VID_MAXHP,9600);
+SetVidData(1079,VID_BATTLERANGE,720);
+SetVidData(1079,VID_RELOAD_TIME,90);
+SetVidData(1079,VID_AIM_RADIUS,10);
+SetVidData(1994,VID_DAMAGE_MIN,6);
+SetVidData(1994,VID_DAMAGE_MAX,8);
+SetVidData(1994,VID_SPEED,1500);
+SetVidData(1994,VID_DEATHRANGE,22);
+
+SetVidData(1840,VID_MAXHP,9600);
+SetVidData(1840,VID_BATTLERANGE,720);
+SetVidData(1840,VID_RELOAD_TIME,140);
+SetVidData(1840,VID_AIM_RADIUS,15);
+SetVidData(240,VID_DAMAGE_MIN,8);
+SetVidData(240,VID_DAMAGE_MAX,12);
+SetVidData(240,VID_SPEED,1500);
+SetVidData(240,VID_DEATHRANGE,22);
+
+SetVidData(1850,VID_MAXHP,80000);
+SetVidData(1850,VID_BATTLERANGE,760);
+SetVidData(1850,VID_RELOAD_TIME,1000);
+SetVidData(1850,VID_AIM_RADIUS,15);
+SetVidData(1337,VID_DAMAGE_MIN,24);
+SetVidData(1337,VID_DAMAGE_MAX,24);
+SetVidData(1337,VID_SPEED,1200);
+SetVidData(1337,VID_DEATHRANGE,90);
+
+SetVidData(2176,VID_MAXHP,8000);
+SetVidData(2176,VID_BATTLERANGE,700);
+SetVidData(2176,VID_RELOAD_TIME,120);
+SetVidData(2176,VID_AIM_RADIUS,15);
+SetVidData(2190,VID_DAMAGE_MIN,8);
+SetVidData(2190,VID_DAMAGE_MAX,12);
+SetVidData(2190,VID_SPEED,1250);
+SetVidData(2190,VID_DEATHRANGE,22);
+
+SetVidData(2182,VID_MAXHP,42600);
+SetVidData(2182,VID_BATTLERANGE,700);
+SetVidData(2182,VID_RELOAD_TIME,450);
+SetVidData(2182,VID_AIM_RADIUS,15);
+SetVidData(2189,VID_DAMAGE_MIN,8);
+SetVidData(2189,VID_DAMAGE_MAX,12);
+SetVidData(2189,VID_SPEED,1250);
+SetVidData(2189,VID_DEATHRANGE,22);
+
+SetVidData(890,VID_MAXHP,80000);
+SetVidData(890,VID_BATTLERANGE,760);
+SetVidData(890,VID_RELOAD_TIME,1000);
+SetVidData(890,VID_AIM_RADIUS,15);
+
+SetVidData(1860,VID_MAXHP,60000);
+SetVidData(1860,VID_BATTLERANGE,770);
+SetVidData(1860,VID_AIM_RADIUS,15);
+SetVidData(109,VID_DAMAGE_MIN,20);
+SetVidData(109,VID_DAMAGE_MAX,30);
+SetVidData(109,VID_SPEED,600);
+SetVidData(109,VID_DEATHRANGE,180);
+
+SetVidData(1870,VID_MAXHP,9600);
+SetVidData(1870,VID_BATTLERANGE,720);
+SetVidData(1870,VID_RELOAD_TIME,1200);
+SetVidData(1870,VID_AIM_RADIUS,15);
+SetVidData(1876,VID_DAMAGE_MIN,20);
+SetVidData(1876,VID_DAMAGE_MAX,20);
+SetVidData(1876,VID_SPEED,675);
+SetVidData(1876,VID_DEATHRANGE,18);
+
+SetVidData(2067,VID_MAXHP,9600);
+SetVidData(2067,VID_BATTLERANGE,720);
+SetVidData(2067,VID_RELOAD_TIME,1200);
+SetVidData(2067,VID_AIM_RADIUS,15);
+
+SetVidData(2006,VID_MAXHP,15000);
+SetVidData(2006,VID_SPEED,160);
+SetVidData(2012,VID_DAMAGE_MIN,800);
+SetVidData(2012,VID_DAMAGE_MAX,800);
+SetVidData(2012,VID_DEATHRANGE,300);
+
+SetVidData(2020,VID_MAXHP,1500);
+SetVidData(2020,VID_BATTLERANGE,720);
+SetVidData(2020,VID_RELOAD_TIME,1200);
+SetVidData(2020,VID_AIM_RADIUS,15);
+SetVidData(2021,VID_DAMAGE_MIN,20);
+SetVidData(2021,VID_DAMAGE_MAX,20);
+SetVidData(2021,VID_SPEED,900);
+SetVidData(2021,VID_DEATHRANGE,22);
+
+SetVidData(2031,VID_MAXHP,64000);
+SetVidData(2031,VID_SPEED,150);
+SetVidData(1400,VID_DAMAGE_MIN,34);
+SetVidData(1400,VID_DAMAGE_MAX,34);
+SetVidData(1400,VID_DEATHRANGE,97);
+
+SetVidData(2034,VID_MAXHP,140000);
+SetVidData(2034,VID_BATTLERANGE,770);
+
+SetVidData(2088,VID_MAXHP,9600);
+SetVidData(2088,VID_BATTLERANGE,720);
+SetVidData(2088,VID_RELOAD_TIME,600);
+
+SetVidData(2090,VID_MAXHP,14400);
+SetVidData(2090,VID_BATTLERANGE,720);
+SetVidData(2090,VID_RELOAD_TIME,600);
+
+SetVidData(2092,VID_MAXHP,21600);
+SetVidData(2092,VID_BATTLERANGE,770);
+SetVidData(2092,VID_RELOAD_TIME,600);
+
+SetVidData(2103,VID_MAXHP,64000);
+SetVidData(2103,VID_BATTLERANGE,770);
+SetVidData(2106,VID_MAXHP,80000);
+SetVidData(2106,VID_BATTLERANGE,770);
+SetVidData(2105,VID_DAMAGE_MIN,30);
+SetVidData(2105,VID_DAMAGE_MAX,30);
+SetVidData(2105,VID_SPEED,1000);
+SetVidData(2105,VID_DEATHRANGE,60);
+
+SetVidData(2108,VID_MAXHP,96000);
+SetVidData(2108,VID_BATTLERANGE,740);
+SetVidData(2180,VID_AIM_RADIUS,15);
+SetVidData(173,VID_DAMAGE_MIN,25);
+SetVidData(173,VID_DAMAGE_MAX,25);
+SetVidData(173,VID_SPEED,600);
+SetVidData(173,VID_DEATHRANGE,150);
+
+SetVidData(2440,VID_MAXHP,3600);
+
+SetVidData(2058,VID_MAXHP,15000);
+SetVidData(2058,VID_SPEED,140);
+SetVidData(2059,VID_DAMAGE_MIN,800);
+SetVidData(2059,VID_DAMAGE_MAX,800);
+SetVidData(2059,VID_DEATHRANGE,120);
+
+SetVidData(3812,VID_MAXHP,60000);
+SetVidData(3812,VID_BATTLERANGE,700);
+SetVidData(3812,VID_AIM_RADIUS,15);
+SetVidData(3814,VID_DAMAGE_MIN,10);
+SetVidData(3814,VID_DAMAGE_MAX,10);
+SetVidData(3814,VID_SPEED,1275);
+SetVidData(3814,VID_DEATHRANGE,22);
+
+SetVidData(3835,VID_MAXHP,64000);
+SetVidData(3835,VID_SPEED,220);
+SetVidData(3836,VID_DAMAGE_MIN,30);
+SetVidData(3836,VID_DAMAGE_MAX,30);
+SetVidData(3836,VID_DEATHRANGE,90);
+
+SetVidData(3839,VID_MAXHP,80000);
+SetVidData(3839,VID_BATTLERANGE,700);
+SetVidData(3839,VID_AIM_RADIUS,15);
+SetVidData(243,VID_DAMAGE_MIN,86);
+SetVidData(243,VID_DAMAGE_MAX,86);
+SetVidData(243,VID_SPEED,250);
+SetVidData(243,VID_DEATHRANGE,225);
+
+SetVidData(3958,VID_MAXHP,64000);
+SetVidData(3958,VID_SPEED,180);
+SetVidData(3959,VID_DAMAGE_MIN,30);
+SetVidData(3959,VID_DAMAGE_MAX,30);
+SetVidData(3959,VID_DEATHRANGE,97);
+
+SetVidData(3962,VID_MAXHP,140000);
+SetVidData(3962,VID_BATTLERANGE,770);
+SetVidData(3962,VID_AIM_RADIUS,15);
+
+SetVidData(3992,VID_MAXHP,94000);
+SetVidData(3992,VID_BATTLERANGE,700);
+SetVidData(3992,VID_RELOAD_TIME,900);
+SetVidData(3992,VID_AIM_RADIUS,30);
+SetVidData(1881,VID_DAMAGE_MIN,10);
+SetVidData(1881,VID_DAMAGE_MAX,10);
+SetVidData(1881,VID_SPEED,500);
+SetVidData(1881,VID_DEATHRANGE,18);
+
+SetVidData(3785,VID_BATTLERANGE,700);
+SetVidData(3785,VID_RELOAD_TIME,400);
+SetVidData(3785,VID_AIM_RADIUS,15);
+SetVidData(3790,VID_DAMAGE_MIN,10);
+SetVidData(3790,VID_DAMAGE_MAX,10);
+SetVidData(3790,VID_DEATHRANGE,18);
+
+SetVidData(3996,VID_BATTLERANGE,700);
+SetVidData(3996,VID_RELOAD_TIME,650);
+SetVidData(3996,VID_AIM_RADIUS,15);
+
+SetVidData(54,VID_MAXHP,360000);
+SetVidData(54,VID_BATTLERANGE,800);
+SetVidData(55,VID_MAXHP,180000);
+SetVidData(55,VID_BATTLERANGE,800);
+SetVidData(56,VID_MAXHP,90000);
+SetVidData(3791,VID_DAMAGE_MIN,25);
+SetVidData(3791,VID_DAMAGE_MAX,25);
+SetVidData(3791,VID_DEATHRANGE,60);
+
+SetVidData(57,VID_BATTLERANGE,800);
+
+SetVidData(58,VID_MAXHP,440000);
+SetVidData(58,VID_SPEED,180);
+SetVidData(3829,VID_DAMAGE_MIN,24);
+SetVidData(3829,VID_DAMAGE_MAX,30);
+SetVidData(3829,VID_DEATHRANGE,20);
+SetVidData(59,VID_MAXHP,220000);
+SetVidData(59,VID_SPEED,240);
+SetVidData(3831,VID_DAMAGE_MIN,24);
+SetVidData(3831,VID_DAMAGE_MAX,30);
+SetVidData(3831,VID_DEATHRANGE,20);
+
+SetVidData(60,VID_SPEED,330);
+
+SetVidData(61,VID_BATTLERANGE,800);
+
+SetVidData(62,VID_SPEED,300);
+
+SetVidData(63,VID_BATTLERANGE,830);
+
+SetVidData(64,VID_BATTLERANGE,800);
+
+SetVidData(65,VID_BATTLERANGE,800);
+
+SetVidData(1070,VID_MAXHP,1600000);
+SetVidData(1070,VID_BATTLERANGE,830);
+
+SetVidData(3409,VID_BATTLERANGE,830);
+
+SetVidData(2088,VID_BATTLERANGE,820);
+
+SetVidData(3418,VID_BATTLERANGE,860);
+
+SetVidData(3452,VID_BATTLERANGE,820);
+
+SetVidData(3453,VID_BATTLERANGE,820);
+SetVidData(3453,VID_RELOAD_TIME,800);
+SetVidData(3453,VID_AIM_RADIUS,15);
+SetVidData(3463,VID_DAMAGE_MIN,20);
+SetVidData(3463,VID_DAMAGE_MAX,20);
+SetVidData(3463,VID_SPEED,1012);
+
+SetVidData(3457,VID_BATTLERANGE,820);
+
+SetVidData(3460,VID_BATTLERANGE,850);
+
+SetVidData(3462,VID_BATTLERANGE,840);
+
+SetVidData(3464,VID_BATTLERANGE,820);
+
+SetVidData(3465,VID_BATTLERANGE,820);
+
+SetVidData(3473,VID_BATTLERANGE,800);
+
+SetVidData(3474,VID_BATTLERANGE,800);
+
+SetVidData(3408,VID_BATTLERANGE,820);
+
+SetVidData(3411,VID_BATTLERANGE,830);
+
+SetVidData(3412,VID_BATTLERANGE,830);
+
+} else {
+
+SetVidData(1050,VID_BATTLERANGE,550);
+SetVidData(1050,VID_RELOAD_TIME,400);
+SetVidData(1336,VID_DAMAGE_MIN,20);
+SetVidData(1336,VID_DAMAGE_MAX,20);
+SetVidData(1336,VID_SPEED,975);
+SetVidData(1336,VID_DEATHRANGE,18);
+
+SetVidData(1021,VID_BATTLERANGE,550);
+SetVidData(1021,VID_AIM_RADIUS,15);
+SetVidData(1021,VID_RELOAD_TIME,70);
+SetVidData(2138,VID_DAMAGE_MIN,4);
+SetVidData(2138,VID_DAMAGE_MAX,4);
+SetVidData(2138,VID_DEATHRANGE,10);
+
+SetVidData(1042,VID_MAXHP,4800);
+SetVidData(1042,VID_BATTLERANGE,550);
+SetVidData(1042,VID_RELOAD_TIME,70);
+SetVidData(1042,VID_AIM_RADIUS,15);
+SetVidData(1044,VID_DAMAGE_MIN,8);
+SetVidData(1044,VID_DAMAGE_MAX,12);
+SetVidData(1044,VID_SPEED,1250);
+SetVidData(1044,VID_DEATHRANGE,22);
+
+SetVidData(1074,VID_BATTLERANGE,550);
+SetVidData(1074,VID_AIM_RADIUS,15);
+SetVidData(1016,VID_DAMAGE_MIN,4);
+SetVidData(1016,VID_DAMAGE_MAX,4);
+SetVidData(1016,VID_DEATHRANGE,10);
+
+SetVidData(1084,VID_DAMAGE_MIN,10);
+SetVidData(1084,VID_DAMAGE_MAX,10);
+SetVidData(1080,VID_SPEED,380);
+
+SetVidData(1820,VID_BATTLERANGE,550);
+SetVidData(1820,VID_RELOAD_TIME,450);
+SetVidData(1826,VID_DAMAGE_MIN,20);
+SetVidData(1826,VID_DAMAGE_MAX,20);
+SetVidData(1826,VID_SPEED,450);
+SetVidData(1826,VID_DEATHRANGE,18);
+
+SetVidData(1830,VID_MAXHP,9600);
+SetVidData(1830,VID_BATTLERANGE,570);
+SetVidData(1830,VID_RELOAD_TIME,1200);
+SetVidData(1837,VID_DAMAGE_MIN,7);
+SetVidData(1837,VID_DAMAGE_MAX,7);
+SetVidData(1826,VID_DEATHRANGE,37);
+
+SetVidData(1077,VID_MAXHP,9600);
+SetVidData(1077,VID_BATTLERANGE,570);
+SetVidData(1077,VID_RELOAD_TIME,300);
+SetVidData(1077,VID_AIM_RADIUS,15);
+SetVidData(2136,VID_DAMAGE_MIN,3);
+SetVidData(2136,VID_DAMAGE_MAX,3);
+SetVidData(2136,VID_SPEED,1200);
+SetVidData(2136,VID_DEATHRANGE,22);
+
+SetVidData(1079,VID_MAXHP,9600);
+SetVidData(1079,VID_BATTLERANGE,570);
+SetVidData(1079,VID_RELOAD_TIME,90);
+SetVidData(1079,VID_AIM_RADIUS,10);
+SetVidData(1994,VID_DAMAGE_MIN,6);
+SetVidData(1994,VID_DAMAGE_MAX,8);
+SetVidData(1994,VID_SPEED,1500);
+SetVidData(1994,VID_DEATHRANGE,22);
+
+SetVidData(1840,VID_MAXHP,9600);
+SetVidData(1840,VID_BATTLERANGE,570);
+SetVidData(1840,VID_RELOAD_TIME,140);
+SetVidData(1840,VID_AIM_RADIUS,15);
+SetVidData(240,VID_DAMAGE_MIN,8);
+SetVidData(240,VID_DAMAGE_MAX,12);
+SetVidData(240,VID_SPEED,1500);
+SetVidData(240,VID_DEATHRANGE,22);
+
+SetVidData(1850,VID_MAXHP,80000);
+SetVidData(1850,VID_BATTLERANGE,610);
+SetVidData(1850,VID_RELOAD_TIME,1000);
+SetVidData(1850,VID_AIM_RADIUS,15);
+SetVidData(1337,VID_DAMAGE_MIN,24);
+SetVidData(1337,VID_DAMAGE_MAX,24);
+SetVidData(1337,VID_SPEED,1200);
+SetVidData(1337,VID_DEATHRANGE,90);
+
+SetVidData(2176,VID_MAXHP,8000);
+SetVidData(2176,VID_BATTLERANGE,550);
+SetVidData(2176,VID_RELOAD_TIME,120);
+SetVidData(2176,VID_AIM_RADIUS,15);
+SetVidData(2190,VID_DAMAGE_MIN,8);
+SetVidData(2190,VID_DAMAGE_MAX,12);
+SetVidData(2190,VID_SPEED,1250);
+SetVidData(2190,VID_DEATHRANGE,22);
+
+SetVidData(2182,VID_MAXHP,42600);
+SetVidData(2182,VID_BATTLERANGE,550);
+SetVidData(2182,VID_RELOAD_TIME,450);
+SetVidData(2182,VID_AIM_RADIUS,15);
+SetVidData(2189,VID_DAMAGE_MIN,8);
+SetVidData(2189,VID_DAMAGE_MAX,12);
+SetVidData(2189,VID_SPEED,1250);
+SetVidData(2189,VID_DEATHRANGE,22);
+
+SetVidData(890,VID_MAXHP,80000);
+SetVidData(890,VID_BATTLERANGE,610);
+SetVidData(890,VID_RELOAD_TIME,1000);
+SetVidData(890,VID_AIM_RADIUS,15);
+
+SetVidData(1860,VID_MAXHP,6000);
+SetVidData(1860,VID_BATTLERANGE,620);
+SetVidData(1860,VID_AIM_RADIUS,15);
+SetVidData(109,VID_DAMAGE_MIN,20);
+SetVidData(109,VID_DAMAGE_MAX,30);
+SetVidData(109,VID_SPEED,600);
+SetVidData(109,VID_DEATHRANGE,180);
+
+SetVidData(1870,VID_MAXHP,9600);
+SetVidData(1870,VID_BATTLERANGE,570);
+SetVidData(1870,VID_RELOAD_TIME,1200);
+SetVidData(1870,VID_AIM_RADIUS,15);
+SetVidData(1876,VID_DAMAGE_MIN,20);
+SetVidData(1876,VID_DAMAGE_MAX,20);
+SetVidData(1876,VID_SPEED,675);
+SetVidData(1876,VID_DEATHRANGE,18);
+
+SetVidData(2067,VID_MAXHP,9600);
+SetVidData(2067,VID_BATTLERANGE,570);
+SetVidData(2067,VID_RELOAD_TIME,1200);
+SetVidData(2067,VID_AIM_RADIUS,15);
+
+SetVidData(2006,VID_MAXHP,15000);
+SetVidData(2006,VID_SPEED,160);
+SetVidData(2012,VID_DAMAGE_MIN,800);
+SetVidData(2012,VID_DAMAGE_MAX,800);
+SetVidData(2012,VID_DEATHRANGE,300);
+
+SetVidData(2020,VID_MAXHP,1500);
+SetVidData(2020,VID_BATTLERANGE,570);
+SetVidData(2020,VID_RELOAD_TIME,1200);
+SetVidData(2020,VID_AIM_RADIUS,15);
+SetVidData(2021,VID_DAMAGE_MIN,20);
+SetVidData(2021,VID_DAMAGE_MAX,20);
+SetVidData(2021,VID_SPEED,900);
+SetVidData(2021,VID_DEATHRANGE,22);
+
+SetVidData(2031,VID_MAXHP,64000);
+SetVidData(2031,VID_SPEED,150);
+SetVidData(1400,VID_DAMAGE_MIN,34);
+SetVidData(1400,VID_DAMAGE_MAX,34);
+SetVidData(1400,VID_DEATHRANGE,97);
+
+SetVidData(2034,VID_MAXHP,140000);
+SetVidData(2034,VID_BATTLERANGE,620);
+
+SetVidData(2088,VID_MAXHP,9600);
+SetVidData(2088,VID_BATTLERANGE,570);
+SetVidData(2088,VID_RELOAD_TIME,600);
+
+SetVidData(2090,VID_MAXHP,14400);
+SetVidData(2090,VID_BATTLERANGE,570);
+SetVidData(2090,VID_RELOAD_TIME,600);
+
+SetVidData(2092,VID_MAXHP,21600);
+SetVidData(2092,VID_BATTLERANGE,620);
+SetVidData(2092,VID_RELOAD_TIME,600);
+
+SetVidData(2103,VID_MAXHP,64000);
+SetVidData(2103,VID_BATTLERANGE,620);
+SetVidData(2106,VID_MAXHP,80000);
+SetVidData(2106,VID_BATTLERANGE,620);
+SetVidData(2105,VID_DAMAGE_MIN,30);
+SetVidData(2105,VID_DAMAGE_MAX,30);
+SetVidData(2105,VID_SPEED,1000);
+SetVidData(2105,VID_DEATHRANGE,60);
+
+SetVidData(2108,VID_MAXHP,96000);
+SetVidData(2108,VID_BATTLERANGE,590);
+SetVidData(2180,VID_AIM_RADIUS,15);
+SetVidData(173,VID_DAMAGE_MIN,25);
+SetVidData(173,VID_DAMAGE_MAX,25);
+SetVidData(173,VID_SPEED,600);
+SetVidData(173,VID_DEATHRANGE,150);
+
+SetVidData(2440,VID_MAXHP,3600);
+
+SetVidData(2058,VID_MAXHP,15000);
+SetVidData(2058,VID_SPEED,140);
+SetVidData(2059,VID_DAMAGE_MIN,800);
+SetVidData(2059,VID_DAMAGE_MAX,800);
+SetVidData(2059,VID_DEATHRANGE,120);
+
+SetVidData(3812,VID_MAXHP,60000);
+SetVidData(3812,VID_BATTLERANGE,550);
+SetVidData(3812,VID_AIM_RADIUS,15);
+SetVidData(3814,VID_DAMAGE_MIN,10);
+SetVidData(3814,VID_DAMAGE_MAX,10);
+SetVidData(3814,VID_SPEED,1275);
+SetVidData(3814,VID_DEATHRANGE,22);
+
+SetVidData(3835,VID_MAXHP,64000);
+SetVidData(3835,VID_SPEED,220);
+SetVidData(3836,VID_DAMAGE_MIN,30);
+SetVidData(3836,VID_DAMAGE_MAX,30);
+SetVidData(3836,VID_DEATHRANGE,90);
+
+SetVidData(3839,VID_MAXHP,80000);
+SetVidData(3839,VID_BATTLERANGE,550);
+SetVidData(3839,VID_AIM_RADIUS,15);
+SetVidData(243,VID_DAMAGE_MIN,86);
+SetVidData(243,VID_DAMAGE_MAX,86);
+SetVidData(243,VID_SPEED,250);
+SetVidData(243,VID_DEATHRANGE,225);
+
+SetVidData(3958,VID_MAXHP,64000);
+SetVidData(3958,VID_SPEED,180);
+SetVidData(3959,VID_DAMAGE_MIN,30);
+SetVidData(3959,VID_DAMAGE_MAX,30);
+SetVidData(3959,VID_DEATHRANGE,97);
+
+SetVidData(3962,VID_MAXHP,140000);
+SetVidData(3962,VID_BATTLERANGE,620);
+SetVidData(3962,VID_AIM_RADIUS,15);
+
+SetVidData(3992,VID_MAXHP,94000);
+SetVidData(3992,VID_BATTLERANGE,550);
+SetVidData(3992,VID_RELOAD_TIME,900);
+SetVidData(3992,VID_AIM_RADIUS,30);
+SetVidData(1881,VID_DAMAGE_MIN,10);
+SetVidData(1881,VID_DAMAGE_MAX,10);
+SetVidData(1881,VID_SPEED,500);
+SetVidData(1881,VID_DEATHRANGE,18);
+
+SetVidData(3785,VID_BATTLERANGE,550);
+SetVidData(3785,VID_RELOAD_TIME,400);
+SetVidData(3785,VID_AIM_RADIUS,15);
+SetVidData(3790,VID_DAMAGE_MIN,10);
+SetVidData(3790,VID_DAMAGE_MAX,10);
+SetVidData(3790,VID_DEATHRANGE,18);
+
+SetVidData(3996,VID_BATTLERANGE,550);
+SetVidData(3996,VID_RELOAD_TIME,650);
+SetVidData(3996,VID_AIM_RADIUS,15);
+
+SetVidData(54,VID_MAXHP,360000);
+SetVidData(54,VID_BATTLERANGE,650);
+SetVidData(55,VID_MAXHP,180000);
+SetVidData(55,VID_BATTLERANGE,650);
+SetVidData(56,VID_MAXHP,90000);
+SetVidData(3791,VID_DAMAGE_MIN,25);
+SetVidData(3791,VID_DAMAGE_MAX,25);
+SetVidData(3791,VID_DEATHRANGE,60);
+
+SetVidData(57,VID_BATTLERANGE,650);
+
+SetVidData(58,VID_MAXHP,440000);
+SetVidData(58,VID_SPEED,180);
+SetVidData(3829,VID_DAMAGE_MIN,24);
+SetVidData(3829,VID_DAMAGE_MAX,30);
+SetVidData(3829,VID_DEATHRANGE,20);
+SetVidData(59,VID_MAXHP,220000);
+SetVidData(59,VID_SPEED,240);
+SetVidData(3831,VID_DAMAGE_MIN,24);
+SetVidData(3831,VID_DAMAGE_MAX,30);
+SetVidData(3831,VID_DEATHRANGE,20);
+
+SetVidData(60,VID_SPEED,330);
+
+SetVidData(61,VID_BATTLERANGE,650);
+
+SetVidData(62,VID_SPEED,300);
+
+SetVidData(63,VID_BATTLERANGE,680);
+
+SetVidData(64,VID_BATTLERANGE,650);
+
+SetVidData(65,VID_BATTLERANGE,650);
+
+SetVidData(1070,VID_MAXHP,1600000);
+SetVidData(1070,VID_BATTLERANGE,680);
+
+SetVidData(3409,VID_BATTLERANGE,680);
+
+SetVidData(3416,VID_BATTLERANGE,670);
+
+SetVidData(3418,VID_BATTLERANGE,710);
+
+SetVidData(3452,VID_BATTLERANGE,670);
+
+SetVidData(3453,VID_BATTLERANGE,670);
+SetVidData(3453,VID_RELOAD_TIME,800);
+SetVidData(3453,VID_AIM_RADIUS,15);
+SetVidData(3463,VID_DAMAGE_MIN,20);
+SetVidData(3463,VID_DAMAGE_MAX,20);
+SetVidData(3463,VID_SPEED,1012);
+
+SetVidData(3457,VID_BATTLERANGE,670);
+
+SetVidData(2092,VID_BATTLERANGE,700);
+
+SetVidData(3462,VID_BATTLERANGE,690);
+
+SetVidData(3464,VID_BATTLERANGE,670);
+
+SetVidData(3465,VID_BATTLERANGE,670);
+
+SetVidData(3473,VID_BATTLERANGE,650);
+
+SetVidData(1820,VID_BATTLERANGE,650);
+
+SetVidData(3408,VID_BATTLERANGE,670);
+
+SetVidData(3411,VID_BATTLERANGE,670);
+
+SetVidData(3412,VID_BATTLERANGE,670);
+}
+  iff(1)
+  {
+    SetMapTypeEx( MAP_TYPE_LEVEL, "Level_01" );
+    InitGame();
+  // іхКј»Їґ«ЛНПµНі ПлФЪДД№ШК№УГѕНјУХвТ»Мм
+    
+  // АэИзЈєКдИлK Z L  (ѕНКЗїЁЧЎБЛ)
+    
+  //НжјТ»бЧФОТЙЛє¦ЈїµгЈ¬И»єуґ«ЛНµЅКу±кѕаАл-50µҐО»µДѕаАл
+    
+  //InitTeleportSystem();  
+    //SetScrollBoxEx( 0 );
+//    Telezhka = FindNearestSprite(GETSPRITE_VID_FLAG + 2695, 0, 0, 20000);
+  }
+  if( GameTact() )
+    return;
+
+  QuestsTact();
+  CompaignGameTact();
+  BossTact(); 
+  // ёьРВґ«ЛНПµНі
+  UpdateTeleportSystem();
+ 
+//    if ( GetAnimation(Telezhka) == ANI_GO )
+//        Action(Flagman(0), ACT_CHANGE_COOR, GetX(Telezhka), GetY(Telezhka), GetZ(Telezhka) + 40);
+
+  //iff( SizeTo(Flagman(0),2301,362) < 70 )
+  //{                               
+    //Win();
+  //}
+}
 
