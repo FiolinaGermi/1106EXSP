@@ -133,6 +133,11 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/maps/compaign/Level_13.map"
     },
     {
+      "path": "ui/dialogs/1",
+      "md5": "68b329da9893e34099c7d8ad5cb9c940",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/1"
+    },
+    {
       "path": "scripts/monsters.lgc",
       "md5": "db23209f74b41a351a4d1583075e29ab",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/scripts/monsters.lgc"
