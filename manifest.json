@@ -1,5 +1,5 @@
 {
-  "version": "2026.10.01.1658",
+  "version": "2026.10.01.1659",
   "base": "Gamedata",
   "files": [
     {
@@ -301,6 +301,11 @@
       "path": "sounds/speech/hdl11-5.ogg",
       "md5": "568719cd5a3b767f9bb557d706e4ebd2",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/hdl11-5.ogg"
+    },
+    {
+      "path": "sounds/speech/wsde10-6.ogg",
+      "md5": "a5a1eeb89f5d135762613ccd5d468aab",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/wsde10-6.ogg"
     },
     {
       "path": "sounds/speech/yjy12-3.ogg",
@@ -613,6 +618,11 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/lpld12-37.ogg"
     },
     {
+      "path": "sounds/speech/hdl10-25.ogg",
+      "md5": "44a4f1c94f19cd5f3fc7cc261353f916",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/hdl10-25.ogg"
+    },
+    {
       "path": "sounds/speech/cd12-3.ogg",
       "md5": "b566a25591bcc8e2d2790fd9fd1d2f33",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/cd12-3.ogg"
@@ -903,6 +913,16 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/lpld12-61.ogg"
     },
     {
+      "path": "sounds/speech/hdl10-24.ogg",
+      "md5": "9e8e6e2405b00d869440d850ce3d3a29",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/hdl10-24.ogg"
+    },
+    {
+      "path": "sounds/speech/hdl10-23.ogg",
+      "md5": "be5f9f4222f329b93d4c78a166a84756",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/hdl10-23.ogg"
+    },
+    {
       "path": "sounds/speech/zyqsh12-2.ogg",
       "md5": "ee6b2651fc90a9e72e86807d23ed4165",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/zyqsh12-2.ogg"
@@ -916,6 +936,11 @@
       "path": "sounds/speech/yjy12-2.ogg",
       "md5": "6d8638e39ba1b1a8e2e211a8baa0e1b4",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/yjy12-2.ogg"
+    },
+    {
+      "path": "sounds/speech/wsde10-5.ogg",
+      "md5": "5d770ae7670530de5b815b3d644f48c6",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/wsde10-5.ogg"
     },
     {
       "path": "sounds/speech/cd12-8.ogg",
