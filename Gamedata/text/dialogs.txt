@@ -6830,7 +6830,7 @@ A启动的吗？
 <10_77>
 <Font=10>
 <Icon=391,0>
-<Speech=Gamedata\sounds\Speech\hdl10-24.ogg>
+<Speech=Gamedata\sounds\Speech\hdl10-25.ogg>
 赫德雷：那就先这样吧，挂了。
 
 ;************LEVEL 11************
