@@ -1,0 +1,495 @@
+#define COMMONPERKS_H	aaa
+//обработк?практическ?всех перков вынесена сюда.
+//некоторы?перк?обрабатывают? ?hero.lgc, ?? вл?ют просто на скиллы героя.
+
+//---------------------------------------------------------------------------
+static int StartBlinkTime = 0;   //время начала мигания
+
+//---------------------------------------------------------------------------
+//forward definitions
+BlinkSecretObjects();
+BlinkTact();
+
+
+//---------------------------------------------------------------------------
+//массив, хранящи?время перков ?миллисекунда?для значений перк?0..200
+//высчитывается автоматическ?чере?соответствующи?массив?
+static bool gbInitialized = false;
+static int AutoHealingTimesCalced[ MAXIMUM_PERK_VALUE + 1 ];
+static int HypnosisTimesCalced[ MAXIMUM_PERK_VALUE + 1 ];
+static int SecretsVisionTimesCalced[ MAXIMUM_PERK_VALUE + 1 ];
+static int HypnosisRadiusCalced[ MAXIMUM_PERK_VALUE + 1 ];
+
+
+//---------------------------------------------------------------------------
+CalculateTimes( int *Times, int *PerkVals, int *TimesCalced, int iSize )
+{
+    int i, j;
+    for( j = 0; j < MAXIMUM_PERK_VALUE + 1; j++ )
+        TimesCalced[ j ] = 0;
+
+    //инициализируем первый элемен?
+    TimesCalced[ PerkVals[ 0 ] ] = Times[ 0 ];
+
+    //заполняем массив TimesCalced
+    for( i = 1; i < iSize ; i++ )
+    {
+        //инициализируем элементы ( PerkVals_i-1, PerkVals_i ].
+        int len, val, pos;
+        len = PerkVals[ i ] - PerkVals[ i - 1 ];
+        val = Times[ i ] - Times[ i - 1 ];
+
+        for( j = PerkVals[ i - 1 ] + 1; j <= PerkVals[ i ]; j++ )
+        {
+            pos = j - PerkVals[ i - 1 ];
+            TimesCalced[ j ] = Times[ i - 1 ] + val * pos / len;
+        }
+    }
+}
+
+
+//---------------------------------------------------------------------------
+InitArraysIfNeeded()
+{
+	if( !gbInitialized )
+	{
+		gbInitialized = true;
+		int i;
+		for( i = 0; i < MAXIMUM_PERK_VALUE + 1; i++ )
+		{
+			AutoHealingTimesCalced[ i ] = 0;
+			HypnosisTimesCalced[ i ] = 0;
+			SecretsVisionTimesCalced[ i ] = 0;
+			HypnosisRadiusCalced[ i ] = 0;
+		}
+	}
+}
+
+
+//---------------------------------------------------------------------------
+CalculatePerksTimes()
+{
+	InitArraysIfNeeded();
+	//
+    CalculateTimes( AutoHealingTimes, AutoHealingPerkVals, AutoHealingTimesCalced,
+                                              sizeof( AutoHealingPerkVals ) / 4 );
+    CalculateTimes( HypnosisTimes, HypnosisPerkVals, HypnosisTimesCalced,
+                                                 sizeof( HypnosisPerkVals ) / 4 );
+    CalculateTimes( SecretsVisionTimes, SecretsVisionPerkVals, SecretsVisionTimesCalced,
+                                             sizeof( SecretsVisionPerkVals ) / 4 );
+    CalculateTimes( HypnosisRadius, HypnosisPerkVals, HypnosisRadiusCalced,
+                                             sizeof( HypnosisPerkVals ) / 4 );
+	//
+	//int j;
+	//LogToConsole("sss");
+    //for( j = 0; j < MAXIMUM_PERK_VALUE + 1; j++ )
+    //    LogToConsole(itoa(HypnosisRadiusCalced[ j ]));
+}
+
+
+//---------------------------------------------------------------------------
+#define MAX_HYPN_UNITS	100	//максимальное ко?во одновременно гипнотизируемы?монстров
+
+//---------------------------------------------------------------------------
+static int UnitsToHypn[MAX_HYPN_UNITS];
+static int TimesToHypn[MAX_HYPN_UNITS];
+static int InitTimes[MAX_HYPN_UNITS];
+static int HypnLabels[MAX_HYPN_UNITS];
+static int HypnCnt = 0;
+
+
+//---------------------------------------------------------------------------
+DeleteHypnUnitNum(int i )
+{
+	HypnCnt--;
+	if(UnitsToHypn[i])
+		Action( UnitsToHypn[i], ACT_DELETE_ITEM, -555 );//удаляем метк??гипноз?
+	//
+	UnitsToHypn[i] = UnitsToHypn[HypnCnt];
+	TimesToHypn[i] = TimesToHypn[HypnCnt];
+	InitTimes[i] = InitTimes[HypnCnt];
+	Destroy( HypnLabels[i] );
+	HypnLabels[i] = HypnLabels[HypnCnt];
+}
+
+
+//---------------------------------------------------------------------------
+DeleteHypnMonster(int unit)
+{
+	int i;
+	for( i = 0; i < HypnCnt; i++ )
+	if( UnitsToHypn[i] == unit )
+	{
+		DeleteHypnUnitNum(i);
+		return;
+	}
+}
+
+
+//---------------------------------------------------------------------------
+//гипноз - если курсор наведе?на монстр??течени?определенног?времен?
+HypnosisTact( int nArmy, int heroId )
+{
+	int i;
+   	int CurTime = GetTime();
+
+    //создае?(если надо) ?перемещаем метк?гипноз?
+    for( i = 0; i < HypnCnt; i++ )
+    {
+		int x = GetX(UnitsToHypn[i]);
+		int y = GetY(UnitsToHypn[i]);
+		int z = GetZ(UnitsToHypn[i]);
+    	if(!HypnLabels[i])
+    		HypnLabels[i] = CreateSprite(1354,0,0,0);
+		if(HypnLabels[i])
+		{
+			Action( HypnLabels[i], ACT_CHANGE_COOR, x, y + 1000, z + 1000 + 0 );
+			int dir = 255 * (CurTime - InitTimes[i]) / TimesToHypn[i];
+			if( dir > 250 )
+				dir = 250;
+			Action( HypnLabels[i], ACT_CHANGE_DIRECTION, dir );
+		}
+    }
+
+	//выполняем один ра??100 миллисекун?
+	static int PrevTime = 0;
+	if( PrevTime && CurTime - PrevTime < 100 )
+		return;
+	PrevTime = CurTime;
+	//
+    int PerkVal = SendCommand( EXT_GETSKILL, heroId, RPGHERO_PERK_HYPNOSIS );
+    if( PerkVal < HypnosisPerkVals[ 0 ] )
+    	return;
+	int Radius = HypnosisRadiusCalced[PerkVal];
+	//LogToConsole( itoa(HypnCnt) );
+	//LogToConsole( itoa(Radius) );
+	//
+    int iX = GetInputAction(IA_MOUSE_X);
+    int iY = GetInputAction(IA_MOUSE_Y);
+
+    //zmNEW2006Jul11
+    int flX, flY, flZ;
+    if(bOld_Heroes[nArmy] && OldHeroes[nArmy] )
+    {
+    	flX = GetX(OldHeroes[nArmy]);
+    	flY = GetY(OldHeroes[nArmy]);
+    	flZ = GetZ(OldHeroes[nArmy]);
+    }
+    else
+    {
+    	flX = GetX(Flagman(nArmy));
+    	flY = GetY(Flagman(nArmy));
+    	flZ = GetZ(Flagman(nArmy));
+    }
+
+    //удаляем юнитов, ко? за радиусом гипноз??кого уж?надо гипнотизироват?(гипнотизир? пр?этом)
+    i = 0;
+    while( i < HypnCnt )
+    {
+    	bool ToDelete = !UnitsToHypn[i] || ( SizeTo(UnitsToHypn[i], iX, iY+GetZ(UnitsToHypn[i])) > Radius );
+    	//zmNEW2006Jul11
+    	if(!ToDelete && UnitsToHypn[i])
+    	{
+    		int t = IsLineUnderGround(flX, flY, flZ+20, GetX(UnitsToHypn[i]), GetY(UnitsToHypn[i]), GetZ(UnitsToHypn[i])+20);
+    		if(t)
+    			ToDelete = true;
+			//Log2(" t = " + itoa(t) + ", " + itoa(flX) + ", " + itoa(flY) + ", " + itoa(flZ) + ", " +
+			// itoa(GetX(UnitsToHypn[i])) + ", " + itoa(GetY(UnitsToHypn[i])) + ", " + itoa( GetZ(UnitsToHypn[i])));
+    	}
+    	//
+        if( !ToDelete && CurTime - InitTimes[i] > TimesToHypn[i] )
+        {
+			//высчитывае?длительность загипнотизированност?
+			//skill==0 -> len = 5sec; skill==100 -> len = 60sec;
+			int len = 5000 + (60000-5000) * (PerkVal-0)/(100-0);
+			len = len / 2;	//zmNEW
+			len += Action( UnitsToHypn[i], ACT_GET_HP );	//zmNEW
+			SendCommandA( nArmy, EXT_ADDHYPNMONSTER, UnitsToHypn[i], len );
+			//
+        	Hypnotize( UnitsToHypn[i], len );
+            //добавляем exp
+            //zm2006Jan30. больше не добавляем, ?? гипноз не вечный, добавляем пр?смерти
+            //int hp = Action( UnitsToHypn[i], ACT_GET_HP );
+		    //int hp = GetVidData(GetVid(UnitsToHypn[i]),VID_MAXHP);
+            //if( hp > 0 )
+            //	SendCommandA( nArmy, EXT_ADDSKILL, RPGHERO_EXP, hp );
+			ToDelete = true;
+        }
+        //
+    	if(ToDelete)
+    		DeleteHypnUnitNum(i);
+    	else
+    		i++;
+    }
+
+    //находи?юнитов, ко? нахо?тся ?данный момент по?гипнотизируемо?областью
+	int z = GetGroundZ( iX, iY );
+	for( i = FirstInBox(iX-Radius,iY-Radius,iX+Radius,iY+Radius+z); i; i = NextInBox() )
+	{
+		if( SizeTo(i, iX, iY+GetZ(i)) <= Radius && !Action(i, ACT_HAVE_ITEM, -555) &&
+			Action(i,ACT_GET_ARMY)==1 && (IsMonsterVid(GetVid(i)) || IsMonstToHypnVid(GetVid(i)) )
+			&& !HaveLink( i, SURVIVE_FREEZE_EFFECT ) )	//*zm2006Jul31 - во?я чуда? забы?совсем...
+		{
+	    	//zmNEW2006Jul11
+    		int t = IsLineUnderGround(flX, flY, flZ+20, GetX(i), GetY(i), GetZ(i)+20);
+    		if(!t)
+			{
+				UnitsToHypn[HypnCnt] = i;
+   				TimesToHypn[HypnCnt] = HypnosisTimesCalced[ PerkVal ];
+	   			InitTimes[HypnCnt] = CurTime;
+	   			HypnLabels[HypnCnt] = 0;
+   				Action( UnitsToHypn[HypnCnt], ACT_ADD_ITEM, -555 );
+
+		        //изме?ем время, необ? для гипноз? ?зависимост?от hp монстр?
+    		    int Hp = Action( i, ACT_GET_HP );
+        		TimesToHypn[HypnCnt] = TimesToHypn[HypnCnt] * Hp / HYPNOSIS_ENEMY_HP;
+		        //
+    		    if(HypnCnt < MAX_HYPN_UNITS - 1 )
+   					HypnCnt++;
+			}
+		}
+	}
+}
+
+
+//---------------------------------------------------------------------------
+//функция, вызывающ?? каждый такт, ?основном обрабатывающ? перк?
+//?которы?подсчитывает? длительность чего-либо во времен?
+PerksTact( int nArmy )
+{
+	InitArraysIfNeeded();
+	//
+	int heroId = HeroID[ nArmy ];
+
+//самолечени?
+    int PerkVal = SendCommand( EXT_GETSKILL, heroId, RPGHERO_PERK_HEALING );
+    int iHp = SendCommand( EXT_GETSKILL, heroId, RPGHERO__HP );
+    int MaxHp = SendCommand( EXT_GETSKILL, heroId, RPGHERO_MAXHP );
+	//
+	static int LastHealingTimes[MAX_PLAYER] = {	0, 0, 0, 0, 0, 0, 0, 0 };
+    if(iHp >= MaxHp)
+    {
+    	LastHealingTimes[nArmy] = 0;
+    }
+    else
+    if( PerkVal >= AutoHealingPerkVals[ 0 ] )
+    {
+        //получаем время межд?прибавками хитпоинтов
+        if( LastHealingTimes[nArmy] == 0 )
+        	LastHealingTimes[nArmy] = GetTime();
+
+	    //LogToConsole(itoa(CurTime)+"-"+itoa(LastHealingTime)+"-"+itoa(AutoHealingTimesCalced[ PerkVal ]));
+		if( GetTime() - LastHealingTimes[nArmy] >= AutoHealingTimesCalced[ PerkVal ] )
+        {
+	    	//Log2( "Autohealing: Hp added - " + itoa( 1 ) + ". Delta time is "
+        	//                          + itoa( AutoHealingTimesCalced[ PerkVal ] ) );
+            SendCommandA( nArmy, EXT_ADDSKILL, RPGHERO__HP, 1 );
+            //чтоб?автолечени?не зависило от fps-ов:
+            LastHealingTimes[nArmy] = LastHealingTimes[nArmy] + AutoHealingTimesCalced[ PerkVal ];
+        }
+    }
+
+//
+	HypnosisTact( nArmy, heroId );
+
+//хороше?видени??темнот?
+    PerkVal = SendCommand( EXT_GETSKILL, heroId, RPGHERO_PERK_DARKVISION );
+    int SkillForSecretVision = 0;
+    if( PerkVal > 0 )
+    {
+        if( GetGammaIntensive(CurrentGamma) > NIGHT_VISION_INTENSIVE )
+        {
+        	if(!g_bNightVisionOn[nArmy])	//*zm2006Aug01
+	            SetGammaEx( giCurArmy, CountGamma( CurrentGamma, 0, 256*PerkVal / NIGHT_VISION_SKILL_FOR_MAX_GAMMA ) );
+		}
+		//*zm2006Jul31
+		SkillForSecretVision = PerkVal - NIGHT_VISION_SKILL_FOR_MAX_GAMMA;
+		if(SkillForSecretVision < 0)
+			SkillForSecretVision = 0;
+    }
+
+//видимост?секретов
+    PerkVal = SendCommand( EXT_GETSKILL, heroId, RPGHERO_PERK_SECRETSVISION );
+    //*zm2006Jul31
+    if(!PerkVal && SkillForSecretVision)
+	    PerkVal = SkillForSecretVision;
+
+    static int LastHealingTime = 0;
+    if( PerkVal >= SecretsVisionPerkVals[ 0 ] || StartBlinkTime)
+    {
+        //получаем время межд?миганиями предмето?
+        static int LastBlinkingTime = 0;
+        if( GetTime() - LastBlinkingTime > SecretsVisionTimesCalced[ PerkVal ] )
+        {
+            BlinkSecretObjects();
+            LastBlinkingTime = GetTime();
+        }
+        BlinkTact();
+    }
+}
+
+
+//---------------------------------------------------------------------------
+//мигнут?всем?секретными объектам?
+BlinkSecretObjects()
+{
+    if( !StartBlinkTime )
+        StartBlinkTime = GetTime();
+}
+
+
+//---------------------------------------------------------------------------
+//установить гамм?всем секретны?вида?
+SetGammaForSecretVids( int iGamma )
+{
+    int i;
+    for( i = 0; i < sizeof( SecretsVid ) / 4; i++ )
+    {
+    	//blink 2-nd army
+        SetVidData( SecretsVid[ i ], VID_GAMMA + 2, iGamma );
+    }
+}
+
+
+//---------------------------------------------------------------------------
+InitGammaForSecretVids()
+{
+    SetGammaForSecretVids( DEFAULT_GAMMA_FOR_SECRET_VIDS );
+    SetVidData( 1385, VID_GAMMA + 0, 0x7F << 24 );
+}
+
+
+//---------------------------------------------------------------------------
+//процедур?мигания объектов
+BlinkTact()
+{
+    if( StartBlinkTime )
+    {
+        int DeltaTime;
+        DeltaTime = GetTime()-StartBlinkTime;
+        //Log2("DeltaTime - " + itoa(DeltaTime));
+
+        if( DeltaTime < BLINK_TIME_1 )
+        {
+        	int time = DeltaTime * 255 / BLINK_TIME_1;
+            SetGammaForSecretVids( CountGamma(0, BLINK_GAMMA_FOR_SECRET_VIDS, time) );
+			SetVidData( 1385, VID_GAMMA + 0, CountAlpha(0, 0x7F, 255-time) << 24 );
+		}
+        else
+        if( DeltaTime < BLINK_TIME_1 + BLINK_TIME_2 )
+        {
+            DeltaTime -= BLINK_TIME_1;
+        	int time = DeltaTime * 255 / BLINK_TIME_2;
+            SetGammaForSecretVids( CountGamma(BLINK_GAMMA_FOR_SECRET_VIDS, 0, time) );
+            SetVidData( 1385, VID_GAMMA + 0, CountAlpha(0x7F, 0, 255-time) << 24 );
+        }
+        else
+        {
+            StartBlinkTime = 0;
+            SetGammaForSecretVids( DEFAULT_GAMMA_FOR_SECRET_VIDS );
+            SetVidData( 1385, VID_GAMMA + 0, 0x7F << 24 );
+        }
+    }
+}
+
+
+//---------------------------------------------------------------------------
+//вызывает? на получени?любого опыт?
+//возвращает прибавку ?опыт?
+OnGetExperience( int iHeroId, int iExp )
+{
+	//LogToConsole( "Exp added: " + itoa( iExp ) );
+	//
+	//вл?ни?перк?обучение
+    int PerkVal = SendCommand( EXT_GETSKILL, iHeroId, RPGHERO_PERK_EDUCATION );
+    //пр?MAXIMUM_PERK_VALUE увеличивае?на EDUCATION_ADD_EXP%
+    int AddToExp = iExp * PerkVal * EDUCATION_ADD_EXP / MAXIMUM_PERK_VALUE / 100;
+
+    //вл?ни?скилла интеллек?
+    int PerkVal2 = SendCommand( EXT_GETSKILL, iHeroId, RPGHERO_INTELLIGENCE );
+    //пр?200(MAXIMUM_PERK_VALUE) увеличивае??2 раза
+    AddToExp += iExp * PerkVal2 * INTELLIGENCE_ADD_EXP / MAXIMUM_PERK_VALUE / 100;
+
+    //if( AddToExp )
+    //	LogToConsole( "OnGetExperience: Experience added with education  " + itoa( AddToExp ) );
+
+    //затычк?zm2005Oct16
+    if(AddToExp < 0)
+    {
+    	//AddToExp = 0;затычк?есть ??коде
+    	Log2("Error!!! AddToExp < 0. "+itoa(PerkVal)+"-"+itoa(PerkVal2)+"-"+itoa(iExp));
+    }
+    return AddToExp;
+}
+
+
+//---------------------------------------------------------------------------
+//вызывает? на получени?любы?дене?(кром?продаж??магазине).
+//возвращает прибавку ?деньга?
+OnGetMoney( int iHeroId, int iMoney )
+{
+    int PerkVal = SendCommand( EXT_GETSKILL, iHeroId, RPGHERO_PERK_ADDMONEY );
+    //*zm2006Feb28 - ?2.5 раза сказал?поднять
+    //*zm2006Jul21 - сказал?вынест?константой ECONOMIST_ADD_MONEY
+    int AddMoney = iMoney * PerkVal * ECONOMIST_ADD_MONEY / MAXIMUM_PERK_VALUE / 100;
+	
+	// Нужн?ме?ть значен? дропов для выживания. Формул? Подобранная сумм?* на уровен?прокачки перк?* 400% / 200 / 100
+    //if( AddMoney )
+    //	LogToConsole( "OnGetMoney: Money added   - " + itoa( AddMoney ) );
+    return AddMoney;
+}
+
+
+//---------------------------------------------------------------------------
+//вызывает? на убийстве любого враг?(для вампиризма ?добавление очко?опыт?.
+//возвращает прибавку ?собственному hp.
+OnEnemyKill( int nArmy, int iEnemyHp )
+{
+	if( !iEnemyHp )
+		return;
+
+//zmNEW2006Jun28
+#ifdef NET_GAME_RUN
+	return;
+#endif
+
+    //добавляем опыт
+    //LogToConsole( "OnEnemyKill: Experience added " + itoa( iEnemyHp ) );
+    int ExpToAdd = iEnemyHp * giScoresCoeff;
+	//
+    SendCommandA( nArmy, EXT_ADDSKILL, RPGHERO_EXP, ExpToAdd );
+    if(giCurWpnIndex != -1)
+    {
+		gWpnScore[giCurWpnIndex] += ExpToAdd;
+		gWpnMonst[giCurWpnIndex]++;
+	}
+
+    //пр?вампиризме
+    int PerkVal;
+    PerkVal = SendCommand( EXT_GETSKILL, HeroID[ nArmy ], RPGHERO_PERK_VAMPIRE );
+	//
+	static int AddHp = 0;
+
+	//пр?прокачке скилла вампириз?на 100 за 100 hp монстров на?даёт? стольк?наши?hp
+	int Denom = VAMPIRE_ADD_HP * 2500;
+	//
+    AddHp += iEnemyHp * PerkVal;
+	if( AddHp >= Denom )
+	{
+		int HpToAdd = AddHp / Denom;
+		AddHp -= HpToAdd * Denom;
+		//
+		int iHp, MaxHp;
+		iHp = SendCommand( EXT_GETSKILL, HeroID[ nArmy ], RPGHERO__HP );
+		MaxHp = SendCommand( EXT_GETSKILL, HeroID[ nArmy ], RPGHERO_MAXHP );
+		if( iHp + HpToAdd > MaxHp )
+			HpToAdd = MaxHp - iHp;
+		//
+		if( HpToAdd > 0 )
+		{
+			SendCommandA( nArmy, EXT_ADDSKILL, RPGHERO__HP, HpToAdd );
+			//LogToConsole( "OnEnemyKill: Vampire " + itoa( HpToAdd ) );
+		}
+	}
+}
+
