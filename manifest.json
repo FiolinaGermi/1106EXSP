@@ -1,5 +1,5 @@
 {
-  "version": "2026.10.11.1656",
+  "version": "2026.10.12.1515",
   "base": "Gamedata",
   "files": [
     {
@@ -169,7 +169,7 @@
     },
     {
       "path": "scripts/const/const_perks.lgc",
-      "md5": "94f9f90847bc84d64602a2bceb015dae",
+      "md5": "6a1d1d25f059af2003d286189781d5d8",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/scripts/const/const_perks.lgc"
     },
     {
