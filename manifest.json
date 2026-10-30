@@ -1,5 +1,5 @@
 {
-  "version": "2026.10.30.1804",
+  "version": "2026.10.30.1805",
   "base": "Gamedata",
   "files": [
     {
@@ -61,11 +61,6 @@
       "path": "ui/inventory/quest/1637_0014.tga",
       "md5": "1c1665b3db55c48aae3555af3cffdaed",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/quest/1637_0014.tga"
-    },
-    {
-      "path": "ui/inventory/quest/1",
-      "md5": "b026324c6904b2a9cb4b88d6d61c81d1",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/quest/1"
     },
     {
       "path": "ui/inventory/quest/1636_0016.tga",
