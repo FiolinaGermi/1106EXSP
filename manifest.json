@@ -1,5 +1,5 @@
 {
-  "version": "2026.10.30.1800",
+  "version": "2026.10.30.1802",
   "base": "Gamedata",
   "files": [
     {
@@ -728,14 +728,24 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat2/补给线阻断战.ogg"
     },
     {
+      "path": "sounds/music/combat2/追击歼灭战.ogg",
+      "md5": "cec700ac0bda46e989c8e357ac0baf76",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat2/追击歼灭战.ogg"
+    },
+    {
+      "path": "sounds/music/combat2/死亡之塔.ogg",
+      "md5": "8c6cdda29a58ad42cc08ebef7117f561",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat2/死亡之塔.ogg"
+    },
+    {
       "path": "sounds/music/combat2/石巨人塔2.ogg",
       "md5": "0007a0814daf2dd47a9044e63445ca26",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat2/石巨人塔2.ogg"
     },
     {
-      "path": "sounds/music/combat2/1",
-      "md5": "b026324c6904b2a9cb4b88d6d61c81d1",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat2/1"
+      "path": "sounds/music/combat2/王的遗迹.ogg",
+      "md5": "a592196473e159c928a3abaf88920174",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat2/王的遗迹.ogg"
     },
     {
       "path": "sounds/music/combat2/深渊派对.ogg",
