@@ -1,5 +1,5 @@
 {
-  "version": "2026.10.30.1759",
+  "version": "2026.10.30.1800",
   "base": "Gamedata",
   "files": [
     {
@@ -728,6 +728,11 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat2/补给线阻断战.ogg"
     },
     {
+      "path": "sounds/music/combat2/石巨人塔2.ogg",
+      "md5": "0007a0814daf2dd47a9044e63445ca26",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat2/石巨人塔2.ogg"
+    },
+    {
       "path": "sounds/music/combat2/1",
       "md5": "b026324c6904b2a9cb4b88d6d61c81d1",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat2/1"
@@ -741,6 +746,11 @@
       "path": "sounds/music/combat2/极昼.ogg",
       "md5": "2a3fc782c0dd0daa59028ae58f4ca515",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat2/极昼.ogg"
+    },
+    {
+      "path": "sounds/music/combat2/石巨人塔1.ogg",
+      "md5": "e2fb30d5ce7a506f6e47f88831e6517e",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat2/石巨人塔1.ogg"
     },
     {
       "path": "sounds/music/combat2/蘑菇庄园.ogg",
