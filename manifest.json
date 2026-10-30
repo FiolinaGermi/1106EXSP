@@ -1,5 +1,5 @@
 {
-  "version": "2026.10.30.1756",
+  "version": "2026.10.30.1759",
   "base": "Gamedata",
   "files": [
     {
@@ -713,6 +713,11 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/lpld13-54.ogg"
     },
     {
+      "path": "sounds/music/combat2/龙人之塔.ogg",
+      "md5": "4d057d2041b5f6829f7cee9d6682f78b",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat2/龙人之塔.ogg"
+    },
+    {
       "path": "sounds/music/combat2/补给线阻断战.ogg",
       "md5": "eabf9893169eaff5cdc7ea73b47d94df",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat2/补给线阻断战.ogg"
@@ -726,6 +731,11 @@
       "path": "sounds/music/combat2/极昼.ogg",
       "md5": "2a3fc782c0dd0daa59028ae58f4ca515",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat2/极昼.ogg"
+    },
+    {
+      "path": "sounds/music/combat2/蘑菇庄园.ogg",
+      "md5": "99b77b1365cd7fd14b4c2d6bdf43a1d2",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat2/蘑菇庄园.ogg"
     },
     {
       "path": "maps/compaign/Level_14.map",
