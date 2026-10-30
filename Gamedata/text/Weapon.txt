@@ -969,8 +969,8 @@ SLRK ATOM S100
 
 
 <Minigun_volcano3_v3>
-<Font=04>METAL STORM PROTOTYPE
-『金属风暴』原型
+<Font=04>MiniGun M220
+『暗影劫戮』M220 
 <split>
 <Font=06>
 伤害:         <Align=18><Font=06><Damage><Font=06>
@@ -981,10 +981,10 @@ SLRK ATOM S100
 弹匣:∞/射速:极快
 火力:x24/消耗:16/范围:75
 
-『金属风暴』SP500的原
-型枪，超高的射速和较大
-的口径在平衡方面投入大
-量资金而导致研发中断。
+十二管电磁火神炮。枪管
+使用特殊的电磁套管，专
+为它的轨道系统设计，提
+高炮弹速度并减少过热。
 
 <Minigun_volcano3_v4>
 <Font=04>Heavy Cannon Copy
@@ -2194,6 +2194,55 @@ COOLER BLOCK
 该装置可瞬间冷却任何液
 体，具体用途未知。
 
+<Obj_liquid>
+<Font=04>
+Liquid tank
+液 体 罐
+<split>
+<split>
+<Font=04>
+用于存储液体药剂的液体
+罐。
+
+<Obj_agent>
+<Font=04>
+Liquid tank（Agent）
+装有溶剂的液体罐
+<split>
+<split>
+<Font=04>
+装有化学溶剂的液体罐
+
+<Obj_weed>
+<Font=04>
+Weed Killer
+除 草 剂
+<split>
+<split>
+<Font=04>
+装有除草剂的液体罐。
+
+<Obj_signal>
+<Font=04>
+Signal Modulator
+信号调制器
+<split>
+<split>
+<Font=04>
+维修设备所需要的电子工
+具。
+
+<Obj_reagent>
+<Font=04>
+Unknown Reagent
+未 知 试 剂
+<split>
+<split>
+<Font=04>
+在实验室里面获取到的用
+途未知的一支试剂。
+
+
 <Equip_medikit_small>
 <Font=04>SMALL MEDKIT
 小 型 医 疗 包
@@ -2205,7 +2254,7 @@ COOLER BLOCK
 <Font=04>
 最基础的医疗包，仅含最
 低限度的药物。当生命值
-过低时自动使用。
+
 
 <Equip_medikit_big>
 <Font=04>MEDKIT
