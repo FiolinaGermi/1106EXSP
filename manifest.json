@@ -1,5 +1,5 @@
 {
-  "version": "2026.10.30.1750",
+  "version": "2026.10.30.1751",
   "base": "Gamedata",
   "files": [
     {
@@ -711,6 +711,11 @@
       "path": "sounds/speech/lpld13-54.ogg",
       "md5": "c3154c9ebb53274f8111cabd17cfd3a3",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/lpld13-54.ogg"
+    },
+    {
+      "path": "sounds/music/combat2/1",
+      "md5": "b026324c6904b2a9cb4b88d6d61c81d1",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat2/1"
     },
     {
       "path": "maps/compaign/Level_14.map",
