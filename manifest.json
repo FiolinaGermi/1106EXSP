@@ -718,6 +718,11 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat2/龙人之塔.ogg"
     },
     {
+      "path": "sounds/music/combat2/人偶玄关.ogg",
+      "md5": "014ab1edc9ffb77a90db8b67f1b6cc40",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat2/人偶玄关.ogg"
+    },
+    {
       "path": "sounds/music/combat2/补给线阻断战.ogg",
       "md5": "eabf9893169eaff5cdc7ea73b47d94df",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat2/补给线阻断战.ogg"
@@ -726,6 +731,11 @@
       "path": "sounds/music/combat2/1",
       "md5": "b026324c6904b2a9cb4b88d6d61c81d1",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat2/1"
+    },
+    {
+      "path": "sounds/music/combat2/深渊派对.ogg",
+      "md5": "685ba8112cef8c0fc03d15efc1896983",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat2/深渊派对.ogg"
     },
     {
       "path": "sounds/music/combat2/极昼.ogg",
