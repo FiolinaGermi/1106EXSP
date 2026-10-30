@@ -1,5 +1,5 @@
 {
-  "version": "2026.10.30.1802",
+  "version": "2026.10.30.1804",
   "base": "Gamedata",
   "files": [
     {
@@ -33,18 +33,73 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/dialogs/392_22.tga"
     },
     {
+      "path": "ui/inventory/quest/1637_0018.tga",
+      "md5": "d43b3374a968b262c3034cac173845aa",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/quest/1637_0018.tga"
+    },
+    {
+      "path": "ui/inventory/quest/1636_0014.tga",
+      "md5": "a948c5df81c9819cd629f618e905911d",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/quest/1636_0014.tga"
+    },
+    {
+      "path": "ui/inventory/quest/1637_0016.tga",
+      "md5": "de85b74a4200586744419017c20ee45f",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/quest/1637_0016.tga"
+    },
+    {
+      "path": "ui/inventory/quest/1636_0018.tga",
+      "md5": "15db361e36825ac6388dafc706488ca4",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/quest/1636_0018.tga"
+    },
+    {
+      "path": "ui/inventory/quest/1636_0015.tga",
+      "md5": "a21c713d2fd5dd8c323323ab932d18ea",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/quest/1636_0015.tga"
+    },
+    {
+      "path": "ui/inventory/quest/1637_0014.tga",
+      "md5": "1c1665b3db55c48aae3555af3cffdaed",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/quest/1637_0014.tga"
+    },
+    {
+      "path": "ui/inventory/quest/1",
+      "md5": "b026324c6904b2a9cb4b88d6d61c81d1",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/quest/1"
+    },
+    {
+      "path": "ui/inventory/quest/1636_0016.tga",
+      "md5": "2d4e5bd9742b0a61da26dc3d03a438f4",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/quest/1636_0016.tga"
+    },
+    {
+      "path": "ui/inventory/quest/1637_0015.tga",
+      "md5": "4b2930fab4d9bf47447c0cc3f7a17768",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/quest/1637_0015.tga"
+    },
+    {
+      "path": "ui/inventory/quest/1636_0017.tga",
+      "md5": "c2e3e67565102c152f90f962a8a3030c",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/quest/1636_0017.tga"
+    },
+    {
+      "path": "ui/inventory/quest/1637_0017.tga",
+      "md5": "3a4020a08d4c4bef58460b6a30db3a8b",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/ui/inventory/quest/1637_0017.tga"
+    },
+    {
       "path": "text/mission.txt",
-      "md5": "2dd1cd0653c403fa209004f531baab93",
+      "md5": "0e25c09bbea04f5157007ec56d2df776",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/mission.txt"
     },
     {
       "path": "text/Weapon.txt",
-      "md5": "115891bb44258ac617679a6ee1521ad9",
+      "md5": "43a704e247d018306e1c0e7cfffdf05f",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/Weapon.txt"
     },
     {
       "path": "text/dialogs.txt",
-      "md5": "12b1d68bcc38e88fe733967a928d045d",
+      "md5": "d1f3b27d39655cb240b95ee20cf7a6be",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/dialogs.txt"
     },
     {
@@ -721,6 +776,11 @@
       "path": "sounds/music/combat2/人偶玄关.ogg",
       "md5": "014ab1edc9ffb77a90db8b67f1b6cc40",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat2/人偶玄关.ogg"
+    },
+    {
+      "path": "sounds/music/combat2/女神殿.ogg",
+      "md5": "1a37a96be64d88529b95f5832f1e3851",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat2/女神殿.ogg"
     },
     {
       "path": "sounds/music/combat2/补给线阻断战.ogg",
