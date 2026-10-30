@@ -1,5 +1,5 @@
 {
-  "version": "2026.10.30.1739",
+  "version": "2026.10.30.1740",
   "base": "Gamedata",
   "files": [
     {
@@ -93,9 +93,59 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/as2/granade_luncher3.wav"
     },
     {
+      "path": "sounds/speech/bt13-6.ogg",
+      "md5": "8bb57aa6e54c23272e3bbb552b9b7abf",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/bt13-6.ogg"
+    },
+    {
+      "path": "sounds/speech/cd13-1.ogg",
+      "md5": "cb3f1c7eae66391ad909302c1386a8eb",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/cd13-1.ogg"
+    },
+    {
+      "path": "sounds/speech/bt13-5.ogg",
+      "md5": "551c62c7e140f68b792a6153d7f27524",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/bt13-5.ogg"
+    },
+    {
+      "path": "sounds/speech/bt13-1.ogg",
+      "md5": "5a0aa5157d21c2fa1f77bbaed84d3dbd",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/bt13-1.ogg"
+    },
+    {
+      "path": "sounds/speech/bt13-2.ogg",
+      "md5": "0084650499c0659e8c70fdd4897c2a12",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/bt13-2.ogg"
+    },
+    {
+      "path": "sounds/speech/bt13-4.ogg",
+      "md5": "c93e685a0e36a32cadb34540c029d2ef",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/bt13-4.ogg"
+    },
+    {
       "path": "sounds/speech/1",
       "md5": "b026324c6904b2a9cb4b88d6d61c81d1",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/1"
+    },
+    {
+      "path": "sounds/speech/bt13-3.ogg",
+      "md5": "27ce189e42c401cee0ac2cc867ff0af3",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/bt13-3.ogg"
+    },
+    {
+      "path": "sounds/speech/cd13-4.ogg",
+      "md5": "fe9a32f5ecf971ed43e43cc2d5cf28c2",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/cd13-4.ogg"
+    },
+    {
+      "path": "sounds/speech/cd13-3.ogg",
+      "md5": "7014e2fda98fa3311ff1bff2d068cea5",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/cd13-3.ogg"
+    },
+    {
+      "path": "sounds/speech/cd13-2.ogg",
+      "md5": "262bfa7c3175cd52dd7042b2cbfef71d",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/cd13-2.ogg"
     },
     {
       "path": "maps/compaign/Level_14.map",
