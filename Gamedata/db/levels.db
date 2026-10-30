@@ -86,7 +86,7 @@ Map=Level066
 TimeLine=84
 ;************
 Map=Level071
-TimeLine=89
+TimeLine=0
 ;************
 Map=Level067
 TimeLine=72
@@ -638,20 +638,24 @@ Quest=1_1_66
 LevelNum=1
 TimeLine=84
 NextQuests=1067
-Comment=妊阉拍温酪?乩找?
+Comment=抵御异形的进攻(丢弃上一关未丢弃的权限卡)
 Coment2=1_1_66Coment2
+RemItem=Obj_perkey_andry Obj_perkey_statham Obj_personalkey Obj_accesskey
 ;************
 Quest=1_1_67
 LevelNum=1
 TimeLine=85
 NextQuests=1068
 Coment2=1_1_67Coment2
+Comment=支援据点
 ;************
 Quest=1_1_68
 LevelNum=1
 TimeLine=86
 NextQuests=1069
 Coment2=1_1_68Coment2
+Comment=前往3号试验区（获得3号试验区钥匙卡）
+AddItemMAIN=Obj_perkey_statham
 ;************
 Quest=1_1_69
 LevelNum=1
@@ -659,62 +663,21 @@ TimeLine=87
 NextQuests=1070
 ChangeStateItem=QS_BEGUN CSI_TAKE dynamite2
 Coment2=1_1_69Coment2
+Comment=取得I级权限卡
 ;************
 Quest=1_1_70
 LevelNum=1
 TimeLine=88
 AddExperienceMAIN=400000
-NextQuests=1071
-Comment=忸痤蜞 忡铕忄眄?
+NextQuests=1106
+Comment=寻找II级和III级权限卡
 Coment2=1_1_70Coment2
 ;************
-Quest=1_1_71
-LevelNum=1
-TimeLine=89
-NextQuests=1073
-Comment=屠梢??油茸椅迫臆 3 汤沂?
-Coment2=1_1_71Coment2
 ;************
-Quest=1_1_72
-LevelNum=1
-TimeLine=92
-AddExperienceMAIN=50000
-NextQuests=1095
-ChangeStateItem=QS_BEGUN CSI_DEATH m4
-Comment=屠梢?宋梦挛 盟缆涡?
-Coment2=1_1_72Coment2
 ;************
-Quest=1_2_12
-LevelNum=1
-TimeLine=89
-NextQuests=2013
-UnactualNext=1
-Coment2=1_2_12Coment2
 ;************
-Quest=1_2_13
-LevelNum=1
-TimeLine=92
-AddExperienceMAIN=200000
-ChangeStateItem=QS_BEGUN CSI_DEATH m1
-Accomplished=1
-UnactualNext=1
-Coment2=1_2_13Coment2
 ;************
-Quest=1_1_73
-LevelNum=1
-TimeLine=90
-AddExperienceMAIN=50000
-NextQuests=1074
-ChangeStateItem=QS_BEGUN CSI_DEATH m2
-Coment2=1_1_73Coment2
 ;************
-Quest=1_1_74
-LevelNum=1
-TimeLine=91
-AddExperienceMAIN=50000
-NextQuests=1072
-ChangeStateItem=QS_BEGUN CSI_DEATH m3
-Coment2=1_1_74Coment2
 ;************
 Quest=1_2_14
 LevelNum=1
@@ -939,13 +902,6 @@ Quest=1_20_0
 LevelNum=1
 TimeLine=0
 ;************
-Quest=1_4_6
-LevelNum=1
-TimeLine=96
-NextQuests=4007
-ChangeStateItem=QS_BEGUN CSI_DEATH m6
-Comment=禹梓蝾骅磬 m6, 铗溧胳 滂耜 笼殛屦?
-Coment2=1_4_6Coment2
 ;************
 Quest=1_1_93
 LevelNum=1
@@ -963,41 +919,10 @@ Accomplished=1
 Comment=袜?赍轵
 Coment2=1_1_94Coment2
 ;************
-Quest=1_1_95
-LevelNum=1
-TimeLine=93
-NextQuests=1096
-Coment2=1_1_95Coment2
 ;************
-Quest=1_4_7
-LevelNum=1
-TimeLine=97
-AddMoneyMAIN=40000
-AddExperienceMAIN=300000
-NextQuests=4008
-Comment=悟溧腓 滂耜 猃殛屦?
-Coment2=1_4_7Coment2
 ;************
-Quest=1_4_8
-LevelNum=1
-TimeLine=98
-Comment=惕耨? 恹镱腠屙?
-Coment2=1_4_8Coment2
 ;************
-Quest=1_1_96
-LevelNum=1
-TimeLine=94
-NextQuests=1098
-Coment2=1_1_96Coment2
 ;************
-Quest=1_4_9
-LevelNum=1
-TimeLine=95
-NextQuests=4006
-LineQuests=1 1096
-ChangeStateItem=QS_BEGUN CSI_DEATH m5
-Comment=禹梓蝾骅磬 m5
-Coment2=1_4_9Coment2
 ;************
 Quest=1_1_97
 LevelNum=1
@@ -1185,7 +1110,7 @@ Coment2=1_2_57Coment2
 Quest=1_2_58
 LevelNum=1
 TimeLine=61
-AddItemMAIN=ShotGun_craft2_v2 Ammo_granate Ammo_granate Ammo_granate Ammo_granate Armor_bayonet
+AddItemMAIN=ShotGun_craft2_v2 Ammo_granate Ammo_granate Ammo_granate Ammo_granate Armor_bayonet2
 Comment=获得高爆霰弹枪
 Coment2=1_2_58Coment2
 ;************
@@ -1346,7 +1271,7 @@ Coment2=1_2_79Coment2
 Quest=1_2_80
 LevelNum=1
 TimeLine=76
-AddItemMAIN=Armor_rejector Minigun_volcano3_v2
+AddItemMAIN=Armor_rejector Minigun_volcano3
 Comment=获得动力重甲
 Coment2=1_2_80Coment2
 ;************
@@ -1426,3 +1351,162 @@ TimeLine=77
 RemItem=Obj_redkey
 Comment=丢弃武器维护间权限卡
 Coment2=1_2_85Coment2
+;************
+Quest=1_2_86
+LevelNum=1
+TimeLine=78
+RemItem=Obj_perkey_andry Obj_perkey_statham Obj_personalkey Obj_accesskey
+Comment=丢弃所有钥匙卡
+Coment2=1_2_86Coment2
+;************
+Quest=1_2_87
+LevelNum=1
+TimeLine=84
+ChangeStateItem=QS_BEGUN CSI_DEATH m1
+Comment=克隆舱实验室前方的刷怪点
+;************
+Quest=1_2_88
+LevelNum=1
+TimeLine=85
+ChangeStateItem=QS_BEGUN CSI_DEATH m2
+Comment=克隆舱实验室后方的刷怪点
+Coment2=1_2_88Coment2
+;************
+Quest=1_2_89
+LevelNum=1
+TimeLine=86
+LineQuests=1 2092
+ChangeStateItem=QS_BEGUN CSI_TAKE CT
+Comment=前往餐厅的钥匙卡
+Coment2=1_2_89Coment2
+;************
+Quest=1_2_90
+LevelNum=1
+TimeLine=87
+ChangeStateItem=QS_BEGUN CSI_TAKE LV1
+Comment=获得1级权限卡
+Coment2=1_2_90Coment2
+;************
+Quest=1_2_91
+LevelNum=1
+TimeLine=88
+ChangeStateItem=QS_BEGUN CSI_TAKE XHTZQ
+Comment=获得信号调制器
+Coment2=1_2_91Coment2
+;************
+Quest=1_2_92
+LevelNum=1
+TimeLine=84
+RemItem=Obj_accesskey
+Comment=丢弃餐厅钥匙卡
+Coment2=1_2_92Coment2
+;************
+;************
+Quest=1_3_23
+LevelNum=1
+TimeLine=84
+Comment=获得液体罐
+AddItemMAIN=Obj_liquid
+NextQuests=3024
+;************
+Quest=1_3_24
+LevelNum=1
+TimeLine=85
+Comment=丢弃液体罐并获得带溶剂的液体罐
+AddItemMAIN=Obj_agent
+RemItem=Obj_liquid
+NextQuests=3025
+;************
+Quest=1_3_25
+LevelNum=1
+TimeLine=86
+Comment=丢弃带溶剂的液体罐并获得除草剂
+RemItem=Obj_agent
+AddItemMAIN=Obj_weed
+NextQuests=3026
+;************
+;************
+Quest=1_3_26
+LevelNum=1
+TimeLine=87
+Comment=丢弃除草剂
+NextQuests=3027
+RemItem=Obj_weed
+;************
+Map=Level091
+TimeLine=0
+;************
+Quest=1_2_93
+ChangeStateItem=QS_BEGUN CSI_TAKE LV2
+LevelNum=1
+TimeLine=89
+Comment=获得2级权限卡
+;************
+Quest=1_2_94
+ChangeStateItem=QS_BEGUN CSI_DEATH m3
+LevelNum=1
+TimeLine=90
+Comment=摧毁试剂设备的玻璃
+AddItemMAIN=
+LineQuests=1 2099
+;************
+Map=Level092
+TimeLine=0
+;************
+;************
+;************
+;************
+Quest=1_1_106
+LevelNum=1
+TimeLine=89
+NextQuests=1107
+Coment2=1_1_106Coment2
+Comment=设法取得?级权限卡
+;************
+Quest=1_1_107
+LevelNum=1
+TimeLine=90
+NextQuests=1108
+Coment2=1_1_107Coment2
+;************
+Map=Level093
+TimeLine=0
+;************
+Quest=1_1_108
+LevelNum=1
+TimeLine=91
+NextQuests=1109
+Coment2=1_1_108Coment2
+Comment=抵御药剂回收部队的进攻
+;************
+Map=Level094
+TimeLine=93
+;************
+Quest=1_1_109
+LevelNum=1
+TimeLine=92
+NextQuests=1098
+Coment2=1_1_109Coment2
+Accomplished=1
+Comment=抵御药剂回收部队的进攻
+;************
+Quest=1_4_1
+LevelNum=1
+TimeLine=84
+Comment=丢弃3号试验区钥匙卡
+RemItem=Obj_perkey_statham
+;************
+;************
+Quest=1_2_97
+ChangeStateItem=QS_BEGUN CSI_DEATH m4
+LevelNum=1
+TimeLine=91
+Comment=击杀通关点前的女王及护卫
+;************
+;************
+;************
+Quest=1_2_99
+LevelNum=1
+TimeLine=85
+Comment=获得试剂1
+AddItemMAIN=Obj_reagent

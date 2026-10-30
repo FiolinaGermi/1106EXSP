@@ -3722,6 +3722,29 @@ Objects=Obj_cooling
 VidGRND=1649 0            ;направлени?Dir
 VidMENU=1637 12
 ;**************************
+Objects=Obj_liquid
+VidGRND=1648 0            ;направлени?Dir
+VidMENU=1637 14
+;**************************
+Objects=Obj_agent
+VidGRND=1648 0            ;направлени?Dir
+VidMENU=1637 15
+;**************************
+Objects=Obj_weed
+VidGRND=1648 0            ;направлени?Dir
+VidMENU=1637 16
+;**************************
+;**************************
+Objects=Obj_signal
+VidGRND=1649 0            ;направлени?Dir
+VidMENU=1637 17
+;**************************
+;**************************
+Objects=Obj_reagent
+VidGRND=1649 0            ;направлени?Dir
+VidMENU=1637 18
+;**************************
+;**************************
 ;**************SURVIVE BONUS************
 ;**************************
 Equip=SurvBonus_Armor
