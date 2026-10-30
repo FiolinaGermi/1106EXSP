@@ -1,5 +1,5 @@
 {
-  "version": "2026.10.30.1751",
+  "version": "2026.10.30.1755",
   "base": "Gamedata",
   "files": [
     {
@@ -711,6 +711,11 @@
       "path": "sounds/speech/lpld13-54.ogg",
       "md5": "c3154c9ebb53274f8111cabd17cfd3a3",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/speech/lpld13-54.ogg"
+    },
+    {
+      "path": "sounds/music/combat2/补给线阻断战.ogg",
+      "md5": "eabf9893169eaff5cdc7ea73b47d94df",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/sounds/music/combat2/补给线阻断战.ogg"
     },
     {
       "path": "sounds/music/combat2/1",
