@@ -1,0 +1,257 @@
+//#define BOSS_DAMAGE_GAMMA       0x0E4040
+#define BOSS_GAMMA_TIME1        0
+#define BOSS_GAMMA_TIME2        400
+
+//int QueenGenerator = 0;
+//------------------------------------------------------------------------------------------
+static int BossPrevHp;
+static int BossMaxHp;
+static int BossPrevPhaseHp = 0;
+static int BossHealthBar = 0;
+static int BossHealthBarText = 0;
+static int Boss = 0;
+//
+static int StartGammaTime = 0;
+static int StartQueenPauseTime = 0;
+
+F1070_0(int unit)
+{
+	int NearFlagman = FindNearestFlagman( GetX(unit), GetY(unit), 1000 );
+	//
+    if ( NearFlagman )
+    {
+        Boss = unit;
+        BossMaxHp = GetVidData(GetVid(unit), VID_MAXHP1);
+        BossPrevHp = Action( Boss, ACT_GET_HP );
+//        SetVidData(1070, VID_MAXHP, 0);
+    //    Action(QueenGenerator, ACT_PAUSE, 300000);
+        if ( (GetTime() - StartQueenPauseTime) > 20000 )
+        {
+            Action(unit, ACT_STOP);
+            Action(unit, ACT_SET_COMMAND, COM_NONE);
+            Action(unit, ACT_SET_BEHAVE, 0);
+            Action(unit, ANI_OPEN);
+            AddCommand(unit, ANI_STAND_OPEN);
+            AddCommand(unit, ANI_STAND_OPEN);
+            AddCommand(unit, ANI_STAND_OPEN);
+            AddCommand(unit, ANI_STAND_OPEN);
+            AddCommand(unit, ANI_STAND_OPEN);
+            AddCommand(unit, ANI_STAND_OPEN);
+            AddCommand(unit, ANI_STAND_OPEN);
+            AddCommand(unit, ANI_LINK);
+        }
+    }
+}
+F1070_2(int unit) { F1070_0(unit); }
+F1070_11(int unit)
+{
+//    if ( SizeTo(Flagman(---), GetX(unit), GetY(unit)) < 1000 )
+//        SetVidData(1070, VID_MAXHP, 0);
+    Action(unit, ACT_SET_BEHAVE, BEH_ACTIVE + BEH_AGGRESSIVE);
+    StartQueenPauseTime = GetTime();
+//    Action(QueenGenerator, ACT_PAUSE, 300000);
+}
+
+/*F1070_10(int unit)
+{
+    if ( SizeTo(Flagman(---), GetX(unit), GetY(unit)) < 1000 )
+        SetVidData(1070, VID_MAXHP, BossMaxHp);
+//    Action(QueenGenerator, ACT_PAUSE, 0);
+}*/
+
+
+// �������� ������ ���������
+/*F1165_0(int unit)
+{
+//    if ( SizeTo(Flagman(---), GetX(unit), GetY(unit)) < 1000 )
+    Boss = unit;
+    BossPrevPhaseHp = 0;
+    BossMaxHp = GetVidData(GetVid(unit), VID_MAXHP1);
+}*/
+
+
+// ���������� ����
+F1890_0(int unit)
+{
+    if ( !Boss )
+    {
+    	int NearFlagman = FindNearestFlagman( GetX(unit), GetY(unit), 1000 );
+    	//
+        if ( NearFlagman )
+        {
+            Boss = unit;
+            BossPrevPhaseHp = /*GetVidData(1895, VID_MAXHP1) + */GetVidData(1901, VID_MAXHP1);
+            BossMaxHp = GetVidData(1890, VID_MAXHP1) + /*GetVidData(1895, VID_MAXHP1) + */GetVidData(1901, VID_MAXHP1);
+            BossPrevHp = Action( Boss, ACT_GET_HP );
+        }
+    }
+}
+F1895_0(int unit)
+{
+    if ( !Boss )
+    {
+        Boss = unit;
+        BossPrevPhaseHp = GetVidData(1901, VID_MAXHP1);
+        BossMaxHp = GetVidData(1890, VID_MAXHP1) + /*GetVidData(1895, VID_MAXHP1) + */GetVidData(1901, VID_MAXHP1);
+        BossPrevHp = Action( Boss, ACT_GET_HP );
+    }
+}
+F1895_2(int unit) { F1895_0(unit); }
+F1895_8(int unit) { F1895_0(unit); }
+F1901_0(int unit)
+{
+    if ( !Boss )
+    {
+        Boss = unit;
+        BossPrevPhaseHp = 0;
+        BossMaxHp = GetVidData(1890, VID_MAXHP1) + /*GetVidData(1895, VID_MAXHP1) + */GetVidData(1901, VID_MAXHP1);
+        BossPrevHp = Action( Boss, ACT_GET_HP );
+    }
+}
+F1901_2(int unit) { F1901_0(unit); }
+F1901_8(int unit) { F1901_0(unit); }
+
+// ���������� ����
+F2129_0(int unit)
+{
+	int NearFlagman = FindNearestFlagman( GetX(unit), GetY(unit), 1000 );
+	//
+    if ( NearFlagman )
+    {
+        Boss = unit;
+        BossMaxHp = GetVidData(GetVid(unit), VID_MAXHP1);
+        BossPrevHp = Action( Boss, ACT_GET_HP );
+    }
+}
+F2129_2(int unit) { F2129_0(unit); }
+F2129_8(int unit) { F2129_0(unit); }
+
+// ���������� ����
+F4004_0(int unit)
+{
+	int NearFlagman = FindNearestFlagman( GetX(unit), GetY(unit), 1000 );
+	//
+    if ( NearFlagman )
+    {
+        Boss = unit;
+        BossMaxHp = GetVidData(GetVid(unit), VID_MAXHP1);
+        BossPrevHp = Action( Boss, ACT_GET_HP );
+    }
+}
+F4004_2(int unit) { F4004_0(unit); }
+F4004_8(int unit) { F4004_0(unit); }
+
+// ���������� ����
+F4010_0(int unit)
+{
+	int NearFlagman = FindNearestFlagman( GetX(unit), GetY(unit), 1800 );
+	//
+    if ( NearFlagman )
+    {
+        Boss = unit;
+        BossMaxHp = GetVidData(GetVid(unit), VID_MAXHP1);
+        BossPrevHp = Action( Boss, ACT_GET_HP );
+    }
+}
+F4010_2(int unit) { F4010_0(unit); }
+F4010_8(int unit) { F4010_0(unit); }
+
+// ���������� ����
+F61_0(int unit)
+{
+	int NearFlagman = FindNearestFlagman( GetX(unit), GetY(unit), 1000 );
+	//
+    if ( NearFlagman )
+    {
+        Boss = unit;
+        BossMaxHp = GetVidData(GetVid(unit), VID_MAXHP1);
+        BossPrevHp = Action( Boss, ACT_GET_HP );
+    }
+}
+F61_2(int unit) { F61_0(unit); }
+F61_8(int unit) { F61_0(unit); }
+//------------------------------------------------------------------------------------------
+SetBossGamma( int iBoss, int iPercent, int BegGamma, int EndGamma )
+{
+//    Log("SetBossGamma");
+    int gamma = CountGamma(BegGamma,EndGamma,iPercent*255/1000);
+    Action(iBoss, ACT_SET_GAMMA, gamma);
+    Action(Action(iBoss, ACT_GET_LINK), ACT_SET_GAMMA, gamma);
+//    SetVidData( GetVid(iBoss), VID_GAMMA+Action(iBoss,ACT_GET_ARMY),
+//                                             CountGamma(BegGamma,EndGamma,iPercent*255/1000) );
+}
+
+
+//------------------------------------------------------------------------------------------
+BossTact()
+{
+    //BossHealthBar is released sometimes (after pressing tab)
+    if( Boss && !BossHealthBar )
+    {
+        BossHealthBar = CreateSprite(2245, ScreenX() / 2 , 900, 0, 0 );
+        BossHealthBarText = CreateText(8, ScreenX() / 2, 900, 1, "Boss 100%", BEH_CENTER);
+        //mod: cache MaxHP once, avoid per-frame GetVidData
+        BossMaxHp = GetVidData( GetVid(Boss), VID_MAXHP1 );
+    }
+
+    if( BossHealthBar )
+    {
+        if( Boss )
+        {
+            int hp = Action( Boss, ACT_GET_HP );
+            if( hp != BossPrevHp )
+            {
+                BossPrevHp = hp;
+                StartGammaTime = GetTime();
+
+                //mod: only update UI when HP changes
+                if( hp < 0 )
+                    hp = 0;
+                int val = 0;
+                if( hp && BossMaxHp )
+                    val = 255 - 255 * hp / BossMaxHp;
+                if( val > 250 )     //250 - standard HACK
+                    val = 250;
+                Action( BossHealthBar, ACT_CHANGE_DIRECTION, val );
+                string pctStr = GetString("menu", "Boss") + " " + itoa(hp * 100 / BossMaxHp) + "%";
+                Action( BossHealthBarText, ACT_SET_TEXT, &pctStr );
+            }
+            if( !hp )
+            {
+                Destroy( BossHealthBar );
+                Destroy( BossHealthBarText );
+                BossHealthBar = 0; BossHealthBarText = 0;
+            }
+        }
+        else
+        {
+            Destroy( BossHealthBar );
+            Destroy( BossHealthBarText );
+            BossHealthBar = 0; BossHealthBarText = 0;
+        }
+    }
+
+    //
+    if( StartGammaTime )
+    {
+        int iDelta;
+        iDelta = GetTime() - StartGammaTime;
+        //
+        if( iDelta < BOSS_GAMMA_TIME1 )
+            SetBossGamma( Boss, iDelta * 1000 / BOSS_GAMMA_TIME1, 0, GammaEncodeToDword(0, -200, -200)/*BOSS_DAMAGE_GAMMA*/ );
+        else
+        if( iDelta < BOSS_GAMMA_TIME1 + BOSS_GAMMA_TIME2 )
+            SetBossGamma( Boss, (iDelta-BOSS_GAMMA_TIME1) * 1000 / BOSS_GAMMA_TIME2, GammaEncodeToDword(0, -200, -200)/*BOSS_DAMAGE_GAMMA*/, 0 );
+        else
+        {
+            StartGammaTime = 0;
+            SetBossGamma( Boss, 0, 0, 0 );
+        }
+            
+    }
+    //
+    //if( GetKey() == 'o' )
+    //  StartGammaTime = GetTime(); 
+}
+
+
