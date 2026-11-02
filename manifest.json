@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.02.0924",
+  "version": "2026.11.02.1819",
   "base": "Gamedata",
   "files": [
     {
@@ -114,7 +114,7 @@
     },
     {
       "path": "db/ObjectsExtended.db",
-      "md5": "7f4968c5ec158e11dcad48e74b2c3ffa",
+      "md5": "2aa50f926dac195964c528986def226c",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/ObjectsExtended.db"
     },
     {
