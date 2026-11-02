@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.02.1819",
+  "version": "2026.11.02.1820",
   "base": "Gamedata",
   "files": [
     {
@@ -98,13 +98,23 @@
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/text/dialogs.txt"
     },
     {
+      "path": "models/as2/zzfsq.vid",
+      "md5": "84ae33337186343710d4e2640d0fcb42",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/models/as2/zzfsq.vid"
+    },
+    {
+      "path": "models/as2/zzfsq2.vid",
+      "md5": "1d8598f9b2522eb23a460dc671c162d6",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/models/as2/zzfsq2.vid"
+    },
+    {
       "path": "db/levels.db",
       "md5": "8557b1c0d38faafb33480973805399b8",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/levels.db"
     },
     {
       "path": "db/weapon.db",
-      "md5": "7964e269751a72d8d360d08c83f479d1",
+      "md5": "926b6b7d56a6aa9910009be00f9a523e",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/weapon.db"
     },
     {
