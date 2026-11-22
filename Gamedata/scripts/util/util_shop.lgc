@@ -1,0 +1,742 @@
+#define UTIL_SHOP_H 1
+//------------------------------------------------------------------------------------------
+//  @brief
+//        this file include procedures for working with shop
+//        
+
+//  @ingroup
+    
+//  2004Dec01 created. Zmanovsky Peter.
+//  (C) 2004    Sigma-Team
+//------------------------------------------------------------------------------------------
+
+#ifndef UTIL_HEROSPRITE_H
+	#include "gamedata\scripts\util\util_herosprite.lgc"
+#endif
+
+#ifndef UTIL_MUSIC_H
+	#include "gamedata\scripts\util\util_music.lgc"
+#endif
+
+#ifndef COMMON_MENU_H
+	#include "gamedata\scripts\common\common_menu.lgc"
+#endif
+
+//------------------------------------------------------------------------------------------
+//current menu type, look MENU_XXX.
+static int MenuState = 0;
+//
+static int ScrollerY2[ 2 ] = { 0, 0};
+static int ScrollerLen2[ 2 ] = { 0, 0};
+static int ScrollerScale2[ 2 ] = { 0, 0};
+//
+
+//------------------------------------------------------------------------------------------
+//constants for list of items (changed from code)
+static string ITEM_NAME_1;
+static string ITEM_NAME_2;
+static string ITEM_NAME_3;
+static string ITEM_NAME_4;
+static string ITEM_NAME_5;
+static string ITEM_COST_1;
+static string ITEM_COST_2;
+static string ITEM_COST_3;
+static string ITEM_COST_4;
+static string ITEM_COST_5;
+//constants for buy/sell buttons (changed from code)
+static string BuyWeapon;
+static string BuyAmmo;
+static string Price_Weapon;
+static string Price_Ammo;
+static string BuyBtnWear;
+
+
+//------------------------------------------------------------------------------------------
+ShowShop();
+
+
+//------------------------------------------------------------------------------------------
+ChangeMenuStateSH( int new_menu_type )
+{
+	MenuState = new_menu_type;
+	if( giMapType != MAP_TYPE_LEVELSHOP )
+		Effect( EFF_FADE, 0, 0, FADE_GAME_TIME );
+	StartEffectTime = GetTime();
+}
+
+
+//------------------------------------------------------------------------------------------
+CreateShop()
+{
+	if( giMapType != MAP_TYPE_LEVEL && giMapType != MAP_TYPE_SHOP )
+		return;
+	//
+	SetScrollType( SCROLL_NONE );
+	Pause( 1 );
+	SetCursor( CURSOR_NORMAL );
+	MenuState = MENU_SHOP;
+
+	//
+	if( giMapType == MAP_TYPE_LEVEL )
+	{
+		PushMapType();
+		SetMapTypeEx( MAP_TYPE_LEVELSHOP, "" );
+	}
+	//
+	//StartEffectTime = GetTime() - FADE_GAME_TIME / 2 - 1;	- old version
+	ShowShop();
+}
+
+
+//------------------------------------------------------------------------------------------
+CloseShop()
+{
+	if( giMapType != MAP_TYPE_LEVELSHOP && giMapType != MAP_TYPE_SHOP )
+		return;
+	//
+	SendCommandA(0, EXT_SELECTBESTWEAPON);	//zmNEW2005Oct17
+	//
+	ShowCharScreen( CS_SHOPSMALL, 0 );
+	DeleteHeroSprite();
+	MenuRelease();
+	//SetScrollTypeEx( ST_DEFAULT );
+	//Pause( 0 );
+	//
+	if( giMapType == MAP_TYPE_LEVELSHOP )
+	{
+		SetCursor( CURSOR_ATTACK );
+		PopMapType();
+	}
+	//PopMenuState();
+}
+
+
+//------------------------------------------------------------------------------------------
+//军火商人：按 G 打开商店（100 点 1 次，200 点 2 次，每关重置，不计作弊）
+static int g_iShopFixKeyDown = 0;
+static int g_iShopFixLastTime = 0;
+
+ShopFixTact()
+{
+	if( giMapType != MAP_TYPE_LEVEL )
+		return 0;
+	if( giMenuState != MT_NOMENU )
+		return 0;
+	if( GameState != GAME_NORMAL )
+		return 0;
+	if( !Flagman( giCurArmy ) || !IsCharacter( Flagman( giCurArmy ) ) )
+		return 0;
+	int left = ShopFixRemaining( CurHeroID );
+	if( left <= 0 )
+		return 0;
+	//
+	int key = GetKey();
+	int down = ( key == 0x47 || key == 0x4700 || key == 0x67 || key == 0x6700 );
+	int pressed = ( down && !g_iShopFixKeyDown );
+	g_iShopFixKeyDown = down;
+	if( !pressed )
+		return 0;
+	int now = GetTime();
+	if( now - g_iShopFixLastTime < 400 )	//防抖
+		return 0;
+	g_iShopFixLastTime = now;
+	//
+	giShopFixUsed++;
+	Log( "SHOPFIX left=" + itoa( left - 1 ) );
+	//走正常菜单入口，确保 giMenuState 切到 MT_SHOPMENU，商店输入才有效
+	CreateOptionsMenu( MT_SHOPMENU );
+	return 1;
+}
+
+
+//------------------------------------------------------------------------------------------
+ShowShop()
+{
+	PushMenuState();
+
+	//pause again, cause it was unpause while hiding menus
+	SetScrollType( SCROLL_NONE );
+	Pause( 1 );
+
+	//create shop.men
+	MenuRelease();
+	//MenuLoad("gamedata\\men\\shop.men");
+	MenuLoad("gamedata\\men\\inventory_shop.men");
+	//
+	iff(!MOD_BASE_DISABLE || WEAPON_UPGRADE_DISABLE); //Disabale Upgrades! Временны?вариан?скрипт? ?других местах вызывает краш? Одна строчк?удаляет один ви?
+	{
+	Destroy(MenuFind(4049));
+	Destroy(MenuFind(4049));
+	Destroy(MenuFind(4049));
+	Destroy(MenuFind(4049));
+	Destroy(MenuFind(4049));
+	}
+	//
+	//
+    if(giMapType == MAP_TYPE_SHOP)
+    {
+		int spr = MenuFindNamed( "MT_SHOPMENU" );
+		if(spr) Destroy(spr);
+	    spr = MenuFindNamed( "MT_INVMENU" );
+		if(spr) Destroy(spr);
+	    spr = MenuFindNamed( "MT_LOGSMENU" );
+		if(spr) Destroy(spr);
+	    spr = MenuFindNamed( "MT_PAUSEMENU" );
+		if(spr) Destroy(spr);
+    }
+    //
+	//allign inventories first to prevent blinking
+	AllignInventory();
+	SendCommand( EXT_RefreshShop );
+
+	//if( !Z_DEBUG )
+		//CreateHeroSprite( 40, 170 );
+	//
+	FindScrollers(true);
+	//
+	ShowCharScreen( CS_SHOPSMALL, 1 );
+}
+
+
+//------------------------------------------------------------------------------------------
+FindScrollers(bool bShop)
+{
+	if(bShop)
+	{
+		Scroller2[0] = MenuFindNamed("SHOP_SLIDER_1");
+		Scroller2[1] = MenuFindNamed("SHOP_SLIDER_2");
+	}
+	else
+	{
+		Scroller2[0] = MenuFindNamed("SHOP_SLIDER_1");
+		Scroller2[1] = MenuFindNamed("LM_SCROLL");
+	}
+	//
+	int i;
+	for(i = 0; i < 2; i++)
+	{
+		if(Scroller2[i])
+		{
+			ScrollerY2[i] = GetY(Scroller2[i]);
+			ScrollerScale2[i] = Action( Scroller2[i], ACT_GET_SCALE, 1 );
+			ScrollerLen2[i] = GetVidData(GetVid(Scroller2[i]), VID_SIZE_Y) * ScrollerScale2[i]/1000;
+		}
+	}
+	//
+	ControlScrollers(bShop);
+}
+
+
+//------------------------------------------------------------------------------------------
+ControlScrollers(bool bShop)	//¬ Ј §Ё?«ЁЎ® LogScreen
+{
+	static int BtnCLicked = 0;
+    if( !GetInputAction(IM_LBUTTONDOWN) )
+		BtnCLicked = 0;
+	//
+	int NewLen[2], MinY[2], MaxY[2], NewY[2];
+	//
+	int ItemsNum = 0, PagesNum = 0, FirstItem = 0;
+	int i;
+	for( i = 0; i < 2; i++ )
+	{
+		int iInvNum = -1;
+		if(i == 0)
+			iInvNum = INV_MAIN;
+		else
+		if(bShop)
+			iInvNum = INV_SHOP;
+		//
+		if(iInvNum != -1)
+		{
+			ItemsNum = SendCommand(EXT_GETSHOPITEMSNUM, iInvNum);
+			PagesNum = ItemsNum - SendCommand( EXT_GETSHOWNSHOPITEMSNUM, iInvNum ) + 1;
+			FirstItem = SendCommand( EXT_GETFIRSTSHOWNITEM, iInvNum );
+		}
+		else
+		{
+			ItemsNum = SendCommand(EXT_GetLogsNum);
+			PagesNum = GetLogPagesNum();
+			if(PagesNum<0)
+				PagesNum = 0;
+			FirstItem = giCurLog;
+		}
+		//
+		if( Scroller2[ i ] )
+		{
+			int ScaleY = 1000;
+			if(ItemsNum)
+				ScaleY = 1000 - ( PagesNum - 1 ) * 1000 / ItemsNum;
+			//
+			Action( Scroller2[ i ], ACT_SET_SCALE, 1000, ScaleY*ScrollerScale2[i] / 1000, 1000 );
+			NewLen[ i ] = ScrollerLen2[ i ] * ScaleY / 1000;
+			//
+			MinY[ i ] = ScrollerY2[i] - ScrollerLen2[i] / 2 + NewLen[i] / 2;
+			MaxY[ i ] = ScrollerY2[i] + ScrollerLen2[i] / 2 - NewLen[i] / 2;
+
+			if( PagesNum > 1 )
+				NewY[ i ] = MinY[ i ] + ( MaxY[ i ] - MinY[ i ] ) * FirstItem / ( PagesNum - 1 );
+			else
+				NewY[ i ] = MinY[ i ];
+			//
+			Action(	Scroller2[ i ], ACT_CHANGE_COOR, GetX(Scroller2[i]), NewY[i], GetZ(Scroller2[i]) );
+		}
+	}
+	//
+	
+    int x = GetInputAction(IA_SCREEN_MOUSE_X);
+    int y = GetInputAction(IA_SCREEN_MOUSE_Y);
+	//
+	int CurBtn = 0;
+	static int LastMouseOverBtn = 0;
+	//
+	for( i = 0; i < 2; i++ )
+	{
+		if( Scroller2[ i ] )
+		{
+			int z = GetZ( Scroller2[ i ] );
+			int minY = ToScreenY( ScrollerY2[ i ], z ) - ScrollerLen2[ i ] / 2;	
+			int xx = ToScreenX( GetX(Scroller2[ i ]) );
+			int NewY_Scr = ToScreenY(NewY[i], z);
+			int len = ScrollerLen2[i];
+			//
+			//Log2("bbb - "+itoa(x)+"-"+itoa(xx)+"-"+itoa(y)+"-"+itoa(minY)+"-"+itoa(ScrollerLen[i]));
+			bool MouseAboveBtn = ( x >= xx-3 && x <= xx+7 && y >= minY && y <= minY+len );
+			//Log2("bbb -" +itoa(MouseAboveBtn) );
+			CurBtn = Scroller2[ i ];
+			//
+            if( GetInputAction(IM_LBUTTONCLICK) || BtnCLicked == CurBtn )
+			{
+				static int BtnYDispl = 0;
+				int l = NewLen[i]/2;
+				//Log2("1 - " + itoa(y) + "-" + itoa(NewY_Scr) + "-" + itoa(l));
+				//Log2("0 - " + itoa(MouseAboveBtn) + "-" + itoa(BtnCLicked) + "-" + itoa(CurBtn));
+				if(MouseAboveBtn && BtnCLicked != CurBtn && y >= NewY_Scr - l && y <= NewY_Scr + l )
+				{
+					BtnCLicked = CurBtn;
+					BtnYDispl = y - NewY_Scr;
+					//Log2("2");
+				}
+				//
+				bool t = x >= xx-100 && x <= xx+100 && BtnCLicked == CurBtn;
+				if(MouseAboveBtn || t )
+				{
+					//Log2("3");
+					if( !t )
+					{
+						BtnYDispl = 0;
+						BtnCLicked = CurBtn;
+					}
+					//
+					int val = (y-BtnYDispl - ToScreenY(MinY[i], z)) * 1000/(MaxY[i] - MinY[i]);
+					//Log2("val = " + itoa(val));
+					if(i == 0)
+						SendCommand(EXT_SHOPSCROLL, val, INV_MAIN);
+					else
+					if(bShop)
+						SendCommand(EXT_SHOPSCROLL, val, INV_SHOP);
+					else
+						SetLogScroll(val);
+					//Log2( itoa(val) + "-" + itoa(BtnYDispl) );
+				}
+			}
+			else
+			if(MouseAboveBtn)
+			{
+				//process mouse move
+				if( LastMouseOverBtn != CurBtn )
+				{
+					PlaySFX( 42 );
+					LastMouseOverBtn = CurBtn;
+				}
+				break;
+			}
+		}
+	}
+	//
+	if( !CurBtn )
+		LastMouseOverBtn = 0;
+	//
+	int btn;
+	if( btn = MenuLClick() )
+	{
+		if( MenuNVidUnderCursor()==2210 )
+		{
+			if(btn == MenuFindNamed("SHOP_SLIDER_BTN_1") )
+				SendCommand( EXT_SHOPLISTPAGEUP, INV_MAIN );
+			if(btn == MenuFindNamed("SHOP_SLIDER_BTN_2") )
+				SendCommand( EXT_SHOPLISTPAGEDOWN, INV_MAIN );
+			if(bShop)
+			{
+				if(btn == MenuFindNamed("SHOP_SLIDER_BTN_3") )
+					SendCommand( EXT_SHOPLISTPAGEUP, INV_SHOP );
+				if(btn == MenuFindNamed("SHOP_SLIDER_BTN_4") )
+					SendCommand( EXT_SHOPLISTPAGEDOWN, INV_SHOP );
+			}
+		}
+	}
+}
+
+
+//------------------------------------------------------------------------------------------
+//理财高手：购买价格千分比（50 点=875、100 点=750、150 点=625、200 点=500）
+ShopPricePermille( int iPerk )
+{
+	if( iPerk <= 0 )
+		return 1000;
+	if( iPerk >= 200 )
+		return 500;
+	return 1000 - iPerk * 5 / 2;
+}
+
+
+//------------------------------------------------------------------------------------------
+//理财高手：购买时引擎直接扣全价，脚本无法改价，这里按折扣把差额返还给玩家
+//同一种花费金额只返现一次：卖出后再买回来不再享受折扣
+static int giShopDiscLastMoney = -1;
+#define SHOP_DISC_MAX_AMOUNTS	32
+static int gaShopDiscAmounts[ SHOP_DISC_MAX_AMOUNTS ] = { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
+static int giShopDiscAmountCnt = 0;
+//每个关卡最多返现 3 次
+#define SHOP_DISC_MAX_REFUNDS	3
+static int giShopDiscRefundCnt = 0;
+static string gsShopDiscMap = "";
+//回购标记：记录已卖出的到账价，买回时若金额匹配则标记，再出售不重复打折
+static int gaShopSoldAmounts[ SHOP_DISC_MAX_AMOUNTS ] = { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
+static int giShopSoldCnt = 0;
+static int gaShopRepurchase[ SHOP_DISC_MAX_AMOUNTS ] = { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
+static int giShopRepurchaseCnt = 0;
+
+ShopDiscHasAmount( int iAmount )
+{
+	int i;
+	for( i = 0; i < giShopDiscAmountCnt; i++ )
+		if( gaShopDiscAmounts[ i ] == iAmount )
+			return 1;
+	return 0;
+}
+
+ShopDiscAddAmount( int iAmount )
+{
+	if( iAmount <= 0 || giShopDiscAmountCnt >= SHOP_DISC_MAX_AMOUNTS )
+		return;
+	gaShopDiscAmounts[ giShopDiscAmountCnt ] = iAmount;
+	giShopDiscAmountCnt++;
+}
+
+ShopSoldHasAmount( int iAmount )
+{
+	int i;
+	for( i = 0; i < giShopSoldCnt; i++ )
+		if( gaShopSoldAmounts[ i ] == iAmount )
+			return 1;
+	return 0;
+}
+
+ShopSoldAddAmount( int iAmount )
+{
+	if( iAmount <= 0 || giShopSoldCnt >= SHOP_DISC_MAX_AMOUNTS )
+		return;
+	gaShopSoldAmounts[ giShopSoldCnt ] = iAmount;
+	giShopSoldCnt++;
+}
+
+ShopRepurchaseHasAmount( int iAmount )
+{
+	int i;
+	for( i = 0; i < giShopRepurchaseCnt; i++ )
+		if( gaShopRepurchase[ i ] == iAmount )
+			return 1;
+	return 0;
+}
+
+ShopRepurchaseAddAmount( int iAmount )
+{
+	if( iAmount <= 0 || giShopRepurchaseCnt >= SHOP_DISC_MAX_AMOUNTS )
+		return;
+	gaShopRepurchase[ giShopRepurchaseCnt ] = iAmount;
+	giShopRepurchaseCnt++;
+}
+
+ShopRepurchaseRemoveAmount( int iAmount )
+{
+	int i;
+	for( i = 0; i < giShopRepurchaseCnt; i++ )
+		if( gaShopRepurchase[ i ] == iAmount )
+		{
+			gaShopRepurchase[ i ] = gaShopRepurchase[ giShopRepurchaseCnt - 1 ];
+			giShopRepurchaseCnt--;
+			return;
+		}
+}
+
+ShopDiscountTact( int iHeroId )
+{
+	int iPerk = SendCommand( EXT_GETSKILL, iHeroId, RPGHERO_PERK_ADDMONEY );
+	int iPrice = ShopPricePermille( iPerk );
+	int iMoney = SendCommand( EXT_GETSKILL, iHeroId, RPGHERO_MONEY );
+	//换关卡时重置本关返现次数与回购记录
+	string sMapName = GetMapName();
+	if( sMapName != gsShopDiscMap )
+	{
+		gsShopDiscMap = sMapName;
+		giShopDiscRefundCnt = 0;
+		giShopSoldCnt = 0;
+		giShopRepurchaseCnt = 0;
+	}
+	if( giShopDiscLastMoney < 0 )
+	{
+		giShopDiscLastMoney = iMoney;
+		return;
+	}
+	int iSpent = giShopDiscLastMoney - iMoney;
+	if( iSpent < 0 )
+	{
+		//出售：引擎已按天赋给出售返还（0点70%，随天赋提升），脚本不干预金额，
+		//仅维护回购标记，避免卖出→买回→再卖时重复记录
+		int iSold = -iSpent;
+		int bRepo = ShopRepurchaseHasAmount( iSold );
+		if( bRepo )
+			ShopRepurchaseRemoveAmount( iSold );
+		if( !bRepo )
+			ShopSoldAddAmount( iSold );
+	}
+	else
+	if( iSpent > 0 )
+	{
+		//买回了之前卖出的东西：标记为回购，下次出售时不再重复记入已售列表
+		if( ShopSoldHasAmount( iSpent ) )
+			ShopRepurchaseAddAmount( iSpent );
+		//购买返现（仅理财天赋有折扣时）
+		if( iPrice < 1000 )
+		{
+			if( giShopDiscRefundCnt < SHOP_DISC_MAX_REFUNDS && !ShopDiscHasAmount( iSpent ) )
+			{
+				int iRefund = iSpent * ( 1000 - iPrice ) / 1000;
+				if( iRefund > 0 )
+				{
+					SendCommandA( -1, EXT_ADDSKILL, RPGHERO_MONEY, iRefund );
+					iMoney = SendCommand( EXT_GETSKILL, iHeroId, RPGHERO_MONEY );
+					ShopDiscAddAmount( iSpent );
+					giShopDiscRefundCnt++;
+				}
+			}
+		}
+	}
+	giShopDiscLastMoney = iMoney;
+}
+
+
+//------------------------------------------------------------------------------------------
+ControlShop()
+{
+	if( giMapType != MAP_TYPE_LEVELSHOP && giMapType != MAP_TYPE_SHOP )
+		return;
+	//
+	if( MenuState == MENU_SHOP )
+		ShopDiscountTact( CurHeroID );
+	else
+		giShopDiscLastMoney = -1;
+	//
+	ControlLives(MenuFind( 2223 , 999999 ));
+	//
+	CommonTact();
+	CharScreenTact();
+	//
+	HeroSpriteTact();
+
+	//control menus
+	
+
+
+
+
+	if( MenuState == MENU_SHOP )
+	{
+		if( StartEffectTime )
+		{
+			StartEffectTime = 0;
+			ShowShop();
+		}
+		
+		
+// Upgrades!
+// romalu86. функция апгрейди?оружие, но старое скидывае??инвентар?
+// For idea thx ermaccer. 
+			
+int mouseclick;
+mouseclick = MenuLClick(); 
+{
+int pistol_slot = SendCommandA(0, EXT_GETITEMID, 2);
+int shotgun_slot = SendCommandA(0, EXT_GETITEMID, 3);
+int minigun_slot = SendCommandA(0, EXT_GETITEMID, 4);
+int rocket_slot = SendCommandA(0, EXT_GETITEMID, 5);
+int energy_slot = SendCommandA(0, EXT_GETITEMID, 6);
+int money = SendCommand(EXT_GETSKILL, CurHeroID, RPGHERO_MONEY);
+
+
+	
+	// Pistol Upgrades
+	if(mouseclick == MenuFindNamed("INV_PISTOL_UPGR"))
+	{		
+		if(pistol_slot == SendCommandC(EXT_GetIdByName, "Pistol_pm") && money >= 0)
+		{
+			//PlaySFX(45);
+			SendCommandA(-1, EXT_REMOVEITEMIFHAS, SendCommandC( EXT_GetIdByName, "Pistol_pm" ) );
+			SendCommandA(-1, EXT_ADDSKILL, RPGHERO_MONEY, 0);
+			SendCommandA(-1, EXT_ADDITEMBYBASEID, SendCommandC( EXT_GetIdByName, "Pistol_sigsauer" ) );
+		}
+ 		else
+		{
+			//PlaySFX(46);
+		}
+	}
+	
+	// Shotgun Upgrades
+	if(mouseclick == MenuFindNamed("INV_SHOTGUN_UPGR"))
+	{
+		if(shotgun_slot == SendCommandC(EXT_GetIdByName, "ShotGun_mossberg") && money >= 0)
+		{
+			//PlaySFX(45);
+			SendCommandA(-1, EXT_REMOVEITEMIFHAS, SendCommandC( EXT_GetIdByName, "ShotGun_mossberg" ) );
+			SendCommandA(-1, EXT_ADDSKILL, RPGHERO_MONEY, 0);
+			SendCommandA(-1, EXT_ADDITEMBYBASEID, SendCommandC( EXT_GetIdByName, "ShotGun_rife1" ) );
+
+		}
+ 		else
+		{
+			//PlaySFX(46);
+		}
+	}
+	
+	// Minigun Upgrades
+	if(mouseclick == MenuFindNamed("INV_MINIGUN_UPGR"))
+	{
+		if(minigun_slot == SendCommandC(EXT_GetIdByName, "Minigun_KG-9") && money >= 0)
+		{
+			PlaySFX(45);
+			SendCommandA(-1, EXT_REMOVEITEMIFHAS, SendCommandC( EXT_GetIdByName, "Minigun_KG" ) );
+			SendCommandA(-1, EXT_ADDSKILL, RPGHERO_MONEY, 0);
+			SendCommandA(-1, EXT_ADDITEMBYBASEID, SendCommandC( EXT_GetIdByName, "Minigun_uzi" ) );
+			
+		}
+ 		else
+		{
+			//PlaySFX(46);
+		}
+	}
+	
+	// Rocket Upgrades
+	if(mouseclick == MenuFindNamed("INV_ROCKET_UPGR"))
+	{
+		if(rocket_slot == SendCommandC(EXT_GetIdByName, "Granade_m79") && money >= 0)
+		{			
+			//PlaySFX(45);
+			SendCommandA(-1, EXT_REMOVEITEMIFHAS, SendCommandC( EXT_GetIdByName, "Granade_m79" ) );			
+			SendCommandA(-1, EXT_ADDSKILL, RPGHERO_MONEY, 0);
+			SendCommandA(-1, EXT_ADDITEMBYBASEID, SendCommandC( EXT_GetIdByName, "Rocket_muha" ) );			
+		}
+		else
+		{
+			//PlaySFX(46);
+		}
+	}
+	
+	// Energy Upgrades
+	if(mouseclick == MenuFindNamed("INV_ENERGY_UPGR"))
+	{
+		if(energy_slot == SendCommandC(EXT_GetIdByName, "Energy_ligthpistol") && money >= 0)
+		{			
+			//PlaySFX(45);
+			SendCommandA(-1, EXT_REMOVEITEMIFHAS, SendCommandC( EXT_GetIdByName, "Energy_ligthpistol" ) );
+			SendCommandA(-1, EXT_ADDSKILL, RPGHERO_MONEY, 0);
+			SendCommandA(-1, EXT_ADDITEMBYBASEID, SendCommandC( EXT_GetIdByName, "Energy_Laserpistol" ) );			
+		}
+ 		else
+		{
+			//PlaySFX(46);
+		}
+	}
+}
+// Upgrades END
+
+		//move back
+		if( GetKey() == VK_ESCAPE )
+			ChangeMenuStateSH( MENU_MAIN );
+		//move forward
+		if( GetKey() == ' ' || GetKey() == VK_RETURN || 
+			giMapType == MAP_TYPE_SHOP && ( MenuLClick() && MenuLClick() == MenuFindNamed("INV_BTN_CLOSE") ) )
+		{
+			ChangeMenuStateSH( MENU_PLAY );
+		}
+		//
+		ControlScrollers(true);
+
+		CtrlStatusMsg();
+	}
+	else
+	if( MenuState == MENU_OPTIONS )
+	{
+		/*if( StartEffectTime )
+		{
+			if( (GetTime()-StartEffectTime) > FADE_GAME_TIME/2 )
+			{
+				StartEffectTime = 0;
+				
+				CreateOptionsMenu( "gamedata\\men\\options.men" );
+			}
+		}
+
+		TactOptionsMenu();
+		int btn = MenuLClick();
+		if( btn && MenuNVidUnderCursor() == 705 )
+		{
+			if( btn == MenuFindNamed( "GOTO_GAME" ) )
+				ChangeMenuStateSH( MENU_SHOP );
+			else
+			if( btn == MenuFindNamed( "GOTO_MAINMENU" ) )
+				GoToMainMenu();
+		}
+		if( GetKey() == VK_ESCAPE )
+			ChangeMenuStateSH( MENU_SHOP );*/
+	}
+	else
+	if( MenuState == MENU_PLAY )
+	{
+		if( ( GetTime() - StartEffectTime) > FADE_GAME_TIME/2 || giMapType == MAP_TYPE_LEVELSHOP )
+		{
+			// загрузка игрово?карт?
+			StartEffectTime = 0;
+			if( giMapType != MAP_TYPE_LEVELSHOP )
+				StopMusicEx();
+
+			if( giMapType == MAP_TYPE_LEVELSHOP )
+				CloseMenuWndAndAssign();//CloseShop();
+			else
+			{
+				CloseShop();
+				SetLevelNumber( Z_FIRST_LEVEL_NUM, -1 );
+				SendCommandA( -1, EXT_OnLevelWin );
+				LoadCurLevel();
+				LoadCurNextMap();
+			}
+		}
+	}
+	else
+	if( MenuState == MENU_MAIN )
+	{
+		if( ( GetTime() - StartEffectTime ) > FADE_GAME_TIME/2 || giMapType == MAP_TYPE_LEVELSHOP)
+		{
+			StartEffectTime = 0;
+			if( giMapType == MAP_TYPE_LEVELSHOP )
+				CloseMenuWndAndAssign();//CloseShop();
+			else
+			{
+				CloseShop();
+				MenuRelease();//zmnew 2005Apr28 - wit said do this to delete "loading" sprite
+				Load( "gamedata\\maps\\mainmenu.map" );
+			}
+			MenuState = 0;
+		}
+	}
+}
