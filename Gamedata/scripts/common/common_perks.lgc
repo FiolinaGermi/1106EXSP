@@ -263,6 +263,12 @@ static int RmCapLast[ MAX_PLAYER * 4 ] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 static int RmCapHero[ MAX_PLAYER * 4 ] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
+//Last verdict of the implant intelligence gate (updated later in PerksTact).
+//While it is 1 the gate owns health / strength / speed, so the 175 cap has to
+//stand down: reading the gate's own writes as a bonus change would restore
+//the cut points and cancel the penalty for a Gun Expert.
+static int giImplLastPen[ MAX_PLAYER ] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+
 //Gun Expert: the 175 cap also counts implant bonuses. Cut base points are
 //stored as debt in unused hero skill slots 7..10 and restored when the
 //implant bonus decreases. BASE reads ignore any addon on the storage slots.
@@ -339,6 +345,10 @@ RifleMasterAttrCapTact( int nArmy )
 	int perk = SendCommand( EXT_GETSKILL, heroId, RPGHERO_PERK_HYPNOSIS );
 	if( perk <= 0 )
 		return;
+	//implant intelligence gate is halving the stats right now: leave them to
+	//ImplantLimitTact, otherwise the debt restore cancels the penalty
+	if( giImplLastPen[ nArmy ] > 0 )
+		return;
 	RifleMasterCapField( nArmy, heroId, RPGHERO_HEALTH, 0 );
 	RifleMasterCapField( nArmy, heroId, RPGHERO_STRENGTH, 1 );
 	RifleMasterCapField( nArmy, heroId, RPGHERO_SPEED, 2 );
@@ -373,7 +383,6 @@ ImplantNeedInt( int lvl )
 }
 
 static int giImplLastNeed[ MAX_PLAYER ] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-static int giImplLastPen[ MAX_PLAYER ] = { 0, 0, 0, 0, 0, 0, 0, 0 };
 static int giImplHealthOrig[ MAX_PLAYER ] = { 0, 0, 0, 0, 0, 0, 0, 0 };
 static int giImplStrengthOrig[ MAX_PLAYER ] = { 0, 0, 0, 0, 0, 0, 0, 0 };
 static int giImplAccuracyOrig[ MAX_PLAYER ] = { 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -454,7 +463,7 @@ ImplantLimitTact( int nArmy )
 		giImplLastPen[ nArmy ] = penalty;
 	}
 
-	int spdBase = SendCommand( EXT_GETSKILL, heroId, RPGHERO_SPEED );
+	int spdBase = SendCommand( EXT_GETSKILLBASE, heroId, RPGHERO_SPEED );
 	int origSpd = giImplSpeedOrig[ nArmy ];
 	if( origSpd <= 0 )
 	{
@@ -468,13 +477,13 @@ ImplantLimitTact( int nArmy )
 	}
 	int halfSpd = 0;
 
-	//reference values for the 50% cut: recorded on every frame WITHOUT the
-	//penalty, so an implant equipped afterwards is not a part of them. The
-	//engine bakes the implant bonus into the skill storage on equip and it
-	//cannot be read back from the implant item (GETSKILL on it returns 0).
-	int hBase = SendCommand( EXT_GETSKILL, heroId, RPGHERO_HEALTH );
-	int sBase = SendCommand( EXT_GETSKILL, heroId, RPGHERO_STRENGTH );
-	int aBase = SendCommand( EXT_GETSKILL, heroId, RPGHERO_ACCURACY );
+	//reference values for the 50% cut: stored base skills recorded on every frame
+	//WITHOUT the penalty, so an implant equipped afterwards is not a part of them.
+	//In this build GETSKILL without the flag already returns the DISPLAYED value
+	//(base + implant bonus), so the pure base has to come from GETSKILLBASE
+	int hBase = SendCommand( EXT_GETSKILLBASE, heroId, RPGHERO_HEALTH );
+	int sBase = SendCommand( EXT_GETSKILLBASE, heroId, RPGHERO_STRENGTH );
+	int aBase = SendCommand( EXT_GETSKILLBASE, heroId, RPGHERO_ACCURACY );
 
 	if( penalty )
 	{
@@ -493,23 +502,31 @@ ImplantLimitTact( int nArmy )
 		if( SendCommand( EXT_GETSKILL, heroId, RPGHERO_UNKNOWN ) != 100000 + origSpd )
 			SendCommandA( nArmy, EXT_SETSKILL, RPGHERO_UNKNOWN, 100000 + origSpd );
 
-		//the engine applies the implant bonus on top of the stored skill and the
-		//bonus cannot be queried, so it is measured as the gap between the current
-		//value and the reference taken before the implant was equipped. The gap is
-		//cached: depending on the previous frame's write made the value oscillate
-		if( hBase > giImplHealthOrig[ nArmy ] )
-			giImplBonusH[ nArmy ] = hBase - giImplHealthOrig[ nArmy ];
-		if( sBase > giImplStrengthOrig[ nArmy ] )
-			giImplBonusS[ nArmy ] = sBase - giImplStrengthOrig[ nArmy ];
-		if( aBase > giImplAccuracyOrig[ nArmy ] )
-			giImplBonusA[ nArmy ] = aBase - giImplAccuracyOrig[ nArmy ];
-		if( spdBase > origSpd )
-			giImplBonusV[ nArmy ] = spdBase - origSpd;
+		//the engine draws the stored base PLUS the implant bonus, so the bonus has
+		//to be subtracted from the halved target. The bonus is the gap between the
+		//displayed value (GETSKILL with the flag) and the stored base
+		//(GETSKILLBASE); GETSKILL without the flag already equals the displayed one
+		int hBonus = SendCommand( EXT_GETSKILL, heroId, RPGHERO_HEALTH, 1 ) - hBase;
+		int sBonus = SendCommand( EXT_GETSKILL, heroId, RPGHERO_STRENGTH, 1 ) - sBase;
+		int aBonus = SendCommand( EXT_GETSKILL, heroId, RPGHERO_ACCURACY, 1 ) - aBase;
+		int vBonus = SendCommand( EXT_GETSKILL, heroId, RPGHERO_SPEED, 1 ) - spdBase;
+		if( hBonus < 0 )
+			hBonus = 0;
+		if( sBonus < 0 )
+			sBonus = 0;
+		if( aBonus < 0 )
+			aBonus = 0;
+		if( vBonus < 0 )
+			vBonus = 0;
+		giImplBonusH[ nArmy ] = hBonus;
+		giImplBonusS[ nArmy ] = sBonus;
+		giImplBonusA[ nArmy ] = aBonus;
+		giImplBonusV[ nArmy ] = vBonus;
 
-		int hHalf = giImplHealthOrig[ nArmy ] / 2 - giImplBonusH[ nArmy ];
-		int sHalf = giImplStrengthOrig[ nArmy ] / 2 - giImplBonusS[ nArmy ];
-		int aHalf = giImplAccuracyOrig[ nArmy ] / 2 - giImplBonusA[ nArmy ];
-		halfSpd = origSpd / 2 - giImplBonusV[ nArmy ];
+		int hHalf = giImplHealthOrig[ nArmy ] / 2 - hBonus;
+		int sHalf = giImplStrengthOrig[ nArmy ] / 2 - sBonus;
+		int aHalf = giImplAccuracyOrig[ nArmy ] / 2 - aBonus;
+		halfSpd = origSpd / 2 - vBonus;
 
 		//a stored skill cannot go below zero: with a big implant bonus the target
 		//base may be negative, in that case the best we can do is zero
