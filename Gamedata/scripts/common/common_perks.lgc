@@ -1,9 +1,9 @@
 #define COMMONPERKS_H	aaa
-//��������?����������?���� ������ �������� ����.
-//��������?����?������������? ?hero.lgc, ?? ��?�� ������ �� ������ �����.
+//Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚Ðº?Ð¿Ñ€Ð°ÐºÑ‚Ð¸Ñ‡ÐµÑÐº?Ð²ÑÐµÑ… Ð¿ÐµÑ€ÐºÐ¾Ð² Ð²Ñ‹Ð½ÐµÑÐµÐ½Ð° ÑÑŽÐ´Ð°.
+//Ð½ÐµÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹?Ð¿ÐµÑ€Ðº?Ð¾Ð±Ñ€Ð°Ð±Ð°Ñ‚Ñ‹Ð²Ð°ÑŽÑ‚? ?hero.lgc, ?? Ð²Ð»?ÑŽÑ‚ Ð¿Ñ€Ð¾ÑÑ‚Ð¾ Ð½Ð° ÑÐºÐ¸Ð»Ð»Ñ‹ Ð³ÐµÑ€Ð¾Ñ.
 
 //---------------------------------------------------------------------------
-static int StartBlinkTime = 0;   //����� ������ �������
+static int StartBlinkTime = 0;   //Ð²Ñ€ÐµÐ¼Ñ Ð½Ð°Ñ‡Ð°Ð»Ð° Ð¼Ð¸Ð³Ð°Ð½Ð¸Ñ
 
 //---------------------------------------------------------------------------
 //forward definitions
@@ -12,8 +12,8 @@ BlinkTact();
 
 
 //---------------------------------------------------------------------------
-//������, �������?����� ������ ?������������?��� �������� ����?0..200
-//������������� ������������?����?��������������?������?
+//Ð¼Ð°ÑÑÐ¸Ð², Ñ…Ñ€Ð°Ð½ÑÑ‰Ð¸?Ð²Ñ€ÐµÐ¼Ñ Ð¿ÐµÑ€ÐºÐ¾Ð² ?Ð¼Ð¸Ð»Ð»Ð¸ÑÐµÐºÑƒÐ½Ð´Ð°?Ð´Ð»Ñ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð¹ Ð¿ÐµÑ€Ðº?0..200
+//Ð²Ñ‹ÑÑ‡Ð¸Ñ‚Ñ‹Ð²Ð°ÐµÑ‚ÑÑ Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐº?Ñ‡ÐµÑ€Ðµ?ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸?Ð¼Ð°ÑÑÐ¸Ð²?
 static bool gbInitialized = false;
 static int AutoHealingTimesCalced[ MAXIMUM_PERK_VALUE + 1 ];
 static int HypnosisTimesCalced[ MAXIMUM_PERK_VALUE + 1 ];
@@ -28,13 +28,13 @@ CalculateTimes( int *Times, int *PerkVals, int *TimesCalced, int iSize )
     for( j = 0; j < MAXIMUM_PERK_VALUE + 1; j++ )
         TimesCalced[ j ] = 0;
 
-    //�������������� ������ ������?
+    //Ð¸Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð¸Ñ€ÑƒÐµÐ¼ Ð¿ÐµÑ€Ð²Ñ‹Ð¹ ÑÐ»ÐµÐ¼ÐµÐ½?
     TimesCalced[ PerkVals[ 0 ] ] = Times[ 0 ];
 
-    //��������� ������ TimesCalced
+    //Ð·Ð°Ð¿Ð¾Ð»Ð½ÑÐµÐ¼ Ð¼Ð°ÑÑÐ¸Ð² TimesCalced
     for( i = 1; i < iSize ; i++ )
     {
-        //�������������� �������� ( PerkVals_i-1, PerkVals_i ].
+        //Ð¸Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð¸Ñ€ÑƒÐµÐ¼ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ñ‹ ( PerkVals_i-1, PerkVals_i ].
         int len, val, pos;
         len = PerkVals[ i ] - PerkVals[ i - 1 ];
         val = Times[ i ] - Times[ i - 1 ];
@@ -88,7 +88,7 @@ CalculatePerksTimes()
 
 
 //---------------------------------------------------------------------------
-#define MAX_HYPN_UNITS	100	//������������ ��?�� ������������ ��������������?��������
+#define MAX_HYPN_UNITS	100	//Ð¼Ð°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ ÐºÐ¾?Ð²Ð¾ Ð¾Ð´Ð½Ð¾Ð²Ñ€ÐµÐ¼ÐµÐ½Ð½Ð¾ Ð³Ð¸Ð¿Ð½Ð¾Ñ‚Ð¸Ð·Ð¸Ñ€ÑƒÐµÐ¼Ñ‹?Ð¼Ð¾Ð½ÑÑ‚Ñ€Ð¾Ð²
 
 //---------------------------------------------------------------------------
 static int UnitsToHypn[MAX_HYPN_UNITS];
@@ -103,7 +103,7 @@ DeleteHypnUnitNum(int i )
 {
 	HypnCnt--;
 	if(UnitsToHypn[i])
-		Action( UnitsToHypn[i], ACT_DELETE_ITEM, -555 );//������� ����??������?
+		Action( UnitsToHypn[i], ACT_DELETE_ITEM, -555 );//ÑƒÐ´Ð°Ð»ÑÐµÐ¼ Ð¼ÐµÑ‚Ðº??Ð³Ð¸Ð¿Ð½Ð¾Ð·?
 	//
 	UnitsToHypn[i] = UnitsToHypn[HypnCnt];
 	TimesToHypn[i] = TimesToHypn[HypnCnt];
@@ -127,13 +127,13 @@ DeleteHypnMonster(int unit)
 
 
 //---------------------------------------------------------------------------
-//������ - ���� ������ ������?�� ������??������?������������?������?
+//Ð³Ð¸Ð¿Ð½Ð¾Ð· - ÐµÑÐ»Ð¸ ÐºÑƒÑ€ÑÐ¾Ñ€ Ð½Ð°Ð²ÐµÐ´Ðµ?Ð½Ð° Ð¼Ð¾Ð½ÑÑ‚Ñ€??Ñ‚ÐµÑ‡ÐµÐ½Ð¸?Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð½Ð¾Ð³?Ð²Ñ€ÐµÐ¼ÐµÐ½?
 HypnosisTact( int nArmy, int heroId )
 {
 	int i;
    	int CurTime = GetTime();
 
-    //������?(���� ����) ?���������� ����?������?
+    //ÑÐ¾Ð·Ð´Ð°Ðµ?(ÐµÑÐ»Ð¸ Ð½Ð°Ð´Ð¾) ?Ð¿ÐµÑ€ÐµÐ¼ÐµÑ‰Ð°ÐµÐ¼ Ð¼ÐµÑ‚Ðº?Ð³Ð¸Ð¿Ð½Ð¾Ð·?
     for( i = 0; i < HypnCnt; i++ )
     {
 		int x = GetX(UnitsToHypn[i]);
@@ -151,7 +151,7 @@ HypnosisTact( int nArmy, int heroId )
 		}
     }
 
-	//��������� ���� ��??100 ����������?
+	//Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÑÐµÐ¼ Ð¾Ð´Ð¸Ð½ Ñ€Ð°??100 Ð¼Ð¸Ð»Ð»Ð¸ÑÐµÐºÑƒÐ½?
 	static int PrevTime = 0;
 	if( PrevTime && CurTime - PrevTime < 100 )
 		return;
@@ -182,7 +182,7 @@ HypnosisTact( int nArmy, int heroId )
     	flZ = GetZ(Flagman(nArmy));
     }
 
-    //������� ������, ��? �� �������� ������??���� ��?���� ��������������?(����������? ��?����)
+    //ÑƒÐ´Ð°Ð»ÑÐµÐ¼ ÑŽÐ½Ð¸Ñ‚Ð¾Ð², ÐºÐ¾? Ð·Ð° Ñ€Ð°Ð´Ð¸ÑƒÑÐ¾Ð¼ Ð³Ð¸Ð¿Ð½Ð¾Ð·??ÐºÐ¾Ð³Ð¾ ÑƒÐ¶?Ð½Ð°Ð´Ð¾ Ð³Ð¸Ð¿Ð½Ð¾Ñ‚Ð¸Ð·Ð¸Ñ€Ð¾Ð²Ð°Ñ‚?(Ð³Ð¸Ð¿Ð½Ð¾Ñ‚Ð¸Ð·Ð¸Ñ€? Ð¿Ñ€?ÑÑ‚Ð¾Ð¼)
     i = 0;
     while( i < HypnCnt )
     {
@@ -199,7 +199,7 @@ HypnosisTact( int nArmy, int heroId )
     	//
         if( !ToDelete && CurTime - InitTimes[i] > TimesToHypn[i] )
         {
-			//����������?������������ ��������������������?
+			//Ð²Ñ‹ÑÑ‡Ð¸Ñ‚Ñ‹Ð²Ð°Ðµ?Ð´Ð»Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚ÑŒ Ð·Ð°Ð³Ð¸Ð¿Ð½Ð¾Ñ‚Ð¸Ð·Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ð¾ÑÑ‚?
 			//skill==0 -> len = 5sec; skill==100 -> len = 60sec;
 			int len = 5000 + (60000-5000) * (PerkVal-0)/(100-0);
 			len = len / 2;	//zmNEW
@@ -207,8 +207,8 @@ HypnosisTact( int nArmy, int heroId )
 			SendCommandA( nArmy, EXT_ADDHYPNMONSTER, UnitsToHypn[i], len );
 			//
         	Hypnotize( UnitsToHypn[i], len );
-            //��������� exp
-            //zm2006Jan30. ������ �� ���������, ?? ������ �� ������, ��������� ��?������
+            //Ð´Ð¾Ð±Ð°Ð²Ð»ÑÐµÐ¼ exp
+            //zm2006Jan30. Ð±Ð¾Ð»ÑŒÑˆÐµ Ð½Ðµ Ð´Ð¾Ð±Ð°Ð²Ð»ÑÐµÐ¼, ?? Ð³Ð¸Ð¿Ð½Ð¾Ð· Ð½Ðµ Ð²ÐµÑ‡Ð½Ñ‹Ð¹, Ð´Ð¾Ð±Ð°Ð²Ð»ÑÐµÐ¼ Ð¿Ñ€?ÑÐ¼ÐµÑ€Ñ‚Ð¸
             //int hp = Action( UnitsToHypn[i], ACT_GET_HP );
 		    //int hp = GetVidData(GetVid(UnitsToHypn[i]),VID_MAXHP);
             //if( hp > 0 )
@@ -222,13 +222,13 @@ HypnosisTact( int nArmy, int heroId )
     		i++;
     }
 
-    //������?������, ��? ����?��� ?������ ������ ��?��������������?��������
+    //Ð½Ð°Ñ…Ð¾Ð´Ð¸?ÑŽÐ½Ð¸Ñ‚Ð¾Ð², ÐºÐ¾? Ð½Ð°Ñ…Ð¾?Ñ‚ÑÑ ?Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ð¼Ð¾Ð¼ÐµÐ½Ñ‚ Ð¿Ð¾?Ð³Ð¸Ð¿Ð½Ð¾Ñ‚Ð¸Ð·Ð¸Ñ€ÑƒÐµÐ¼Ð¾?Ð¾Ð±Ð»Ð°ÑÑ‚ÑŒÑŽ
 	int z = GetGroundZ( iX, iY );
 	for( i = FirstInBox(iX-Radius,iY-Radius,iX+Radius,iY+Radius+z); i; i = NextInBox() )
 	{
 		if( SizeTo(i, iX, iY+GetZ(i)) <= Radius && !Action(i, ACT_HAVE_ITEM, -555) &&
 			Action(i,ACT_GET_ARMY)==1 && (IsMonsterVid(GetVid(i)) || IsMonstToHypnVid(GetVid(i)) )
-			&& !HaveLink( i, SURVIVE_FREEZE_EFFECT ) )	//*zm2006Jul31 - ��?� ����? ����?������...
+			&& !HaveLink( i, SURVIVE_FREEZE_EFFECT ) )	//*zm2006Jul31 - Ð²Ð¾?Ñ Ñ‡ÑƒÐ´Ð°? Ð·Ð°Ð±Ñ‹?ÑÐ¾Ð²ÑÐµÐ¼...
 		{
 	    	//zmNEW2006Jul11
     		int t = IsLineUnderGround(flX, flY, flZ+20, GetX(i), GetY(i), GetZ(i)+20);
@@ -240,7 +240,7 @@ HypnosisTact( int nArmy, int heroId )
 	   			HypnLabels[HypnCnt] = 0;
    				Action( UnitsToHypn[HypnCnt], ACT_ADD_ITEM, -555 );
 
-		        //����?�� �����, ����? ��� ������? ?����������?�� hp ������?
+		        //Ð¸Ð·Ð¼Ðµ?ÐµÐ¼ Ð²Ñ€ÐµÐ¼Ñ, Ð½ÐµÐ¾Ð±? Ð´Ð»Ñ Ð³Ð¸Ð¿Ð½Ð¾Ð·? ?Ð·Ð°Ð²Ð¸ÑÐ¸Ð¼Ð¾ÑÑ‚?Ð¾Ñ‚ hp Ð¼Ð¾Ð½ÑÑ‚Ñ€?
     		    int Hp = Action( i, ACT_GET_HP );
         		TimesToHypn[HypnCnt] = TimesToHypn[HypnCnt] * Hp / HYPNOSIS_ENEMY_HP;
 		        //
@@ -253,20 +253,546 @@ HypnosisTact( int nArmy, int heroId )
 
 
 //---------------------------------------------------------------------------
-//�������, ��������?? ������ ����, ?�������� ������������? ����?
-//?������?������������? ������������ ����-���� �� ������?
+//枪械大师代价：健康/力量/移速/智力 属性上限由 200 降为 175
+#define RIFLE_MASTER_ATTR_CAP	175
+#define RIFLE_MASTER_ATTR_MAX	200
+
+//Previous allowed value and hero identity per army/slot (0..3 = HP/STR/SPD/INT).
+static int RmCapLast[ MAX_PLAYER * 4 ] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+static int RmCapHero[ MAX_PLAYER * 4 ] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+
+//Gun Expert: the 175 cap also counts implant bonuses. Cut base points are
+//stored as debt in unused hero skill slots 7..10 and restored when the
+//implant bonus decreases. BASE reads ignore any addon on the storage slots.
+RifleMasterCapField( int nArmy, int heroId, int paramNum, int iSlot )
+{
+	int base = SendCommand( EXT_GETSKILLBASE, heroId, paramNum );
+	int full = SendCommand( EXT_GETSKILL, heroId, paramNum, 1 );
+	int add = full - base;
+	if( add < 0 )
+		add = 0;
+	int idx = nArmy * 4 + iSlot;
+	int allowed = RIFLE_MASTER_ATTR_CAP - add;
+	if( allowed < 0 )
+		allowed = 0;
+
+	int debtParam = 7 + iSlot;
+	int debt = SendCommand( EXT_GETSKILLBASE, heroId, debtParam );
+	if( debt < 0 )
+		debt = 0;
+	int oldDebt = debt;
+	int prevAllowed = RmCapLast[ idx ];
+	bool newHero = ( RmCapHero[ idx ] != heroId );
+	if( newHero )
+	{
+		prevAllowed = allowed;
+		RmCapHero[ idx ] = heroId;
+	}
+
+	int target = base;
+	int cut = 0;
+	int restore = 0;
+	if( base > allowed )
+	{
+		cut = base - allowed;
+		debt = debt + cut;
+		target = allowed;
+	}
+	else if( !newHero && allowed > prevAllowed && debt > 0 )
+	{
+		restore = allowed - prevAllowed;
+		if( restore > debt )
+			restore = debt;
+		if( restore > allowed - base )
+			restore = allowed - base;
+		if( restore > 0 )
+		{
+			target = base + restore;
+			debt = debt - restore;
+		}
+	}
+
+	if( target != base )
+		SendCommandA( nArmy, EXT_SETSKILL, paramNum, target );
+	if( debt != oldDebt )
+		SendCommandA( nArmy, EXT_SETSKILL, debtParam, debt );
+	if( cut > 0 )
+		Log( "RMCAP army=" + itoa( nArmy ) + " skill=" + itoa( paramNum )
+			+ " base=" + itoa( base ) + " impl=" + itoa( add )
+			+ " cut=" + itoa( cut ) + " debt=" + itoa( debt ) );
+	if( restore > 0 )
+		Log( "RMRESTORE army=" + itoa( nArmy ) + " skill=" + itoa( paramNum )
+			+ " base=" + itoa( base ) + " impl=" + itoa( add )
+			+ " restore=" + itoa( restore ) + " debt=" + itoa( debt ) );
+	RmCapLast[ idx ] = allowed;
+	return target != base;
+}
+
+//Gun Expert: check the four main attributes (implants included)
+RifleMasterAttrCapTact( int nArmy )
+{
+	int heroId = HeroID[ nArmy ];
+	if( !heroId )
+		return;
+	int perk = SendCommand( EXT_GETSKILL, heroId, RPGHERO_PERK_HYPNOSIS );
+	if( perk <= 0 )
+		return;
+	RifleMasterCapField( nArmy, heroId, RPGHERO_HEALTH, 0 );
+	RifleMasterCapField( nArmy, heroId, RPGHERO_STRENGTH, 1 );
+	RifleMasterCapField( nArmy, heroId, RPGHERO_SPEED, 2 );
+	RifleMasterCapField( nArmy, heroId, RPGHERO_INTELLIGENCE, 3 );
+}
+
+
+//---------------------------------------------------------------------------
+//Implant intelligence gate: when intelligence is below the implant
+//requirement, health / strength / accuracy / move speed are halved.
+//Requirement table follows weapon.db Level values:
+//gen1 3/8/15 -> 0/15/30, gen2 20/25/33 -> 15/30/45, gen3 40/50/60 -> 30/45/60
+ImplantNeedInt( int lvl )
+{
+	if( lvl >= 60 )
+		return 60;
+	if( lvl >= 50 )
+		return 45;
+	if( lvl >= 40 )
+		return 30;
+	if( lvl >= 33 )
+		return 45;
+	if( lvl >= 25 )
+		return 30;
+	if( lvl >= 20 )
+		return 15;
+	if( lvl >= 15 )
+		return 30;
+	if( lvl >= 8 )
+		return 15;
+	return 0;
+}
+
+static int giImplLastNeed[ MAX_PLAYER ] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+static int giImplLastPen[ MAX_PLAYER ] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+static int giImplHealthOrig[ MAX_PLAYER ] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+static int giImplStrengthOrig[ MAX_PLAYER ] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+static int giImplAccuracyOrig[ MAX_PLAYER ] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+//last value written by the penalty: the engine re-adds the implant bonus on
+//top of it, so (current - written) is exactly the bonus that has to be removed
+static int giImplWroteH[ MAX_PLAYER ] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+static int giImplWroteS[ MAX_PLAYER ] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+static int giImplWroteA[ MAX_PLAYER ] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+static int giImplSpeedOrig[ MAX_PLAYER ] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+static int giImplWroteV[ MAX_PLAYER ] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+static int giImplZeroFrames[ MAX_PLAYER ] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+//implant bonus measured against the clean reference (cached while penalized)
+static int giImplBonusH[ MAX_PLAYER ] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+static int giImplBonusS[ MAX_PLAYER ] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+static int giImplBonusA[ MAX_PLAYER ] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+static int giImplBonusV[ MAX_PLAYER ] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+
+//"intelligence low, chip overload" popup (vid 420):
+//3 flashes with a 1s period, then held still for 3s (6s total), once per equipped implant
+#define IMPL_WARN_VID			420
+#define IMPL_WARN_Z				3000
+#define IMPL_WARN_HALF			500		//half of the 1s flash period
+#define IMPL_WARN_BLINK_TOTAL	3000	//3 flashes
+#define IMPL_WARN_TOTAL			6000	//blinking + 3s hold
+
+ImplantWarnCreate()
+{
+	int s = CreateSprite( IMPL_WARN_VID, ScreenX() / 2,
+		ScreenY() / 2 + IMPL_WARN_Z, IMPL_WARN_Z );
+	Log( "IMPLWARN create spr=" + itoa( s ) + " scr=" + itoa( ScreenX() ) + "x" + itoa( ScreenY() ) );
+	return s;
+}
+
+
+ImplantLimitTact( int nArmy )
+{
+	int heroId = HeroID[ nArmy ];
+	if( !heroId )
+		return;
+
+	static int giImplLogTime = 0;
+
+	int need = 0;
+	int i;
+	for( i = INV_IMPL1; i <= INV_IMPL3; i++ )
+	{
+		int itemId = SendCommandA( nArmy, EXT_GETITEMID, i );
+		if( itemId )
+		{
+			int n = ImplantNeedInt( SendCommand( EXT_GETSKILL, itemId, RPGIMPLANT_LEVEL ) );
+			if( n > need )
+				need = n;
+		}
+	}
+	//both the item id and the implant level can read back as 0 for a few frames
+	//(inventory open, re-equip), which used to flap the penalty on and off:
+	//keep the last verdict for a second, drop it only after a full second
+	if( need > 0 )
+		giImplZeroFrames[ nArmy ] = 0;
+	else
+	{
+		if( giImplZeroFrames[ nArmy ] < 60 )
+			need = giImplLastNeed[ nArmy ];
+		giImplZeroFrames[ nArmy ] = giImplZeroFrames[ nArmy ] + 1;
+	}
+	//judged by the CURRENT intelligence: an implant that grants +int may satisfy
+	//its own requirement (intended design)
+	int intel = SendCommand( EXT_GETSKILL, heroId, RPGHERO_INTELLIGENCE );
+	int penalty = 0;
+	if( need > 0 && intel < need )
+		penalty = 1;
+
+	if( need != giImplLastNeed[ nArmy ] || penalty != giImplLastPen[ nArmy ] )
+	{
+		Log( "IMPLGATE army=" + itoa( nArmy ) + " need=" + itoa( need )
+			+ " intel=" + itoa( intel ) + " pen=" + itoa( penalty ) );
+		giImplLastNeed[ nArmy ] = need;
+		giImplLastPen[ nArmy ] = penalty;
+	}
+
+	int spdBase = SendCommand( EXT_GETSKILL, heroId, RPGHERO_SPEED );
+	int origSpd = giImplSpeedOrig[ nArmy ];
+	if( origSpd <= 0 )
+	{
+		//after a save/load the statics are gone: RPGHERO_UNKNOWN keeps the reference.
+		//Values below 100000 are leftovers of an older (broken) build, they are dropped.
+		int st = SendCommand( EXT_GETSKILL, heroId, RPGHERO_UNKNOWN );
+		if( st >= 100000 )
+			origSpd = st - 100000;
+		else if( st != 0 )
+			SendCommandA( nArmy, EXT_SETSKILL, RPGHERO_UNKNOWN, 0 );
+	}
+	int halfSpd = 0;
+
+	//reference values for the 50% cut: recorded on every frame WITHOUT the
+	//penalty, so an implant equipped afterwards is not a part of them. The
+	//engine bakes the implant bonus into the skill storage on equip and it
+	//cannot be read back from the implant item (GETSKILL on it returns 0).
+	int hBase = SendCommand( EXT_GETSKILL, heroId, RPGHERO_HEALTH );
+	int sBase = SendCommand( EXT_GETSKILL, heroId, RPGHERO_STRENGTH );
+	int aBase = SendCommand( EXT_GETSKILL, heroId, RPGHERO_ACCURACY );
+
+	if( penalty )
+	{
+		if( giImplHealthOrig[ nArmy ] <= 0 )
+			giImplHealthOrig[ nArmy ] = hBase;
+		if( giImplStrengthOrig[ nArmy ] <= 0 )
+			giImplStrengthOrig[ nArmy ] = sBase;
+		if( giImplAccuracyOrig[ nArmy ] <= 0 )
+			giImplAccuracyOrig[ nArmy ] = aBase;
+
+		if( origSpd <= 0 )
+		{
+			origSpd = spdBase;
+			giImplSpeedOrig[ nArmy ] = origSpd;
+		}
+		if( SendCommand( EXT_GETSKILL, heroId, RPGHERO_UNKNOWN ) != 100000 + origSpd )
+			SendCommandA( nArmy, EXT_SETSKILL, RPGHERO_UNKNOWN, 100000 + origSpd );
+
+		//the engine applies the implant bonus on top of the stored skill and the
+		//bonus cannot be queried, so it is measured as the gap between the current
+		//value and the reference taken before the implant was equipped. The gap is
+		//cached: depending on the previous frame's write made the value oscillate
+		if( hBase > giImplHealthOrig[ nArmy ] )
+			giImplBonusH[ nArmy ] = hBase - giImplHealthOrig[ nArmy ];
+		if( sBase > giImplStrengthOrig[ nArmy ] )
+			giImplBonusS[ nArmy ] = sBase - giImplStrengthOrig[ nArmy ];
+		if( aBase > giImplAccuracyOrig[ nArmy ] )
+			giImplBonusA[ nArmy ] = aBase - giImplAccuracyOrig[ nArmy ];
+		if( spdBase > origSpd )
+			giImplBonusV[ nArmy ] = spdBase - origSpd;
+
+		int hHalf = giImplHealthOrig[ nArmy ] / 2 - giImplBonusH[ nArmy ];
+		int sHalf = giImplStrengthOrig[ nArmy ] / 2 - giImplBonusS[ nArmy ];
+		int aHalf = giImplAccuracyOrig[ nArmy ] / 2 - giImplBonusA[ nArmy ];
+		halfSpd = origSpd / 2 - giImplBonusV[ nArmy ];
+
+		//a stored skill cannot go below zero: with a big implant bonus the target
+		//base may be negative, in that case the best we can do is zero
+		if( hHalf < 0 )
+			hHalf = 0;
+		if( sHalf < 0 )
+			sHalf = 0;
+		if( aHalf < 0 )
+			aHalf = 0;
+		if( halfSpd < 0 )
+			halfSpd = 0;
+		if( hBase != hHalf )
+			SendCommandA( nArmy, EXT_SETSKILL, RPGHERO_HEALTH, hHalf );
+		if( sBase != sHalf )
+			SendCommandA( nArmy, EXT_SETSKILL, RPGHERO_STRENGTH, sHalf );
+		if( aBase != aHalf )
+			SendCommandA( nArmy, EXT_SETSKILL, RPGHERO_ACCURACY, aHalf );
+		if( spdBase != halfSpd )
+			SendCommandA( nArmy, EXT_SETSKILL, RPGHERO_SPEED, halfSpd );
+		giImplWroteH[ nArmy ] = 1;
+		giImplWroteS[ nArmy ] = 1;
+		giImplWroteA[ nArmy ] = 1;
+		giImplWroteV[ nArmy ] = 1;
+	}
+	else
+	{
+		//restore ONLY right after a penalty was lifted: writing the remembered
+		//values on every frame would undo any external change (level up, cheat codes)
+		if( giImplWroteH[ nArmy ] > 0 || giImplWroteS[ nArmy ] > 0
+		 || giImplWroteA[ nArmy ] > 0 || giImplWroteV[ nArmy ] > 0 )
+		{
+			if( origSpd > 0 && spdBase != origSpd )
+				SendCommandA( nArmy, EXT_SETSKILL, RPGHERO_SPEED, origSpd );
+			if( giImplHealthOrig[ nArmy ] > 0 && hBase != giImplHealthOrig[ nArmy ] )
+				SendCommandA( nArmy, EXT_SETSKILL, RPGHERO_HEALTH, giImplHealthOrig[ nArmy ] );
+			if( giImplStrengthOrig[ nArmy ] > 0 && sBase != giImplStrengthOrig[ nArmy ] )
+				SendCommandA( nArmy, EXT_SETSKILL, RPGHERO_STRENGTH, giImplStrengthOrig[ nArmy ] );
+			if( giImplAccuracyOrig[ nArmy ] > 0 && aBase != giImplAccuracyOrig[ nArmy ] )
+				SendCommandA( nArmy, EXT_SETSKILL, RPGHERO_ACCURACY, giImplAccuracyOrig[ nArmy ] );
+		}
+		else
+		{
+			//record the reference only in a clean (never penalized) state:
+			//recording while the penalty flaps would remember the halved values
+			giImplHealthOrig[ nArmy ] = hBase;
+			giImplStrengthOrig[ nArmy ] = sBase;
+			giImplAccuracyOrig[ nArmy ] = aBase;
+			giImplSpeedOrig[ nArmy ] = spdBase;
+		}
+		if( SendCommand( EXT_GETSKILL, heroId, RPGHERO_UNKNOWN ) != 0 )
+			SendCommandA( nArmy, EXT_SETSKILL, RPGHERO_UNKNOWN, 0 );
+		giImplWroteH[ nArmy ] = 0;
+		giImplWroteS[ nArmy ] = 0;
+		giImplWroteA[ nArmy ] = 0;
+		giImplWroteV[ nArmy ] = 0;
+		giImplBonusH[ nArmy ] = 0;
+		giImplBonusS[ nArmy ] = 0;
+		giImplBonusA[ nArmy ] = 0;
+		giImplBonusV[ nArmy ] = 0;
+	}
+
+	//safety: keep the current HP inside the maximum the engine reports
+	int maxHp = SendCommand( EXT_GETSKILL, heroId, RPGHERO_MAXHP );
+	if( maxHp <= 0 )
+		maxHp =   2 * SendCommand( EXT_GETSKILL, heroId, RPGHERO_HEALTH )
+		        + SendCommand( EXT_GETSKILL, heroId, RPGHERO_STRENGTH ) / 2;
+	if( penalty )
+	{
+		int hp = SendCommand( EXT_GETSKILL, heroId, RPGHERO__HP );
+		if( hp > maxHp )
+			SendCommandA( nArmy, EXT_ADDSKILL, RPGHERO__HP, maxHp - hp );
+	}
+
+	//diagnostics: sampled every 2 seconds, penalty or not
+	{
+		int t = GetTime();
+		if( t - giImplLogTime > 2000 )
+		{
+			giImplLogTime = t;
+			int d1 = SendCommandA( nArmy, EXT_GETITEMID, INV_IMPL1 );
+			int d2 = SendCommandA( nArmy, EXT_GETITEMID, INV_IMPL2 );
+			int d3 = SendCommandA( nArmy, EXT_GETITEMID, INV_IMPL3 );
+			int ih1 = 0;
+			int is1 = 0;
+			if( d1 > 0 )
+			{
+				ih1 = SendCommand( EXT_GETSKILL, d1, RPGHERO_HEALTH );
+				is1 = SendCommand( EXT_GETSKILL, d1, RPGHERO_STRENGTH );
+			}
+			Log( "IMPLST pen=" + itoa( penalty ) + " need=" + itoa( need )
+				+ " it=" + itoa( d1 ) + "/" + itoa( d2 ) + "/" + itoa( d3 )
+				+ " h=" + itoa( SendCommand( EXT_GETSKILL, heroId, RPGHERO_HEALTH ) )
+				+ " ht=" + itoa( SendCommand( EXT_GETSKILL, heroId, RPGHERO_HEALTH, 1 ) )
+				+ " s=" + itoa( SendCommand( EXT_GETSKILL, heroId, RPGHERO_STRENGTH ) )
+				+ " a=" + itoa( SendCommand( EXT_GETSKILL, heroId, RPGHERO_ACCURACY ) )
+				+ " v=" + itoa( SendCommand( EXT_GETSKILL, heroId, RPGHERO_SPEED ) )
+				+ " refH=" + itoa( giImplHealthOrig[ nArmy ] )
+				+ " refS=" + itoa( giImplStrengthOrig[ nArmy ] )
+				+ " ih1=" + itoa( ih1 ) + " is1=" + itoa( is1 )
+				+ " bH=" + itoa( giImplBonusH[ nArmy ] ) + " bS=" + itoa( giImplBonusS[ nArmy ] )
+				+ " wA=" + itoa( giImplWarnArmed[ nArmy ] ) + " wS=" + itoa( giImplWarnSpr[ nArmy ] )
+				+ " inv=" + itoa( g_bInventoryIsShown ) );
+		}
+	}
+
+	//unequip detection also runs from InventoryTact: the chip may be taken off
+	//and put back while the inventory is open, when this tact is paused
+	ImplantWarnEquipTact( nArmy );
+
+	//popup: armed by the penalty, shown once once the inventory is closed;
+	//it must not restart while the same penalty stays active, and never without
+	//a chip in the slot (the penalty lingers ~1s after the chip is taken off)
+	if( penalty && !giImplWarnArmed[ nArmy ] && !giImplWarnDone[ nArmy ]
+		&& giImplWarnEmpty[ nArmy ] < IMPL_WARN_EMPTY_FRAMES )
+	{
+		giImplWarnArmed[ nArmy ] = 1;
+		giImplWarnStart[ nArmy ] = 0;
+	}
+	if( !penalty )
+	{
+		giImplWarnArmed[ nArmy ] = 0;
+		giImplWarnDone[ nArmy ] = 0;
+		giImplWarnStart[ nArmy ] = 0;
+		if( giImplWarnSpr[ nArmy ] )
+		{
+			Destroy( giImplWarnSpr[ nArmy ] );
+			giImplWarnSpr[ nArmy ] = 0;
+		}
+	}
+	if( giImplWarnArmed[ nArmy ] && !g_bInventoryIsShown )
+	{
+		int wt = GetTime();
+		if( giImplWarnStart[ nArmy ] == 0 )
+		{
+			giImplWarnStart[ nArmy ] = wt;
+			giImplWarnLast[ nArmy ] = wt;
+			giImplWarnOn[ nArmy ] = 1;
+			giImplWarnSpr[ nArmy ] = ImplantWarnCreate();
+			Log( "IMPLWARN start army=" + itoa( nArmy ) );
+		}
+		else
+		{
+			int el = wt - giImplWarnStart[ nArmy ];
+			if( el < IMPL_WARN_BLINK_TOTAL )
+			{
+				if( wt - giImplWarnLast[ nArmy ] >= IMPL_WARN_HALF )
+				{
+					giImplWarnLast[ nArmy ] = wt;
+					giImplWarnOn[ nArmy ] = 1 - giImplWarnOn[ nArmy ];
+					if( giImplWarnOn[ nArmy ] )
+						giImplWarnSpr[ nArmy ] = ImplantWarnCreate();
+					else if( giImplWarnSpr[ nArmy ] )
+					{
+						Destroy( giImplWarnSpr[ nArmy ] );
+						giImplWarnSpr[ nArmy ] = 0;
+					}
+				}
+			}
+			else
+			{
+				//blinking done: keep it visible, then remove
+				if( !giImplWarnSpr[ nArmy ] )
+					giImplWarnSpr[ nArmy ] = ImplantWarnCreate();
+				if( el >= IMPL_WARN_TOTAL )
+				{
+					Destroy( giImplWarnSpr[ nArmy ] );
+					giImplWarnSpr[ nArmy ] = 0;
+					giImplWarnArmed[ nArmy ] = 0;
+					giImplWarnDone[ nArmy ] = 1;
+				}
+			}
+		}
+	}
+}
+
+
+//---------------------------------------------------------------------------
+//无名之辈：该天赋不提供任何加成，也不允许分配点数
+static int LastChallVal[ MAX_PLAYER ];
+
+//reset to 0 on every tact (old saves may keep a stale value)
+ChallengerPerkResetTact( int nArmy )
+{
+	int heroId = HeroID[ nArmy ];
+	if( !heroId )
+		return;
+	int val = SendCommand( EXT_GETSKILL, heroId, RPGHERO_PERK_HANDTOHAND );
+	if( val == 0 )
+	{
+		LastChallVal[ nArmy ] = 0;
+		return;
+	}
+	SendCommandA( nArmy, EXT_SETSKILL, RPGHERO_PERK_HANDTOHAND, 0 );
+	if( val != LastChallVal[ nArmy ] )
+		Log( "PCHALRESET army=" + itoa( nArmy ) + " from=" + itoa( val ) );
+	LastChallVal[ nArmy ] = val;
+}
+
+
+//---------------------------------------------------------------------------
+//Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ, Ð²Ñ‹Ð·Ñ‹Ð²Ð°ÑŽÑ‰?? ÐºÐ°Ð¶Ð´Ñ‹Ð¹ Ñ‚Ð°ÐºÑ‚, ?Ð¾ÑÐ½Ð¾Ð²Ð½Ð¾Ð¼ Ð¾Ð±Ñ€Ð°Ð±Ð°Ñ‚Ñ‹Ð²Ð°ÑŽÑ‰? Ð¿ÐµÑ€Ðº?
+//?ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹?Ð¿Ð¾Ð´ÑÑ‡Ð¸Ñ‚Ñ‹Ð²Ð°ÐµÑ‚? Ð´Ð»Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚ÑŒ Ñ‡ÐµÐ³Ð¾-Ð»Ð¸Ð±Ð¾ Ð²Ð¾ Ð²Ñ€ÐµÐ¼ÐµÐ½?
 PerksTact( int nArmy )
 {
 	InitArraysIfNeeded();
 	//
 	int heroId = HeroID[ nArmy ];
 
-//����������?
+	//枪械大师代价：健康/力量/移速/智力上限 175
+	RifleMasterAttrCapTact( nArmy );
+
+	//无名之辈：不提供加成，也不允许分配点数
+	ChallengerPerkResetTact( nArmy );
+
+
+	// Ð¿Ð¾ÑÐ»ÐµÐ´Ð½ÐµÐµ Ð¸Ð·Ð²ÐµÑÑ‚Ð½Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð¿ÐµÑ€ÐºÐ° Ð²Ð°Ð¼Ð¿Ð¸Ñ€Ð¸Ð·Ð¼Ð° (-1 = ÐµÑ‰Ñ‘ Ð½Ðµ Ð¸Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¾)
+	static int LastPerkVamp[ MAX_PLAYER ] = { -1, -1, -1, -1, -1, -1, -1, -1 };
+
+	// --- Ð’Ð°Ð¼Ð¿Ð¸Ñ€Ð¸Ð·Ð¼: ÑÑ€Ð°Ð±Ð°Ñ‚Ñ‹Ð²Ð°ÐµÐ¼ Ð¢ÐžÐ›Ð¬ÐšÐž Ð² Ð¼Ð¾Ð¼ÐµÐ½Ñ‚ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ Ð¿ÐµÑ€ÐºÐ° ---
+	// Ð”Ð²Ð¸Ð¶Ð¾Ðº Ð½Ðµ Ð¿ÐµÑ€ÐµÑÑ‡Ð¸Ñ‚Ñ‹Ð²Ð°ÐµÑ‚ MaxHP Ð¿Ñ€Ð¸ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ð¸ Ð¿ÐµÑ€ÐºÐ¾Ð², Ð½Ð¾ ÐµÑÐ»Ð¸ Ð¿Ð¸ÑÐ°Ñ‚ÑŒ
+	// MaxHP ÐºÐ°Ð¶Ð´Ñ‹Ð¹ ÐºÐ°Ð´Ñ€, Ð´Ð²Ð¸Ð¶Ð¾Ðº ÐºÐ°Ð¶Ð´Ñ‹Ð¹ ÐºÐ°Ð´Ñ€ ÑÐ½Ð¾Ð²Ð° Ð½Ð°Ñ‡Ð¸ÑÐ»ÑÐµÑ‚ Ð±Ð¾Ð½ÑƒÑ - HP ÑƒÐ»ÐµÑ‚Ð°ÐµÑ‚.
+	// ÐŸÐ¾ÑÑ‚Ð¾Ð¼Ñƒ Ð¿Ð¸ÑˆÐµÐ¼ 0 Ð¸ Ð¿Ñ€Ð°Ð²Ð¸Ð¼ Ñ‚ÐµÐºÑƒÑ‰ÐµÐµ HP Ð¾Ð´Ð¸Ð½ Ñ€Ð°Ð· Ð½Ð° ÐºÐ°Ð¶Ð´Ð¾Ðµ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ðµ.
+	{
+		int perkVamp = SendCommand( EXT_GETSKILL, heroId, RPGHERO_PERK_VAMPIRE );
+		if( LastPerkVamp[ nArmy ] < 0 )
+		{
+			LastPerkVamp[ nArmy ] = perkVamp;
+			// Ð’Ñ‹Ñ€Ð°Ð²Ð½Ð¸Ð²Ð°ÐµÐ¼ ÑÐºÐ¸Ð»Ð» MAXHP Ð¿Ñ€Ð¸ Ð¿ÐµÑ€Ð²Ð¾Ð¼ Ð¿Ð¾ÑÐ²Ð»ÐµÐ½Ð¸Ð¸ Ð³ÐµÑ€Ð¾Ñ:
+			// ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ðµ Ð¿ÐµÑ€ÑÐ¾Ð½Ð°Ð¶Ð° Ð¸ ÑÑ‚Ð°Ñ€Ñ‹Ðµ ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ð¸Ñ, Ð³Ð´Ðµ Ð±Ð¾Ð½ÑƒÑ ÐµÑ‰Ñ‘ Ð½Ðµ Ð·Ð°Ð¿Ð¸ÑÐ°Ð½
+			SendCommandA( nArmy, EXT_SETSKILL, RPGHERO_MAXHP, perkVamp * VAMPIRE_HP_PER_TWO_POINTS / 2 );
+		}
+		else
+		if( LastPerkVamp[ nArmy ] != perkVamp )
+		{
+			int health = SendCommand( EXT_GETSKILL, heroId, RPGHERO_HEALTH );
+			int strength = SendCommand( EXT_GETSKILL, heroId, RPGHERO_STRENGTH );
+			int curHp = SendCommand( EXT_GETSKILL, heroId, RPGHERO__HP );
+			// Ð‘Ð¾Ð½ÑƒÑ Ð²Ð°Ð¼Ð¿Ð¸Ñ€Ð¸Ð·Ð¼Ð° Ñ…Ñ€Ð°Ð½Ð¸Ð¼ Ð¿Ñ€ÑÐ¼Ð¾ Ð² ÑÐºÐ¸Ð»Ð»Ðµ MAXHP: Ð´Ð²Ð¸Ð¶Ð¾Ðº ÑÐ²ÐµÑ€Ñ…Ñƒ
+			// Ð¿Ñ€Ð¸Ð±Ð°Ð²Ð»ÑÐµÑ‚ Ñ„Ð¾Ñ€Ð¼ÑƒÐ»Ñƒ Ð±Ð°Ð·Ñ‹ (2*health + strength/2), Ð¿Ð¾ÑÑ‚Ð¾Ð¼Ñƒ Ð² ÑÐºÐ¸Ð»Ð»Ðµ
+			// Ð»ÐµÐ¶Ð¸Ñ‚ Ð¢ÐžÐ›Ð¬ÐšÐž Ð±Ð¾Ð½ÑƒÑ Ð¿ÐµÑ€ÐºÐ°. ÐŸÐ¸ÑˆÐµÐ¼ Ð°Ð±ÑÐ¾Ð»ÑŽÑ‚Ð½Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ, Ð½Ðµ Ð´ÐµÐ»ÑŒÑ‚Ñƒ.
+			int newBonus = perkVamp * VAMPIRE_HP_PER_TWO_POINTS / 2;
+			int oldBonus = LastPerkVamp[ nArmy ] * VAMPIRE_HP_PER_TWO_POINTS / 2;
+			SendCommandA( nArmy, EXT_SETSKILL, RPGHERO_MAXHP, newBonus );
+			int newMaxHp = 2 * health + strength / 2 + newBonus;
+			// Ð¡Ñ‡Ð¸Ñ‚Ð°ÐµÐ¼ Ð±Ð¾Ð½ÑƒÑ Ð´Ð¾ Ð¸ Ð¿Ð¾ÑÐ»Ðµ Ð¾Ñ‚Ð´ÐµÐ»ÑŒÐ½Ð¾: Ð¿Ñ€Ð¸ Ð´ÐµÐ»ÐµÐ½Ð¸Ð¸ Ñ€Ð°Ð·Ð½Ð¸Ñ†Ñ‹ Ð½Ð° 2
+			// ÐºÐ°Ð¶Ð´Ñ‹Ð¹ ÑˆÐ°Ð³ +1 Ð¾Ñ‡ÐºÐ¾ Ð¾Ð±Ð½ÑƒÐ»ÑÐ»ÑÑ (1/2 = 0), Ð¸ HP Ð¾Ñ‚ÑÑ‚Ð°Ð²Ð°Ð»Ð¾ Ð¾Ñ‚ Ð¼Ð°ÐºÑÐ¸Ð¼ÑƒÐ¼Ð°
+			int hpDelta = newBonus - oldBonus;
+			int wantHp = curHp;
+			if( hpDelta > 0 )
+				wantHp = curHp + hpDelta;
+			if( wantHp > newMaxHp )
+				wantHp = newMaxHp;
+			if( wantHp < 0 )
+				wantHp = 0;
+			SendCommandA( nArmy, EXT_SETSKILL, RPGHERO__HP, wantHp );
+			LastPerkVamp[ nArmy ] = perkVamp;
+		}
+	}
+	// --- ÐºÐ¾Ð½ÐµÑ† Ð²Ð°Ð¼Ð¿Ð¸Ñ€Ð¸Ð·Ð¼Ð° ---
+
+//ÑÐ°Ð¼Ð¾Ð»ÐµÑ‡ÐµÐ½Ð¸?
     int PerkVal = SendCommand( EXT_GETSKILL, heroId, RPGHERO_PERK_HEALING );
     int iHp = SendCommand( EXT_GETSKILL, heroId, RPGHERO__HP );
-    int MaxHp = SendCommand( EXT_GETSKILL, heroId, RPGHERO_MAXHP );
+    //çœŸå®žè¡€é‡ä¸Šé™ = åŸºç¡€å…¬å¼ + MAXHP æŠ€èƒ½é‡Œå­˜çš„åŠ æˆ
+    int MaxHp =   2 * SendCommand( EXT_GETSKILL, heroId, RPGHERO_HEALTH )
+                + SendCommand( EXT_GETSKILL, heroId, RPGHERO_STRENGTH ) / 2
+                + SendCommand( EXT_GETSKILL, heroId, RPGHERO_MAXHP );
 	//
 	static int LastHealingTimes[MAX_PLAYER] = {	0, 0, 0, 0, 0, 0, 0, 0 };
+	static int LastHealHp[MAX_PLAYER] = { -1, -1, -1, -1, -1, -1, -1, -1 };
+	int nowHealTime = GetTime();
+	//è¡€é‡æœ‰ä»»ä½•å˜åŠ¨ï¼ˆå—ä¼¤/åƒè¯ç­‰ï¼‰å°±é‡ç½®å¹³é™è®¡æ—¶
+	if( LastHealHp[ nArmy ] < 0 )
+	{
+		LastHealHp[ nArmy ] = iHp;
+		giHealIdleStart = nowHealTime;
+	}
+	if( iHp != LastHealHp[ nArmy ] )
+	{
+		LastHealHp[ nArmy ] = iHp;
+		giHealIdleStart = nowHealTime;
+		LastHealingTimes[ nArmy ] = 0;
+	}
     if(iHp >= MaxHp)
     {
     	LastHealingTimes[nArmy] = 0;
@@ -274,63 +800,145 @@ PerksTact( int nArmy )
     else
     if( PerkVal >= AutoHealingPerkVals[ 0 ] )
     {
-        //�������� ����� ����?���������� ����������
-        if( LastHealingTimes[nArmy] == 0 )
-        	LastHealingTimes[nArmy] = GetTime();
-
-	    //LogToConsole(itoa(CurTime)+"-"+itoa(LastHealingTime)+"-"+itoa(AutoHealingTimesCalced[ PerkVal ]));
-		if( GetTime() - LastHealingTimes[nArmy] >= AutoHealingTimesCalced[ PerkVal ] )
-        {
-	    	//Log2( "Autohealing: Hp added - " + itoa( 1 ) + ". Delta time is "
-        	//                          + itoa( AutoHealingTimesCalced[ PerkVal ] ) );
-            SendCommandA( nArmy, EXT_ADDSKILL, RPGHERO__HP, 1 );
-            //����?����������?�� �������� �� fps-��:
-            LastHealingTimes[nArmy] = LastHealingTimes[nArmy] + AutoHealingTimesCalced[ PerkVal ];
-        }
+    	//å†·å´ï¼ˆå¹³é™æœŸï¼‰æœªæ»¡ï¼Œä¸å›žè¡€
+    	if( nowHealTime - giHealIdleStart < HealCoolMs( PerkVal ) )
+    	{
+    		LastHealingTimes[nArmy] = 0;
+    	}
+    	else
+    	{
+        	if( LastHealingTimes[nArmy] == 0 )
+        		LastHealingTimes[nArmy] = nowHealTime;
+        	//æŒ‰â€œå›žæ»¡æ•´æ¡è¡€æ‰€éœ€æ—¶é—´â€æ¢ç®—æˆæ¯ 1 ç‚¹ HP çš„é—´éš”
+        	int msPerHp = 1;
+        	if( MaxHp > 0 )
+        	{
+        		msPerHp = HealFullMs( PerkVal ) / MaxHp;
+        		if( msPerHp < 1 )
+        			msPerHp = 1;
+        	}
+			if( nowHealTime - LastHealingTimes[nArmy] >= msPerHp )
+        	{
+	            SendCommandA( nArmy, EXT_ADDSKILL, RPGHERO__HP, 1 );
+	            //Ñ‡Ñ‚Ð¾Ð±?Ð°Ð²Ñ‚Ð¾Ð»ÐµÑ‡ÐµÐ½Ð¸?Ð½Ðµ Ð·Ð°Ð²Ð¸ÑÐ¸Ð»Ð¾ Ð¾Ñ‚ fps-Ð¾Ð²:
+	            LastHealingTimes[nArmy] = LastHealingTimes[nArmy] + msPerHp;
+	            //è‡ªå·±çš„å›žè¡€ä¸ç®—â€œè¡€é‡å˜åŠ¨â€ï¼Œä¸å½±å“å¹³é™è®¡æ—¶
+	            LastHealHp[ nArmy ] = iHp + 1;
+        	}
+    	}
     }
+
+	// --- è‡ªæ„ˆå¤©èµ‹ï¼šåŒ»ç–—é“å…·å›žè¡€é‡åŠ æˆ ---
+	//åŒ»ç–—åŒ…å›žè¡€ç”±å¼•æ“Žç›´æŽ¥å¤„ç†ï¼Œè„šæœ¬é‡Œæ²¡æœ‰â€œä½¿ç”¨ç‰©å“â€çš„å›žè°ƒï¼Œæ‰€ä»¥ç”¨
+	//åŒ»ç–—åŒ…æ•°é‡ï¼ˆå‡†å¿ƒ UI çš„ MED_NUMï¼Œå³ INV_ITEM_6ï¼‰å‡å°‘æ¥æ£€æµ‹ä½¿ç”¨ï¼Œ
+	//å†æŒ‰è¿™æ¬¡å®žé™…å›žå¤çš„è¡€é‡è¡¥ä¸ŠåŠ æˆã€‚
+	{
+		static int LastMedkitCnt[ MAX_PLAYER ] = { -1, -1, -1, -1, -1, -1, -1, -1 };
+		static int PrevMedkitHp[ MAX_PLAYER ] = { -1, -1, -1, -1, -1, -1, -1, -1 };
+		static int MedkitPendTime[ MAX_PLAYER ] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+		static int MedkitBaseHp[ MAX_PLAYER ] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+		//
+		int medkitCnt = SendCommandA( nArmy, EXT_GETITEMNUM, INV_ITEM_6, 1 );
+		int medkitPct = MedkitBonusPct( PerkVal );
+		int hpNow = SendCommand( EXT_GETSKILL, heroId, RPGHERO__HP );
+		//
+		if( LastMedkitCnt[ nArmy ] < 0 )
+			LastMedkitCnt[ nArmy ] = medkitCnt;
+		else
+		{
+			if( medkitCnt < LastMedkitCnt[ nArmy ] && medkitPct > 0 )
+			{
+				//ä½¿ç”¨å‰ä¸€å¸§çš„è¡€é‡ä½œä¸ºåŸºå‡†ï¼ˆå¼•æ“Žå¯èƒ½å·²ç»åœ¨æœ¬å¸§å›žè¡€ï¼‰
+				MedkitBaseHp[ nArmy ] = hpNow;
+				if( PrevMedkitHp[ nArmy ] >= 0 && hpNow > PrevMedkitHp[ nArmy ] )
+					MedkitBaseHp[ nArmy ] = PrevMedkitHp[ nArmy ];
+				MedkitPendTime[ nArmy ] = nowHealTime;
+			}
+			LastMedkitCnt[ nArmy ] = medkitCnt;
+		}
+		//
+		if( MedkitPendTime[ nArmy ] > 0 )
+		{
+			int gained = hpNow - MedkitBaseHp[ nArmy ];
+			if( gained > 0 )
+			{
+				int bonus = gained * medkitPct / 100;
+				if( bonus > 0 )
+					SendCommandA( nArmy, EXT_ADDSKILL, RPGHERO__HP, bonus );
+				MedkitPendTime[ nArmy ] = 0;
+			}
+			else
+			if( nowHealTime - MedkitPendTime[ nArmy ] > 500 )
+				MedkitPendTime[ nArmy ] = 0;
+		}
+		//
+		PrevMedkitHp[ nArmy ] = hpNow;
+	}
 
 //
-	HypnosisTact( nArmy, heroId );
+	//催眠专家机制已删除（天赋35改为枪械大师），不再调用HypnosisTact
 
-//������?������??������?
-    PerkVal = SendCommand( EXT_GETSKILL, heroId, RPGHERO_PERK_DARKVISION );
-    int SkillForSecretVision = 0;
-    if( PerkVal > 0 )
-    {
-        if( GetGammaIntensive(CurrentGamma) > NIGHT_VISION_INTENSIVE )
-        {
-        	if(!g_bNightVisionOn[nArmy])	//*zm2006Aug01
-	            SetGammaEx( giCurArmy, CountGamma( CurrentGamma, 0, 256*PerkVal / NIGHT_VISION_SKILL_FOR_MAX_GAMMA ) );
-		}
-		//*zm2006Jul31
-		SkillForSecretVision = PerkVal - NIGHT_VISION_SKILL_FOR_MAX_GAMMA;
-		if(SkillForSecretVision < 0)
-			SkillForSecretVision = 0;
-    }
+//Ñ…Ð¾Ñ€Ð¾ÑˆÐµ?Ð²Ð¸Ð´ÐµÐ½Ð¸??Ñ‚ÐµÐ¼Ð½Ð¾Ñ‚?
 
-//��������?��������
+    //鹰眼洞察：进入任意 1385 红色箭头 1000 范围内立即爆发一次（5 秒 / 10 次闪烁），随后进入冷却；
+    //离开范围时若在冷却中立即重置冷却，若在爆发中则等爆发播完
+    //冷却曲线：1->30s, 50->20s, 100->10s, 200->5s
     PerkVal = SendCommand( EXT_GETSKILL, heroId, RPGHERO_PERK_SECRETSVISION );
-    //*zm2006Jul31
-    if(!PerkVal && SkillForSecretVision)
-	    PerkVal = SkillForSecretVision;
-
-    static int LastHealingTime = 0;
     if( PerkVal >= SecretsVisionPerkVals[ 0 ] || StartBlinkTime)
     {
-        //�������� ����� ����?��������� ��������?
-        static int LastBlinkingTime = 0;
-        if( GetTime() - LastBlinkingTime > SecretsVisionTimesCalced[ PerkVal ] )
+        int nowSV = GetTime();
+        int coolMs = EagleCoolMs( PerkVal );
+        int bNearArrow = EagleNearArrow( nArmy );
+
+        if( giEagleBurstCount > 0 )
         {
-            BlinkSecretObjects();
-            LastBlinkingTime = GetTime();
+            //爆发中：第 10 次闪烁结束后进入冷却
+            if( giEagleBurstCount < 10 )
+            {
+                if( nowSV - giEagleLastBlink >= 500 )
+                {
+                    BlinkSecretObjects();
+                    giEagleLastBlink = nowSV;
+                    giEagleBurstCount++;
+                }
+            }
+            else
+            {
+                giEagleCoolStart = nowSV;
+                giEagleBurstCount = 0;
+            }
         }
+        else if( bNearArrow )
+        {
+            //在范围内：刚进入立即爆发（清掉旧冷却），否则等冷却结束再爆发
+            if( !giEagleInRange || giEagleCoolStart == 0 || nowSV - giEagleCoolStart >= coolMs )
+            {
+                if( !giEagleInRange )
+                    giEagleCoolStart = 0;
+                BlinkSecretObjects();
+                giEagleBurstStart = nowSV;
+                giEagleLastBlink = nowSV;
+                giEagleBurstCount = 1;
+            }
+        }
+        else
+        {
+            //不在范围内且不在爆发中：立即重置冷却
+            giEagleCoolStart = 0;
+        }
+        giEagleInRange = bNearArrow;
         BlinkTact();
     }
+
+	//Eagle perk: count hidden points found on this map
+	EagleFoundTact( nArmy, PerkVal );
+
+	//implant intelligence gate (health / speed / damage -50%)
+	ImplantLimitTact( nArmy );
 }
 
-
 //---------------------------------------------------------------------------
-//������?����?���������� ��������?
+//ìèãíóò?âñåì?ñåêðåòíûìè îáúåêòàì?
 BlinkSecretObjects()
 {
     if( !StartBlinkTime )
@@ -339,7 +947,7 @@ BlinkSecretObjects()
 
 
 //---------------------------------------------------------------------------
-//���������� ����?���� ��������?����?
+//óñòàíîâèòü ãàìì?âñåì ñåêðåòíû?âèäà?
 SetGammaForSecretVids( int iGamma )
 {
     int i;
@@ -360,7 +968,7 @@ InitGammaForSecretVids()
 
 
 //---------------------------------------------------------------------------
-//��������?������� ��������
+//ïðîöåäóð?ìèãàíèÿ îáúåêòîâ
 BlinkTact()
 {
     if( StartBlinkTime )
@@ -394,29 +1002,38 @@ BlinkTact()
 
 
 //---------------------------------------------------------------------------
-//��������? �� ��������?������ ����?
-//���������� �������� ?����?
+//âûçûâàåò? íà ïîëó÷åíè?ëþáîãî îïûò?
+//âîçâðàùàåò ïðèáàâêó ?îïûò?
 OnGetExperience( int iHeroId, int iExp )
 {
 	//LogToConsole( "Exp added: " + itoa( iExp ) );
 	//
-	//��?��?����?��������
+	//âë?íè?ïåðê?îáó÷åíèå
     int PerkVal = SendCommand( EXT_GETSKILL, iHeroId, RPGHERO_PERK_EDUCATION );
-    //��?MAXIMUM_PERK_VALUE ����������?�� EDUCATION_ADD_EXP%
-    int AddToExp = iExp * PerkVal * EDUCATION_ADD_EXP / MAXIMUM_PERK_VALUE / 100;
+    //ïð?MAXIMUM_PERK_VALUE óâåëè÷èâàå?íà EDUCATION_ADD_EXP%
+    //survival instinct (education): exp multiplier curve
+    int AddToExp = iExp * ( EduExpPct( PerkVal ) - 100 ) / 100;
 
-    //��?��?������ ��������?
+    //âë?íè?ñêèëëà èíòåëëåê?
     int PerkVal2 = SendCommand( EXT_GETSKILL, iHeroId, RPGHERO_INTELLIGENCE );
-    //��?200(MAXIMUM_PERK_VALUE) ����������??2 ����
+    //ïð?200(MAXIMUM_PERK_VALUE) óâåëè÷èâàå??2 ðàçà
     AddToExp += iExp * PerkVal2 * INTELLIGENCE_ADD_EXP / MAXIMUM_PERK_VALUE / 100;
+
+    //经验大师 G 技能：激活后 5 分钟内按基础经验额外 +25%（与天赋、智力同为加法叠加）
+    if( giEduBuffStart > 0 && GetTime() - giEduBuffStart < 300000 )
+    {
+        int buffAdd = iExp * 25 / 100;
+        AddToExp += buffAdd;
+        Log( "EDUBUFF base=" + itoa( iExp ) + " add=" + itoa( buffAdd ) + " total=" + itoa( iExp + AddToExp ) );
+    }
 
     //if( AddToExp )
     //	LogToConsole( "OnGetExperience: Experience added with education  " + itoa( AddToExp ) );
 
-    //������?zm2005Oct16
+    //çàòû÷ê?zm2005Oct16
     if(AddToExp < 0)
     {
-    	//AddToExp = 0;������?���� ??����
+    	//AddToExp = 0;çàòû÷ê?åñòü ??êîäå
     	Log2("Error!!! AddToExp < 0. "+itoa(PerkVal)+"-"+itoa(PerkVal2)+"-"+itoa(iExp));
     }
     return AddToExp;
@@ -424,16 +1041,17 @@ OnGetExperience( int iHeroId, int iExp )
 
 
 //---------------------------------------------------------------------------
-//��������? �� ��������?����?����?(����?������??��������).
-//���������� �������� ?������?
+//âûçûâàåò? íà ïîëó÷åíè?ëþáû?äåíå?(êðîì?ïðîäàæ??ìàãàçèíå).
+//âîçâðàùàåò ïðèáàâêó ?äåíüãà?
 OnGetMoney( int iHeroId, int iMoney )
 {
-    int PerkVal = SendCommand( EXT_GETSKILL, iHeroId, RPGHERO_PERK_ADDMONEY );
-    //*zm2006Feb28 - ?2.5 ���� ������?�������
-    //*zm2006Jul21 - ������?������?���������� ECONOMIST_ADD_MONEY
-    int AddMoney = iMoney * PerkVal * ECONOMIST_ADD_MONEY / MAXIMUM_PERK_VALUE / 100;
+    //economist perk no longer boosts picked money, it discounts shop prices instead (see util_shop.lgc)
+    int AddMoney = 0;
+    //eagle eye money bonus
+    int EaglePerk = SendCommand( EXT_GETSKILL, iHeroId, RPGHERO_PERK_SECRETSVISION );
+    AddMoney += iMoney * EagleBonusPct( EaglePerk ) / 100;
 	
-	// ����?��?�� ������? ������ ��� ���������. ������? ����������� ����?* �� ������?�������� ����?* 400% / 200 / 100
+	// Íóæí?ìå?òü çíà÷åí? äðîïîâ äëÿ âûæèâàíèÿ. Ôîðìóë? Ïîäîáðàííàÿ ñóìì?* íà óðîâåí?ïðîêà÷êè ïåðê?* 400% / 200 / 100
     //if( AddMoney )
     //	LogToConsole( "OnGetMoney: Money added   - " + itoa( AddMoney ) );
     return AddMoney;
@@ -441,8 +1059,8 @@ OnGetMoney( int iHeroId, int iMoney )
 
 
 //---------------------------------------------------------------------------
-//��������? �� �������� ������ ����?(��� ���������� ?���������� ����?����?.
-//���������� �������� ?������������ hp.
+//âûçûâàåò? íà óáèéñòâå ëþáîãî âðàã?(äëÿ âàìïèðèçìà ?äîáàâëåíèå î÷êî?îïûò?.
+//âîçâðàùàåò ïðèáàâêó ?ñîáñòâåííîìó hp.
 OnEnemyKill( int nArmy, int iEnemyHp )
 {
 	if( !iEnemyHp )
@@ -453,7 +1071,7 @@ OnEnemyKill( int nArmy, int iEnemyHp )
 	return;
 #endif
 
-    //��������� ����
+    //äîáàâëÿåì îïûò
     //LogToConsole( "OnEnemyKill: Experience added " + itoa( iEnemyHp ) );
     int ExpToAdd = iEnemyHp * giScoresCoeff;
 	//
@@ -464,32 +1082,46 @@ OnEnemyKill( int nArmy, int iEnemyHp )
 		gWpnMonst[giCurWpnIndex]++;
 	}
 
-    //��?����������
+    //ïð?âàìïèðèçìå
     int PerkVal;
     PerkVal = SendCommand( EXT_GETSKILL, HeroID[ nArmy ], RPGHERO_PERK_VAMPIRE );
 	//
-	static int AddHp = 0;
+	//vampire cooldown: after a heal, wait HealCoolMs before the next heal
+	int nowVamp = GetTime();
+	if( PerkVal > 0 && giVampireCoolStart > 0 && nowVamp - giVampireCoolStart < HealCoolMs( PerkVal ) )
+		return;
 
-	//��?�������� ������ ��������?�� 100 �� 100 hp �������� ��?���? ������?����?hp
-	int Denom = VAMPIRE_ADD_HP * 2500;
-	//
-    AddHp += iEnemyHp * PerkVal;
-	if( AddHp >= Denom )
+	//ïð?ïðîêà÷êå ñêèëëà âàìïèðèç?íà 100 çà 100 hp ìîíñòðîâ íà?äà¸ò? ñòîëüê?íàøè?hp
+	//vampire heal per kill: 0..100 -> 0..VAMPIRE_HEAL_AT_100, 101..200 -> ..VAMPIRE_HEAL_AT_200
+	int HealPct = 0;
+	if( PerkVal > 0 )
 	{
-		int HpToAdd = AddHp / Denom;
-		AddHp -= HpToAdd * Denom;
+		if( PerkVal <= 100 )
+			HealPct = PerkVal * VAMPIRE_HEAL_AT_100 / 100;
+		else if( PerkVal < 200 )
+			HealPct = VAMPIRE_HEAL_AT_100 + ( PerkVal - 100 ) * ( VAMPIRE_HEAL_AT_200 - VAMPIRE_HEAL_AT_100 ) / 100;
+		else
+			HealPct = VAMPIRE_HEAL_AT_200;
+	}
+	//
+	int HpToAdd = HealPct;
+	if( HpToAdd > 0 )
+	{
 		//
 		int iHp, MaxHp;
 		iHp = SendCommand( EXT_GETSKILL, HeroID[ nArmy ], RPGHERO__HP );
-		MaxHp = SendCommand( EXT_GETSKILL, HeroID[ nArmy ], RPGHERO_MAXHP );
+		//real max: engine formula + vampire bonus stored in MAXHP skill
+		MaxHp = 2 * SendCommand( EXT_GETSKILL, HeroID[ nArmy ], RPGHERO_HEALTH )
+		      + SendCommand( EXT_GETSKILL, HeroID[ nArmy ], RPGHERO_STRENGTH ) / 2
+		      + SendCommand( EXT_GETSKILL, HeroID[ nArmy ], RPGHERO_MAXHP );
 		if( iHp + HpToAdd > MaxHp )
 			HpToAdd = MaxHp - iHp;
 		//
 		if( HpToAdd > 0 )
 		{
 			SendCommandA( nArmy, EXT_ADDSKILL, RPGHERO__HP, HpToAdd );
+			giVampireCoolStart = nowVamp;
 			//LogToConsole( "OnEnemyKill: Vampire " + itoa( HpToAdd ) );
 		}
 	}
 }
-
