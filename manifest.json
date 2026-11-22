@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.22.0401",
+  "version": "2026.11.22.0402",
   "base": "Gamedata",
   "files": [
     {
@@ -956,6 +956,11 @@
       "path": "scripts/monsters.lgc",
       "md5": "db23209f74b41a351a4d1583075e29ab",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/scripts/monsters.lgc"
+    },
+    {
+      "path": "scripts/util/util_shop.lgc",
+      "md5": "7ca5a0f8db0f8d34fcbc84002fcb8c94",
+      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/scripts/util/util_shop.lgc"
     },
     {
       "path": "scripts/util/util_queen.lgc",
