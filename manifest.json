@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.22.0437",
+  "version": "2026.11.22.0635",
   "base": "Gamedata",
   "files": [
     {
@@ -909,7 +909,7 @@
     },
     {
       "path": "scripts/common/common_perks.lgc",
-      "md5": "48d5e01bf6cf03266807433e95d3de62",
+      "md5": "a74f10327506df374889bb0e692a0206",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/scripts/common/common_perks.lgc"
     }
   ]
