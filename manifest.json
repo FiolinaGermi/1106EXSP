@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.22.0635",
+  "version": "2026.11.23.0722",
   "base": "Gamedata",
   "files": [
     {
@@ -36,16 +36,6 @@
       "path": "db/strings.db",
       "md5": "57d99622df505d0a62d08a2cff6b91d2",
       "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/db/strings.db"
-    },
-    {
-      "path": "models/as2/zzfsq2.vid",
-      "md5": "1d8598f9b2522eb23a460dc671c162d6",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/models/as2/zzfsq2.vid"
-    },
-    {
-      "path": "models/as2/zzfsq.vid",
-      "md5": "84ae33337186343710d4e2640d0fcb42",
-      "url": "https://raw.githubusercontent.com/FiolinaGermi/1106EXSP/new/main/Gamedata/models/as2/zzfsq.vid"
     },
     {
       "path": "ui/inventory/quest/1637_0016.tga",
